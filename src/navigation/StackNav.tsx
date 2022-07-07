@@ -11,7 +11,7 @@ function StackNav() {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Login" component={Auth} />
+      <Stack.Screen name="Auth" component={Auth} />
     </Stack.Navigator>
   );
 }
