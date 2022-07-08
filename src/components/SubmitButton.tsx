@@ -15,7 +15,10 @@ export type Props = {
 const SubmitButton: React.FC<Props> = ({buttonText, onPress}) => {
   return (
     <View style={styles.buttonContainer}>
-      <TouchableOpacity activeOpacity={0.75} style={styles.button} onPress={onPress}>
+      <TouchableOpacity
+        activeOpacity={0.75}
+        style={styles.button}
+        onPress={onPress}>
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableOpacity>
     </View>
@@ -26,6 +29,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 10,
   },
   button: {
     width: 300,
