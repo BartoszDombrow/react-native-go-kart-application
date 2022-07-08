@@ -70,10 +70,10 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: '80%',
-    height: 60,
+    height: 50,
     textAlign: 'center',
     marginVertical: 15,
-    borderRadius: 20,
+    borderRadius: 15,
     backgroundColor: colors.lightBlue,
     fontFamily: fonts.secondaryFont,
     fontSize: 18,

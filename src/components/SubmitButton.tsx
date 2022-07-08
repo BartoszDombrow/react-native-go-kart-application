@@ -38,6 +38,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
+    shadowOffset: {width: -1, height: -3},
+    shadowOpacity: 0.3,
+    shadowRadius: 0.3,
+    elevation: 8,
   },
   buttonText: {
     color: colors.darkBlue,
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: fonts.primaryFont,
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: -3, height: 3},
+    textShadowOffset: {width: -2, height: 4},
     textShadowRadius: 10,
   },
 });
