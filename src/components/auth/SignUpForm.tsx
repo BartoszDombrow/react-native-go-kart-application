@@ -1,5 +1,14 @@
-import React from 'react';
-import {View, TextInput, StyleSheet, Alert, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Alert,
+  ScrollView,
+  Modal,
+  Pressable,
+  Text,
+} from 'react-native';
 import {Formik, useFormik} from 'formik';
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
@@ -16,6 +25,8 @@ interface FormValue {
 }
 
 const SignUp = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -66,7 +77,25 @@ const SignUp = () => {
           </View>
         </ScrollView>
       </Formik>
-      <SubmitButton buttonText="PLAY" onPress={formik.handleSubmit} />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Privacy policy</Text>
+            <Pressable
+              style={styles.buttonClose}
+              onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.textStyle}>Close</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <SubmitButton buttonText="NEXT" onPress={() => setModalVisible(true)} />
     </View>
   );
 };
@@ -102,6 +131,33 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
+  },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalView: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: colors.lightBlue,
+    padding: 35,
+    alignItems: 'center',
+    opacity: 0.95,
+  },
+
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
 
