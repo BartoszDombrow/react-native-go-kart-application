@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
-
 import AuthForm from '../components/auth/AuthForm';
-
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 
@@ -41,10 +39,11 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: '100%',
-    height: '40%',
+    height: '30%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
+    marginTop: '5%',
   },
   imageContainer: {
     width: '45%',
