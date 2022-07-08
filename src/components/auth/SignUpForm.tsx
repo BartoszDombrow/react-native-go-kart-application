@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, TextInput, StyleSheet, Alert} from 'react-native';
+import {View, TextInput, StyleSheet, Alert, ScrollView} from 'react-native';
 import {Formik, useFormik} from 'formik';
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
+import SubmitButton from '../SubmitButton';
 
 const fonts = new Fonts();
 const colors = new Colors();
@@ -28,79 +29,80 @@ const SignUp = () => {
   });
 
   return (
-    <View>
+    <View style={styles.formBox}>
       <Formik<FormValue>
         initialValues={formik.initialValues}
         onSubmit={formik.submitForm}>
-        <View>
-          <TextInput
-            style={styles.form}
-            onChangeText={formik.handleChange('username')}
-            onBlur={formik.handleBlur('username')}
-            placeholder="Username"
-            value={formik.values.username}
-          />
-          <TextInput
-            style={styles.form}
-            onChangeText={formik.handleChange('email')}
-            onBlur={formik.handleBlur('email')}
-            placeholder="Email"
-            value={formik.values.email}
-          />
-          <TextInput
-            style={styles.form}
-            onChangeText={formik.handleChange('password')}
-            onBlur={formik.handleBlur('password')}
-            placeholder="Password"
-            value={formik.values.password}
-          />
-          <TextInput
-            style={styles.form}
-            onChangeText={formik.handleChange('recoverPassword')}
-            onBlur={formik.handleBlur('recoverPassword')}
-            placeholder="Password"
-            value={formik.values.recoverPassword}
-          />
-        </View>
+        <ScrollView style={styles.inputContainer}>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.textInput}
+              onChangeText={formik.handleChange('username')}
+              onBlur={formik.handleBlur('username')}
+              placeholder="Username"
+              value={formik.values.username}
+            />
+            <TextInput
+              style={styles.textInput}
+              onChangeText={formik.handleChange('email')}
+              onBlur={formik.handleBlur('email')}
+              placeholder="Email"
+              value={formik.values.email}
+            />
+            <TextInput
+              style={styles.textInput}
+              onChangeText={formik.handleChange('password')}
+              onBlur={formik.handleBlur('password')}
+              placeholder="Password"
+              value={formik.values.password}
+            />
+            <TextInput
+              style={styles.textInput}
+              onChangeText={formik.handleChange('recoverPassword')}
+              onBlur={formik.handleBlur('recoverPassword')}
+              placeholder="Password"
+              value={formik.values.recoverPassword}
+            />
+          </View>
+        </ScrollView>
       </Formik>
+      <SubmitButton buttonText="PLAY" onPress={formik.handleSubmit} />
     </View>
   );
 };
 
-export default SignUp;
-
 const styles = StyleSheet.create({
-  loginContainer: {
+  formBox: {
+    width: '100%',
     height: '100%',
-    display: 'flex',
     alignItems: 'center',
   },
-  form: {
-    width: 325,
-    backgroundColor: '#BDD5EA',
-    margin: 5,
-    padding: 10,
-    borderRadius: 20,
+  inputContainer: {
+    width: '100%',
+    height: '60%',
   },
-  buttonWrapper: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+  inputWrapper: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  textInput: {
+    width: '80%',
+    height: 60,
+    textAlign: 'center',
+    marginVertical: 15,
+    borderRadius: 20,
+    backgroundColor: colors.lightBlue,
+    fontFamily: fonts.secondaryFont,
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.darkBlue,
+    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textShadowOffset: {width: 0, height: 4},
+    textShadowRadius: 6,
   },
   button: {
-    width: 300,
-    height: 80,
-    backgroundColor: colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-  },
-  buttonText: {
-    color: colors.darkBlue,
-    fontSize: 36,
-    textAlign: 'center',
-    fontFamily: fonts.primaryFont,
-    textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: -3, height: 3},
-    textShadowRadius: 10,
+    marginTop: 10,
   },
 });
+
+export default SignUp;
