@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import LoginForm from './LoginForm';
+import SignUp from '../SignUp/SignUp';
 import Swiper from 'react-native-swiper';
 
 import Colors from '../../constants/Colors';
@@ -27,7 +28,7 @@ const AuthForm = () => {
         <LoginForm />
       </View>
       <View style={styles.signupFormContainer}>
-        <Text>Register</Text>
+        <SignUp />
       </View>
     </Swiper>
   );
