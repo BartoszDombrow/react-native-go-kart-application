@@ -21,7 +21,6 @@ interface FormValue {
   username: string;
   email: string;
   password: string;
-  recoverPassword: string;
 }
 
 const SignUp = () => {
@@ -32,7 +31,6 @@ const SignUp = () => {
       username: '',
       email: '',
       password: '',
-      recoverPassword: '',
     },
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
@@ -51,6 +49,7 @@ const SignUp = () => {
               onChangeText={formik.handleChange('username')}
               onBlur={formik.handleBlur('username')}
               placeholder="Username"
+              placeholderTextColor={colors.darkBlue}
               value={formik.values.username}
             />
             <TextInput
@@ -58,21 +57,17 @@ const SignUp = () => {
               onChangeText={formik.handleChange('email')}
               onBlur={formik.handleBlur('email')}
               placeholder="Email"
+              placeholderTextColor={colors.darkBlue}
               value={formik.values.email}
             />
             <TextInput
+              secureTextEntry
               style={styles.textInput}
               onChangeText={formik.handleChange('password')}
               onBlur={formik.handleBlur('password')}
               placeholder="Password"
+              placeholderTextColor={colors.darkBlue}
               value={formik.values.password}
-            />
-            <TextInput
-              style={styles.textInput}
-              onChangeText={formik.handleChange('recoverPassword')}
-              onBlur={formik.handleBlur('recoverPassword')}
-              placeholder="Password"
-              value={formik.values.recoverPassword}
             />
           </View>
         </ScrollView>
@@ -92,6 +87,7 @@ const SignUp = () => {
               onPress={() => setModalVisible(!modalVisible)}>
               <Text style={styles.textStyle}>Close</Text>
             </Pressable>
+            <SubmitButton buttonText="CONFIRM" onPress={formik.handleSubmit} />
           </View>
         </View>
       </Modal>
@@ -116,10 +112,10 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: '80%',
-    height: 60,
+    height: 50,
     textAlign: 'center',
     marginVertical: 15,
-    borderRadius: 20,
+    borderRadius: 15,
     backgroundColor: colors.lightBlue,
     fontFamily: fonts.secondaryFont,
     fontSize: 18,
