@@ -19,7 +19,7 @@
     "react": "18.0.0",
     "react-native": "0.69.1",
     "react-native-gesture-handler": "^2.5.0",
-    "react-native-neomorph-shadows": "^1.1.2",
+    "react-native-neomorph-shadows-fixes": "^1.1.4",
     "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.14.1",
     "react-native-swiper": "^1.6.0",
