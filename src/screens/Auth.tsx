@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
 import AuthForm from '../components/auth/AuthForm';
 
@@ -27,7 +26,7 @@ const Auth = () => {
         </View>
       </View>
       <View style={styles.formContainer}>
-        <AuthForm/>
+        <AuthForm />
       </View>
     </SafeAreaView>
   );
@@ -85,6 +84,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '60%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });

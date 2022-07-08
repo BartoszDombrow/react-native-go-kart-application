@@ -17,11 +17,10 @@ interface FormValue {
 }
 
 const LoginForm = () => {
-  
   const formik = useFormik({
     initialValues: {
       username: '',
-      password: ''
+      password: '',
     },
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
@@ -53,7 +52,7 @@ const LoginForm = () => {
           />
         </View>
       </Formik>
-      <SubmitButton buttonText='PLAY' onPress={formik.handleSubmit} />
+      <SubmitButton buttonText="PLAY" onPress={formik.handleSubmit} />
     </View>
   );
 };
@@ -62,12 +61,12 @@ const styles = StyleSheet.create({
   formBox: {
     width: '100%',
     height: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   inputContainer: {
     width: '100%',
     height: '60%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textInput: {
     width: '80%',
