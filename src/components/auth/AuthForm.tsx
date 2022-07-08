@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import LoginForm from './LoginForm';
-import SignUp from '../SignUp/SignUp';
+import SignUp from './SignUpForm';
 import Swiper from 'react-native-swiper';
 
 import Colors from '../../constants/Colors';
