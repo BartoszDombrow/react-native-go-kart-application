@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {Shadow} from 'react-native-neomorph-shadows';
 import Colors from '../constants/Colors';
+import Fonts from '../constants/Fonts';
+import SignUp from '../components/SignUp/SignUp';
 
 const colors = new Colors();
+const fonts = new Fonts();
 
 const Auth = () => {
   return (
@@ -23,12 +24,7 @@ const Auth = () => {
         </View>
       </View>
       <View style={styles.formContainer}>
-        <Text>Form</Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity activeOpacity={0.75} style={styles.button}>
-          <Text style={styles.buttonText}>PLAY</Text>
-        </TouchableOpacity>
+        <SignUp />
       </View>
     </SafeAreaView>
   );
@@ -43,10 +39,11 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: '100%',
-    height: '40%',
+    height: '30%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
+    marginTop: '5%',
   },
   imageContainer: {
     width: '45%',
@@ -77,14 +74,14 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 36,
     textAlign: 'center',
-    fontFamily: 'TitanOne-Regular',
+    fontFamily: fonts.primaryFont,
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: {width: -3, height: 4},
     textShadowRadius: 10,
   },
   formContainer: {
     width: '100%',
-    height: '40%',
+    height: '60%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -101,14 +98,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
-  },
-  buttonText: {
-    color: colors.darkBlue,
-    fontSize: 36,
-    textAlign: 'center',
-    fontFamily: 'TitanOne-Regular',
-    textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: -3, height: 3},
-    textShadowRadius: 10,
   },
 });
