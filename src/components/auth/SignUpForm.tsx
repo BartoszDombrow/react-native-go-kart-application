@@ -13,6 +13,7 @@ import {Formik, useFormik} from 'formik';
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
 import SubmitButton from '../SubmitButton';
+import * as Yup from 'yup';
 
 const fonts = new Fonts();
 const colors = new Colors();
@@ -32,6 +33,15 @@ const SignUp = () => {
       email: '',
       password: '',
     },
+    validationSchema: Yup.object({
+      username: Yup.string()
+        .max(15, 'Must be 15 characters or less')
+        .required('Required'),
+      password: Yup.string()
+        .max(20, 'Must be 20 characters or less')
+        .required('Required'),
+      email: Yup.string().email('Invalid email address').required('Required'),
+    }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
     },

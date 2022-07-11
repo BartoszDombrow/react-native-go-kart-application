@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, TextInput, Alert, StyleSheet} from 'react-native';
 import {useFormik, Formik} from 'formik';
-import {} from 'yup';
+import * as Yup from 'yup';
 
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
@@ -22,6 +22,14 @@ const LoginForm = () => {
       username: '',
       password: '',
     },
+    validationSchema: Yup.object({
+      username: Yup.string()
+        .max(15, 'Must be 15 characters or less')
+        .required('Required'),
+      password: Yup.string()
+        .max(20, 'Must be 20 characters or less')
+        .required('Required'),
+    }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
     },
