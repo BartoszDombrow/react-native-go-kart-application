@@ -53,7 +53,7 @@ const AuthForm = () => {
             styles.fadingContainer,
             {
               left: slideAnimation,
-            }
+            },
           ]}>
           <Shadow useArt style={styles.pickedForm} />
         </Animated.View>
@@ -77,16 +77,11 @@ const AuthForm = () => {
         </View>
       </Shadow>
       <Swiper
-        style={styles.swiper}
         loop={false}
         showsPagination={false}
         onMomentumScrollEnd={scrollEvent}>
-        <View style={styles.formType}>
-          <LoginForm />
-        </View>
-        <View style={styles.formType}>
-          <SignUp />
-        </View>
+        <LoginForm />
+        <SignUp />
       </Swiper>
     </View>
   );
@@ -94,8 +89,6 @@ const AuthForm = () => {
 
 const styles = StyleSheet.create({
   formContainer: {
-    width: '100%',
-    height: '100%',
     alignItems: 'center',
   },
   switchContainer: {
@@ -147,12 +140,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 5,
     shadowOffset: {width: 2, height: 4},
-  },
-  swiper: {
-    marginTop: 20,
-  },
-  formType: {
-    width: '100%',
   },
 });
 

@@ -42,11 +42,10 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: '100%',
-    height: '30%',
+    flex: 0.3,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    marginTop: '5%',
   },
   imageContainer: {
     width: '45%',
@@ -106,13 +105,8 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: -3, height: 4},
     textShadowRadius: 10,
   },
-  sliderContainer: {
-    width: '100%',
-    height: '10%',
-  },
   formContainer: {
-    width: '100%',
-    height: '70%',
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },

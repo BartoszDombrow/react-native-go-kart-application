@@ -1,22 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  Alert,
-  ScrollView,
-  Modal,
-  Text,
-} from 'react-native';
+import {View, StyleSheet, Alert, Modal, Text} from 'react-native';
 import {useFormik} from 'formik';
 import Colors from '../../constants/Colors';
-import Fonts from '../../constants/Fonts';
 import SubmitButton from '../SubmitButton';
 import * as Yup from 'yup';
 import CheckBox from '@react-native-community/checkbox';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import FormInput from '../FormInput';
 
-const fonts = new Fonts();
 const colors = new Colors();
 
 interface FormValue {
@@ -68,64 +58,45 @@ const SignUp = () => {
   };
 
   return (
-    <View style={styles.formBox}>
-      <ScrollView style={styles.inputContainer}>
+    <>
+      <View style={styles.formBox}>
         <View style={styles.inputWrapper}>
-          <Shadow inner useArt style={styles.shadow}>
-            <TextInput
-              returnKeyType="go"
-              style={styles.textInput}
-              onChangeText={formik.handleChange('username')}
-              onBlur={formik.handleBlur('username')}
-              placeholder="Username"
-              placeholderTextColor={colors.darkBlue}
-              value={formik.values.username}
-            />
-          </Shadow>
+          <FormInput
+            onChangeText={formik.handleChange('username')}
+            onBlur={formik.handleBlur('username')}
+            value={formik.values.username}
+            placeholder="Username"
+            formikTouched={formik.touched.username}
+            formikErrors={formik.errors.username}
+          />
+          <FormInput
+            onChangeText={formik.handleChange('email')}
+            onBlur={formik.handleBlur('email')}
+            value={formik.values.email}
+            placeholder="Email"
+            formikTouched={formik.touched.email}
+            formikErrors={formik.errors.email}
+          />
+          <FormInput
+            onChangeText={formik.handleChange('password')}
+            onBlur={formik.handleBlur('password')}
+            value={formik.values.password}
+            placeholder="Password"
+            formikTouched={formik.touched.password}
+            formikErrors={formik.errors.password}
+            secureTextEntry={true}
+          />
 
-          {formik.touched.username && formik.errors.username && (
-            <Text style={styles.errorMessage}>{formik.errors.username}</Text>
-          )}
-          <Shadow inner useArt style={styles.shadow}>
-            <TextInput
-              returnKeyType="next"
-              style={styles.textInput}
-              onChangeText={formik.handleChange('email')}
-              onBlur={formik.handleBlur('email')}
-              placeholder="Email"
-              placeholderTextColor={colors.darkBlue}
-              value={formik.values.email}
-            />
-          </Shadow>
-          {formik.touched.email && formik.errors.email && (
-            <Text style={styles.errorMessage}>{formik.errors.email}</Text>
-          )}
-          <Shadow inner useArt style={styles.shadow}>
-            <TextInput
-              returnKeyType="done"
-              secureTextEntry
-              style={styles.textInput}
-              onChangeText={formik.handleChange('password')}
-              onBlur={formik.handleBlur('password')}
-              placeholder="Password"
-              placeholderTextColor={colors.darkBlue}
-              value={formik.values.password}
-            />
-          </Shadow>
-
-          {formik.touched.password && formik.errors.password && (
-            <Text style={styles.errorMessage}>{formik.errors.password}</Text>
-          )}
-        </View>
-        <View>
           <View style={styles.checkBoxWrapper}>
-            <CheckBox
-              value={formik.values.privacyPolicy}
-              disabled={false}
-              onValueChange={value =>
-                formik.setFieldValue('privacyPolicy', value)
-              }
-            />
+            <View>
+              <CheckBox
+                value={formik.values.privacyPolicy}
+                disabled={false}
+                onValueChange={value =>
+                  formik.setFieldValue('privacyPolicy', value)
+                }
+              />
+            </View>
 
             <Text style={styles.checkBoxText}>
               Accept{' '}
@@ -135,8 +106,9 @@ const SignUp = () => {
             </Text>
           </View>
         </View>
-      </ScrollView>
 
+        <SubmitButton buttonText="START" onPress={formik.handleSubmit} />
+      </View>
       <Modal
         animationType="slide"
         transparent={true}
@@ -150,64 +122,27 @@ const SignUp = () => {
           </View>
         </View>
       </Modal>
-      <SubmitButton buttonText="START" onPress={formik.handleSubmit} />
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   formBox: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     alignItems: 'center',
+    paddingTop: 30,
   },
-  inputContainer: {
-    width: '100%',
-    height: '60%',
-  },
-  inputWrapper: {
-    width: '100%',
-    alignItems: 'center',
-  },
-  textInput: {
-    width: '80%',
-    height: 50,
-    textAlign: 'center',
-    marginVertical: 15,
-    borderRadius: 15,
-    fontFamily: fonts.secondaryFont,
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: colors.darkBlue,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 0, height: 4},
-    textShadowRadius: 6,
-  },
-  button: {
-    marginTop: 10,
-  },
-
+  inputWrapper: {flex: 0.9},
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalView: {
-    width: '100%',
-    height: '100%',
     backgroundColor: colors.lightBlue,
     padding: 35,
     alignItems: 'center',
     opacity: 0.95,
-  },
-
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
   modalText: {
     marginBottom: 15,
@@ -226,20 +161,6 @@ const styles = StyleSheet.create({
   textSpan: {
     color: colors.lightBlue,
     fontWeight: 'bold',
-  },
-  errorMessage: {color: colors.white, fontSize: 14},
-  shadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOffset: {width: 0, height: 8},
-    shadowOpacity: 0.35,
-    shadowColor: '#000000',
-    shadowRadius: 10,
-    borderRadius: 20,
-    backgroundColor: colors.lightBlue,
-    width: 300,
-    height: 60,
-    marginVertical: 10,
   },
 });
 

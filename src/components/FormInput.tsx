@@ -73,9 +73,9 @@ const styles = StyleSheet.create({
     color: colors.darkBlue,
   },
   errorMessage: {
-    marginBottom: 20,
+    marginBottom: 4,
     color: colors.white,
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: fonts.secondaryFont,
   },
 });
