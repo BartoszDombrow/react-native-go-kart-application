@@ -1,6 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, StyleSheet, Animated, Dimensions} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import {PanGestureHandler} from 'react-native-gesture-handler';
+import {useAnimatedGestureHandler, useAnimatedStyle, useSharedValue} from 'react-native-reanimated';
 
 import LoginForm from './LoginForm';
 import SignUp from './SignUpForm';
@@ -14,14 +16,13 @@ const fonts = new Fonts();
 
 const AuthForm = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [scrollText, setScrollText] = useState('Sign in');
 
   const slideAnimation = useRef(new Animated.Value(5)).current;
 
   const scrollRight = () => {
     Animated.timing(slideAnimation, {
-      toValue: Dimensions.get('window').width * 0.6 - 45,
-      duration: 250,
+      toValue: Dimensions.get('window').width * 0.4 - 5,
+      duration: 200,
       useNativeDriver: false,
     }).start();
   };
@@ -29,18 +30,13 @@ const AuthForm = () => {
   const scrollLeft = () => {
     Animated.timing(slideAnimation, {
       toValue: 5,
-      duration: 250,
+      duration: 200,
       useNativeDriver: false,
     }).start();
   };
 
   const scrollEvent = (e: any, state: any) => {
     setScrollPosition(state.index);
-    if (scrollPosition) {
-      setScrollText('Sign up');
-    } else {
-      setScrollText('Sign in');
-    }
   };
 
   useEffect(() => {
@@ -49,23 +45,56 @@ const AuthForm = () => {
     } else {
       scrollLeft();
     }
-  }, [scrollPosition]);
+  });
+
+  // const AnimatedStyles = {
+  //   swipeable: useAnimatedStyle(() => {
+  //     return {
+  //       transform: [{translateX: switchX.value}]
+  //     }
+  //   })
+  // }
+
+  // const switchX = useSharedValue(0);
+  // const animationHandler = useAnimatedGestureHandler({
+  //   onActive: (e) => {
+  //     switchX.value = e.translationX;
+  //   }
+  // });
 
   return (
     <View style={styles.formContainer}>
       <Shadow inner useArt style={styles.switchContainer}>
+        <PanGestureHandler /*onGestureEvent={animationHandler}*/>
+          <Animated.View
+            style={[
+              styles.fadingContainer,
+              {
+                left: slideAnimation,
+              },
+              // AnimatedStyles.swipeable
+            ]}>
+            <Shadow useArt style={styles.pickedForm} />
+          </Animated.View>
+        </PanGestureHandler>
         <View style={styles.switchBox}>
-          <Text style={styles.switchText}>{scrollText}</Text>
+          <Text
+            style={[
+              styles.switchText,
+              scrollPosition ? styles.unselectedSwitch : styles.selectedSwitch,
+            ]}>
+            Sign in
+          </Text>
         </View>
-        <Animated.View
-          style={[
-            styles.fadingContainer,
-            {
-              left: slideAnimation,
-            },
-          ]}>
-          <Shadow useArt style={styles.pickedForm} />
-        </Animated.View>
+        <View style={styles.switchBox}>
+          <Text
+            style={[
+              styles.switchText,
+              scrollPosition ? styles.selectedSwitch : styles.unselectedSwitch,
+            ]}>
+            Sign up
+          </Text>
+        </View>
       </Shadow>
       <Swiper
         style={styles.swiper}
@@ -101,20 +130,25 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 3},
     shadowOpacity: 0.55,
     shadowColor: '#000000',
-    shadowRadius: 5
+    shadowRadius: 5,
   },
   switchBox: {
-    width: '100%',
+    width: '50%',
     height: 50,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   switchText: {
     fontSize: 18,
     fontWeight: 'bold',
     fontFamily: fonts.secondaryFont,
     color: colors.white,
-    zIndex: 1,
+  },
+  selectedSwitch: {
+    color: colors.darkBlue,
+  },
+  unselectedSwitch: {
+    color: colors.white,
   },
   fadingContainer: {
     position: 'absolute',
@@ -125,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   pickedForm: {
-    width: 40,
+    width: Dimensions.get('window').width * 0.4,
     height: 40,
     borderRadius: 25,
     backgroundColor: colors.white,
@@ -139,7 +173,7 @@ const styles = StyleSheet.create({
   },
   formType: {
     width: '100%',
-  }
+  },
 });
 
 export default AuthForm;

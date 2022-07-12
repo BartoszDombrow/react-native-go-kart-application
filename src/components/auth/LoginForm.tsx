@@ -1,6 +1,13 @@
 import React from 'react';
-import {View, Alert, TextInput, StyleSheet, ScrollView} from 'react-native';
-import {useFormik, Formik, ErrorMessage} from 'formik';
+import {
+  View,
+  Alert,
+  Text,
+  TextInput,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
+import {useFormik, Formik} from 'formik';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import * as Yup from 'yup';
 
@@ -26,10 +33,10 @@ const LoginForm = () => {
     validationSchema: Yup.object({
       username: Yup.string()
         .max(15, 'Must be 15 characters or less')
-        .required('Required'),
+        .required('This field is required'),
       password: Yup.string()
         .max(20, 'Must be 20 characters or less')
-        .required('Required'),
+        .required('This field is required'),
     }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
@@ -53,6 +60,9 @@ const LoginForm = () => {
                 placeholderTextColor={colors.darkBlue}
               />
             </Shadow>
+            {formik.touched.username && formik.errors.username && (
+              <Text style={styles.errorMessage}>{formik.errors.username}</Text>
+            )}
             <Shadow useArt inner style={styles.textInputShadow}>
               <TextInput
                 onChangeText={formik.handleChange('password')}
@@ -64,6 +74,9 @@ const LoginForm = () => {
                 placeholderTextColor={colors.darkBlue}
               />
             </Shadow>
+            {formik.touched.password && formik.errors.password && (
+              <Text style={styles.errorMessage}>{formik.errors.password}</Text>
+            )}
           </View>
         </Formik>
       </ScrollView>
@@ -80,7 +93,7 @@ const styles = StyleSheet.create({
   },
   formView: {
     width: '100%',
-    height: 240
+    height: 240,
   },
   inputContainer: {
     width: '100%',
@@ -110,9 +123,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: colors.darkBlue,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 0, height: 4},
-    textShadowRadius: 6,
+  },
+  errorMessage: {
+    marginBottom: 20,
+    color: colors.white,
+    fontSize: 14,
+    fontFamily: fonts.secondaryFont,
   },
 });
 
