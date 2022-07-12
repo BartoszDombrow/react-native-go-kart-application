@@ -2,23 +2,14 @@ import React from 'react';
 import {
   View,
   Alert,
-  Text,
-  TextInput,
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import {useFormik, Formik} from 'formik';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import {useFormik} from 'formik';
 import * as Yup from 'yup';
-
-import Colors from '../../constants/Colors';
-import Fonts from '../../constants/Fonts';
 
 import FormInput from '../FormInput';
 import SubmitButton from '../SubmitButton';
-
-const colors = new Colors();
-const fonts = new Fonts();
 
 interface FormValue {
   username: string;
@@ -58,20 +49,15 @@ const LoginForm = () => {
             formikTouched={formik.touched.username}
             formikErrors={formik.errors.username}
           />
-          <Shadow useArt inner style={styles.textInputShadow}>
-            <TextInput
-              onChangeText={formik.handleChange('password')}
-              onBlur={formik.handleBlur('password')}
-              value={formik.values.password}
-              style={styles.textInput}
-              placeholder="Password"
-              secureTextEntry={true}
-              placeholderTextColor={colors.darkBlue}
-            />
-          </Shadow>
-          {formik.touched.password && formik.errors.password && (
-            <Text style={styles.errorMessage}>{formik.errors.password}</Text>
-          )}
+          <FormInput
+            onChangeText={formik.handleChange('password')}
+            onBlur={formik.handleBlur('password')}
+            value={formik.values.password}
+            placeholder="Password"
+            formikTouched={formik.touched.password}
+            formikErrors={formik.errors.password}
+            secureTextEntry={true}
+          />
         </View>
       </ScrollView>
       <SubmitButton buttonText="PLAY" onPress={formik.handleSubmit} />
@@ -93,37 +79,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '60%',
     alignItems: 'center',
-  },
-  textInputShadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOffset: {width: 0, height: 8},
-    shadowOpacity: 0.35,
-    shadowColor: '#000000',
-    shadowRadius: 5,
-    borderRadius: 20,
-    backgroundColor: colors.lightBlue,
-    width: 300,
-    height: 50,
-    marginVertical: 10,
-  },
-  textInput: {
-    width: '100%',
-    height: 50,
-    textAlign: 'center',
-    borderRadius: 20,
-    backgroundColor: 'transparent',
-    fontFamily: fonts.secondaryFont,
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: colors.darkBlue,
-  },
-  errorMessage: {
-    marginBottom: 20,
-    color: colors.white,
-    fontSize: 14,
-    fontFamily: fonts.secondaryFont,
-  },
+  }
 });
 
 export default LoginForm;
