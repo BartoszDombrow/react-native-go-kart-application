@@ -13,11 +13,13 @@ const Auth = () => {
     <SafeAreaView style={styles.screen}>
       <View style={styles.headerContainer}>
         <View style={styles.imageContainer}>
-          <Shadow inner useArt style={shadowStyles.shadow}>
-            <Image
-              source={require('../assets/images/racing-car.png')}
-              style={styles.image}
-            />
+          <Shadow useArt style={styles.dropShadow}>
+            <Shadow inner useArt style={styles.innerShadow}>
+              <Image
+                source={require('../assets/images/racing-car.png')}
+                style={styles.image}
+              />
+            </Shadow>
           </Shadow>
         </View>
         <View style={styles.titleContainer}>
@@ -32,22 +34,6 @@ const Auth = () => {
 };
 
 export default Auth;
-
-const shadowStyles = StyleSheet.create({
-  shadow: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOffset: {width: 10, height: 10},
-    shadowOpacity: 1,
-    shadowColor: 'grey',
-    shadowRadius: 10,
-    borderRadius: 20,
-    backgroundColor: 'white',
-    width: 175,
-    height: 175,
-  },
-});
 
 const styles = StyleSheet.create({
   screen: {
@@ -81,6 +67,30 @@ const styles = StyleSheet.create({
     height: 100,
     transform: [{rotate: '-45deg'}],
   },
+  innerShadow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowOffset: {width: 0, height: 8},
+    shadowOpacity: 0.35,
+    shadowColor: '#000000',
+    shadowRadius: 10,
+    borderRadius: 20,
+    backgroundColor: colors.lightBlue,
+    width: 175,
+    height: 175,
+  },
+  dropShadow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    backgroundColor: colors.lightBlue,
+    width: 175,
+    height: 175,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    shadowOffset: {width: 0, height: 5},
+  },
   titleContainer: {
     width: '45%',
     height: '100%',
@@ -102,7 +112,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     width: '100%',
-    height: '60%',
+    height: '70%',
     alignItems: 'center',
     justifyContent: 'center',
   },

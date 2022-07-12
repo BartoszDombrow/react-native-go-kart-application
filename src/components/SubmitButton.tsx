@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
@@ -14,34 +15,44 @@ export type Props = {
 
 const SubmitButton: React.FC<Props> = ({buttonText, onPress}) => {
   return (
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity
-        activeOpacity={0.75}
-        style={styles.button}
-        onPress={onPress}>
-        <Text style={styles.buttonText}>{buttonText}</Text>
-      </TouchableOpacity>
-    </View>
+    <Shadow useArt style={styles.buttonShadow}>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          activeOpacity={0.75}
+          style={styles.button}
+          onPress={onPress}>
+          <Text style={styles.buttonText}>{buttonText}</Text>
+        </TouchableOpacity>
+      </View>
+    </Shadow>
   );
 };
 
 const styles = StyleSheet.create({
+  buttonShadow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    backgroundColor: colors.lightBlue,
+    width: 300,
+    height: 80,
+    shadowColor: '#000000',
+    shadowOpacity: 0.6,
+    shadowRadius: 10,
+    shadowOffset: {width: 3, height: 3},
+  },
   buttonContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10,
+    width: '100%',
   },
   button: {
-    width: 300,
-    height: 80,
+    width: '100%',
+    height: '100%',
     backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
-    shadowOffset: {width: -1, height: -3},
-    shadowOpacity: 0.3,
-    shadowRadius: 0.3,
-    elevation: 8,
   },
   buttonText: {
     color: colors.darkBlue,
