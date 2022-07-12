@@ -14,6 +14,7 @@ import * as Yup from 'yup';
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
 
+import FormInput from '../FormInput';
 import SubmitButton from '../SubmitButton';
 
 const colors = new Colors();
@@ -25,11 +26,13 @@ interface FormValue {
 }
 
 const LoginForm = () => {
-  const formik = useFormik({
+  const formik = useFormik<FormValue>({
     initialValues: {
       username: '',
       password: '',
     },
+    validateOnChange: false,
+    validateOnBlur: false,
     validationSchema: Yup.object({
       username: Yup.string()
         .max(15, 'Must be 15 characters or less')
@@ -46,39 +49,30 @@ const LoginForm = () => {
   return (
     <View style={styles.formBox}>
       <ScrollView style={styles.formView}>
-        <Formik<FormValue>
-          initialValues={formik.initialValues}
-          onSubmit={formik.submitForm}>
-          <View style={styles.inputContainer}>
-            <Shadow useArt inner style={styles.textInputShadow}>
-              <TextInput
-                onChangeText={formik.handleChange('username')}
-                onBlur={formik.handleBlur('username')}
-                value={formik.values.username}
-                style={styles.textInput}
-                placeholder="Username"
-                placeholderTextColor={colors.darkBlue}
-              />
-            </Shadow>
-            {formik.touched.username && formik.errors.username && (
-              <Text style={styles.errorMessage}>{formik.errors.username}</Text>
-            )}
-            <Shadow useArt inner style={styles.textInputShadow}>
-              <TextInput
-                onChangeText={formik.handleChange('password')}
-                onBlur={formik.handleBlur('password')}
-                value={formik.values.password}
-                style={styles.textInput}
-                placeholder="Password"
-                secureTextEntry={true}
-                placeholderTextColor={colors.darkBlue}
-              />
-            </Shadow>
-            {formik.touched.password && formik.errors.password && (
-              <Text style={styles.errorMessage}>{formik.errors.password}</Text>
-            )}
-          </View>
-        </Formik>
+        <View style={styles.inputContainer}>
+          <FormInput
+            onChangeText={formik.handleChange('username')}
+            onBlur={formik.handleBlur('username')}
+            value={formik.values.username}
+            placeholder="Username"
+            formikTouched={formik.touched.username}
+            formikErrors={formik.errors.username}
+          />
+          <Shadow useArt inner style={styles.textInputShadow}>
+            <TextInput
+              onChangeText={formik.handleChange('password')}
+              onBlur={formik.handleBlur('password')}
+              value={formik.values.password}
+              style={styles.textInput}
+              placeholder="Password"
+              secureTextEntry={true}
+              placeholderTextColor={colors.darkBlue}
+            />
+          </Shadow>
+          {formik.touched.password && formik.errors.password && (
+            <Text style={styles.errorMessage}>{formik.errors.password}</Text>
+          )}
+        </View>
       </ScrollView>
       <SubmitButton buttonText="PLAY" onPress={formik.handleSubmit} />
     </View>

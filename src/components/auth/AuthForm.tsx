@@ -1,8 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, StyleSheet, Animated, Dimensions} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
-import {PanGestureHandler} from 'react-native-gesture-handler';
-import {useAnimatedGestureHandler, useAnimatedStyle, useSharedValue} from 'react-native-reanimated';
 
 import LoginForm from './LoginForm';
 import SignUp from './SignUpForm';
@@ -47,36 +45,18 @@ const AuthForm = () => {
     }
   });
 
-  // const AnimatedStyles = {
-  //   swipeable: useAnimatedStyle(() => {
-  //     return {
-  //       transform: [{translateX: switchX.value}]
-  //     }
-  //   })
-  // }
-
-  // const switchX = useSharedValue(0);
-  // const animationHandler = useAnimatedGestureHandler({
-  //   onActive: (e) => {
-  //     switchX.value = e.translationX;
-  //   }
-  // });
-
   return (
     <View style={styles.formContainer}>
       <Shadow inner useArt style={styles.switchContainer}>
-        <PanGestureHandler /*onGestureEvent={animationHandler}*/>
-          <Animated.View
-            style={[
-              styles.fadingContainer,
-              {
-                left: slideAnimation,
-              },
-              // AnimatedStyles.swipeable
-            ]}>
-            <Shadow useArt style={styles.pickedForm} />
-          </Animated.View>
-        </PanGestureHandler>
+        <Animated.View
+          style={[
+            styles.fadingContainer,
+            {
+              left: slideAnimation,
+            }
+          ]}>
+          <Shadow useArt style={styles.pickedForm} />
+        </Animated.View>
         <View style={styles.switchBox}>
           <Text
             style={[
