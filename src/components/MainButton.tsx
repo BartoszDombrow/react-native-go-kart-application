@@ -13,7 +13,7 @@ export type Props = {
   onPress: () => void;
 };
 
-const MainViewButton: React.FC<Props> = ({buttonText, onPress}) => {
+const MainButton: React.FC<Props> = ({buttonText, onPress}) => {
   return (
     <Shadow useArt style={styles.buttonShadow}>
       <View style={styles.buttonContainer}>
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 50,
     backgroundColor: colors.lightBlue,
-    width: 300,
-    height: 80,
+    width: 320,
+    height: 55,
     shadowColor: '#000000',
     shadowOpacity: 0.6,
     shadowRadius: 10,
@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.darkBlue,
-    fontSize: 36,
+    fontSize: 28,
     textAlign: 'center',
     fontFamily: fonts.primaryFont,
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: -2, height: 4},
+    textShadowOffset: {width: 0, height: 2},
     textShadowRadius: 10,
   },
 });
 
-export default MainViewButton;
+export default MainButton;

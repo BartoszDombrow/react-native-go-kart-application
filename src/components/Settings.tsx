@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigation/StackNav';
+import MainButton from './MainButton';
 
 const colors = new Colors();
 
@@ -31,9 +32,9 @@ const Settings = () => {
           <Icon name="close-circle" color={colors.lightBlue} size={40} />
         </TouchableOpacity>
         <View>
-          <SubmitButton buttonText='Profile' onPress={() => {}}/>
-          <SubmitButton buttonText='Volume' onPress={() => {}}/>
-          <SubmitButton buttonText='Language' onPress={() => {}}/>
+          <MainButton buttonText='Profile' onPress={() => {}}/>
+          <MainButton buttonText='Volume' onPress={() => {}}/>
+          <MainButton buttonText='Language' onPress={() => {}}/>
         </View>
         <View>
           <SubmitButton

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import MainViewButton from '../components/MainViewButton';
+import MainButton from '../components/MainButton';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
@@ -22,19 +22,19 @@ const MainView = () => {
         <Text style={styles.headerText}>Menu</Text>
       </View>
       <View style={styles.contentContainer}>
-        <MainViewButton
+        <MainButton
           buttonText="Start"
           onPress={() => navigation.navigate('Auth')}
         />
-        <MainViewButton
+        <MainButton
           buttonText="Hall of fame"
           onPress={() => navigation.navigate('Auth')}
         />
-        <MainViewButton
+        <MainButton
           buttonText="Statistics"
           onPress={() => navigation.navigate('Auth')}
         />
-        <MainViewButton
+        <MainButton
           buttonText="Your team"
           onPress={() => navigation.navigate('Auth')}
         />

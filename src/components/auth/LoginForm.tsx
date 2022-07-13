@@ -35,6 +35,7 @@ const LoginForm = () => {
     }),
     onSubmit: values => {
       // Alert.alert(JSON.stringify(values));
+      formik.resetForm();
       navigation.navigate('MainView');
     },
   });
