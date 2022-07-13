@@ -53,7 +53,7 @@ const AuthForm = () => {
             styles.fadingContainer,
             {
               left: slideAnimation,
-            }
+            },
           ]}>
           <Shadow useArt style={styles.pickedForm} />
         </Animated.View>

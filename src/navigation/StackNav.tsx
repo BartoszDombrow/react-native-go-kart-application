@@ -7,7 +7,7 @@ import MainView from '../screens/MainView';
 export type RootStackParams = {
   Auth: undefined;
   MainView: undefined;
-}
+};
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
 
@@ -17,8 +17,7 @@ function StackNav() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Auth"
-    >
+      initialRouteName="Auth">
       <RootStack.Screen name="Auth" component={Auth} />
       <RootStack.Screen name="MainView" component={MainView} />
     </RootStack.Navigator>
