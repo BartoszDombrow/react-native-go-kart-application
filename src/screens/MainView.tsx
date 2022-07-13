@@ -25,18 +25,22 @@ const MainView = () => {
         <MainButton
           buttonText="Start"
           onPress={() => navigation.navigate('Auth')}
+          iconName='start'
         />
         <MainButton
           buttonText="Hall of fame"
           onPress={() => navigation.navigate('Auth')}
+          iconName='ranking'
         />
         <MainButton
           buttonText="Statistics"
           onPress={() => navigation.navigate('Auth')}
+          iconName='statistics'
         />
         <MainButton
           buttonText="Your team"
           onPress={() => navigation.navigate('Auth')}
+          iconName='team'
         />
       </View>
     </View>

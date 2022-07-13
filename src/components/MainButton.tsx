@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, Text, StyleSheet, Platform} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
@@ -11,9 +12,31 @@ const fonts = new Fonts();
 export type Props = {
   buttonText: string;
   onPress: () => void;
+  iconName: string | undefined;
 };
 
-const MainButton: React.FC<Props> = ({buttonText, onPress}) => {
+const iconsArray = [
+  {
+    name: 'profile',
+    icon: (
+      <Icon
+        name={Platform.OS === 'ios' ? 'ios-person-sharp' : 'md-person-sharp'}
+        color={colors.darkBlue}
+        size={36}
+      />
+    ),
+  },
+  {
+    name: 'volume',
+    icon: <Icon name="volume-high" color={colors.darkBlue} size={36} />,
+  },
+  {
+    name: 'language',
+    icon: <Icon name="language" color={colors.darkBlue} size={36} />,
+  },
+];
+
+const MainButton: React.FC<Props> = ({buttonText, onPress, iconName}) => {
   return (
     <Shadow useArt style={styles.buttonShadow}>
       <View style={styles.buttonContainer}>
@@ -21,7 +44,10 @@ const MainButton: React.FC<Props> = ({buttonText, onPress}) => {
           activeOpacity={0.75}
           style={styles.button}
           onPress={onPress}>
-          <Text style={styles.buttonText}>{buttonText}</Text>
+          <View style={styles.iconBox}>{iconsArray.find(icon => icon.name === iconName)?.icon}</View>
+          <View style={styles.textBox}>
+            <Text style={styles.buttonText}>{buttonText}</Text>
+          </View>
         </TouchableOpacity>
       </View>
     </Shadow>
@@ -35,11 +61,11 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: colors.lightBlue,
     width: 320,
-    height: 55,
+    height: 60,
     shadowColor: '#000000',
     shadowOpacity: 0.6,
     shadowRadius: 10,
-    shadowOffset: {width: 3, height: 3},
+    shadowOffset: {width: 3, height: 3}
   },
   buttonContainer: {
     alignItems: 'center',
@@ -51,8 +77,19 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: colors.white,
     alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
     borderRadius: 50,
+  },
+  iconBox: {
+    width: 50,
+    marginLeft: 30,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textBox: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   buttonText: {
     color: colors.darkBlue,
