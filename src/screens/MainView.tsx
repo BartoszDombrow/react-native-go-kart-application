@@ -10,12 +10,15 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 const colors = new Colors();
 const fonts = new Fonts();
 
+import Settings from "../components/Settings";
+
 const MainView = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerContainer}>
+        <Settings />
         <Text style={styles.headerText}>Menu</Text>
       </View>
       <View style={styles.contentContainer}>
