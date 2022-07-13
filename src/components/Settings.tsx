@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, Modal, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Fonts from '../constants/Fonts';
@@ -13,13 +13,12 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 const colors = new Colors();
 const fonts = new Fonts();
 
-interface Props{
+interface Props {
   isVisible: boolean;
   settingsHandler: () => void;
 }
 
 const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
-
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
@@ -32,8 +31,7 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
       <View style={styles.mainContainer}>
         <View style={styles.closeButtonContainer}>
           <Shadow useArt style={styles.shadow}>
-            <TouchableOpacity
-              onPress={settingsHandler}>
+            <TouchableOpacity onPress={settingsHandler}>
               <Icon name="close-circle" size={60} color={colors.lightBlue} />
             </TouchableOpacity>
           </Shadow>

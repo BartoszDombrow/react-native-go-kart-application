@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import MainButton from '../components/MainButton';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -16,19 +17,21 @@ const MainView = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const settingsHandler = () => {
-    setIsVisible(isVisible => !isVisible);
+    setIsVisible(!isVisible);
   };
 
   return (
     <>
       <View style={styles.wrapper}>
         <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={settingsHandler} style={{width: 50, height: 50, backgroundColor: 'red'}}>
-            
-          </TouchableOpacity>
+          <Icon
+            name={'settings'}
+            style={styles.icon}
+            onPress={settingsHandler}
+          />
           <Text style={styles.headerText}>Menu</Text>
         </View>
         <View style={styles.contentContainer}>
@@ -62,7 +65,7 @@ const MainView = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: colors.mediumBlue,
+    backgroundColor: colors.lightBlue,
   },
   headerContainer: {
     flex: 0.2,
@@ -80,6 +83,11 @@ const styles = StyleSheet.create({
     fontSize: 64,
     fontFamily: fonts.primaryFont,
     color: colors.white,
+  },
+  icon: {
+    alignSelf: 'flex-start',
+    fontSize: 36,
+    color: colors.darkBlue,
   },
 });
 

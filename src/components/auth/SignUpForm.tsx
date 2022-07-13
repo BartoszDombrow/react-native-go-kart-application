@@ -168,14 +168,14 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
     textShadowOffset: {width: 0, height: 2},
     textShadowRadius: 10,
-    paddingVertical: 50
+    paddingVertical: 50,
   },
   modalText: {
     flex: 1,
   },
   modalButton: {
     paddingVertical: 40,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   checkBoxWrapper: {
     display: 'flex',
