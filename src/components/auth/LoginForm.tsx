@@ -5,6 +5,9 @@ import * as Yup from 'yup';
 
 import FormInput from '../FormInput';
 import SubmitButton from '../SubmitButton';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParams } from '../../navigation/StackNav';
 
 interface FormValue {
   username: string;
@@ -12,6 +15,9 @@ interface FormValue {
 }
 
 const LoginForm = () => {
+
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
   const formik = useFormik<FormValue>({
     initialValues: {
       username: '',
@@ -28,7 +34,8 @@ const LoginForm = () => {
         .required('This field is required'),
     }),
     onSubmit: values => {
-      Alert.alert(JSON.stringify(values));
+      // Alert.alert(JSON.stringify(values));
+      navigation.navigate('MainView');
     },
   });
 

@@ -1,18 +1,27 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Auth from '../screens/Auth';
+import MainView from '../screens/MainView';
 
-const Stack = createStackNavigator();
+export type RootStackParams = {
+  Auth: undefined;
+  MainView: undefined;
+}
+
+const RootStack = createNativeStackNavigator<RootStackParams>();
 
 function StackNav() {
   return (
-    <Stack.Navigator
+    <RootStack.Navigator
       screenOptions={{
         headerShown: false,
-      }}>
-      <Stack.Screen name="Auth" component={Auth} />
-    </Stack.Navigator>
+      }}
+      initialRouteName="Auth"
+    >
+      <RootStack.Screen name="Auth" component={Auth} />
+      <RootStack.Screen name="MainView" component={MainView} />
+    </RootStack.Navigator>
   );
 }
 
