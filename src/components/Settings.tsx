@@ -33,11 +33,10 @@ const Settings = () => {
         <View style={styles.closeButtonContainer}>
           <Shadow useArt style={styles.shadow}>
             <TouchableOpacity
-              style={styles.closeButton}
               onPress={() => {
                 setModalVisible(false);
               }}>
-              <Icon name="close-circle" size={60} />
+              <Icon name="close-circle" size={60} color={colors.lightBlue} />
             </TouchableOpacity>
           </Shadow>
         </View>
@@ -99,10 +98,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-  },
-  closeButton: {
-    flex: 1,
-    zIndex: 1,
   },
   buttonsContainer: {
     alignItems: 'center',

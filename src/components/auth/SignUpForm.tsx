@@ -6,11 +6,13 @@ import SubmitButton from '../SubmitButton';
 import * as Yup from 'yup';
 import CheckBox from '@react-native-community/checkbox';
 import FormInput from '../FormInput';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../../navigation/StackNav';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigation/StackNav';
+import Fonts from '../../constants/Fonts';
 
 const colors = new Colors();
+const fonts = new Fonts();
 
 interface FormValue {
   username: string;
@@ -22,7 +24,8 @@ interface FormValue {
 const SignUp = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const formik = useFormik<FormValue>({
     initialValues: {
@@ -123,9 +126,11 @@ const SignUp = () => {
         onRequestClose={handleVisableDismiss}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Privacy policy</Text>
-
-            <SubmitButton buttonText="EXIT" onPress={handleVisableDismiss} />
+            <Text style={styles.modalTitle}>Privacy policy</Text>
+            <View style={styles.modalText}></View>
+            <View style={styles.modalButton}>
+              <SubmitButton buttonText="EXIT" onPress={handleVisableDismiss} />
+            </View>
           </View>
         </View>
       </Modal>
@@ -139,7 +144,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 30,
   },
-  inputWrapper: {flex: 0.9},
+  inputWrapper: {
+    flex: 0.9,
+  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -147,13 +154,28 @@ const styles = StyleSheet.create({
   },
   modalView: {
     backgroundColor: colors.lightBlue,
-    padding: 35,
-    alignItems: 'center',
-    opacity: 0.95,
+    justifyContent: 'center',
+    opacity: 0.97,
+    flex: 1,
+    width: '100%',
+  },
+  modalTitle: {
+    textAlign: 'center',
+    fontFamily: fonts.primaryFont,
+    fontSize: 32,
+    height: 150,
+    color: colors.white,
+    textShadowColor: 'rgba(0, 0, 0, 0.35)',
+    textShadowOffset: {width: 0, height: 2},
+    textShadowRadius: 10,
+    paddingVertical: 50
   },
   modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
+    flex: 1,
+  },
+  modalButton: {
+    paddingVertical: 40,
+    alignItems: 'center'
   },
   checkBoxWrapper: {
     display: 'flex',
