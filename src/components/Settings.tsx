@@ -13,29 +13,27 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 const colors = new Colors();
 const fonts = new Fonts();
 
-const Settings = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+interface Props{
+  isVisible: boolean;
+  settingsHandler: () => void;
+}
+
+const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
-
-  const handleVisableDismiss = () => {
-    setModalVisible(visible => !visible);
-  };
 
   return (
     <Modal
       animationType="slide"
       transparent={true}
-      visible={modalVisible}
-      onRequestClose={handleVisableDismiss}>
+      visible={isVisible}
+      onRequestClose={settingsHandler}>
       <View style={styles.mainContainer}>
         <View style={styles.closeButtonContainer}>
           <Shadow useArt style={styles.shadow}>
             <TouchableOpacity
-              onPress={() => {
-                setModalVisible(false);
-              }}>
+              onPress={settingsHandler}>
               <Icon name="close-circle" size={60} color={colors.lightBlue} />
             </TouchableOpacity>
           </Shadow>

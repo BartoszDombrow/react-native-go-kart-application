@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import MainButton from '../components/MainButton';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
@@ -10,40 +10,52 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 const colors = new Colors();
 const fonts = new Fonts();
 
-import Settings from "../components/Settings";
+import Settings from '../components/Settings';
 
 const MainView = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
+  const [isVisible, setIsVisible] = useState(true);
+
+  const settingsHandler = () => {
+    setIsVisible(isVisible => !isVisible);
+  };
+
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.headerContainer}>
-        <Settings />
-        <Text style={styles.headerText}>Menu</Text>
+    <>
+      <View style={styles.wrapper}>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={settingsHandler} style={{width: 50, height: 50, backgroundColor: 'red'}}>
+            
+          </TouchableOpacity>
+          <Text style={styles.headerText}>Menu</Text>
+        </View>
+        <View style={styles.contentContainer}>
+          <MainButton
+            buttonText="Start"
+            onPress={() => navigation.navigate('Auth')}
+            iconName="start"
+          />
+          <MainButton
+            buttonText="Hall of fame"
+            onPress={() => navigation.navigate('Auth')}
+            iconName="ranking"
+          />
+          <MainButton
+            buttonText="Statistics"
+            onPress={() => navigation.navigate('Auth')}
+            iconName="statistics"
+          />
+          <MainButton
+            buttonText="Your team"
+            onPress={() => navigation.navigate('Auth')}
+            iconName="team"
+          />
+        </View>
       </View>
-      <View style={styles.contentContainer}>
-        <MainButton
-          buttonText="Start"
-          onPress={() => navigation.navigate('Auth')}
-          iconName='start'
-        />
-        <MainButton
-          buttonText="Hall of fame"
-          onPress={() => navigation.navigate('Auth')}
-          iconName='ranking'
-        />
-        <MainButton
-          buttonText="Statistics"
-          onPress={() => navigation.navigate('Auth')}
-          iconName='statistics'
-        />
-        <MainButton
-          buttonText="Your team"
-          onPress={() => navigation.navigate('Auth')}
-          iconName='team'
-        />
-      </View>
-    </View>
+      <Settings isVisible={isVisible} settingsHandler={settingsHandler} />
+    </>
   );
 };
 
