@@ -14,7 +14,7 @@ const colors = new Colors();
 const fonts = new Fonts();
 
 const Settings = () => {
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
@@ -32,7 +32,11 @@ const Settings = () => {
       <View style={styles.mainContainer}>
         <View style={styles.closeButtonContainer}>
           <Shadow useArt style={styles.shadow}>
-            <TouchableOpacity style={styles.closeButton}>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => {
+                setModalVisible(false);
+              }}>
               <Icon name="close-circle" size={60} />
             </TouchableOpacity>
           </Shadow>
@@ -82,7 +86,7 @@ const styles = StyleSheet.create({
   closeButtonContainer: {
     paddingTop: 30,
     paddingLeft: 30,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   shadow: {
     height: 60,
@@ -94,7 +98,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   closeButton: {
     flex: 1,
