@@ -53,7 +53,7 @@ const AuthForm = () => {
             styles.fadingContainer,
             {
               left: slideAnimation,
-            },
+            }
           ]}>
           <Shadow useArt style={styles.pickedForm} />
         </Animated.View>
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     left: 5,
     borderRadius: 25,
     backgroundColor: colors.white,
-    elevation: 15,
+    elevation: 25,
   },
   pickedForm: {
     width: Dimensions.get('window').width * 0.4,
