@@ -6,9 +6,9 @@ import SubmitButton from '../SubmitButton';
 import * as Yup from 'yup';
 import CheckBox from '@react-native-community/checkbox';
 import FormInput from '../FormInput';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParams } from '../../navigation/StackNav';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigation/StackNav';
 
 const colors = new Colors();
 
@@ -22,7 +22,8 @@ interface FormValue {
 const SignUp = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
   const formik = useFormik<FormValue>({
     initialValues: {

@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    paddingTop: 32
+    paddingTop: 32,
   },
   imageContainer: {
     width: '45%',

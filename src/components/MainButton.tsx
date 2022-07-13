@@ -34,6 +34,22 @@ const iconsArray = [
     name: 'language',
     icon: <Icon name="language" color={colors.darkBlue} size={36} />,
   },
+  {
+    name: 'start',
+    icon: <Icon name="play" color={colors.darkBlue} size={36} />,
+  },
+  {
+    name: 'ranking',
+    icon: <Icon name="trophy" color={colors.darkBlue} size={36} />,
+  },
+  {
+    name: 'statistics',
+    icon: <Icon name="stats-chart" color={colors.darkBlue} size={36} />,
+  },
+  {
+    name: 'team',
+    icon: <Icon name="people-sharp" color={colors.darkBlue} size={36} />,
+  },
 ];
 
 const MainButton: React.FC<Props> = ({buttonText, onPress, iconName}) => {
@@ -44,7 +60,9 @@ const MainButton: React.FC<Props> = ({buttonText, onPress, iconName}) => {
           activeOpacity={0.75}
           style={styles.button}
           onPress={onPress}>
-          <View style={styles.iconBox}>{iconsArray.find(icon => icon.name === iconName)?.icon}</View>
+          <View style={styles.iconBox}>
+            {iconsArray.find(icon => icon.name === iconName)?.icon}
+          </View>
           <View style={styles.textBox}>
             <Text style={styles.buttonText}>{buttonText}</Text>
           </View>
@@ -65,7 +83,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000000',
     shadowOpacity: 0.6,
     shadowRadius: 10,
-    shadowOffset: {width: 3, height: 3}
+    shadowOffset: {width: 3, height: 3},
   },
   buttonContainer: {
     alignItems: 'center',
@@ -84,12 +102,12 @@ const styles = StyleSheet.create({
     width: 50,
     marginLeft: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   textBox: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttonText: {
     color: colors.darkBlue,
