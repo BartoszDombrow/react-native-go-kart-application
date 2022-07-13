@@ -125,11 +125,13 @@ const styles = StyleSheet.create({
   },
   fadingContainer: {
     position: 'absolute',
-    width: 40,
+    width: Dimensions.get('window').width * 0.4,
     height: 40,
     top: 5,
     left: 5,
     borderRadius: 25,
+    backgroundColor: colors.white,
+    elevation: 15,
   },
   pickedForm: {
     width: Dimensions.get('window').width * 0.4,
