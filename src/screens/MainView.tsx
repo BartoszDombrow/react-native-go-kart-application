@@ -6,6 +6,7 @@ import Fonts from '../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
@@ -15,8 +16,10 @@ const fonts = new Fonts();
 import Settings from '../components/Settings';
 
 const MainView = () => {
-  const navigation =
+  const navigationAuth =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const navigationMenu =
+    useNavigation<NativeStackNavigationProp<MenuStackParams>>();
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -42,22 +45,22 @@ const MainView = () => {
         <View style={styles.contentContainer}>
           <MainButton
             buttonText="Start"
-            onPress={() => navigation.push('MainView')}
+            onPress={() => navigationAuth.push('MainView')}
             iconName="start"
           />
           <MainButton
             buttonText="Hall of fame"
-            onPress={() => navigation.push('MainView')}
+            onPress={() => navigationMenu.navigate('HallOfFame')}
             iconName="ranking"
           />
           <MainButton
             buttonText="Statistics"
-            onPress={() => navigation.push('MainView')}
+            onPress={() => navigationAuth.push('MainView')}
             iconName="statistics"
           />
           <MainButton
             buttonText="Your team"
-            onPress={() => navigation.push('Auth')}
+            onPress={() => navigationAuth.push('Auth')}
             iconName="team"
           />
         </View>

@@ -1,8 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import MenuNav from '../navigation/MenuNav';
 import Auth from '../screens/Auth';
-import MainView from '../screens/MainView';
 
 export type RootStackParams = {
   Auth: undefined;
@@ -19,7 +19,7 @@ function StackNav() {
       }}
       initialRouteName="Auth">
       <RootStack.Screen name="Auth" component={Auth} />
-      <RootStack.Screen name="MainView" component={MainView} />
+      <RootStack.Screen name="MainView" component={MenuNav} />
     </RootStack.Navigator>
   );
 }
