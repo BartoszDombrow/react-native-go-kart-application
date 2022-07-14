@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {FameData} from '../constants/FameData';
+import players from '../constants/FameDataJSON.json';
 
 function Halloffame() {
   const compare = (a: any, b: any) => {
@@ -17,7 +17,9 @@ function Halloffame() {
     return comparison;
   };
 
-  const FameDataArray = FameData.sort(compare);
+  const myArr = players.player;
+
+  const FameDataArray = myArr.sort(compare);
 
   return (
     <View>
