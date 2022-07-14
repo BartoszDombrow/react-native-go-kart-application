@@ -6,6 +6,7 @@ import Fonts from '../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
@@ -15,8 +16,10 @@ const fonts = new Fonts();
 import Settings from '../components/Settings';
 
 const MainView = () => {
-  const navigation =
+  const navigationAuth =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const navigationMenu =
+    useNavigation<NativeStackNavigationProp<MenuStackParams>>();
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -42,22 +45,22 @@ const MainView = () => {
         <View style={styles.contentContainer}>
           <MainButton
             buttonText="Start"
-            onPress={() => navigation.push('MainView')}
+            onPress={() => navigationAuth.push('MainView')}
             iconName="start"
           />
           <MainButton
             buttonText="Hall of fame"
-            onPress={() => navigation.push('MainView')}
+            onPress={() => navigationMenu.navigate('HallOfFame')}
             iconName="ranking"
           />
           <MainButton
             buttonText="Statistics"
-            onPress={() => navigation.push('MainView')}
+            onPress={() => navigationAuth.push('MainView')}
             iconName="statistics"
           />
           <MainButton
             buttonText="Your team"
-            onPress={() => navigation.push('Auth')}
+            onPress={() => navigationAuth.push('Auth')}
             iconName="team"
           />
         </View>
@@ -82,13 +85,13 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     textAlign: 'center',
-    paddingTop: 30
+    paddingTop: 30,
   },
   contentContainer: {
     flex: 0.65,
     paddingVertical: 50,
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   shadow: {
     height: 50,
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   headerText: {
     fontSize: 64,
