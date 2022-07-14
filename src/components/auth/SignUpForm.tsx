@@ -45,21 +45,23 @@ const SignUp = () => {
       username: Yup.string()
         .min(6, 'Must be 6 characters or more')
         .max(15, 'Must be 15 characters or less')
-        .required('Required'),
+        .required('This field is required'),
       firstname: Yup.string()
         .min(2, 'Must be 2 characters or more')
-        .required('Required'),
+        .required('This field is required'),
       lastname: Yup.string()
         .min(2, 'Must be 2 characters or more')
-        .required('Required'),
+        .required('This field is required'),
       password: Yup.string()
         .min(8, 'Must be 8 characters or more')
         .max(20, 'Must be 20 characters or less')
-        .required('Required'),
-      email: Yup.string().email('Invalid email address').required('Required'),
+        .required('This field is required'),
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('This field is required'),
       privacyPolicy: Yup.boolean()
         .oneOf([true], 'The privacy policy must be accepted.')
-        .required('Required'),
+        .required('This field is required'),
     }),
     onSubmit: values => {
       //Alert.alert(JSON.stringify(values));
@@ -81,48 +83,52 @@ const SignUp = () => {
   return (
     <>
       <View style={styles.formBox}>
-        <ScrollView style={styles.inputWrapper}>
-          <FormInput
-            onChangeText={formik.handleChange('username')}
-            onBlur={formik.handleBlur('username')}
-            value={formik.values.username}
-            placeholder="Username"
-            formikTouched={formik.touched.username}
-            formikErrors={formik.errors.username}
-          />
-          <FormInput
-            onChangeText={formik.handleChange('firstname')}
-            onBlur={formik.handleBlur('firstname')}
-            value={formik.values.firstname}
-            placeholder="Firstname"
-            formikTouched={formik.touched.firstname}
-            formikErrors={formik.errors.firstname}
-          />
-          <FormInput
-            onChangeText={formik.handleChange('lastname')}
-            onBlur={formik.handleBlur('lastname')}
-            value={formik.values.lastname}
-            placeholder="Lastname"
-            formikTouched={formik.touched.lastname}
-            formikErrors={formik.errors.lastname}
-          />
-          <FormInput
-            onChangeText={formik.handleChange('email')}
-            onBlur={formik.handleBlur('email')}
-            value={formik.values.email}
-            placeholder="Email"
-            formikTouched={formik.touched.email}
-            formikErrors={formik.errors.email}
-          />
-          <FormInput
-            onChangeText={formik.handleChange('password')}
-            onBlur={formik.handleBlur('password')}
-            value={formik.values.password}
-            placeholder="Password"
-            formikTouched={formik.touched.password}
-            formikErrors={formik.errors.password}
-            secureTextEntry={true}
-          />
+        <View style={styles.inputWrapper}>
+          <View style={styles.scrollContainer}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <FormInput
+                onChangeText={formik.handleChange('username')}
+                onBlur={formik.handleBlur('username')}
+                value={formik.values.username}
+                placeholder="Username"
+                formikTouched={formik.touched.username}
+                formikErrors={formik.errors.username}
+              />
+              <FormInput
+                onChangeText={formik.handleChange('firstname')}
+                onBlur={formik.handleBlur('firstname')}
+                value={formik.values.firstname}
+                placeholder="Firstname"
+                formikTouched={formik.touched.firstname}
+                formikErrors={formik.errors.firstname}
+              />
+              <FormInput
+                onChangeText={formik.handleChange('lastname')}
+                onBlur={formik.handleBlur('lastname')}
+                value={formik.values.lastname}
+                placeholder="Lastname"
+                formikTouched={formik.touched.lastname}
+                formikErrors={formik.errors.lastname}
+              />
+              <FormInput
+                onChangeText={formik.handleChange('email')}
+                onBlur={formik.handleBlur('email')}
+                value={formik.values.email}
+                placeholder="Email"
+                formikTouched={formik.touched.email}
+                formikErrors={formik.errors.email}
+              />
+              <FormInput
+                onChangeText={formik.handleChange('password')}
+                onBlur={formik.handleBlur('password')}
+                value={formik.values.password}
+                placeholder="Password"
+                formikTouched={formik.touched.password}
+                formikErrors={formik.errors.password}
+                secureTextEntry={true}
+              />
+            </ScrollView>
+          </View>
 
           <View style={styles.checkBoxWrapper}>
             <View>
@@ -142,7 +148,7 @@ const SignUp = () => {
               </Text>
             </Text>
           </View>
-        </ScrollView>
+        </View>
 
         <SubmitButton buttonText="START" onPress={formik.handleSubmit} />
       </View>
@@ -173,6 +179,11 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     flex: 0.9,
+    alignItems: 'center'
+  },
+  scrollContainer: {
+    flex: 0.8,
+    alignItems: 'center'
   },
   centeredView: {
     flex: 1,
@@ -205,6 +216,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   checkBoxWrapper: {
+    flex: 0.2,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
