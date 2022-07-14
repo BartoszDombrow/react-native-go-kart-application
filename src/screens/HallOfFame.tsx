@@ -1,6 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {FameData} from '../constants/FameData';
+import dayjs from 'dayjs';
+import Colors from '../constants/Colors';
+import SubmitButton from '../components/SubmitButton';
+
+const colors = new Colors();
 
 function Halloffame() {
   const compare = (a: any, b: any) => {
@@ -20,15 +25,26 @@ function Halloffame() {
   const FameDataArray = FameData.sort(compare);
 
   return (
-    <View>
-      <Text>{FameDataArray[0].name}</Text>
-      <Text>{FameDataArray[0].time}</Text>
-      <Text>{FameDataArray[1].name}</Text>
-      <Text>{FameDataArray[1].time}</Text>
-      <Text>{FameDataArray[2].name}</Text>
-      <Text>{FameDataArray[2].time}</Text>
+    <View style={styles.rankingContainer}>
+      <View></View>
+      <View>
+        <Text>{FameDataArray[0].name}</Text>
+        <Text>{dayjs(FameDataArray[0].time).format('mm:ss:SSS')}</Text>
+        <Text>{FameDataArray[1].name}</Text>
+        <Text>{dayjs(FameDataArray[1].time).format('mm:ss:SSS')}</Text>
+        <Text>{FameDataArray[2].name}</Text>
+        <Text>{dayjs(FameDataArray[2].time).format('mm:ss:SSS')}</Text>
+      </View>
+      <SubmitButton buttonText="EXIT" onPress={() => {}} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  rankingContainer: {
+    flex: 1,
+    backgroundColor: colors.mediumBlue,
+  },
+});
 
 export default Halloffame;
