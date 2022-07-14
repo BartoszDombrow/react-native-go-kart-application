@@ -58,11 +58,6 @@ const MainView = () => {
             onPress={() => navigationAuth.push('MainView')}
             iconName="statistics"
           />
-          <MainButton
-            buttonText="Your team"
-            onPress={() => navigationAuth.push('Auth')}
-            iconName="team"
-          />
         </View>
       </View>
       <Settings isVisible={isVisible} settingsHandler={settingsHandler} />
@@ -88,7 +83,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   contentContainer: {
-    flex: 0.65,
+    flex: 0.55,
     paddingVertical: 50,
     alignItems: 'center',
     justifyContent: 'space-around',
