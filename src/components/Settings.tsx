@@ -7,6 +7,7 @@ import Colors from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigation/StackNav';
+import {MenuStackParams} from '../navigation/MenuNav';
 import MainButton from './MainButton';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
@@ -22,6 +23,8 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
+  const settingsNavigation =
+    useNavigation<NativeStackNavigationProp<MenuStackParams>>();
   return (
     <Modal
       animationType="slide"
@@ -41,7 +44,9 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           <View style={styles.buttonBox}>
             <MainButton
               buttonText="Profile"
-              onPress={() => {}}
+              onPress={() => {
+                settingsNavigation.navigate('Profile');
+              }}
               iconName="profile"
             />
           </View>
