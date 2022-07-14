@@ -10,12 +10,15 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
 import Fonts from '../../constants/Fonts';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const colors = new Colors();
 const fonts = new Fonts();
 
 interface FormValue {
   username: string;
+  firstname: string;
+  lastname: string;
   email: string;
   password: string;
   privacyPolicy: boolean;
@@ -30,6 +33,8 @@ const SignUp = () => {
   const formik = useFormik<FormValue>({
     initialValues: {
       username: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
       privacyPolicy: false,
@@ -40,6 +45,12 @@ const SignUp = () => {
       username: Yup.string()
         .min(6, 'Must be 6 characters or more')
         .max(15, 'Must be 15 characters or less')
+        .required('Required'),
+      firstname: Yup.string()
+        .min(2, 'Must be 2 characters or more')
+        .required('Required'),
+      lastname: Yup.string()
+        .min(2, 'Must be 2 characters or more')
         .required('Required'),
       password: Yup.string()
         .min(8, 'Must be 8 characters or more')
@@ -70,7 +81,7 @@ const SignUp = () => {
   return (
     <>
       <View style={styles.formBox}>
-        <View style={styles.inputWrapper}>
+        <ScrollView style={styles.inputWrapper}>
           <FormInput
             onChangeText={formik.handleChange('username')}
             onBlur={formik.handleBlur('username')}
@@ -78,6 +89,22 @@ const SignUp = () => {
             placeholder="Username"
             formikTouched={formik.touched.username}
             formikErrors={formik.errors.username}
+          />
+          <FormInput
+            onChangeText={formik.handleChange('firstname')}
+            onBlur={formik.handleBlur('firstname')}
+            value={formik.values.firstname}
+            placeholder="Firstname"
+            formikTouched={formik.touched.firstname}
+            formikErrors={formik.errors.firstname}
+          />
+          <FormInput
+            onChangeText={formik.handleChange('lastname')}
+            onBlur={formik.handleBlur('lastname')}
+            value={formik.values.lastname}
+            placeholder="Lastname"
+            formikTouched={formik.touched.lastname}
+            formikErrors={formik.errors.lastname}
           />
           <FormInput
             onChangeText={formik.handleChange('email')}
@@ -115,7 +142,7 @@ const SignUp = () => {
               </Text>
             </Text>
           </View>
-        </View>
+        </ScrollView>
 
         <SubmitButton buttonText="START" onPress={formik.handleSubmit} />
       </View>
