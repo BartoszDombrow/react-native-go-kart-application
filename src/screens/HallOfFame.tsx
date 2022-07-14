@@ -1,12 +1,29 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
+import {FameData} from '../constants/FameData';
 
-const HallOfFame = () => {
+function Halloffame() {
+  const compare = (a: any, b: any) => {
+    const fameA = a.time;
+    const fameB = b.time;
+
+    let comparison = 0;
+
+    if (fameA > fameB) {
+      comparison = 1;
+    } else if (fameA < fameB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
+  console.log(FameData.sort(compare));
+
   return (
     <View>
-      <Text>Hall Of Fame</Text>
+      <Text>Siema</Text>
     </View>
   );
-};
+}
 
-export default HallOfFame;
+export default Halloffame;
