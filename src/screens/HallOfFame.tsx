@@ -1,7 +1,6 @@
 import React from 'react';
 import players from '../constants/FameDataJSON.json';
 import {View, Text, StyleSheet} from 'react-native';
-import {FameData} from '../constants/FameData';
 import dayjs from 'dayjs';
 import Colors from '../constants/Colors';
 import SubmitButton from '../components/SubmitButton';
