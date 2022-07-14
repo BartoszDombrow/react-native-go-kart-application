@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import MainButton from '../components/MainButton';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -27,32 +28,36 @@ const MainView = () => {
     <>
       <View style={styles.wrapper}>
         <View style={styles.headerContainer}>
-          <Icon
-            name={'settings'}
-            style={styles.icon}
-            onPress={settingsHandler}
-          />
-          <Text style={styles.headerText}>Menu</Text>
+          <View style={styles.settingsContainer}>
+            <Shadow style={styles.shadow}>
+              <TouchableOpacity onPress={settingsHandler}>
+                <Icon name={'settings'} color={colors.darkBlue} size={50} />
+              </TouchableOpacity>
+            </Shadow>
+          </View>
+          <View style={styles.titleContainer}>
+            <Text style={styles.headerText}>Menu</Text>
+          </View>
         </View>
         <View style={styles.contentContainer}>
           <MainButton
             buttonText="Start"
-            onPress={() => navigation.navigate('Auth')}
+            onPress={() => navigation.push('MainView')}
             iconName="start"
           />
           <MainButton
             buttonText="Hall of fame"
-            onPress={() => navigation.navigate('Auth')}
+            onPress={() => navigation.push('MainView')}
             iconName="ranking"
           />
           <MainButton
             buttonText="Statistics"
-            onPress={() => navigation.navigate('Auth')}
+            onPress={() => navigation.push('MainView')}
             iconName="statistics"
           />
           <MainButton
             buttonText="Your team"
-            onPress={() => navigation.navigate('Auth')}
+            onPress={() => navigation.push('Auth')}
             iconName="team"
           />
         </View>
@@ -68,26 +73,42 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightBlue,
   },
   headerContainer: {
-    flex: 0.2,
+    flex: 0.35,
     justifyContent: 'center',
+  },
+  settingsContainer: {
+    paddingLeft: 30,
+  },
+  titleContainer: {
     alignItems: 'center',
-    padding: 20,
+    textAlign: 'center',
+    paddingTop: 30
   },
   contentContainer: {
-    flex: 1,
-    padding: 20,
+    flex: 0.65,
+    paddingVertical: 50,
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
+  },
+  shadow: {
+    height: 50,
+    width: 50,
+    borderRadius: 30,
+    shadowColor: '#000000',
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    shadowOffset: {width: 0, height: 2},
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent'
   },
   headerText: {
     fontSize: 64,
     fontFamily: fonts.primaryFont,
-    color: colors.white,
-  },
-  icon: {
-    alignSelf: 'flex-start',
-    fontSize: 36,
     color: colors.darkBlue,
+    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textShadowOffset: {width: 2, height: 3},
+    textShadowRadius: 5,
   },
 });
 
