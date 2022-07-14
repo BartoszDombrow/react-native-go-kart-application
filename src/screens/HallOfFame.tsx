@@ -17,11 +17,16 @@ function Halloffame() {
     return comparison;
   };
 
-  console.log(FameData.sort(compare));
+  const FameDataArray = FameData.sort(compare);
 
   return (
     <View>
-      <Text>Siema</Text>
+      <Text>{FameDataArray[0].name}</Text>
+      <Text>{FameDataArray[0].time}</Text>
+      <Text>{FameDataArray[1].name}</Text>
+      <Text>{FameDataArray[1].time}</Text>
+      <Text>{FameDataArray[2].name}</Text>
+      <Text>{FameDataArray[2].time}</Text>
     </View>
   );
 }
