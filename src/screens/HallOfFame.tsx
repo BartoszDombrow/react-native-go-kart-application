@@ -1,12 +1,12 @@
-import React from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 
 const HallOfFame = () => {
-    return (
-        <View>
-            <Text>Hall Of Fame</Text>
-        </View>
-    )
-}
+  return (
+    <View>
+      <Text>Hall Of Fame</Text>
+    </View>
+  );
+};
 
 export default HallOfFame;
