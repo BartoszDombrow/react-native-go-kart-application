@@ -86,47 +86,49 @@ const SignUp = () => {
         <View style={styles.inputWrapper}>
           <View style={styles.scrollContainer}>
             <ScrollView showsVerticalScrollIndicator={false}>
-              <FormInput
-                onChangeText={formik.handleChange('username')}
-                onBlur={formik.handleBlur('username')}
-                value={formik.values.username}
-                placeholder="Username"
-                formikTouched={formik.touched.username}
-                formikErrors={formik.errors.username}
-              />
-              <FormInput
-                onChangeText={formik.handleChange('firstname')}
-                onBlur={formik.handleBlur('firstname')}
-                value={formik.values.firstname}
-                placeholder="Firstname"
-                formikTouched={formik.touched.firstname}
-                formikErrors={formik.errors.firstname}
-              />
-              <FormInput
-                onChangeText={formik.handleChange('lastname')}
-                onBlur={formik.handleBlur('lastname')}
-                value={formik.values.lastname}
-                placeholder="Lastname"
-                formikTouched={formik.touched.lastname}
-                formikErrors={formik.errors.lastname}
-              />
-              <FormInput
-                onChangeText={formik.handleChange('email')}
-                onBlur={formik.handleBlur('email')}
-                value={formik.values.email}
-                placeholder="Email"
-                formikTouched={formik.touched.email}
-                formikErrors={formik.errors.email}
-              />
-              <FormInput
-                onChangeText={formik.handleChange('password')}
-                onBlur={formik.handleBlur('password')}
-                value={formik.values.password}
-                placeholder="Password"
-                formikTouched={formik.touched.password}
-                formikErrors={formik.errors.password}
-                secureTextEntry={true}
-              />
+              <View style={{alignItems: 'center'}}>
+                <FormInput
+                  onChangeText={formik.handleChange('username')}
+                  onBlur={formik.handleBlur('username')}
+                  value={formik.values.username}
+                  placeholder="Username"
+                  formikTouched={formik.touched.username}
+                  formikErrors={formik.errors.username}
+                />
+                <FormInput
+                  onChangeText={formik.handleChange('firstname')}
+                  onBlur={formik.handleBlur('firstname')}
+                  value={formik.values.firstname}
+                  placeholder="Firstname"
+                  formikTouched={formik.touched.firstname}
+                  formikErrors={formik.errors.firstname}
+                />
+                <FormInput
+                  onChangeText={formik.handleChange('lastname')}
+                  onBlur={formik.handleBlur('lastname')}
+                  value={formik.values.lastname}
+                  placeholder="Lastname"
+                  formikTouched={formik.touched.lastname}
+                  formikErrors={formik.errors.lastname}
+                />
+                <FormInput
+                  onChangeText={formik.handleChange('email')}
+                  onBlur={formik.handleBlur('email')}
+                  value={formik.values.email}
+                  placeholder="Email"
+                  formikTouched={formik.touched.email}
+                  formikErrors={formik.errors.email}
+                />
+                <FormInput
+                  onChangeText={formik.handleChange('password')}
+                  onBlur={formik.handleBlur('password')}
+                  value={formik.values.password}
+                  placeholder="Password"
+                  formikTouched={formik.touched.password}
+                  formikErrors={formik.errors.password}
+                  secureTextEntry={true}
+                />
+              </View>
             </ScrollView>
           </View>
 
@@ -179,11 +181,11 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     flex: 0.9,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   scrollContainer: {
     flex: 0.8,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   centeredView: {
     flex: 1,

@@ -1,6 +1,7 @@
-import React from 'react';
-import {TextInput, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {TextInput, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
@@ -27,6 +28,7 @@ const FormInput: React.FC<Props> = ({
   formikTouched,
   formikErrors,
 }) => {
+  const [showPassword, setShowPassword] = useState(true);
   return (
     <>
       <Shadow useArt inner style={styles.textInputShadow}>
@@ -37,8 +39,14 @@ const FormInput: React.FC<Props> = ({
           style={styles.textInput}
           placeholder={placeholder}
           placeholderTextColor={colors.darkBlue}
-          secureTextEntry={secureTextEntry}
+          secureTextEntry={secureTextEntry && showPassword}
         />
+        {secureTextEntry ? 
+          <TouchableOpacity style={{width: 30, height: 30, position: 'absolute', right: 15}} onPress={() => setShowPassword(!showPassword)}>
+            <Icon name={showPassword ? "lock" : "unlock"} size={30} color={colors.darkBlue}/>
+          </TouchableOpacity> 
+        : null
+        }
       </Shadow>
       {formikTouched && formikErrors && (
         <Text style={styles.errorMessage}>{formikErrors}</Text>
@@ -60,6 +68,8 @@ const styles = StyleSheet.create({
     width: 300,
     height: 50,
     marginVertical: 10,
+    flexDirection: 'row',
+    paddingHorizontal: 55
   },
   textInput: {
     width: '100%',
