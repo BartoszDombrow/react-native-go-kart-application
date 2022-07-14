@@ -17,6 +17,8 @@ function Halloffame() {
     return comparison;
   };
 
+  //cos tu jest
+
   console.log(FameData.sort(compare));
 
   return (
