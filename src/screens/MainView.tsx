@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     textAlign: 'center',
-    paddingTop: 30
+    paddingTop: 30,
   },
   contentContainer: {
     flex: 0.65,
     paddingVertical: 50,
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   shadow: {
     height: 50,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 2},
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   headerText: {
     fontSize: 64,
