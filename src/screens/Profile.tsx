@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, Alert, TouchableOpacity} from 'react-native';
 import FormInput from '../components/FormInput';
 import Colors from '../constants/Colors';
@@ -6,6 +6,11 @@ import Fonts from '../constants/Fonts';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import SubmitButton from '../components/SubmitButton';
+import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {MenuStackParams} from '../navigation/MenuNav';
+import {useNavigation} from '@react-navigation/native';
+import ChangePasswordModal from '../components/ChangePasswordModal';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -36,6 +41,20 @@ const Profile = () => {
     },
   });
 
+  const navigation =
+    useNavigation<NativeStackNavigationProp<MenuStackParams>>();
+
+  const [deleteAccountVisible, setDeleteAccounVisible] = useState(false);
+  const [changePasswordVisible, setchangePasswordVisible] = useState(false);
+
+  const deleteAccountHandler = () => {
+    setDeleteAccounVisible(!deleteAccountVisible);
+  };
+
+  const changePasswordHandler = () => {
+    setchangePasswordVisible(!changePasswordVisible);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -61,14 +80,38 @@ const Profile = () => {
         />
         <SubmitButton buttonText="SAVE CHANGES" onPress={formik.handleSubmit} />
         <View style={styles.wrapper}>
-          <TouchableOpacity activeOpacity={0.75} style={styles.button}>
-            <Text>Test</Text>
-          </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.75} style={styles.button}>
-            <Text>Test</Text>
-          </TouchableOpacity>
+          <Shadow useArt style={styles.buttonShadow}>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                onPress={deleteAccountHandler}
+                activeOpacity={0.75}
+                style={styles.button}>
+                <Text style={styles.buttonText}>DELETE ACCOUNT</Text>
+              </TouchableOpacity>
+            </View>
+          </Shadow>
+          <Shadow useArt style={styles.buttonShadow}>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                onPress={changePasswordHandler}
+                activeOpacity={0.75}
+                style={styles.button}>
+                <Text style={styles.buttonText}>CHANGE PASSWORD</Text>
+              </TouchableOpacity>
+            </View>
+          </Shadow>
         </View>
       </View>
+      <View style={styles.returnButton}>
+        <SubmitButton
+          buttonText="RETURN"
+          onPress={() => navigation.navigate('Menu')}
+        />
+      </View>
+      <ChangePasswordModal
+        changePasswordVisible={changePasswordVisible}
+        changePasswordHandler={changePasswordHandler}
+      />
     </View>
   );
 };
@@ -77,6 +120,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.mediumBlue,
+    alignItems: 'center',
   },
   header: {
     flex: 0.2,
@@ -99,13 +143,41 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 60,
-    width: '45%',
-    borderRadius: 50,
+    width: '100%',
+    height: '100%',
     backgroundColor: colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+  },
+  buttonShadow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    backgroundColor: colors.lightBlue,
+    height: 55,
+    width: 150,
+    shadowColor: '#000000',
+    shadowOpacity: 0.6,
+    shadowRadius: 10,
+    shadowOffset: {width: 3, height: 3},
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  buttonText: {
+    color: colors.darkBlue,
+    fontSize: 20,
+    textAlign: 'center',
+    fontFamily: fonts.primaryFont,
+    textShadowColor: 'rgba(0, 0, 0, 0.35)',
+    textShadowOffset: {width: -2, height: 4},
+    textShadowRadius: 10,
+  },
+  returnButton: {
+    flex: 0.2,
   },
 });
 
