@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@react-native-community/art": "^1.2.0",
+    "@react-native-community/art": "https://github.com/react-native-art/art.git#master",
     "@react-native-community/checkbox": "^0.5.12",
     "@react-native-material/core": "^1.3.7",
     "@react-navigation/native": "^6.0.11",
