@@ -1,5 +1,26 @@
 {
-    "translation": {
-        "Language": "Language"
-    }
+  "translation": {
+    "Language": "Language",
+    "Return": "RETURN",
+    "Exit": "EXIT",
+    "Username": "Username",
+    "Fistname": "Fistname",
+    "Lastname": "Lastname",
+    "Email": "Email",
+    "Password": "Password",
+    "Confirm": "CONFIRM",
+    "Yes": "YES",
+    "No": "NO",
+    "Statistics": "Statistics",
+    "SignIn": "Sign in",
+    "SignUp": "Sign up",
+    "Play": "Play",
+    "Policy": "Accept privacy policy",
+    "Required": "This field is required",
+    "HallOfFame": "Hall of fame",
+    "Volume": "Volume",
+    "SaveChanges": "SAVE CHANGES",
+    "ChangePassword": "CHANGE PASSWORD",
+    "DeleteAccount": "DELETE ACCOUNT"
+  }
 }

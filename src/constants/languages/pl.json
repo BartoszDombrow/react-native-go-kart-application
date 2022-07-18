@@ -1,5 +1,26 @@
 {
-    "translation": {
-        "Language": "Język"
-    }
+  "translation": {
+    "Language": "Język",
+    "Return": "Powrót",
+    "Exit": "Wyjście",
+    "Username": "Nazwa użytkownika",
+    "Fistname": "Imię",
+    "Lastname": "Nazwisko",
+    "Email": "Email",
+    "Password": "Hasło",
+    "Confirm": "Potwierdzam",
+    "Yes": "Tak",
+    "No": "Nie",
+    "Statistics": "Statystyki",
+    "SignIn": "Logowanie",
+    "SignUp": "Rejestracja",
+    "Play": "Graj",
+    "Policy": "Akceptuje politykę prywatności",
+    "Required": "To pole jest wymagane",
+    "HallOfFame": "Sala sławy",
+    "Volume": "Dźwięk",
+    "SaveChanges": "Zapisz zmiany",
+    "ChangePassword": "Zmień hasło",
+    "DeleteAccount": "Usuń konto"
+  }
 }

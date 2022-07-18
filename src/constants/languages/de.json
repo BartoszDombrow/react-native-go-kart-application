@@ -1,0 +1,26 @@
+{
+  "translation": {
+    "Language": "Sprache",
+    "Return": "RÜCKKEHR",
+    "Exit": "AUSFAHRT",
+    "Username": "Nutzername",
+    "Fistname": "Vorname",
+    "Lastname": "Nachname",
+    "Email": "Email",
+    "Password": "Passwort",
+    "Confirm": "BESTÄTIGEN",
+    "Yes": "JA",
+    "No": "NEIN",
+    "Statistics": "Statistiken",
+    "SignIn": "Einloggen",
+    "SignUp": "Anmelden",
+    "Play": "ABSPIELEN",
+    "Policy": "Datenschutzbestimmungen akzeptieren",
+    "Required": "Dieses Feld ist erforderlich",
+    "HallOfFame": "Hall of fame",
+    "Volume": "Volumen",
+    "SaveChanges": "ÄNDERUNGEN SPEICHERN",
+    "ChangePassword": "PASSWORT ÄNDERN",
+    "DeleteAccount": "KONTO LÖSCHEN"
+  }
+}

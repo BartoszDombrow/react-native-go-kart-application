@@ -64,7 +64,7 @@ const Language = () => {
       </View>
       <View style={styles.bottomContainer}>
         <SubmitButton
-          buttonText="RETURN"
+          buttonText={t('Return')}
           onPress={() => {
             navigation.navigate('Menu');
           }}
