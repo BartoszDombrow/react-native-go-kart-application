@@ -60,7 +60,10 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           <View style={styles.buttonBox}>
             <MainButton
               buttonText="Language"
-              onPress={() => {}}
+              onPress={() => {
+                settingsNavigation.navigate('Language');
+                settingsHandler();
+              }}
               iconName="language"
             />
           </View>

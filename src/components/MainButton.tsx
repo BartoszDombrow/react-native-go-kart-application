@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet, Platform} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Platform,
+  Image,
+} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -13,7 +20,18 @@ export type Props = {
   buttonText: string;
   onPress: () => void;
   iconName: string | undefined;
+  isLanguagePicked?: boolean;
 };
+
+const imageStyle = StyleSheet.create({
+  image: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    borderWidth: 2,
+    borderColor: colors.darkBlue,
+  },
+});
 
 const iconsArray = [
   {
@@ -50,21 +68,49 @@ const iconsArray = [
     name: 'team',
     icon: <Icon name="people-sharp" color={colors.darkBlue} size={36} />,
   },
+  // Language flags
+  {
+    name: 'flag_pl',
+    icon: (
+      <Image
+        source={require('../assets/images/flag_pl.png')}
+        style={imageStyle.image}
+      />
+    ),
+  },
+  {
+    name: 'flag_en',
+    icon: (
+      <Image
+        source={require('../assets/images/flag_en.png')}
+        style={imageStyle.image}
+      />
+    ),
+  },
+  {
+    name: 'flag_ge',
+    icon: (
+      <Image
+        source={require('../assets/images/flag_ge.png')}
+        style={imageStyle.image}
+      />
+    ),
+  },
 ];
 
-const MainButton: React.FC<Props> = ({buttonText, onPress, iconName}) => {
+const MainButton: React.FC<Props> = ({buttonText, onPress, iconName, isLanguagePicked}) => {
   return (
-    <Shadow useArt style={styles.buttonShadow}>
+    <Shadow useArt style={isLanguagePicked ? styles.buttonShadowPicked : styles.buttonShadow}>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           activeOpacity={0.75}
-          style={styles.button}
+          style={isLanguagePicked ? styles.buttonPicked : styles.button}
           onPress={onPress}>
           <View style={styles.iconBox}>
             {iconsArray.find(icon => icon.name === iconName)?.icon}
           </View>
           <View style={styles.textBox}>
-            <Text style={styles.buttonText}>{buttonText}</Text>
+            <Text style={isLanguagePicked ? styles.buttonTextPicked : styles.buttonText}>{buttonText}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -78,6 +124,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 50,
     backgroundColor: colors.lightBlue,
+    width: 320,
+    height: 60,
+    shadowColor: '#000000',
+    shadowOpacity: 0.6,
+    shadowRadius: 10,
+    shadowOffset: {width: 3, height: 3},
+  },
+  buttonShadowPicked: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    backgroundColor: colors.darkBlue,
     width: 320,
     height: 60,
     shadowColor: '#000000',
@@ -104,6 +162,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonPicked: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: colors.darkBlue,
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderRadius: 50,
+  },
   textBox: {
     flex: 1,
     justifyContent: 'center',
@@ -118,6 +184,15 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: 0, height: 2},
     textShadowRadius: 10,
   },
+  buttonTextPicked: {
+    color: colors.white,
+    fontSize: 28,
+    textAlign: 'center',
+    fontFamily: fonts.primaryFont,
+    textShadowColor: 'rgba(0, 0, 0, 0.35)',
+    textShadowOffset: {width: 0, height: 2},
+    textShadowRadius: 10,
+  }
 });
 
 export default MainButton;
