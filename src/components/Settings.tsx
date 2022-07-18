@@ -62,7 +62,7 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
               buttonText="Language"
               onPress={() => {
                 settingsNavigation.navigate('Language');
-                settingsHandler();
+                settingsHandler();  // change!!!
               }}
               iconName="language"
             />
