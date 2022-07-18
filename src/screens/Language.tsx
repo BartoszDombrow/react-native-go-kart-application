@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -8,6 +8,7 @@ import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
+import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -17,11 +18,12 @@ const Language = () => {
     useNavigation<NativeStackNavigationProp<MenuStackParams>>();
 
   const [pickedLanguage, setPickedLanguage] = useState(1);
+  const {t, i18n} = useTranslation();
 
   return (
     <View style={styles.screen}>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>Language</Text>
+        <Text style={styles.title}>{t('Language')}</Text>
       </View>
       <View style={styles.languageContainer}>
         <ScrollView style={styles.scrollView}>
@@ -29,7 +31,10 @@ const Language = () => {
             <MainButton
               buttonText="Polish"
               iconName="flag_pl"
-              onPress={() => {setPickedLanguage(1)}}
+              onPress={() => {
+                setPickedLanguage(1);
+                i18n.changeLanguage('pl');
+              }}
               isLanguagePicked={pickedLanguage === 1 ? true : false}
             />
           </View>
@@ -37,7 +42,10 @@ const Language = () => {
             <MainButton
               buttonText="English"
               iconName="flag_en"
-              onPress={() => {setPickedLanguage(2)}}
+              onPress={() => {
+                setPickedLanguage(2);
+                i18n.changeLanguage('en');
+              }}
               isLanguagePicked={pickedLanguage === 2 ? true : false}
             />
           </View>
@@ -45,7 +53,10 @@ const Language = () => {
             <MainButton
               buttonText="German"
               iconName="flag_ge"
-              onPress={() => {setPickedLanguage(3)}}
+              onPress={() => {
+                setPickedLanguage(3);
+                i18n.changeLanguage('ge');
+              }}
               isLanguagePicked={pickedLanguage === 3 ? true : false}
             />
           </View>
