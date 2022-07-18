@@ -11,6 +11,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useNavigation} from '@react-navigation/native';
 import ChangePasswordModal from '../components/ChangePasswordModal';
+import DeleteAccountModal from '../components/DeleteAccountModal';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -111,6 +112,10 @@ const Profile = () => {
       <ChangePasswordModal
         changePasswordVisible={changePasswordVisible}
         changePasswordHandler={changePasswordHandler}
+      />
+      <DeleteAccountModal
+        deleteAccountVisible={deleteAccountVisible}
+        deleteAccountHandler={deleteAccountHandler}
       />
     </View>
   );
