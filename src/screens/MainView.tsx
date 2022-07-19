@@ -9,6 +9,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -26,6 +27,7 @@ const MainView = () => {
   const settingsHandler = () => {
     setIsVisible(!isVisible);
   };
+  const {t} = useTranslation();
 
   return (
     <>
@@ -39,22 +41,22 @@ const MainView = () => {
             </Shadow>
           </View>
           <View style={styles.titleContainer}>
-            <Text style={styles.headerText}>Menu</Text>
+            <Text style={styles.headerText}>{t('Menu')}</Text>
           </View>
         </View>
         <View style={styles.contentContainer}>
           <MainButton
-            buttonText="Start"
+            buttonText={t('Start')}
             onPress={() => navigationAuth.push('MainView')}
             iconName="start"
           />
           <MainButton
-            buttonText="Hall of fame"
+            buttonText={t('HallOfFame')}
             onPress={() => navigationMenu.navigate('HallOfFame')}
             iconName="ranking"
           />
           <MainButton
-            buttonText="Statistics"
+            buttonText={t('Statistics')}
             onPress={() => navigationAuth.push('MainView')}
             iconName="statistics"
           />

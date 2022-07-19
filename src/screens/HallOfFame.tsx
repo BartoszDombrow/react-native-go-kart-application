@@ -9,6 +9,7 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
+import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -35,6 +36,8 @@ function Halloffame() {
 
   const FameDataArray = myArr.sort(compare);
 
+  const {t} = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.rankingHeader}>
@@ -48,7 +51,7 @@ function Halloffame() {
             </Shadow>
           </Shadow>
         </View>
-        <Text style={styles.title}>Hall of fame</Text>
+        <Text style={styles.title}>{t('HallOfFame')}</Text>
       </View>
       <View style={styles.ranking}>
         <View style={styles.rankignContainer}>
@@ -87,7 +90,7 @@ function Halloffame() {
           </View>
         </View>
         <SubmitButton
-          buttonText="EXIT"
+          buttonText={t('Exit')}
           onPress={() => navigation.navigate('Menu')}
         />
       </View>

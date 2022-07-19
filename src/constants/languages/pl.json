@@ -4,10 +4,11 @@
     "Return": "Powrót",
     "Exit": "Wyjście",
     "Username": "Nazwa użytkownika",
-    "Fistname": "Imię",
+    "Firstname": "Imię",
     "Lastname": "Nazwisko",
     "Email": "Email",
     "Password": "Hasło",
+    "NewPassword": "Nowe hasło",
     "Confirm": "Potwierdzam",
     "Yes": "Tak",
     "No": "Nie",
@@ -15,12 +16,17 @@
     "SignIn": "Logowanie",
     "SignUp": "Rejestracja",
     "Play": "Graj",
-    "Policy": "Akceptuje politykę prywatności",
+    "AcceptPrivacy": "Akceptuje",
+    "Policy": " politykę prywatności",
     "Required": "To pole jest wymagane",
     "HallOfFame": "Sala sławy",
     "Volume": "Dźwięk",
     "SaveChanges": "Zapisz zmiany",
     "ChangePassword": "Zmień hasło",
-    "DeleteAccount": "Usuń konto"
+    "DeleteAccount": "Usuń konto",
+    "Menu": "Menu",
+    "Profile": "Profil",
+    "Logout": "Wyloguj",
+    "DeleteAccountText": "Czy chcesz usunąć swoje konto na stałe?"
   }
 }

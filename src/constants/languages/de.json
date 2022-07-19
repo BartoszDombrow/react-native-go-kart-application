@@ -4,10 +4,11 @@
     "Return": "RÜCKKEHR",
     "Exit": "AUSFAHRT",
     "Username": "Nutzername",
-    "Fistname": "Vorname",
+    "Firstname": "Vorname",
     "Lastname": "Nachname",
     "Email": "Email",
     "Password": "Passwort",
+    "NewPassword": "Neues Passwort",
     "Confirm": "BESTÄTIGEN",
     "Yes": "JA",
     "No": "NEIN",
@@ -15,12 +16,17 @@
     "SignIn": "Einloggen",
     "SignUp": "Anmelden",
     "Play": "ABSPIELEN",
-    "Policy": "Datenschutzbestimmungen akzeptieren",
+    "AcceptPrivacy": "Datenschutzbestimmungen",
+    "Policy": " akzeptieren",
     "Required": "Dieses Feld ist erforderlich",
     "HallOfFame": "Hall of fame",
     "Volume": "Volumen",
     "SaveChanges": "ÄNDERUNGEN SPEICHERN",
     "ChangePassword": "PASSWORT ÄNDERN",
-    "DeleteAccount": "KONTO LÖSCHEN"
+    "DeleteAccount": "KONTO LÖSCHEN",
+    "Menu": "Speisekarte",
+    "Profile": "Profil",
+    "Logout": "Ausloggen",
+    "DeleteAccountText": "Möchten Sie Ihr Konto dauerhaft löschen?"
   }
 }

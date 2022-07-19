@@ -11,6 +11,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
 import Fonts from '../../constants/Fonts';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -25,6 +26,7 @@ interface FormValue {
 }
 
 const SignUp = () => {
+  const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
 
   const navigation =
@@ -64,7 +66,7 @@ const SignUp = () => {
         .required('This field is required'),
     }),
     onSubmit: values => {
-      //Alert.alert(JSON.stringify(values));
+      Alert.alert(JSON.stringify(values));
       formik.resetForm();
       navigation.navigate('MainView');
     },
@@ -91,7 +93,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('username')}
                   onBlur={formik.handleBlur('username')}
                   value={formik.values.username}
-                  placeholder="Username"
+                  placeholder={t('Username')}
                   formikTouched={formik.touched.username}
                   formikErrors={formik.errors.username}
                 />
@@ -99,7 +101,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('firstname')}
                   onBlur={formik.handleBlur('firstname')}
                   value={formik.values.firstname}
-                  placeholder="Firstname"
+                  placeholder={t('Firstname')}
                   formikTouched={formik.touched.firstname}
                   formikErrors={formik.errors.firstname}
                 />
@@ -107,7 +109,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('lastname')}
                   onBlur={formik.handleBlur('lastname')}
                   value={formik.values.lastname}
-                  placeholder="Lastname"
+                  placeholder={t('Lastname')}
                   formikTouched={formik.touched.lastname}
                   formikErrors={formik.errors.lastname}
                 />
@@ -115,7 +117,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('email')}
                   onBlur={formik.handleBlur('email')}
                   value={formik.values.email}
-                  placeholder="Email"
+                  placeholder={t('Email')}
                   formikTouched={formik.touched.email}
                   formikErrors={formik.errors.email}
                 />
@@ -123,7 +125,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('password')}
                   onBlur={formik.handleBlur('password')}
                   value={formik.values.password}
-                  placeholder="Password"
+                  placeholder={t('Password')}
                   formikTouched={formik.touched.password}
                   formikErrors={formik.errors.password}
                   secureTextEntry={true}
@@ -144,15 +146,15 @@ const SignUp = () => {
             </View>
 
             <Text style={styles.checkBoxText}>
-              Accept{' '}
+              {t('AcceptPrivacy')}
               <Text onPress={handleVisableDismiss} style={styles.textSpan}>
-                privacy policy
+                {t('Policy')}
               </Text>
             </Text>
           </View>
         </View>
 
-        <SubmitButton buttonText="START" onPress={formik.handleSubmit} />
+        <SubmitButton buttonText={t('Start')} onPress={formik.handleSubmit} />
       </View>
       <Modal
         animationType="slide"
@@ -164,7 +166,10 @@ const SignUp = () => {
             <Text style={styles.modalTitle}>Privacy policy</Text>
             <View style={styles.modalText}></View>
             <View style={styles.modalButton}>
-              <SubmitButton buttonText="EXIT" onPress={handleVisableDismiss} />
+              <SubmitButton
+                buttonText={t('Exit')}
+                onPress={handleVisableDismiss}
+              />
             </View>
           </View>
         </View>
