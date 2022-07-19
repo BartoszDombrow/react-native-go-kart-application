@@ -16,7 +16,7 @@ const resources = {
 i18next.use(initReactI18next).init({
   compatibilityJSON: 'v3',
   resources,
-  lng: 'uk',
+  lng: 'en',
 });
 
 export default i18next;
