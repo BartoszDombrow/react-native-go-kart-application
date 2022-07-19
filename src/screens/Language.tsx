@@ -29,35 +29,46 @@ const Language = () => {
         <ScrollView style={styles.scrollView}>
           <View style={styles.languageButton}>
             <MainButton
-              buttonText="Polish"
-              iconName="flag_pl"
-              onPress={() => {
-                setPickedLanguage('pl');
-                i18n.changeLanguage('pl');
-              }}
-              isLanguagePicked={pickedLanguage === "pl" ? true : false}
-            />
-          </View>
-          <View style={styles.languageButton}>
-            <MainButton
               buttonText="English"
               iconName="flag_en"
               onPress={() => {
                 setPickedLanguage('en');
                 i18n.changeLanguage('en');
               }}
-              isLanguagePicked={pickedLanguage === "en" ? true : false}
+              isLanguagePicked={pickedLanguage === 'en'}
             />
           </View>
           <View style={styles.languageButton}>
             <MainButton
-              buttonText="German"
-              iconName="flag_ge"
+              buttonText="Polish"
+              iconName="flag_pl"
               onPress={() => {
-                setPickedLanguage('ge');
-                i18n.changeLanguage('ge');
+                setPickedLanguage('pl');
+                i18n.changeLanguage('pl');
               }}
-              isLanguagePicked={pickedLanguage === "ge" ? true : false}
+              isLanguagePicked={pickedLanguage === 'pl'}
+            />
+          </View>
+          <View style={styles.languageButton}>
+            <MainButton
+              buttonText="Deutsch"
+              iconName="flag_de"
+              onPress={() => {
+                setPickedLanguage('de');
+                i18n.changeLanguage('de');
+              }}
+              isLanguagePicked={pickedLanguage === 'de'}
+            />
+          </View>
+          <View style={styles.languageButton}>
+            <MainButton
+              buttonText="Українська мова"
+              iconName="flag_uk"
+              onPress={() => {
+                setPickedLanguage('uk');
+                i18n.changeLanguage('uk');
+              }}
+              isLanguagePicked={pickedLanguage === 'uk'}
             />
           </View>
         </ScrollView>

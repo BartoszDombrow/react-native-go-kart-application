@@ -88,10 +88,19 @@ const iconsArray = [
     ),
   },
   {
-    name: 'flag_ge',
+    name: 'flag_de',
     icon: (
       <Image
-        source={require('../assets/images/flag_ge.png')}
+        source={require('../assets/images/flag_de.png')}
+        style={imageStyle.image}
+      />
+    ),
+  },
+  {
+    name: 'flag_uk',
+    icon: (
+      <Image
+        source={require('../assets/images/flag_uk.png')}
         style={imageStyle.image}
       />
     ),
