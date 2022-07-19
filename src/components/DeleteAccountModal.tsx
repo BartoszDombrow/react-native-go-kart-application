@@ -3,6 +3,7 @@ import {View, Modal, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -16,6 +17,8 @@ const DeleteAccountModal: React.FC<Props> = ({
   deleteAccountVisible,
   deleteAccountHandler,
 }) => {
+  const {t} = useTranslation();
+
   return (
     <Modal
       animationType="fade"
@@ -24,9 +27,7 @@ const DeleteAccountModal: React.FC<Props> = ({
       visible={deleteAccountVisible}>
       <View style={styles.container}>
         <View style={styles.modal}>
-          <Text style={styles.text}>
-            Do you want to delete your account permamently?
-          </Text>
+          <Text style={styles.text}>{t('DeleteAccountText')}</Text>
           <View style={styles.buttonWrapper}>
             <Shadow useArt style={styles.buttonShadow}>
               <View style={styles.buttonContainer}>
@@ -34,7 +35,7 @@ const DeleteAccountModal: React.FC<Props> = ({
                   onPress={deleteAccountHandler}
                   activeOpacity={0.75}
                   style={styles.button}>
-                  <Text style={styles.buttonText}>YES</Text>
+                  <Text style={styles.buttonText}>{t('Yes')}</Text>
                 </TouchableOpacity>
               </View>
             </Shadow>
@@ -44,7 +45,7 @@ const DeleteAccountModal: React.FC<Props> = ({
                   onPress={deleteAccountHandler}
                   activeOpacity={0.75}
                   style={styles.button}>
-                  <Text style={styles.buttonText}>NO</Text>
+                  <Text style={styles.buttonText}>{t('No')}</Text>
                 </TouchableOpacity>
               </View>
             </Shadow>

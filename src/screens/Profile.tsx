@@ -12,6 +12,7 @@ import {MenuStackParams} from '../navigation/MenuNav';
 import {useNavigation} from '@react-navigation/native';
 import ChangePasswordModal from '../components/ChangePasswordModal';
 import DeleteAccountModal from '../components/DeleteAccountModal';
+import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -56,17 +57,19 @@ const Profile = () => {
     setchangePasswordVisible(!changePasswordVisible);
   };
 
+  const {t} = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Profile</Text>
+        <Text style={styles.headerText}>{t('Profile')}</Text>
       </View>
       <View style={styles.content}>
         <FormInput
           onChangeText={formik.handleChange('username')}
           onBlur={formik.handleBlur('username')}
           value={formik.values.username}
-          placeholder="Username"
+          placeholder={t('Username')}
           formikTouched={formik.touched.username}
           formikErrors={formik.errors.username}
         />
@@ -74,12 +77,15 @@ const Profile = () => {
           onChangeText={formik.handleChange('email')}
           onBlur={formik.handleBlur('email')}
           value={formik.values.email}
-          placeholder="Email"
+          placeholder={t('Email')}
           formikTouched={formik.touched.email}
           formikErrors={formik.errors.email}
           secureTextEntry={true}
         />
-        <SubmitButton buttonText="SAVE CHANGES" onPress={formik.handleSubmit} />
+        <SubmitButton
+          buttonText={t('SaveChanges')}
+          onPress={formik.handleSubmit}
+        />
         <View style={styles.wrapper}>
           <Shadow useArt style={styles.buttonShadow}>
             <View style={styles.buttonContainer}>
@@ -87,7 +93,7 @@ const Profile = () => {
                 onPress={deleteAccountHandler}
                 activeOpacity={0.75}
                 style={styles.button}>
-                <Text style={styles.buttonText}>DELETE ACCOUNT</Text>
+                <Text style={styles.buttonText}>{t('DeleteAccount')}</Text>
               </TouchableOpacity>
             </View>
           </Shadow>
@@ -97,7 +103,7 @@ const Profile = () => {
                 onPress={changePasswordHandler}
                 activeOpacity={0.75}
                 style={styles.button}>
-                <Text style={styles.buttonText}>CHANGE PASSWORD</Text>
+                <Text style={styles.buttonText}>{t('ChangePassword')}</Text>
               </TouchableOpacity>
             </View>
           </Shadow>
@@ -105,7 +111,7 @@ const Profile = () => {
       </View>
       <View style={styles.returnButton}>
         <SubmitButton
-          buttonText="RETURN"
+          buttonText={t('Return')}
           onPress={() => navigation.navigate('Menu')}
         />
       </View>

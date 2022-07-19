@@ -9,6 +9,8 @@ import Swiper from 'react-native-swiper';
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
 
+import {useTranslation} from 'react-i18next';
+
 const colors = new Colors();
 const fonts = new Fonts();
 
@@ -16,7 +18,7 @@ const AuthForm = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const slideAnimation = useRef(new Animated.Value(5)).current;
-
+  const {t} = useTranslation();
   const scrollRight = () => {
     Animated.timing(slideAnimation, {
       toValue: Dimensions.get('window').width * 0.4 - 5,
@@ -63,7 +65,7 @@ const AuthForm = () => {
               styles.switchText,
               scrollPosition ? styles.unselectedSwitch : styles.selectedSwitch,
             ]}>
-            Sign in
+            {t('SignIn')}
           </Text>
         </View>
         <View style={styles.switchBox}>
@@ -72,7 +74,7 @@ const AuthForm = () => {
               styles.switchText,
               scrollPosition ? styles.selectedSwitch : styles.unselectedSwitch,
             ]}>
-            Sign up
+            {t('SignUp')}
           </Text>
         </View>
       </Shadow>
