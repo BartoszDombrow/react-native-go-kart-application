@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-
+import {useTranslation} from 'react-i18next';
 import FormInput from '../FormInput';
 import SubmitButton from '../SubmitButton';
 import {useNavigation} from '@react-navigation/native';
@@ -34,11 +34,13 @@ const LoginForm = () => {
         .required('This field is required'),
     }),
     onSubmit: values => {
-      // Alert.alert(JSON.stringify(values));
+      Alert.alert(JSON.stringify(values));
       formik.resetForm();
       navigation.navigate('MainView');
     },
   });
+
+  const {t} = useTranslation();
 
   return (
     <View style={styles.formBox}>
@@ -47,7 +49,7 @@ const LoginForm = () => {
           onChangeText={formik.handleChange('username')}
           onBlur={formik.handleBlur('username')}
           value={formik.values.username}
-          placeholder="Username"
+          placeholder={t('Username')}
           formikTouched={formik.touched.username}
           formikErrors={formik.errors.username}
         />
@@ -55,14 +57,14 @@ const LoginForm = () => {
           onChangeText={formik.handleChange('password')}
           onBlur={formik.handleBlur('password')}
           value={formik.values.password}
-          placeholder="Password"
+          placeholder={t('Password')}
           formikTouched={formik.touched.password}
           formikErrors={formik.errors.password}
           secureTextEntry={true}
         />
       </View>
 
-      <SubmitButton buttonText="PLAY" onPress={formik.handleSubmit} />
+      <SubmitButton buttonText={t('Play')} onPress={formik.handleSubmit} />
     </View>
   );
 };

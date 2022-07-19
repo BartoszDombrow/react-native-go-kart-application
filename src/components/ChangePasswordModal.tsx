@@ -6,6 +6,7 @@ import Fonts from '../constants/Fonts';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import FormInput from './FormInput';
+import {useTranslation} from 'react-i18next';
 
 const fonts = new Fonts();
 const colors = new Colors();
@@ -44,6 +45,8 @@ const ChangePasswordModal: React.FC<Props> = ({
     },
   });
 
+  const {t} = useTranslation();
+
   return (
     <Modal
       animationType="slide"
@@ -52,14 +55,14 @@ const ChangePasswordModal: React.FC<Props> = ({
       visible={changePasswordVisible}>
       <View style={styles.mainContainer}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Change password</Text>
+          <Text style={styles.headerText}>{t('ChangePassword')}</Text>
         </View>
         <View style={styles.formWrapper}>
           <FormInput
             onChangeText={formik.handleChange('password')}
             onBlur={formik.handleBlur('password')}
             value={formik.values.password}
-            placeholder="Password"
+            placeholder={t('Password')}
             formikTouched={formik.touched.password}
             formikErrors={formik.errors.password}
             secureTextEntry={true}
@@ -68,7 +71,7 @@ const ChangePasswordModal: React.FC<Props> = ({
             onChangeText={formik.handleChange('newPassword')}
             onBlur={formik.handleBlur('newPassword')}
             value={formik.values.newPassword}
-            placeholder="New password"
+            placeholder={t('NewPassword')}
             formikTouched={formik.touched.newPassword}
             formikErrors={formik.errors.newPassword}
             secureTextEntry={true}
@@ -77,18 +80,21 @@ const ChangePasswordModal: React.FC<Props> = ({
             onChangeText={formik.handleChange('newPassword')}
             onBlur={formik.handleBlur('newPassword')}
             value={formik.values.newPassword}
-            placeholder="New password"
+            placeholder={t('NewPassword')}
             formikTouched={formik.touched.newPassword}
             formikErrors={formik.errors.newPassword}
             secureTextEntry={true}
           />
           <SubmitButton
-            buttonText="SAVE CHANGES"
+            buttonText={t('SaveChanges')}
             onPress={formik.handleSubmit}
           />
         </View>
         <View style={styles.buttonWrapper}>
-          <SubmitButton buttonText="EXIT" onPress={changePasswordHandler} />
+          <SubmitButton
+            buttonText={t('Exit')}
+            onPress={changePasswordHandler}
+          />
         </View>
       </View>
     </Modal>

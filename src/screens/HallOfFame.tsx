@@ -19,8 +19,6 @@ function Halloffame() {
   const navigation =
     useNavigation<NativeStackNavigationProp<MenuStackParams>>();
 
-  const { t } = useTranslation();
-
   const compare = (a: any, b: any) => {
     const fameA = a.time;
     const fameB = b.time;
@@ -39,6 +37,8 @@ function Halloffame() {
 
   const FameDataArray = myArr.sort(compare);
 
+  const {t} = useTranslation();
+
   return (
     <View style={styles.container}>
       <View style={styles.rankingHeader}>
@@ -52,7 +52,8 @@ function Halloffame() {
             </Shadow>
           </Shadow>
         </View>
-        <Text style={styles.title}>{t("HallOfFame")}</Text>
+
+        <Text style={styles.title}>{t('HallOfFame')}</Text>
       </View>
       <View style={styles.ranking}>
         <View style={styles.rankignContainer}>
@@ -61,7 +62,7 @@ function Halloffame() {
           <Place place='2' playerName='PlayerZ' playerTime={dayjs(FameDataArray[1].time).format('mm:ss:SSS')} />
         </View>
         <SubmitButton
-          buttonText={t("Exit")}
+          buttonText={t('Exit')}
           onPress={() => navigation.navigate('Menu')}
         />
       </View>

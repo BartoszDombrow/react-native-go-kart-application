@@ -4,10 +4,11 @@
     "Return": "RETURN",
     "Exit": "EXIT",
     "Username": "Username",
-    "Fistname": "Fistname",
+    "Firstname": "Fistname",
     "Lastname": "Lastname",
     "Email": "Email",
     "Password": "Password",
+    "NewPassword": "New password",
     "Confirm": "CONFIRM",
     "Yes": "YES",
     "No": "NO",
@@ -15,12 +16,17 @@
     "SignIn": "Sign in",
     "SignUp": "Sign up",
     "Play": "Play",
-    "Policy": "Accept privacy policy",
+    "AcceptPrivacy": "Accept",
+    "Policy": " privacy policy",
     "Required": "This field is required",
     "HallOfFame": "Hall of fame",
     "Volume": "Volume",
     "SaveChanges": "SAVE CHANGES",
     "ChangePassword": "CHANGE PASSWORD",
-    "DeleteAccount": "DELETE ACCOUNT"
+    "DeleteAccount": "DELETE ACCOUNT",
+    "Menu": "Menu",
+    "Profile": "Profile",
+    "Logout": "Logout",
+    "DeleteAccountText": "Do you want to delete your account permamently?"
   }
 }

@@ -10,6 +10,7 @@ import {RootStackParams} from '../navigation/StackNav';
 import {MenuStackParams} from '../navigation/MenuNav';
 import MainButton from './MainButton';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -25,6 +26,9 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
 
   const settingsNavigation =
     useNavigation<NativeStackNavigationProp<MenuStackParams>>();
+
+  const {t} = useTranslation();
+
   return (
     <Modal
       animationType="slide"
@@ -40,10 +44,10 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           </Shadow>
         </View>
         <View style={styles.buttonsContainer}>
-          <Text style={styles.title}>Settings</Text>
+          <Text style={styles.title}>{t('Settings')}</Text>
           <View style={styles.buttonBox}>
             <MainButton
-              buttonText="Profile"
+              buttonText={t('Profile')}
               onPress={() => {
                 settingsNavigation.navigate('Profile');
               }}
@@ -52,17 +56,17 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           </View>
           <View style={styles.buttonBox}>
             <MainButton
-              buttonText="Volume"
+              buttonText={t('Volume')}
               onPress={() => {}}
               iconName="volume"
             />
           </View>
           <View style={styles.buttonBox}>
             <MainButton
-              buttonText="Language"
+              buttonText={t('Language')}
               onPress={() => {
                 settingsNavigation.navigate('Language');
-                settingsHandler();  // change!!!
+                settingsHandler(); // change!!!
               }}
               iconName="language"
             />
@@ -70,7 +74,7 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
         </View>
         <View style={styles.submitButtonContainer}>
           <SubmitButton
-            buttonText="LOGOUT"
+            buttonText={t('Logout')}
             onPress={() => {
               navigation.navigate('Auth');
             }}
