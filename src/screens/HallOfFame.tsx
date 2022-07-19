@@ -10,6 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import { useTranslation } from 'react-i18next';
+import Place from '../components/halloffame/Place';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -55,39 +56,9 @@ function Halloffame() {
       </View>
       <View style={styles.ranking}>
         <View style={styles.rankignContainer}>
-          <View style={styles.place}>
-            <Text style={styles.playerName}>{FameDataArray[2].name}</Text>
-            <Text style={styles.playerTime}>
-              {dayjs(FameDataArray[2].time).format('mm:ss:SSS')}
-            </Text>
-            <Shadow useArt style={styles.thirdPlaceDropShadow}>
-              <View style={styles.thirdPlace}>
-                <Text style={styles.position}>3</Text>
-              </View>
-            </Shadow>
-          </View>
-          <View style={styles.place}>
-            <Text style={styles.playerName}>{FameDataArray[0].name}</Text>
-            <Text style={styles.playerTime}>
-              {dayjs(FameDataArray[0].time).format('mm:ss:SSS')}
-            </Text>
-            <Shadow useArt style={styles.firstPlaceDropShadow}>
-              <View style={styles.firstPlace}>
-                <Text style={styles.position}>1</Text>
-              </View>
-            </Shadow>
-          </View>
-          <View style={styles.place}>
-            <Text style={styles.playerName}>{FameDataArray[1].name}</Text>
-            <Text style={styles.playerTime}>
-              {dayjs(FameDataArray[1].time).format('mm:ss:SSS')}
-            </Text>
-            <Shadow useArt style={styles.secondPlaceDropShadow}>
-              <View style={styles.secondPlace}>
-                <Text style={styles.position}>2</Text>
-              </View>
-            </Shadow>
-          </View>
+          <Place place='3' playerName='PlayerX' playerTime={dayjs(FameDataArray[2].time).format('mm:ss:SSS')} />
+          <Place place='1' playerName='PlayerY' playerTime={dayjs(FameDataArray[0].time).format('mm:ss:SSS')} />
+          <Place place='2' playerName='PlayerZ' playerTime={dayjs(FameDataArray[1].time).format('mm:ss:SSS')} />
         </View>
         <SubmitButton
           buttonText={t("Exit")}
@@ -159,100 +130,6 @@ const styles = StyleSheet.create({
   rankignContainer: {
     flexDirection: 'row',
     flex: 0.6,
-  },
-  place: {
-    alignItems: 'center',
-    width: 120,
-    padding: 1,
-    justifyContent: 'flex-end',
-  },
-  firstPlace: {
-    width: 90,
-    height: 180,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.lightBlue,
-    borderRadius: 10,
-  },
-  firstPlaceDropShadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20,
-    backgroundColor: colors.lightBlue,
-    width: 90,
-    height: 180,
-    shadowColor: '#000000',
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    shadowOffset: {width: 2, height: 3},
-  },
-  secondPlace: {
-    width: 90,
-    height: 140,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.lightBlue,
-    borderRadius: 10,
-  },
-  secondPlaceDropShadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20,
-    backgroundColor: colors.lightBlue,
-    width: 90,
-    height: 140,
-    shadowColor: '#000000',
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    shadowOffset: {width: 2, height: 3},
-  },
-  thirdPlace: {
-    width: 90,
-    height: 110,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.lightBlue,
-    borderRadius: 10,
-  },
-  thirdPlaceDropShadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20,
-    backgroundColor: colors.lightBlue,
-    width: 90,
-    height: 110,
-    shadowColor: '#000000',
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    shadowOffset: {width: 2, height: 3},
-  },
-  playerName: {
-    fontFamily: fonts.primaryFont,
-    color: colors.white,
-    paddingBottom: 5,
-    fontSize: 16,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 2},
-    textShadowRadius: 5,
-    width: 128,
-    textAlign: 'center',
-  },
-  playerTime: {
-    fontFamily: fonts.secondaryFont,
-    color: colors.white,
-    fontSize: 16,
-    paddingBottom: 10,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 3},
-    textShadowRadius: 5,
-  },
-  position: {
-    fontSize: 64,
-    fontFamily: fonts.primaryFont,
-    color: colors.darkBlue,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 3},
-    textShadowRadius: 5,
   },
 });
 
