@@ -17,8 +17,8 @@ const Language = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<MenuStackParams>>();
 
-  const [pickedLanguage, setPickedLanguage] = useState(1);
   const {t, i18n} = useTranslation();
+  const [pickedLanguage, setPickedLanguage] = useState(i18n.language);
 
   return (
     <View style={styles.screen}>
@@ -32,10 +32,10 @@ const Language = () => {
               buttonText="Polish"
               iconName="flag_pl"
               onPress={() => {
-                setPickedLanguage(1);
+                setPickedLanguage('pl');
                 i18n.changeLanguage('pl');
               }}
-              isLanguagePicked={pickedLanguage === 1 ? true : false}
+              isLanguagePicked={pickedLanguage === "pl" ? true : false}
             />
           </View>
           <View style={styles.languageButton}>
@@ -43,10 +43,10 @@ const Language = () => {
               buttonText="English"
               iconName="flag_en"
               onPress={() => {
-                setPickedLanguage(2);
+                setPickedLanguage('en');
                 i18n.changeLanguage('en');
               }}
-              isLanguagePicked={pickedLanguage === 2 ? true : false}
+              isLanguagePicked={pickedLanguage === "en" ? true : false}
             />
           </View>
           <View style={styles.languageButton}>
@@ -54,10 +54,10 @@ const Language = () => {
               buttonText="German"
               iconName="flag_ge"
               onPress={() => {
-                setPickedLanguage(3);
+                setPickedLanguage('ge');
                 i18n.changeLanguage('ge');
               }}
-              isLanguagePicked={pickedLanguage === 3 ? true : false}
+              isLanguagePicked={pickedLanguage === "ge" ? true : false}
             />
           </View>
         </ScrollView>
