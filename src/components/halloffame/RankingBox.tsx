@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 import Colors from '../../constants/Colors';
@@ -8,7 +8,7 @@ import Typography from '../../typography/Typography';
 interface Props {
   playerName: string;
   playerTime: string;
-  height: number; // place: first | second | third
+  height: number;
   place: string;
 }
 
