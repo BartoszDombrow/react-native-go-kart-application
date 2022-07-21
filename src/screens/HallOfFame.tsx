@@ -59,17 +59,20 @@ function Halloffame() {
       <View style={styles.ranking}>
         <View style={styles.rankignContainer}>
           <Place
-            place="3"
+            height={110}
+            place='3'
             playerName="PlayerX"
             playerTime={dayjs(FameDataArray[2].time).format('mm:ss:SSS')}
           />
           <Place
-            place="1"
+            height={180}
+            place='1'
             playerName="PlayerY"
             playerTime={dayjs(FameDataArray[0].time).format('mm:ss:SSS')}
           />
           <Place
-            place="2"
+            height={140}
+            place='2'
             playerName="PlayerZ"
             playerTime={dayjs(FameDataArray[1].time).format('mm:ss:SSS')}
           />
