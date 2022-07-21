@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, StyleProp, ViewStyle} from 'react-native';
+import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
+import Typography from '../../typography/Typography';
 
 interface Props {
   playerName: string;
@@ -37,11 +38,11 @@ const Place: React.FC<Props> = ({playerName, playerTime, place}) => {
 
   return (
     <View style={styles.place}>
-      <Text style={styles.playerName}>{playerName}</Text>
-      <Text style={styles.playerTime}>{playerTime}</Text>
+      <Typography variant='spanPrimaryBold' style={styles.playerName}>{playerName}</Typography>
+      <Typography variant='span' style={styles.playerTime}>{playerTime}</Typography>
       <Shadow useArt style={placeShadowStyle}>
         <View style={placeStyle}>
-          <Text style={styles.position}>{place}</Text>
+          <Typography variant='bigTitle' style={styles.position}>{place}</Typography>
         </View>
       </Shadow>
     </View>
@@ -116,32 +117,15 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 2, height: 3},
   },
   playerName: {
-    fontFamily: fonts.primaryFont,
-    color: colors.white,
-    paddingBottom: 5,
-    fontSize: 16,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 2},
-    textShadowRadius: 5,
     width: 128,
     textAlign: 'center',
+    height: 24,
   },
   playerTime: {
-    fontFamily: fonts.secondaryFont,
-    color: colors.white,
-    fontSize: 16,
     paddingBottom: 10,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 3},
-    textShadowRadius: 5,
   },
   position: {
-    fontSize: 64,
-    fontFamily: fonts.primaryFont,
     color: colors.darkBlue,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 3},
-    textShadowRadius: 5,
   },
 });
 

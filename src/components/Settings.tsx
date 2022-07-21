@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text, Modal, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Modal, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Fonts from '../constants/Fonts';
 import SubmitButton from './SubmitButton';
 import Colors from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
@@ -11,9 +10,9 @@ import {MenuStackParams} from '../navigation/MenuNav';
 import MainButton from './MainButton';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
-const fonts = new Fonts();
 
 interface Props {
   isVisible: boolean;
@@ -44,10 +43,10 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           </Shadow>
         </View>
         <View style={styles.buttonsContainer}>
-          <Text style={styles.title}>{t('Settings')}</Text>
+          <Typography variant='mediumTitle' style={styles.title}>{t('settings')}</Typography>
           <View style={styles.buttonBox}>
             <MainButton
-              buttonText={t('Profile')}
+              buttonText={t('profile')}
               onPress={() => {
                 settingsNavigation.navigate('Profile');
               }}
@@ -56,14 +55,14 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           </View>
           <View style={styles.buttonBox}>
             <MainButton
-              buttonText={t('Volume')}
+              buttonText={t('volume')}
               onPress={() => {}}
               iconName="volume"
             />
           </View>
           <View style={styles.buttonBox}>
             <MainButton
-              buttonText={t('Language')}
+              buttonText={t('language')}
               onPress={() => {
                 settingsNavigation.navigate('Language');
                 settingsHandler(); // change!!!
@@ -74,7 +73,7 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
         </View>
         <View style={styles.submitButtonContainer}>
           <SubmitButton
-            buttonText={t('Logout')}
+            buttonText={t('logout')}
             onPress={() => {
               navigation.navigate('Auth');
             }}
@@ -112,16 +111,7 @@ const styles = StyleSheet.create({
     flex: 0.9,
   },
   title: {
-    height: 110,
-    paddingTop: 20,
-    paddingBottom: 20,
-    fontFamily: fonts.primaryFont,
-    color: colors.white,
-    fontSize: 48,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 0, height: 5},
-    textShadowRadius: 5,
-    textAlign: 'center',
+    paddingVertical: 40
   },
   buttonBox: {
     paddingVertical: 20,

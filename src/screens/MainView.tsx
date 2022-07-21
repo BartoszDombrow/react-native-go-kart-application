@@ -41,22 +41,22 @@ const MainView = () => {
             </Shadow>
           </View>
           <View style={styles.titleContainer}>
-            <Text style={styles.headerText}>{t('Menu')}</Text>
+            <Text style={styles.headerText}>{t('menu')}</Text>
           </View>
         </View>
         <View style={styles.contentContainer}>
           <MainButton
-            buttonText={t('Start')}
+            buttonText={t('start')}
             onPress={() => navigationAuth.push('MainView')}
             iconName="start"
           />
           <MainButton
-            buttonText={t('HallOfFame')}
+            buttonText={t('hallOfFame')}
             onPress={() => navigationMenu.navigate('HallOfFame')}
             iconName="ranking"
           />
           <MainButton
-            buttonText={t('Statistics')}
+            buttonText={t('statistics')}
             onPress={() => navigationAuth.push('MainView')}
             iconName="statistics"
           />

@@ -13,6 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import ChangePasswordModal from '../components/ChangePasswordModal';
 import DeleteAccountModal from '../components/DeleteAccountModal';
 import {useTranslation} from 'react-i18next';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -62,14 +63,14 @@ const Profile = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>{t('Profile')}</Text>
+        <Typography variant='mediumTitle'>{t('profile')}</Typography>
       </View>
       <View style={styles.content}>
         <FormInput
           onChangeText={formik.handleChange('username')}
           onBlur={formik.handleBlur('username')}
           value={formik.values.username}
-          placeholder={t('Username')}
+          placeholder={t('username')}
           formikTouched={formik.touched.username}
           formikErrors={formik.errors.username}
         />
@@ -77,13 +78,13 @@ const Profile = () => {
           onChangeText={formik.handleChange('email')}
           onBlur={formik.handleBlur('email')}
           value={formik.values.email}
-          placeholder={t('Email')}
+          placeholder={t('email')}
           formikTouched={formik.touched.email}
           formikErrors={formik.errors.email}
           secureTextEntry={true}
         />
         <SubmitButton
-          buttonText={t('SaveChanges')}
+          buttonText={t('saveChanges')}
           onPress={formik.handleSubmit}
         />
         <View style={styles.wrapper}>
@@ -93,7 +94,7 @@ const Profile = () => {
                 onPress={deleteAccountHandler}
                 activeOpacity={0.75}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{t('DeleteAccount')}</Text>
+                <Text style={styles.buttonText}>{t('deleteAccount')}</Text>
               </TouchableOpacity>
             </View>
           </Shadow>
@@ -103,7 +104,7 @@ const Profile = () => {
                 onPress={changePasswordHandler}
                 activeOpacity={0.75}
                 style={styles.button}>
-                <Text style={styles.buttonText}>{t('ChangePassword')}</Text>
+                <Text style={styles.buttonText}>{t('changePassword')}</Text>
               </TouchableOpacity>
             </View>
           </Shadow>
@@ -111,7 +112,7 @@ const Profile = () => {
       </View>
       <View style={styles.returnButton}>
         <SubmitButton
-          buttonText={t('Return')}
+          buttonText={t('return')}
           onPress={() => navigation.navigate('Menu')}
         />
       </View>
@@ -141,11 +142,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     alignItems: 'center',
-  },
-  headerText: {
-    fontSize: 48,
-    fontFamily: fonts.primaryFont,
-    color: colors.white,
   },
   wrapper: {
     width: '100%',

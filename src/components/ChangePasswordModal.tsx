@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Modal, StyleSheet, Text, Alert} from 'react-native';
+import {View, Modal, StyleSheet, Alert} from 'react-native';
 import SubmitButton from './SubmitButton';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
@@ -7,6 +7,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import FormInput from './FormInput';
 import {useTranslation} from 'react-i18next';
+import Typography from '../typography/Typography';
 
 const fonts = new Fonts();
 const colors = new Colors();
@@ -55,14 +56,14 @@ const ChangePasswordModal: React.FC<Props> = ({
       visible={changePasswordVisible}>
       <View style={styles.mainContainer}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>{t('ChangePassword')}</Text>
+          <Typography variant='smallTitle' style={styles.headerText}>{t('changePassword')}</Typography>
         </View>
         <View style={styles.formWrapper}>
           <FormInput
             onChangeText={formik.handleChange('password')}
             onBlur={formik.handleBlur('password')}
             value={formik.values.password}
-            placeholder={t('Password')}
+            placeholder={t('password')}
             formikTouched={formik.touched.password}
             formikErrors={formik.errors.password}
             secureTextEntry={true}
@@ -71,7 +72,7 @@ const ChangePasswordModal: React.FC<Props> = ({
             onChangeText={formik.handleChange('newPassword')}
             onBlur={formik.handleBlur('newPassword')}
             value={formik.values.newPassword}
-            placeholder={t('NewPassword')}
+            placeholder={t('newPassword')}
             formikTouched={formik.touched.newPassword}
             formikErrors={formik.errors.newPassword}
             secureTextEntry={true}
@@ -80,19 +81,19 @@ const ChangePasswordModal: React.FC<Props> = ({
             onChangeText={formik.handleChange('newPassword')}
             onBlur={formik.handleBlur('newPassword')}
             value={formik.values.newPassword}
-            placeholder={t('NewPassword')}
+            placeholder={t('newPassword')}
             formikTouched={formik.touched.newPassword}
             formikErrors={formik.errors.newPassword}
             secureTextEntry={true}
           />
           <SubmitButton
-            buttonText={t('SaveChanges')}
+            buttonText={t('saveChanges')}
             onPress={formik.handleSubmit}
           />
         </View>
         <View style={styles.buttonWrapper}>
           <SubmitButton
-            buttonText={t('Exit')}
+            buttonText={t('exit')}
             onPress={changePasswordHandler}
           />
         </View>
@@ -108,13 +109,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    flex: 0.2,
+    flex: 0.3,
+    width: '100%',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   headerText: {
-    fontSize: 36,
-    fontFamily: fonts.primaryFont,
-    color: colors.white,
+    paddingVertical: 40,
   },
   formWrapper: {
     flex: 1,

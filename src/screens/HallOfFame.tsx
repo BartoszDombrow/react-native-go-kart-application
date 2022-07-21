@@ -11,6 +11,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
 import Place from '../components/halloffame/Place';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -53,7 +54,7 @@ function Halloffame() {
           </Shadow>
         </View>
 
-        <Text style={styles.title}>{t('HallOfFame')}</Text>
+        <Typography variant='smallTitle'>{t('hallOfFame')}</Typography>
       </View>
       <View style={styles.ranking}>
         <View style={styles.rankignContainer}>
@@ -74,7 +75,7 @@ function Halloffame() {
           />
         </View>
         <SubmitButton
-          buttonText={t('Exit')}
+          buttonText={t('exit')}
           onPress={() => navigation.navigate('Menu')}
         />
       </View>
