@@ -1,6 +1,6 @@
 import React from 'react';
 import players from '../constants/FameDataJSON.json';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import dayjs from 'dayjs';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
@@ -10,7 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
-import Place from '../components/halloffame/Place';
+import RankingBox from '../components/halloffame/RankingBox';
 import Typography from '../typography/Typography';
 
 const colors = new Colors();
@@ -54,22 +54,25 @@ function Halloffame() {
           </Shadow>
         </View>
 
-        <Typography variant='smallTitle'>{t('hallOfFame')}</Typography>
+        <Typography variant="smallTitle">{t('hallOfFame')}</Typography>
       </View>
       <View style={styles.ranking}>
         <View style={styles.rankignContainer}>
-          <Place
-            place="3"
+          <RankingBox
+            height={110}
+            text="3"
             playerName="PlayerX"
             playerTime={dayjs(FameDataArray[2].time).format('mm:ss:SSS')}
           />
-          <Place
-            place="1"
+          <RankingBox
+            height={180}
+            text="1"
             playerName="PlayerY"
             playerTime={dayjs(FameDataArray[0].time).format('mm:ss:SSS')}
           />
-          <Place
-            place="2"
+          <RankingBox
+            height={140}
+            text="2"
             playerName="PlayerZ"
             playerTime={dayjs(FameDataArray[1].time).format('mm:ss:SSS')}
           />
