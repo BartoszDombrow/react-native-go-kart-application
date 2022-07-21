@@ -9,12 +9,12 @@ interface Props {
   playerName: string;
   playerTime: string;
   height: number;
-  place: string;
+  text: string;
 }
 
 const colors = new Colors();
 
-const Place: React.FC<Props> = ({playerName, playerTime, height, place}) => {
+const Place: React.FC<Props> = ({playerName, playerTime, height, text}) => {
   return (
     <View style={styles.place}>
       <Typography variant="spanPrimaryBold" style={styles.playerName}>
@@ -26,7 +26,7 @@ const Place: React.FC<Props> = ({playerName, playerTime, height, place}) => {
       <Shadow useArt style={{height, width: 90, ...styles.placeShadowStyle}}>
         <View style={styles.placeStyle}>
           <Typography variant="bigTitle" style={styles.position}>
-            {place}
+            {text}
           </Typography>
         </View>
       </Shadow>

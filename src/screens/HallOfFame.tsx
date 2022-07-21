@@ -60,19 +60,19 @@ function Halloffame() {
         <View style={styles.rankignContainer}>
           <RankingBox
             height={110}
-            place="3"
+            text="3"
             playerName="PlayerX"
             playerTime={dayjs(FameDataArray[2].time).format('mm:ss:SSS')}
           />
           <RankingBox
             height={180}
-            place="1"
+            text="1"
             playerName="PlayerY"
             playerTime={dayjs(FameDataArray[0].time).format('mm:ss:SSS')}
           />
           <RankingBox
             height={140}
-            place="2"
+            text="2"
             playerName="PlayerZ"
             playerTime={dayjs(FameDataArray[1].time).format('mm:ss:SSS')}
           />
