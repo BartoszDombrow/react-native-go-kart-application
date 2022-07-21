@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, StyleSheet, Animated, Dimensions} from 'react-native';
+import {View, StyleSheet, Animated, Dimensions} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 import LoginForm from './LoginForm';
@@ -10,6 +10,7 @@ import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
 
 import {useTranslation} from 'react-i18next';
+import Typography from '../../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -60,22 +61,22 @@ const AuthForm = () => {
           <Shadow useArt style={styles.pickedForm} />
         </Animated.View>
         <View style={styles.switchBox}>
-          <Text
+          <Typography
+            variant="basicText"
             style={[
-              styles.switchText,
-              scrollPosition ? styles.unselectedSwitch : styles.selectedSwitch,
+              scrollPosition ? styles.switchText : styles.selectedSwitch,
             ]}>
-            {t('SignIn')}
-          </Text>
+            {t('signIn')}
+          </Typography>
         </View>
         <View style={styles.switchBox}>
-          <Text
+          <Typography
+            variant="basicText"
             style={[
-              styles.switchText,
-              scrollPosition ? styles.selectedSwitch : styles.unselectedSwitch,
+              scrollPosition ? styles.selectedSwitch : styles.switchText,
             ]}>
-            {t('SignUp')}
-          </Text>
+            {t('signUp')}
+          </Typography>
         </View>
       </Shadow>
       <Swiper
@@ -114,16 +115,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   switchText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    fontFamily: fonts.secondaryFont,
     color: colors.white,
   },
   selectedSwitch: {
     color: colors.darkBlue,
-  },
-  unselectedSwitch: {
-    color: colors.white,
   },
   fadingContainer: {
     position: 'absolute',

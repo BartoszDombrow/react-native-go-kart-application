@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, Alert, Modal, Text} from 'react-native';
+import {View, StyleSheet, Alert, Modal} from 'react-native';
 import {useFormik} from 'formik';
 import Colors from '../../constants/Colors';
 import SubmitButton from '../SubmitButton';
@@ -12,6 +12,7 @@ import {RootStackParams} from '../../navigation/StackNav';
 import Fonts from '../../constants/Fonts';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
+import Typography from '../../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -93,7 +94,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('username')}
                   onBlur={formik.handleBlur('username')}
                   value={formik.values.username}
-                  placeholder={t('Username')}
+                  placeholder={t('username')}
                   formikTouched={formik.touched.username}
                   formikErrors={formik.errors.username}
                 />
@@ -101,7 +102,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('firstname')}
                   onBlur={formik.handleBlur('firstname')}
                   value={formik.values.firstname}
-                  placeholder={t('Firstname')}
+                  placeholder={t('firstname')}
                   formikTouched={formik.touched.firstname}
                   formikErrors={formik.errors.firstname}
                 />
@@ -109,7 +110,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('lastname')}
                   onBlur={formik.handleBlur('lastname')}
                   value={formik.values.lastname}
-                  placeholder={t('Lastname')}
+                  placeholder={t('lastname')}
                   formikTouched={formik.touched.lastname}
                   formikErrors={formik.errors.lastname}
                 />
@@ -117,7 +118,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('email')}
                   onBlur={formik.handleBlur('email')}
                   value={formik.values.email}
-                  placeholder={t('Email')}
+                  placeholder={t('email')}
                   formikTouched={formik.touched.email}
                   formikErrors={formik.errors.email}
                 />
@@ -125,7 +126,7 @@ const SignUp = () => {
                   onChangeText={formik.handleChange('password')}
                   onBlur={formik.handleBlur('password')}
                   value={formik.values.password}
-                  placeholder={t('Password')}
+                  placeholder={t('password')}
                   formikTouched={formik.touched.password}
                   formikErrors={formik.errors.password}
                   secureTextEntry={true}
@@ -142,19 +143,23 @@ const SignUp = () => {
                 onValueChange={value =>
                   formik.setFieldValue('privacyPolicy', value)
                 }
+                tintColors={{true: colors.white, false: colors.white}}
+                tintColor={colors.white}
+                onCheckColor={colors.white}
+                onTintColor={colors.white}
               />
             </View>
 
-            <Text style={styles.checkBoxText}>
-              {t('AcceptPrivacy')}
-              <Text onPress={handleVisableDismiss} style={styles.textSpan}>
-                {t('Policy')}
-              </Text>
-            </Text>
+            <Typography variant='spanBold'>
+              {t('privacyPolicy.accept')}
+              <Typography variant='spanBold' onPress={handleVisableDismiss} style={styles.textSpan}>
+                {" "+t('privacyPolicy.privacyPolicy')}
+              </Typography>
+            </Typography>
           </View>
         </View>
 
-        <SubmitButton buttonText={t('Start')} onPress={formik.handleSubmit} />
+        <SubmitButton buttonText={t('start').toUpperCase()} onPress={formik.handleSubmit} />
       </View>
       <Modal
         animationType="slide"
@@ -163,11 +168,11 @@ const SignUp = () => {
         onRequestClose={handleVisableDismiss}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalTitle}>Privacy policy</Text>
+            <Typography variant='smallTitle' style={styles.modalTitle}>{t("privacyPolicy.modal")}</Typography>
             <View style={styles.modalText}></View>
             <View style={styles.modalButton}>
               <SubmitButton
-                buttonText={t('Exit')}
+                buttonText={t('exit')}
                 onPress={handleVisableDismiss}
               />
             </View>
@@ -203,17 +208,11 @@ const styles = StyleSheet.create({
     opacity: 0.97,
     flex: 1,
     width: '100%',
+    alignItems: 'center'
   },
   modalTitle: {
-    textAlign: 'center',
-    fontFamily: fonts.primaryFont,
-    fontSize: 32,
-    height: 150,
-    color: colors.white,
-    textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: 0, height: 2},
-    textShadowRadius: 10,
-    paddingVertical: 50,
+    maxWidth: '80%',
+    paddingVertical: 60
   },
   modalText: {
     flex: 1,
@@ -229,13 +228,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  checkBoxText: {
-    fontSize: 18,
-    color: colors.white,
-  },
   textSpan: {
-    color: colors.lightBlue,
-    fontWeight: 'bold',
+    color: colors.lightBlue
   },
 });
 

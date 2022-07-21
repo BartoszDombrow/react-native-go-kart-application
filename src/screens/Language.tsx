@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, View, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import MainButton from '../components/MainButton';
@@ -9,6 +9,7 @@ import Fonts from '../constants/Fonts';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -23,7 +24,7 @@ const Language = () => {
   return (
     <View style={styles.screen}>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>{t('Language')}</Text>
+        <Typography variant='mediumTitle'>{t('language')}</Typography>
       </View>
       <View style={styles.languageContainer}>
         <ScrollView style={styles.scrollView}>
@@ -75,7 +76,7 @@ const Language = () => {
       </View>
       <View style={styles.bottomContainer}>
         <SubmitButton
-          buttonText={t('Return')}
+          buttonText={t('return')}
           onPress={() => {
             navigation.navigate('Menu');
           }}
@@ -94,15 +95,6 @@ const styles = StyleSheet.create({
     flex: 0.3,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    color: colors.white,
-    fontFamily: fonts.primaryFont,
-    fontSize: 48,
-    height: 60,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 4},
-    textShadowRadius: 5,
   },
   languageContainer: {
     flex: 0.5,

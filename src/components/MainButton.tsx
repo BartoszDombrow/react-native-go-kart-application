@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   TouchableOpacity,
-  Text,
   StyleSheet,
   Platform,
   Image,
@@ -11,10 +10,9 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
-const fonts = new Fonts();
 
 export type Props = {
   buttonText: string;
@@ -119,7 +117,7 @@ const MainButton: React.FC<Props> = ({buttonText, onPress, iconName, isLanguageP
             {iconsArray.find(icon => icon.name === iconName)?.icon}
           </View>
           <View style={styles.textBox}>
-            <Text style={isLanguagePicked ? styles.buttonTextPicked : styles.buttonText}>{buttonText}</Text>
+            <Typography variant='mediumButtonText' style={isLanguagePicked ? null : styles.buttonText}>{buttonText}</Typography>
           </View>
         </TouchableOpacity>
       </View>
@@ -186,21 +184,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.darkBlue,
-    fontSize: 28,
-    textAlign: 'center',
-    fontFamily: fonts.primaryFont,
-    textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: 0, height: 2},
-    textShadowRadius: 10,
   },
   buttonTextPicked: {
     color: colors.white,
-    fontSize: 28,
-    textAlign: 'center',
-    fontFamily: fonts.primaryFont,
-    textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: 0, height: 2},
-    textShadowRadius: 10,
   }
 });
 

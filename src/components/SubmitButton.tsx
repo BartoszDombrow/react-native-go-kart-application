@@ -4,6 +4,7 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -21,7 +22,7 @@ const SubmitButton: React.FC<Props> = ({buttonText, onPress}) => {
           activeOpacity={0.75}
           style={styles.button}
           onPress={onPress}>
-          <Text style={styles.buttonText}>{buttonText}</Text>
+          <Typography variant='bigButtonText'>{buttonText}</Typography>
         </TouchableOpacity>
       </View>
     </Shadow>
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: fonts.primaryFont,
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: -2, height: 4},
+    textShadowOffset: {width: 2, height: 3},
     textShadowRadius: 10,
   },
 });

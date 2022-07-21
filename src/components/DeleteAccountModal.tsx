@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, Modal, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, Modal, StyleSheet, TouchableOpacity} from 'react-native';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -27,7 +28,7 @@ const DeleteAccountModal: React.FC<Props> = ({
       visible={deleteAccountVisible}>
       <View style={styles.container}>
         <View style={styles.modal}>
-          <Text style={styles.text}>{t('DeleteAccountText')}</Text>
+          <Typography variant='modalText' style={styles.text}>{t('deleteAccountText')}</Typography>
           <View style={styles.buttonWrapper}>
             <Shadow useArt style={styles.buttonShadow}>
               <View style={styles.buttonContainer}>
@@ -35,7 +36,7 @@ const DeleteAccountModal: React.FC<Props> = ({
                   onPress={deleteAccountHandler}
                   activeOpacity={0.75}
                   style={styles.button}>
-                  <Text style={styles.buttonText}>{t('Yes')}</Text>
+                  <Typography variant='smallButtonText' style={styles.buttonText}>{t('yes')}</Typography>
                 </TouchableOpacity>
               </View>
             </Shadow>
@@ -45,7 +46,7 @@ const DeleteAccountModal: React.FC<Props> = ({
                   onPress={deleteAccountHandler}
                   activeOpacity={0.75}
                   style={styles.button}>
-                  <Text style={styles.buttonText}>{t('No')}</Text>
+                  <Typography variant='smallButtonText' style={styles.buttonText}>{t('no')}</Typography>
                 </TouchableOpacity>
               </View>
             </Shadow>
@@ -73,10 +74,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   text: {
-    textAlign: 'center',
-    fontFamily: fonts.secondaryFont,
-    fontSize: 20,
-    color: colors.darkBlue,
+    paddingBottom: 20
   },
   buttonWrapper: {
     flexDirection: 'row',
@@ -111,12 +109,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.darkBlue,
-    fontSize: 20,
-    textAlign: 'center',
-    fontFamily: fonts.primaryFont,
-    textShadowColor: 'rgba(0, 0, 0, 0.35)',
-    textShadowOffset: {width: -2, height: 4},
-    textShadowRadius: 10,
+    padding: 12,
   },
 });
 

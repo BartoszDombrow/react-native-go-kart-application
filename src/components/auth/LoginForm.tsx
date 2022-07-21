@@ -49,7 +49,7 @@ const LoginForm = () => {
           onChangeText={formik.handleChange('username')}
           onBlur={formik.handleBlur('username')}
           value={formik.values.username}
-          placeholder={t('Username')}
+          placeholder={t('username')}
           formikTouched={formik.touched.username}
           formikErrors={formik.errors.username}
         />
@@ -57,14 +57,14 @@ const LoginForm = () => {
           onChangeText={formik.handleChange('password')}
           onBlur={formik.handleBlur('password')}
           value={formik.values.password}
-          placeholder={t('Password')}
+          placeholder={t('password')}
           formikTouched={formik.touched.password}
           formikErrors={formik.errors.password}
           secureTextEntry={true}
         />
       </View>
 
-      <SubmitButton buttonText={t('Play')} onPress={formik.handleSubmit} />
+      <SubmitButton buttonText={t('play')} onPress={formik.handleSubmit} />
     </View>
   );
 };

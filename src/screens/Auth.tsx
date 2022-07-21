@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   View,
-  Text,
   StyleSheet,
   SafeAreaView,
   Image,
@@ -17,6 +16,7 @@ import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MainButton from '../components/MainButton';
+import Typography from '../typography/Typography';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -63,7 +63,7 @@ const Auth = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Text style={styles.titleText}>Track masters</Text>
+              <Typography variant='smallTitle' style={styles.titleText}>Track masters</Typography>
             </View>
           </View>
         </View>
@@ -77,7 +77,7 @@ const Auth = () => {
         onRequestClose={() => setIsLanguagesVisible(!isLanguagesVisible)}>
         <View style={{flex: 1, backgroundColor: colors.lightBlue}}>
           <View style={styles.languageTitleContainer}>
-            <Text style={styles.languageTitle}>{t('Language')}</Text>
+            <Typography variant='mediumTitle' style={styles.languageTitle}>{t('language')}</Typography>
           </View>
           <ScrollView style={styles.languageScrollView}>
             <View style={styles.languageButton}>
@@ -127,7 +127,7 @@ const Auth = () => {
           </ScrollView>
           <View style={styles.languageExit}>
             <SubmitButton
-              buttonText={t('Exit')}
+              buttonText={t('exit')}
               onPress={() => setIsLanguagesVisible(false)}
             />
           </View>
@@ -220,12 +220,6 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: colors.white,
-    fontSize: 36,
-    textAlign: 'center',
-    fontFamily: fonts.primaryFont,
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowOffset: {width: -3, height: 4},
-    textShadowRadius: 10,
   },
   formContainer: {
     flex: 1,
@@ -239,13 +233,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   languageTitle: {
-    height: 50,
-    fontFamily: fonts.primaryFont,
-    color: colors.darkBlue,
-    fontSize: 38,
-    textShadowColor: 'rgba(0, 0, 0, 0.45)',
-    textShadowOffset: {width: 1, height: 2},
-    textShadowRadius: 10,
+    color: colors.white
   },
   languageScrollView: {
     flex: 0.4,
