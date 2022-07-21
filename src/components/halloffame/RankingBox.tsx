@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
@@ -8,14 +8,13 @@ import Typography from '../../typography/Typography';
 interface Props {
   playerName: string;
   playerTime: string;
-  height: 180 | 140 | 110;  // place: first | second | third
-  place: '1' | '2' | '3'
+  height: number; // place: first | second | third
+  place: string;
 }
 
 const colors = new Colors();
 
 const Place: React.FC<Props> = ({playerName, playerTime, height, place}) => {
-
   return (
     <View style={styles.place}>
       <Typography variant="spanPrimaryBold" style={styles.playerName}>
@@ -24,7 +23,7 @@ const Place: React.FC<Props> = ({playerName, playerTime, height, place}) => {
       <Typography variant="span" style={styles.playerTime}>
         {playerTime}
       </Typography>
-      <Shadow useArt style={{height: height, width: 90, ...styles.placeShadowStyle}}>
+      <Shadow useArt style={{height, width: 90, ...styles.placeShadowStyle}}>
         <View style={styles.placeStyle}>
           <Typography variant="bigTitle" style={styles.position}>
             {place}
