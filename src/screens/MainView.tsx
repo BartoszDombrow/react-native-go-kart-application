@@ -48,7 +48,7 @@ const MainView = () => {
         <View style={styles.contentContainer}>
           <CustomButton
             buttonText={t('start')}
-            onPress={() => navigationAuth.push('MainView')}
+            onPress={() => navigationMenu.navigate('Start')}
             buttonVariant="mediumButton"
             iconName="start"
           />
