@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Alert, Modal} from 'react-native';
 import {useFormik} from 'formik';
-import Colors from '../../constants/Colors';
+import colors from '../../constants/Colors';
 import * as Yup from 'yup';
 import CheckBox from '@react-native-community/checkbox';
 import FormInput from '../FormInput';
@@ -12,8 +12,6 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 import Typography from '../../typography/Typography';
 import CustomButton from '../button/CustomButton';
-
-const colors = new Colors();
 
 interface FormValue {
   username: string;

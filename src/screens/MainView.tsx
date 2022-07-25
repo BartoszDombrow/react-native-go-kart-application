@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -8,8 +8,6 @@ import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
-
-const colors = new Colors();
 
 import Settings from '../components/Settings';
 import Typography from '../typography/Typography';

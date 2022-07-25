@@ -1,8 +1,8 @@
 import React from 'react';
 import players from '../constants/FameDataJSON.json';
 import {View, StyleSheet, Image} from 'react-native';
-import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
+import colors from '../constants/Colors';
+import fonts from '../constants/Fonts';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -11,9 +11,6 @@ import {useTranslation} from 'react-i18next';
 import RankingBox from '../components/halloffame/RankingBox';
 import Typography from '../typography/Typography';
 import CustomButton from '../components/button/CustomButton';
-
-const colors = new Colors();
-const fonts = new Fonts();
 
 function Halloffame() {
   const navigation =
