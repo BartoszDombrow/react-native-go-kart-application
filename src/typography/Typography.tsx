@@ -53,7 +53,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
   },
   bigButtonText: {
     color: colors.darkBlue,
-    fontSize: 36,
+    fontSize: 34,
     textAlign: 'center',
     fontFamily: fonts.primaryFont,
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
@@ -63,7 +63,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
   },
   mediumButtonText: {
     color: colors.white,
-    fontSize: 28,
+    fontSize: 26,
     textAlign: 'center',
     fontFamily: fonts.primaryFont,
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
