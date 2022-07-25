@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
-import Colors from '../../constants/Colors';
+import colors from '../../constants/Colors';
 import Typography from '../../typography/Typography';
 
 interface Props {
@@ -11,8 +11,6 @@ interface Props {
   height: number;
   text: string;
 }
-
-const colors = new Colors();
 
 const Place: React.FC<Props> = ({playerName, playerTime, height, text}) => {
   return (
