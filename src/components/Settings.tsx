@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Modal, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigation/StackNav';
@@ -10,8 +10,6 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
 import CustomButton from './button/CustomButton';
-
-const colors = new Colors();
 
 interface Props {
   isVisible: boolean;

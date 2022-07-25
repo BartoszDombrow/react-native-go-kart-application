@@ -9,8 +9,7 @@ import Typography from '../../typography/Typography';
 
 import CustomIcon from './CustomIcon';
 import CustomImage from './CustomImage';
-import Colors from '../../constants/Colors';
-const colors = new Colors();
+import colors from '../../constants/Colors';
 
 type Variant = 'bigButton' | 'mediumButton' | 'smallButton' | 'tinyButton';
 

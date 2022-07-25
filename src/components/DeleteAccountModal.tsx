@@ -1,11 +1,9 @@
 import React from 'react';
 import {View, Modal, StyleSheet} from 'react-native';
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
 import CustomButton from './button/CustomButton';
-
-const colors = new Colors();
 
 interface Props {
   deleteAccountVisible: boolean;

@@ -4,7 +4,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import FormInput from '../components/FormInput';
 import SubmitButton from '../components/SubmitButton';
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import Typography from '../typography/Typography';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
@@ -12,8 +12,6 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {GameStackParams} from '../navigation/GameNav';
 import {useTranslation} from 'react-i18next';
-
-const colors = new Colors();
 
 interface FormValue {
   code: string;

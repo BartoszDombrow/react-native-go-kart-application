@@ -2,12 +2,9 @@ import React from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
-import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
+import colors from '../constants/Colors';
+import fonts from '../constants/Fonts';
 import Typography from '../typography/Typography';
-
-const colors = new Colors();
-const fonts = new Fonts();
 
 export type Props = {
   buttonText: string;
