@@ -153,7 +153,7 @@ const SignUp = () => {
                 variant="spanBold"
                 onPress={handleVisableDismiss}
                 style={styles.textSpan}>
-                {' ' + t('privacyPolicy.privacyPolicy')}
+                {` ${t('privacyPolicy.privacyPolicy')}`}
               </Typography>
             </Typography>
           </View>

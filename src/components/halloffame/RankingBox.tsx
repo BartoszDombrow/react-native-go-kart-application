@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
@@ -7,26 +8,31 @@ import Typography from '../../typography/Typography';
 
 interface Props {
   playerName: string;
-  playerTime: string;
+  playerTime: number;
+  playerPosition: string;
   height: number;
-  text: string;
 }
 
 const colors = new Colors();
 
-const Place: React.FC<Props> = ({playerName, playerTime, height, text}) => {
+const Place: React.FC<Props> = ({
+  playerName,
+  playerTime,
+  height,
+  playerPosition,
+}) => {
   return (
     <View style={styles.place}>
       <Typography variant="spanPrimaryBold" style={styles.playerName}>
         {playerName}
       </Typography>
       <Typography variant="span" style={styles.playerTime}>
-        {playerTime}
+        {dayjs(playerTime).format('mm:ss:SSS')}
       </Typography>
       <Shadow useArt style={{height, width: 90, ...styles.placeShadowStyle}}>
         <View style={styles.placeStyle}>
           <Typography variant="bigTitle" style={styles.position}>
-            {text}
+            {playerPosition}
           </Typography>
         </View>
       </Shadow>

@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Modal, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Modal,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
@@ -52,7 +58,9 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
               onPress={() => {
                 settingsNavigation.navigate('Profile');
               }}
-              iconName="profile"
+              iconName={
+                Platform.OS === 'ios' ? 'ios-person-sharp' : 'md-person-sharp'
+              }
             />
           </View>
           <View style={styles.buttonBox}>
@@ -60,7 +68,7 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
               buttonText={t('volume')}
               buttonVariant="mediumButton"
               onPress={() => {}}
-              iconName="volume"
+              iconName="volume-high"
             />
           </View>
           <View style={styles.buttonBox}>

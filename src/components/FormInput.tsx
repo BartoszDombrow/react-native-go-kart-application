@@ -44,10 +44,10 @@ const FormInput: React.FC<Props> = ({
         {secureTextEntry ? (
           <TouchableOpacity
             style={styles.icon}
-            onPress={() => setShowPassword(!showPassword)}>
+            onPress={() => setShowPassword(visible => !visible)}>
             <Icon
-              name={showPassword ? 'lock' : 'unlock'}
-              size={30}
+              name={showPassword ? 'eye-slash' : 'eye'}
+              size={24}
               color={colors.darkBlue}
             />
           </TouchableOpacity>
@@ -94,10 +94,10 @@ const styles = StyleSheet.create({
     fontFamily: fonts.secondaryFont,
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: 24,
+    height: 24,
     position: 'absolute',
-    right: 15,
+    right: 20,
   },
 });
 
