@@ -1,8 +1,7 @@
 import React from 'react';
 import {View, Image, StyleSheet, ImageSourcePropType} from 'react-native';
 
-import Colors from '../../constants/Colors';
-const colors = new Colors();
+import colors from '../../constants/Colors';
 
 type Variant = 'bigImageBox' | 'mediumImageBox' | 'smallImageBox';
 
