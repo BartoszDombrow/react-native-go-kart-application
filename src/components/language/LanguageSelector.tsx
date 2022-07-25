@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {ScrollView, View, StyleSheet} from 'react-native';
 
 import CustomButton from '../button/CustomButton';
@@ -6,8 +6,6 @@ import {useTranslation} from 'react-i18next';
 
 const LanguageSelector = () => {
   const {i18n} = useTranslation();
-
-  const [pickedLanguage, setPickedLanguage] = useState(i18n.language);
 
   return (
     <ScrollView style={styles.scrollView}>
@@ -17,10 +15,9 @@ const LanguageSelector = () => {
           buttonVariant="mediumButton"
           imageSource={require('../../assets/images/flag_en.png')}
           onPress={() => {
-            setPickedLanguage('en');
             i18n.changeLanguage('en');
           }}
-          isSelected={pickedLanguage === 'en'}
+          isSelected={i18n.language === 'en'}
         />
       </View>
       <View style={styles.languageButton}>
@@ -29,10 +26,9 @@ const LanguageSelector = () => {
           buttonVariant="mediumButton"
           imageSource={require('../../assets/images/flag_pl.png')}
           onPress={() => {
-            setPickedLanguage('pl');
             i18n.changeLanguage('pl');
           }}
-          isSelected={pickedLanguage === 'pl'}
+          isSelected={i18n.language === 'pl'}
         />
       </View>
       <View style={styles.languageButton}>
@@ -41,10 +37,9 @@ const LanguageSelector = () => {
           buttonVariant="mediumButton"
           imageSource={require('../../assets/images/flag_de.png')}
           onPress={() => {
-            setPickedLanguage('de');
             i18n.changeLanguage('de');
           }}
-          isSelected={pickedLanguage === 'de'}
+          isSelected={i18n.language === 'de'}
         />
       </View>
       <View style={styles.languageButton}>
@@ -53,10 +48,9 @@ const LanguageSelector = () => {
           buttonVariant="mediumButton"
           imageSource={require('../../assets/images/flag_uk.png')}
           onPress={() => {
-            setPickedLanguage('uk');
             i18n.changeLanguage('uk');
           }}
-          isSelected={pickedLanguage === 'uk'}
+          isSelected={i18n.language === 'uk'}
         />
       </View>
     </ScrollView>
