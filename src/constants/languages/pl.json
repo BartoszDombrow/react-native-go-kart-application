@@ -32,6 +32,12 @@
     "logout": "Wyloguj",
     "deleteAccountText": "Czy chcesz usunąć swoje konto na stałe?",
     "settings": "Ustawienia",
-    "start": "Start"
+    "start": "Start",
+    "connect": "Połącz",
+    "connectToYourGame": "Połącz się z Swoją grą",
+    "code": "Kod sesji",
+    "minCode": "Kod musi mieć 8 znaków",
+    "maxCode": "Kod musi mieć 8 znaków",
+    "requiredCode": "Kod sesji jest wymagany"
   }
 }

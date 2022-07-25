@@ -1,6 +1,5 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
 import MenuNav from '../navigation/MenuNav';
 import Auth from '../screens/Auth';
 

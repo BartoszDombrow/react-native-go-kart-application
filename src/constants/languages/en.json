@@ -32,6 +32,12 @@
     "logout": "Logout",
     "deleteAccountText": "Do you want to delete your account permamently?",
     "settings": "Settings",
-    "start": "Start"
+    "start": "Start",
+    "connect": "Connect",
+    "connectToYourGame": "Connect to Your game",
+    "code": "Session code",
+    "minCode": "Code must be 8 characters",
+    "maxCode": "Code must be 8 characters",
+    "requiredCode": "Code is required"
   }
 }

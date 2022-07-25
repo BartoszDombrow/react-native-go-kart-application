@@ -63,7 +63,9 @@ const Auth = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Typography variant='smallTitle' style={styles.titleText}>Track masters</Typography>
+              <Typography variant="smallTitle" style={styles.titleText}>
+                Track masters
+              </Typography>
             </View>
           </View>
         </View>
@@ -77,7 +79,9 @@ const Auth = () => {
         onRequestClose={() => setIsLanguagesVisible(!isLanguagesVisible)}>
         <View style={{flex: 1, backgroundColor: colors.lightBlue}}>
           <View style={styles.languageTitleContainer}>
-            <Typography variant='mediumTitle' style={styles.languageTitle}>{t('language')}</Typography>
+            <Typography variant="mediumTitle" style={styles.languageTitle}>
+              {t('language')}
+            </Typography>
           </View>
           <ScrollView style={styles.languageScrollView}>
             <View style={styles.languageButton}>
@@ -233,7 +237,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   languageTitle: {
-    color: colors.white
+    color: colors.white,
   },
   languageScrollView: {
     flex: 0.4,

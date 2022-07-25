@@ -32,6 +32,12 @@
     "logout": "Ausloggen",
     "deleteAccountText": "Möchten Sie Ihr Konto dauerhaft löschen?",
     "settings": "Einstellungen",
-    "start": "Anfang"
+    "start": "Anfang",
+    "connect": "Verbinden",
+    "connectToYourGame": "Verbinden Sie sich mit Ihrem Spiel",
+    "code": "Sitzungscode",
+    "minCode": "Der Code muss 8 Zeichen lang sein",
+    "maxCode": "Der Code muss 8 Zeichen lang sein",
+    "requiredCode": "Code ist erforderlich"
   }
 }
