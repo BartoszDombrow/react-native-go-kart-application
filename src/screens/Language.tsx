@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, ScrollView} from 'react-native';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import SubmitButton from '../components/SubmitButton';
@@ -8,7 +8,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
-import CustomButton from '../components/button/CustomButton';
+import LanguageSelector from '../components/language/LanguageSelector';
 
 const colors = new Colors();
 
@@ -16,8 +16,7 @@ const Language = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<MenuStackParams>>();
 
-  const {t, i18n} = useTranslation();
-  const [pickedLanguage, setPickedLanguage] = useState(i18n.language);
+  const {t} = useTranslation();
 
   return (
     <View style={styles.screen}>
@@ -27,56 +26,7 @@ const Language = () => {
         </Typography>
       </View>
       <View style={styles.languageContainer}>
-        <ScrollView style={styles.scrollView}>
-          <View style={styles.languageButton}>
-            <CustomButton
-              buttonText="English"
-              buttonVariant="mediumButton"
-              imageSource={require('../assets/images/flag_en.png')}
-              onPress={() => {
-                setPickedLanguage('en');
-                i18n.changeLanguage('en');
-              }}
-              isSelected={pickedLanguage === 'en'}
-            />
-          </View>
-          <View style={styles.languageButton}>
-            <CustomButton
-              buttonText="Polski"
-              buttonVariant="mediumButton"
-              imageSource={require('../assets/images/flag_pl.png')}
-              onPress={() => {
-                setPickedLanguage('pl');
-                i18n.changeLanguage('pl');
-              }}
-              isSelected={pickedLanguage === 'pl'}
-            />
-          </View>
-          <View style={styles.languageButton}>
-            <CustomButton
-              buttonText="Deutsch"
-              buttonVariant="mediumButton"
-              imageSource={require('../assets/images/flag_de.png')}
-              onPress={() => {
-                setPickedLanguage('de');
-                i18n.changeLanguage('de');
-              }}
-              isSelected={pickedLanguage === 'de'}
-            />
-          </View>
-          <View style={styles.languageButton}>
-            <CustomButton
-              buttonText="Українська"
-              buttonVariant="mediumButton"
-              imageSource={require('../assets/images/flag_uk.png')}
-              onPress={() => {
-                setPickedLanguage('uk');
-                i18n.changeLanguage('uk');
-              }}
-              isSelected={pickedLanguage === 'uk'}
-            />
-          </View>
-        </ScrollView>
+        <LanguageSelector />
       </View>
       <View style={styles.bottomContainer}>
         <SubmitButton
