@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   Image,
   Modal,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
@@ -15,12 +14,11 @@ import SubmitButton from '../components/SubmitButton';
 import colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Typography from '../typography/Typography';
-import CustomButton from '../components/button/CustomButton';
+import LanguageSelector from '../components/language/LanguageSelector';
 
 const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);
-  const {t, i18n} = useTranslation();
-  const [pickedLanguage, setPickedLanguage] = useState(i18n.language);
+  const {t} = useTranslation();
 
   return (
     <>
@@ -67,56 +65,7 @@ const Auth = () => {
               {t('language')}
             </Typography>
           </View>
-          <ScrollView style={styles.languageScrollView}>
-            <View style={styles.languageButton}>
-              <CustomButton
-                buttonText="English"
-                buttonVariant="mediumButton"
-                imageSource={require('../assets/images/flag_en.png')}
-                onPress={() => {
-                  setPickedLanguage('en');
-                  i18n.changeLanguage('en');
-                }}
-                isSelected={pickedLanguage === 'en'}
-              />
-            </View>
-            <View style={styles.languageButton}>
-              <CustomButton
-                buttonText="Polski"
-                buttonVariant="mediumButton"
-                imageSource={require('../assets/images/flag_pl.png')}
-                onPress={() => {
-                  setPickedLanguage('pl');
-                  i18n.changeLanguage('pl');
-                }}
-                isSelected={pickedLanguage === 'pl'}
-              />
-            </View>
-            <View style={styles.languageButton}>
-              <CustomButton
-                buttonText="Deutsch"
-                buttonVariant="mediumButton"
-                imageSource={require('../assets/images/flag_de.png')}
-                onPress={() => {
-                  setPickedLanguage('de');
-                  i18n.changeLanguage('de');
-                }}
-                isSelected={pickedLanguage === 'de'}
-              />
-            </View>
-            <View style={styles.languageButton}>
-              <CustomButton
-                buttonText="Українська"
-                buttonVariant="mediumButton"
-                imageSource={require('../assets/images/flag_uk.png')}
-                onPress={() => {
-                  setPickedLanguage('uk');
-                  i18n.changeLanguage('uk');
-                }}
-                isSelected={pickedLanguage === 'uk'}
-              />
-            </View>
-          </ScrollView>
+          <LanguageSelector />
           <View style={styles.languageExit}>
             <SubmitButton
               buttonText={t('exit').toUpperCase()}
