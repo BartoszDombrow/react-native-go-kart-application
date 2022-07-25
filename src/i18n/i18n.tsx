@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
 
-import polish from './src/constants/languages/pl.json';
-import english from './src/constants/languages/en.json';
-import deutch from './src/constants/languages/de.json';
-import ukrainian from './src/constants/languages/uk.json';
+import polish from './languages/pl.json';
+import english from './languages/en.json';
+import deutch from './languages/de.json';
+import ukrainian from './languages/uk.json';
 
 const resources = {
   en: english,
