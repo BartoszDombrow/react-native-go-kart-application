@@ -55,6 +55,9 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
               buttonVariant="mediumButton"
               onPress={() => {
                 settingsNavigation.navigate('Profile');
+                setTimeout(() => {
+                  settingsHandler();
+                }, 250);
               }}
               iconName={
                 Platform.OS === 'ios' ? 'ios-person-sharp' : 'md-person-sharp'
@@ -75,7 +78,9 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
               buttonVariant="mediumButton"
               onPress={() => {
                 settingsNavigation.navigate('Language');
-                settingsHandler(); // change!!!
+                setTimeout(() => {
+                  settingsHandler();
+                }, 250);
               }}
               iconName="language"
             />
