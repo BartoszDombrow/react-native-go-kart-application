@@ -4,10 +4,10 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
 import FormInput from '../FormInput';
-import SubmitButton from '../SubmitButton';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
+import CustomButton from '../button/CustomButton';
 
 interface FormValue {
   username: string;
@@ -63,8 +63,11 @@ const LoginForm = () => {
           secureTextEntry={true}
         />
       </View>
-
-      <SubmitButton buttonText={t('play')} onPress={formik.handleSubmit} />
+      <CustomButton
+        buttonText={t('play').toUpperCase()}
+        buttonVariant="bigButton"
+        onPress={formik.handleSubmit}
+      />
     </View>
   );
 };

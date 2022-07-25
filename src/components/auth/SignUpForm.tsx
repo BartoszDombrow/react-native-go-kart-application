@@ -2,20 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Alert, Modal} from 'react-native';
 import {useFormik} from 'formik';
 import Colors from '../../constants/Colors';
-import SubmitButton from '../SubmitButton';
 import * as Yup from 'yup';
 import CheckBox from '@react-native-community/checkbox';
 import FormInput from '../FormInput';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
-import Fonts from '../../constants/Fonts';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 import Typography from '../../typography/Typography';
+import CustomButton from '../button/CustomButton';
 
 const colors = new Colors();
-const fonts = new Fonts();
 
 interface FormValue {
   username: string;
@@ -89,7 +87,7 @@ const SignUp = () => {
         <View style={styles.inputWrapper}>
           <View style={styles.scrollContainer}>
             <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={{alignItems: 'center'}}>
+              <View style={styles.formContainer}>
                 <FormInput
                   onChangeText={formik.handleChange('username')}
                   onBlur={formik.handleBlur('username')}
@@ -149,17 +147,22 @@ const SignUp = () => {
                 onTintColor={colors.white}
               />
             </View>
-
-            <Typography variant='spanBold'>
+            <Typography variant="spanBold">
               {t('privacyPolicy.accept')}
-              <Typography variant='spanBold' onPress={handleVisableDismiss} style={styles.textSpan}>
-                {" "+t('privacyPolicy.privacyPolicy')}
+              <Typography
+                variant="spanBold"
+                onPress={handleVisableDismiss}
+                style={styles.textSpan}>
+                {' ' + t('privacyPolicy.privacyPolicy')}
               </Typography>
             </Typography>
           </View>
         </View>
-
-        <SubmitButton buttonText={t('start').toUpperCase()} onPress={formik.handleSubmit} />
+        <CustomButton
+          buttonText={t('start').toUpperCase()}
+          buttonVariant="bigButton"
+          onPress={formik.handleSubmit}
+        />
       </View>
       <Modal
         animationType="slide"
@@ -168,11 +171,18 @@ const SignUp = () => {
         onRequestClose={handleVisableDismiss}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Typography variant='smallTitle' style={styles.modalTitle}>{t("privacyPolicy.modal")}</Typography>
-            <View style={styles.modalText}></View>
+            <Typography variant="smallTitle" style={styles.modalTitle}>
+              {t('privacyPolicy.modal')}
+            </Typography>
+            <View style={styles.modalText}>
+              <Typography variant="basicText">
+                {t('privacyPolicy.modal')}
+              </Typography>
+            </View>
             <View style={styles.modalButton}>
-              <SubmitButton
+              <CustomButton
                 buttonText={t('exit')}
+                buttonVariant="bigButton"
                 onPress={handleVisableDismiss}
               />
             </View>
@@ -197,6 +207,9 @@ const styles = StyleSheet.create({
     flex: 0.8,
     alignItems: 'center',
   },
+  formContainer: {
+    alignItems: 'center',
+  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -208,11 +221,11 @@ const styles = StyleSheet.create({
     opacity: 0.97,
     flex: 1,
     width: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   modalTitle: {
     maxWidth: '80%',
-    paddingVertical: 60
+    paddingVertical: 60,
   },
   modalText: {
     flex: 1,
@@ -229,7 +242,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textSpan: {
-    color: colors.lightBlue
+    color: colors.lightBlue,
   },
 });
 
