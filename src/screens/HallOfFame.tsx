@@ -1,7 +1,6 @@
 import React from 'react';
 import players from '../constants/FameDataJSON.json';
 import {View, StyleSheet, Image} from 'react-native';
-import dayjs from 'dayjs';
 import colors from '../constants/Colors';
 import fonts from '../constants/Fonts';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
@@ -59,21 +58,21 @@ function Halloffame() {
         <View style={styles.rankignContainer}>
           <RankingBox
             height={110}
-            text="3"
-            playerName="PlayerX"
-            playerTime={dayjs(FameDataArray[2].time).format('mm:ss:SSS')}
+            playerPosition="3"
+            playerName={FameDataArray[2].name}
+            playerTime={FameDataArray[2].time}
           />
           <RankingBox
             height={180}
-            text="1"
-            playerName="PlayerY"
-            playerTime={dayjs(FameDataArray[0].time).format('mm:ss:SSS')}
+            playerPosition="1"
+            playerName={FameDataArray[0].name}
+            playerTime={FameDataArray[0].time}
           />
           <RankingBox
             height={140}
-            text="2"
-            playerName="PlayerZ"
-            playerTime={dayjs(FameDataArray[1].time).format('mm:ss:SSS')}
+            playerPosition="2"
+            playerName={FameDataArray[1].name}
+            playerTime={FameDataArray[1].time}
           />
         </View>
         <View style={styles.buttonContainer}>

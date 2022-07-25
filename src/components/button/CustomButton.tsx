@@ -4,6 +4,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   ImageSourcePropType,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import Typography from '../../typography/Typography';
 
@@ -22,6 +24,33 @@ interface Props {
   isSelected?: boolean;
 }
 
+interface ButtonProps {
+  bigButton: {
+    buttonContainer: StyleProp<ViewStyle>;
+    buttonStyle: StyleProp<ViewStyle>;
+    textBoxStyle: StyleProp<ViewStyle>;
+    textVariant: string;
+  };
+  mediumButton: {
+    buttonContainer: StyleProp<ViewStyle>;
+    buttonStyle: StyleProp<ViewStyle>;
+    textBoxStyle: StyleProp<ViewStyle>;
+    textVariant: string;
+  };
+  smallButton: {
+    buttonContainer: StyleProp<ViewStyle>;
+    buttonStyle: StyleProp<ViewStyle>;
+    textBoxStyle: StyleProp<ViewStyle>;
+    textVariant: string;
+  };
+  tinyButton: {
+    buttonContainer: StyleProp<ViewStyle>;
+    buttonStyle: StyleProp<ViewStyle>;
+    textBoxStyle: StyleProp<ViewStyle>;
+    textVariant: string;
+  };
+}
+
 const CustomButton: React.FC<Props> = ({
   buttonVariant,
   buttonText,
@@ -30,33 +59,6 @@ const CustomButton: React.FC<Props> = ({
   imageSource,
   isSelected,
 }) => {
-  const ButtonStyles = {
-    bigButton: {
-      buttonContainer: styles.bigButtonContainer,
-      buttonStyle: styles.bigButton,
-      textBoxStyle: styles.bigTextBox,
-      textVariant: 'bigButtonText',
-    },
-    mediumButton: {
-      buttonContainer: styles.mediumButtonContainer,
-      buttonStyle: styles.mediumButton,
-      textBoxStyle: styles.mediumTextBox,
-      textVariant: 'mediumButtonText',
-    },
-    smallButton: {
-      buttonContainer: styles.smallButtonContainer,
-      buttonStyle: styles.smallButton,
-      textBoxStyle: styles.smallTextBox,
-      textVariant: 'smallButtonText',
-    },
-    tinyButton: {
-      buttonContainer: styles.tinyButtonContainer,
-      buttonStyle: styles.tinyButton,
-      textBoxStyle: styles.tinyTextBox,
-      textVariant: 'smallButtonText',
-    },
-  };
-
   return (
     <View style={[styles.button, styles[buttonVariant]]}>
       <View style={ButtonStyles[buttonVariant].buttonContainer}>
@@ -78,7 +80,7 @@ const CustomButton: React.FC<Props> = ({
                   ? 'mediumIconBox'
                   : 'smallIconBox'
               }
-              isSelected={isSelected}
+              color={isSelected ? colors.white : colors.darkBlue}
             />
           ) : null}
           {imageSource ? (
@@ -174,5 +176,32 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkBlue,
   },
 });
+
+const ButtonStyles: ButtonProps = {
+  bigButton: {
+    buttonContainer: styles.bigButtonContainer,
+    buttonStyle: styles.bigButton,
+    textBoxStyle: styles.bigTextBox,
+    textVariant: 'bigButtonText',
+  },
+  mediumButton: {
+    buttonContainer: styles.mediumButtonContainer,
+    buttonStyle: styles.mediumButton,
+    textBoxStyle: styles.mediumTextBox,
+    textVariant: 'mediumButtonText',
+  },
+  smallButton: {
+    buttonContainer: styles.smallButtonContainer,
+    buttonStyle: styles.smallButton,
+    textBoxStyle: styles.smallTextBox,
+    textVariant: 'smallButtonText',
+  },
+  tinyButton: {
+    buttonContainer: styles.tinyButtonContainer,
+    buttonStyle: styles.tinyButton,
+    textBoxStyle: styles.tinyTextBox,
+    textVariant: 'smallButtonText',
+  },
+};
 
 export default CustomButton;

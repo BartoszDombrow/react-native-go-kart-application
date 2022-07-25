@@ -48,19 +48,19 @@ const MainView = () => {
             buttonText={t('start')}
             onPress={() => navigationMenu.navigate('Start')}
             buttonVariant="mediumButton"
-            iconName="start"
+            iconName="play"
           />
           <CustomButton
             buttonText={t('hallOfFame')}
             onPress={() => navigationMenu.navigate('HallOfFame')}
             buttonVariant="mediumButton"
-            iconName="ranking"
+            iconName="trophy"
           />
           <CustomButton
             buttonText={t('statistics')}
             onPress={() => navigationAuth.push('MainView')}
             buttonVariant="mediumButton"
-            iconName="statistics"
+            iconName="stats-chart"
           />
         </View>
       </View>
