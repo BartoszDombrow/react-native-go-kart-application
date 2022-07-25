@@ -9,10 +9,8 @@ import {
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import Typography from '../typography/Typography';
-
-const colors = new Colors();
 
 export type Props = {
   buttonText: string;

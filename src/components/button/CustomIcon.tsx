@@ -2,8 +2,7 @@ import React from 'react';
 import {View, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import Colors from '../../constants/Colors';
-const colors = new Colors();
+import colors from '../../constants/Colors';
 
 type Variant = 'bigIconBox' | 'mediumIconBox' | 'smallIconBox';
 

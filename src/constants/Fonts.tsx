@@ -1,6 +1,6 @@
-class Fonts {
-  primaryFont = 'TitanOne-Regular';
-  secondaryFont = 'RobotoMono-Regular';
-}
+const fonts = {
+  primaryFont: 'TitanOne-Regular',
+  secondaryFont: 'RobotoMono-Regular',
+};
 
-export default Fonts;
+export default fonts;

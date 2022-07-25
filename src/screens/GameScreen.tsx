@@ -4,9 +4,7 @@ import SubmitButton from '../components/SubmitButton';
 import {GameStackParams} from '../navigation/GameNav';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import Colors from '../constants/Colors';
-
-const colors = new Colors();
+import colors from '../constants/Colors';
 
 function GameScreen() {
   const navigationGame =

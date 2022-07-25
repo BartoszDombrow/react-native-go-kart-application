@@ -3,14 +3,12 @@ import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import SubmitButton from '../components/SubmitButton';
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
 import LanguageSelector from '../components/language/LanguageSelector';
-
-const colors = new Colors();
 
 const Language = () => {
   const navigation =

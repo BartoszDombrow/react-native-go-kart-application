@@ -3,11 +3,8 @@ import {TextInput, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
-
-const colors = new Colors();
-const fonts = new Fonts();
+import colors from '../constants/Colors';
+import fonts from '../constants/Fonts';
 
 export type Props = {
   onChangeText: (text: string) => void;

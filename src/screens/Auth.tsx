@@ -11,12 +11,10 @@ import {
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import AuthForm from '../components/auth/AuthForm';
 import SubmitButton from '../components/SubmitButton';
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Typography from '../typography/Typography';
 import LanguageSelector from '../components/language/LanguageSelector';
-
-const colors = new Colors();
 
 const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);

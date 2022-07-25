@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, TextStyle, TextProps} from 'react-native';
-import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
+import colors from '../constants/Colors';
+import fonts from '../constants/Fonts';
 
 type Variant =
   | 'bigTitle'
@@ -23,9 +23,6 @@ interface Props extends TextProps {
 const Typography: React.FC<Props> = ({variant = 'basicText', ...props}) => (
   <Text {...props} style={[styles[variant], props.style]} />
 );
-
-const fonts = new Fonts();
-const colors = new Colors();
 
 const styles = StyleSheet.create<Record<Variant, TextStyle>>({
   bigTitle: {
