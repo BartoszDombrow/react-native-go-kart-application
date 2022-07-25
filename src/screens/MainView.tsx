@@ -46,8 +46,8 @@ const MainView = () => {
         </View>
         <View style={styles.contentContainer}>
           <MainButton
-            buttonText={t('start')}
-            onPress={() => navigationAuth.push('MainView')}
+            buttonText={t('Start')}
+            onPress={() => navigationMenu.navigate('Start')}
             iconName="start"
           />
           <MainButton

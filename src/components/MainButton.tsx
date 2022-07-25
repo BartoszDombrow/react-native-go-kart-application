@@ -105,9 +105,18 @@ const iconsArray = [
   },
 ];
 
-const MainButton: React.FC<Props> = ({buttonText, onPress, iconName, isLanguagePicked}) => {
+const MainButton: React.FC<Props> = ({
+  buttonText,
+  onPress,
+  iconName,
+  isLanguagePicked,
+}) => {
   return (
-    <Shadow useArt style={isLanguagePicked ? styles.buttonShadowPicked : styles.buttonShadow}>
+    <Shadow
+      useArt
+      style={
+        isLanguagePicked ? styles.buttonShadowPicked : styles.buttonShadow
+      }>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           activeOpacity={0.75}
@@ -117,7 +126,11 @@ const MainButton: React.FC<Props> = ({buttonText, onPress, iconName, isLanguageP
             {iconsArray.find(icon => icon.name === iconName)?.icon}
           </View>
           <View style={styles.textBox}>
-            <Typography variant='mediumButtonText' style={isLanguagePicked ? null : styles.buttonText}>{buttonText}</Typography>
+            <Typography
+              variant="mediumButtonText"
+              style={isLanguagePicked ? null : styles.buttonText}>
+              {buttonText}
+            </Typography>
           </View>
         </TouchableOpacity>
       </View>
@@ -187,7 +200,7 @@ const styles = StyleSheet.create({
   },
   buttonTextPicked: {
     color: colors.white,
-  }
+  },
 });
 
 export default MainButton;
