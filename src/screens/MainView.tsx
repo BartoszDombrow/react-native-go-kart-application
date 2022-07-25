@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import MainButton from '../components/MainButton';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -12,9 +10,10 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
 
 const colors = new Colors();
-const fonts = new Fonts();
 
 import Settings from '../components/Settings';
+import Typography from '../typography/Typography';
+import CustomButton from '../components/button/CustomButton';
 
 const MainView = () => {
   const navigationAuth =
@@ -41,23 +40,28 @@ const MainView = () => {
             </Shadow>
           </View>
           <View style={styles.titleContainer}>
-            <Text style={styles.headerText}>{t('menu')}</Text>
+            <Typography variant="bigTitle" style={styles.headerText}>
+              {t('menu')}
+            </Typography>
           </View>
         </View>
         <View style={styles.contentContainer}>
-          <MainButton
-            buttonText={t('Start')}
-            onPress={() => navigationMenu.navigate('Start')}
+          <CustomButton
+            buttonText={t('start')}
+            onPress={() => navigationAuth.push('MainView')}
+            buttonVariant="mediumButton"
             iconName="start"
           />
-          <MainButton
+          <CustomButton
             buttonText={t('hallOfFame')}
             onPress={() => navigationMenu.navigate('HallOfFame')}
+            buttonVariant="mediumButton"
             iconName="ranking"
           />
-          <MainButton
+          <CustomButton
             buttonText={t('statistics')}
             onPress={() => navigationAuth.push('MainView')}
+            buttonVariant="mediumButton"
             iconName="statistics"
           />
         </View>
@@ -103,12 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   headerText: {
-    fontSize: 64,
-    fontFamily: fonts.primaryFont,
     color: colors.darkBlue,
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
-    textShadowOffset: {width: 2, height: 3},
-    textShadowRadius: 5,
   },
 });
 

@@ -41,12 +41,17 @@ const FormInput: React.FC<Props> = ({
           placeholderTextColor={colors.darkBlue}
           secureTextEntry={secureTextEntry && showPassword}
         />
-        {secureTextEntry ? 
-          <TouchableOpacity style={{width: 30, height: 30, position: 'absolute', right: 15}} onPress={() => setShowPassword(!showPassword)}>
-            <Icon name={showPassword ? "lock" : "unlock"} size={30} color={colors.darkBlue}/>
-          </TouchableOpacity> 
-        : null
-        }
+        {secureTextEntry ? (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => setShowPassword(!showPassword)}>
+            <Icon
+              name={showPassword ? 'lock' : 'unlock'}
+              size={30}
+              color={colors.darkBlue}
+            />
+          </TouchableOpacity>
+        ) : null}
       </Shadow>
       {formikTouched && formikErrors && (
         <Text style={styles.errorMessage}>{formikErrors}</Text>
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginVertical: 10,
     flexDirection: 'row',
-    paddingHorizontal: 55
+    paddingHorizontal: 55,
   },
   textInput: {
     width: '100%',
@@ -87,6 +92,12 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 12,
     fontFamily: fonts.secondaryFont,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    position: 'absolute',
+    right: 15,
   },
 });
 

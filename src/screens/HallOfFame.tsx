@@ -4,7 +4,6 @@ import {View, StyleSheet, Image} from 'react-native';
 import dayjs from 'dayjs';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
-import SubmitButton from '../components/SubmitButton';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -12,6 +11,7 @@ import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
 import RankingBox from '../components/halloffame/RankingBox';
 import Typography from '../typography/Typography';
+import CustomButton from '../components/button/CustomButton';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -54,7 +54,9 @@ function Halloffame() {
           </Shadow>
         </View>
 
-        <Typography variant="smallTitle">{t('hallOfFame')}</Typography>
+        <Typography style={styles.title} variant="smallTitle">
+          {t('hallOfFame')}
+        </Typography>
       </View>
       <View style={styles.ranking}>
         <View style={styles.rankignContainer}>
@@ -77,10 +79,17 @@ function Halloffame() {
             playerTime={dayjs(FameDataArray[1].time).format('mm:ss:SSS')}
           />
         </View>
-        <SubmitButton
-          buttonText={t('exit')}
-          onPress={() => navigation.navigate('Menu')}
-        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <CustomButton
+              buttonText={t('exit').toUpperCase()}
+              onPress={() => {
+                navigation.navigate('Menu');
+              }}
+              buttonVariant="bigButton"
+            />
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -141,12 +150,22 @@ const styles = StyleSheet.create({
   },
   ranking: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   rankignContainer: {
     flexDirection: 'row',
     flex: 0.6,
+    justifyContent: 'space-evenly',
+  },
+  buttonContainer: {
+    flex: 0.4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    width: 300,
+    height: 80,
   },
 });
 

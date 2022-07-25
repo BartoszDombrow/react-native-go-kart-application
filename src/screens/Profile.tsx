@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Alert, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import FormInput from '../components/FormInput';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import SubmitButton from '../components/SubmitButton';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useNavigation} from '@react-navigation/native';
@@ -14,6 +12,7 @@ import ChangePasswordModal from '../components/ChangePasswordModal';
 import DeleteAccountModal from '../components/DeleteAccountModal';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
+import CustomButton from '../components/button/CustomButton';
 
 const colors = new Colors();
 const fonts = new Fonts();
@@ -36,7 +35,7 @@ const Profile = () => {
         .max(15, 'Must be 15 characters or less')
         .required('This field is required'),
       email: Yup.string()
-        .max(20, 'Must be 20 characters or less')
+        .email('Invalid email address')
         .required('This field is required'),
     }),
     onSubmit: values => {
@@ -63,56 +62,57 @@ const Profile = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Typography variant='mediumTitle'>{t('profile')}</Typography>
+        <Typography variant="mediumTitle" style={styles.title}>
+          {t('profile')}
+        </Typography>
       </View>
       <View style={styles.content}>
-        <FormInput
-          onChangeText={formik.handleChange('username')}
-          onBlur={formik.handleBlur('username')}
-          value={formik.values.username}
-          placeholder={t('username')}
-          formikTouched={formik.touched.username}
-          formikErrors={formik.errors.username}
-        />
-        <FormInput
-          onChangeText={formik.handleChange('email')}
-          onBlur={formik.handleBlur('email')}
-          value={formik.values.email}
-          placeholder={t('email')}
-          formikTouched={formik.touched.email}
-          formikErrors={formik.errors.email}
-          secureTextEntry={true}
-        />
-        <SubmitButton
-          buttonText={t('saveChanges')}
-          onPress={formik.handleSubmit}
-        />
+        <View style={styles.formContainer}>
+          <FormInput
+            onChangeText={formik.handleChange('username')}
+            onBlur={formik.handleBlur('username')}
+            value={formik.values.username}
+            placeholder={t('username')}
+            formikTouched={formik.touched.username}
+            formikErrors={formik.errors.username}
+          />
+          <FormInput
+            onChangeText={formik.handleChange('email')}
+            onBlur={formik.handleBlur('email')}
+            value={formik.values.email}
+            placeholder={t('email')}
+            formikTouched={formik.touched.email}
+            formikErrors={formik.errors.email}
+          />
+        </View>
         <View style={styles.wrapper}>
-          <Shadow useArt style={styles.buttonShadow}>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                onPress={deleteAccountHandler}
-                activeOpacity={0.75}
-                style={styles.button}>
-                <Text style={styles.buttonText}>{t('deleteAccount')}</Text>
-              </TouchableOpacity>
-            </View>
-          </Shadow>
-          <Shadow useArt style={styles.buttonShadow}>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                onPress={changePasswordHandler}
-                activeOpacity={0.75}
-                style={styles.button}>
-                <Text style={styles.buttonText}>{t('changePassword')}</Text>
-              </TouchableOpacity>
-            </View>
-          </Shadow>
+          <View style={styles.button}>
+            <CustomButton
+              buttonText={t('saveChanges')}
+              buttonVariant="smallButton"
+              onPress={formik.handleSubmit}
+            />
+          </View>
+          <View style={styles.button}>
+            <CustomButton
+              buttonText={t('deleteAccount')}
+              buttonVariant="smallButton"
+              onPress={deleteAccountHandler}
+            />
+          </View>
+          <View style={styles.button}>
+            <CustomButton
+              buttonText={t('changePassword')}
+              buttonVariant="smallButton"
+              onPress={changePasswordHandler}
+            />
+          </View>
         </View>
       </View>
       <View style={styles.returnButton}>
-        <SubmitButton
-          buttonText={t('return')}
+        <CustomButton
+          buttonText={t('return').toUpperCase()}
+          buttonVariant="bigButton"
           onPress={() => navigation.navigate('Menu')}
         />
       </View>
@@ -139,23 +139,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  title: {
+    padding: 16,
+  },
   content: {
-    flex: 1,
+    flex: 0.6,
+    alignItems: 'center',
+  },
+  formContainer: {
+    paddingTop: 20,
+    paddingBottom: 10,
     alignItems: 'center',
   },
   wrapper: {
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 50,
+    justifyContent: 'space-evenly',
   },
   button: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
+    paddingVertical: 10,
   },
   buttonShadow: {
     alignItems: 'center',
@@ -185,6 +186,8 @@ const styles = StyleSheet.create({
   },
   returnButton: {
     flex: 0.2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

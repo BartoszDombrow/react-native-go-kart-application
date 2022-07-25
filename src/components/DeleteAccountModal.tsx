@@ -1,13 +1,11 @@
 import React from 'react';
-import {View, Modal, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Modal, StyleSheet} from 'react-native';
 import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
+import CustomButton from './button/CustomButton';
 
 const colors = new Colors();
-const fonts = new Fonts();
 
 interface Props {
   deleteAccountVisible: boolean;
@@ -28,28 +26,20 @@ const DeleteAccountModal: React.FC<Props> = ({
       visible={deleteAccountVisible}>
       <View style={styles.container}>
         <View style={styles.modal}>
-          <Typography variant='modalText' style={styles.text}>{t('deleteAccountText')}</Typography>
+          <Typography variant="modalText" style={styles.text}>
+            {t('deleteAccountText')}
+          </Typography>
           <View style={styles.buttonWrapper}>
-            <Shadow useArt style={styles.buttonShadow}>
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  onPress={deleteAccountHandler}
-                  activeOpacity={0.75}
-                  style={styles.button}>
-                  <Typography variant='smallButtonText' style={styles.buttonText}>{t('yes')}</Typography>
-                </TouchableOpacity>
-              </View>
-            </Shadow>
-            <Shadow useArt style={styles.buttonShadow}>
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  onPress={deleteAccountHandler}
-                  activeOpacity={0.75}
-                  style={styles.button}>
-                  <Typography variant='smallButtonText' style={styles.buttonText}>{t('no')}</Typography>
-                </TouchableOpacity>
-              </View>
-            </Shadow>
+            <CustomButton
+              buttonText={t('yes')}
+              buttonVariant="tinyButton"
+              onPress={deleteAccountHandler}
+            />
+            <CustomButton
+              buttonText={t('no')}
+              buttonVariant="tinyButton"
+              onPress={deleteAccountHandler}
+            />
           </View>
         </View>
       </View>
@@ -74,7 +64,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   text: {
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   buttonWrapper: {
     flexDirection: 'row',

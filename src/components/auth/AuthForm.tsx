@@ -7,13 +7,11 @@ import SignUp from './SignUpForm';
 import Swiper from 'react-native-swiper';
 
 import Colors from '../../constants/Colors';
-import Fonts from '../../constants/Fonts';
 
 import {useTranslation} from 'react-i18next';
 import Typography from '../../typography/Typography';
 
 const colors = new Colors();
-const fonts = new Fonts();
 
 const AuthForm = () => {
   const [scrollPosition, setScrollPosition] = useState(0);

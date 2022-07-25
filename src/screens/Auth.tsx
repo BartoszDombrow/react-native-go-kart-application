@@ -13,13 +13,11 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import AuthForm from '../components/auth/AuthForm';
 import SubmitButton from '../components/SubmitButton';
 import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MainButton from '../components/MainButton';
 import Typography from '../typography/Typography';
+import CustomButton from '../components/button/CustomButton';
 
 const colors = new Colors();
-const fonts = new Fonts();
 
 const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);
@@ -41,13 +39,7 @@ const Auth = () => {
             </Shadow>
           </View>
           <View style={styles.titleContainer}>
-            <View
-              style={{
-                width: '100%',
-                flex: 0.2,
-                alignItems: 'flex-end',
-                justifyContent: 'center',
-              }}>
+            <View style={styles.headerLanguageContainer}>
               <Shadow useArt style={styles.languageShadow}>
                 <TouchableOpacity
                   style={styles.languageSettingsButton}
@@ -56,13 +48,7 @@ const Auth = () => {
                 </TouchableOpacity>
               </Shadow>
             </View>
-            <View
-              style={{
-                width: '100%',
-                flex: 0.8,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
+            <View style={styles.headerTitleContainer}>
               <Typography variant="smallTitle" style={styles.titleText}>
                 Track masters
               </Typography>
@@ -77,7 +63,7 @@ const Auth = () => {
         animationType="slide"
         visible={isLanguagesVisible}
         onRequestClose={() => setIsLanguagesVisible(!isLanguagesVisible)}>
-        <View style={{flex: 1, backgroundColor: colors.lightBlue}}>
+        <View style={styles.modalContainer}>
           <View style={styles.languageTitleContainer}>
             <Typography variant="mediumTitle" style={styles.languageTitle}>
               {t('language')}
@@ -85,53 +71,57 @@ const Auth = () => {
           </View>
           <ScrollView style={styles.languageScrollView}>
             <View style={styles.languageButton}>
-              <MainButton
+              <CustomButton
                 buttonText="English"
-                iconName="flag_en"
+                buttonVariant="mediumButton"
+                imageSource={require('../assets/images/flag_en.png')}
                 onPress={() => {
                   setPickedLanguage('en');
                   i18n.changeLanguage('en');
                 }}
-                isLanguagePicked={pickedLanguage === 'en'}
+                isSelected={pickedLanguage === 'en'}
               />
             </View>
             <View style={styles.languageButton}>
-              <MainButton
+              <CustomButton
                 buttonText="Polski"
-                iconName="flag_pl"
+                buttonVariant="mediumButton"
+                imageSource={require('../assets/images/flag_pl.png')}
                 onPress={() => {
                   setPickedLanguage('pl');
                   i18n.changeLanguage('pl');
                 }}
-                isLanguagePicked={pickedLanguage === 'pl'}
+                isSelected={pickedLanguage === 'pl'}
               />
             </View>
             <View style={styles.languageButton}>
-              <MainButton
+              <CustomButton
                 buttonText="Deutsch"
-                iconName="flag_de"
+                buttonVariant="mediumButton"
+                imageSource={require('../assets/images/flag_de.png')}
                 onPress={() => {
                   setPickedLanguage('de');
                   i18n.changeLanguage('de');
                 }}
-                isLanguagePicked={pickedLanguage === 'de'}
+                isSelected={pickedLanguage === 'de'}
               />
             </View>
             <View style={styles.languageButton}>
-              <MainButton
-                buttonText="Українська мова"
-                iconName="flag_uk"
+              <CustomButton
+                buttonText="Українська"
+                buttonVariant="mediumButton"
+                imageSource={require('../assets/images/flag_uk.png')}
                 onPress={() => {
                   setPickedLanguage('uk');
                   i18n.changeLanguage('uk');
                 }}
-                isLanguagePicked={pickedLanguage === 'uk'}
+                isSelected={pickedLanguage === 'uk'}
               />
             </View>
           </ScrollView>
           <View style={styles.languageExit}>
             <SubmitButton
-              buttonText={t('exit')}
+              buttonText={t('exit').toUpperCase()}
               onPress={() => setIsLanguagesVisible(false)}
             />
           </View>
@@ -150,42 +140,16 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: '100%',
-    flex: 0.3,
+    flex: 0.4,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    paddingTop: 32,
+    paddingVertical: 20,
   },
   imageContainer: {
-    width: '45%',
-    height: '100%',
+    flex: 0.45,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  imageBackgorund: {
-    width: 160,
-    height: 160,
-    backgroundColor: colors.lightBlue,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    transform: [{rotate: '-45deg'}],
-  },
-  innerShadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOffset: {width: 0, height: 8},
-    shadowOpacity: 0.35,
-    shadowColor: '#000000',
-    shadowRadius: 10,
-    borderRadius: 20,
-    backgroundColor: colors.lightBlue,
-    width: 175,
-    height: 175,
   },
   dropShadow: {
     alignItems: 'center',
@@ -199,11 +163,36 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 5},
   },
-  titleContainer: {
-    width: '45%',
-    height: '100%',
+  innerShadow: {
     alignItems: 'center',
     justifyContent: 'center',
+    shadowOffset: {width: 0, height: 8},
+    shadowOpacity: 0.35,
+    shadowColor: '#000000',
+    shadowRadius: 10,
+    borderRadius: 20,
+    backgroundColor: colors.lightBlue,
+    width: 175,
+    height: 175,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    transform: [{rotate: '-45deg'}],
+  },
+  titleContainer: {
+    flex: 0.45,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  headerLanguageContainer: {
+    width: '100%',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingBottom: 20,
+  },
+  headerTitleContainer: {
+    paddingBottom: 20,
   },
   languageShadow: {
     width: 46,
@@ -230,6 +219,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: colors.lightBlue,
+  },
   languageTitleContainer: {
     flex: 0.3,
     width: '100%',
@@ -238,6 +231,7 @@ const styles = StyleSheet.create({
   },
   languageTitle: {
     color: colors.white,
+    padding: 20,
   },
   languageScrollView: {
     flex: 0.4,

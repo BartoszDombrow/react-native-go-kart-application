@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 import Colors from '../constants/Colors';
@@ -22,7 +22,7 @@ const SubmitButton: React.FC<Props> = ({buttonText, onPress}) => {
           activeOpacity={0.75}
           style={styles.button}
           onPress={onPress}>
-          <Typography variant='bigButtonText'>{buttonText}</Typography>
+          <Typography variant="bigButtonText">{buttonText}</Typography>
         </TouchableOpacity>
       </View>
     </Shadow>

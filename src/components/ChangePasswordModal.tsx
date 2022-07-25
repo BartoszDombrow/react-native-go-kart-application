@@ -1,15 +1,13 @@
 import React from 'react';
 import {View, Modal, StyleSheet, Alert} from 'react-native';
-import SubmitButton from './SubmitButton';
 import Colors from '../constants/Colors';
-import Fonts from '../constants/Fonts';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import FormInput from './FormInput';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
+import CustomButton from './button/CustomButton';
 
-const fonts = new Fonts();
 const colors = new Colors();
 
 interface Props {
@@ -56,7 +54,9 @@ const ChangePasswordModal: React.FC<Props> = ({
       visible={changePasswordVisible}>
       <View style={styles.mainContainer}>
         <View style={styles.header}>
-          <Typography variant='smallTitle' style={styles.headerText}>{t('changePassword')}</Typography>
+          <Typography variant="mediumTitle" style={styles.headerText}>
+            {t('changePassword')}
+          </Typography>
         </View>
         <View style={styles.formWrapper}>
           <FormInput
@@ -86,14 +86,18 @@ const ChangePasswordModal: React.FC<Props> = ({
             formikErrors={formik.errors.newPassword}
             secureTextEntry={true}
           />
-          <SubmitButton
+        </View>
+        <View style={styles.saveButton}>
+          <CustomButton
             buttonText={t('saveChanges')}
+            buttonVariant="smallButton"
             onPress={formik.handleSubmit}
           />
         </View>
         <View style={styles.buttonWrapper}>
-          <SubmitButton
-            buttonText={t('exit')}
+          <CustomButton
+            buttonText={t('exit').toUpperCase()}
+            buttonVariant="bigButton"
             onPress={changePasswordHandler}
           />
         </View>
@@ -109,20 +113,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    flex: 0.3,
-    width: '100%',
+    flex: 0.25,
     justifyContent: 'center',
     alignItems: 'center',
   },
   headerText: {
-    paddingVertical: 40,
+    padding: 16,
   },
   formWrapper: {
-    flex: 1,
+    flex: 0.4,
     paddingTop: 70,
+    alignItems: 'center',
+  },
+  saveButton: {
+    flex: 0.15,
+    paddingTop: 10,
   },
   buttonWrapper: {
     flex: 0.2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

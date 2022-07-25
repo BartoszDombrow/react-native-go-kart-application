@@ -1,16 +1,15 @@
 import React from 'react';
 import {View, Modal, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import SubmitButton from './SubmitButton';
 import Colors from '../constants/Colors';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigation/StackNav';
 import {MenuStackParams} from '../navigation/MenuNav';
-import MainButton from './MainButton';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
+import CustomButton from './button/CustomButton';
 
 const colors = new Colors();
 
@@ -43,10 +42,13 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           </Shadow>
         </View>
         <View style={styles.buttonsContainer}>
-          <Typography variant='mediumTitle' style={styles.title}>{t('settings')}</Typography>
+          <Typography variant="mediumTitle" style={styles.title}>
+            {t('settings')}
+          </Typography>
           <View style={styles.buttonBox}>
-            <MainButton
+            <CustomButton
               buttonText={t('profile')}
+              buttonVariant="mediumButton"
               onPress={() => {
                 settingsNavigation.navigate('Profile');
               }}
@@ -54,15 +56,17 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
             />
           </View>
           <View style={styles.buttonBox}>
-            <MainButton
+            <CustomButton
               buttonText={t('volume')}
+              buttonVariant="mediumButton"
               onPress={() => {}}
               iconName="volume"
             />
           </View>
           <View style={styles.buttonBox}>
-            <MainButton
+            <CustomButton
               buttonText={t('language')}
+              buttonVariant="mediumButton"
               onPress={() => {
                 settingsNavigation.navigate('Language');
                 settingsHandler(); // change!!!
@@ -72,8 +76,9 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
           </View>
         </View>
         <View style={styles.submitButtonContainer}>
-          <SubmitButton
-            buttonText={t('logout')}
+          <CustomButton
+            buttonText={t('logout').toUpperCase()}
+            buttonVariant="bigButton"
             onPress={() => {
               navigation.navigate('Auth');
             }}
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
     flex: 0.9,
   },
   title: {
-    paddingVertical: 40
+    paddingVertical: 40,
   },
   buttonBox: {
     paddingVertical: 20,
