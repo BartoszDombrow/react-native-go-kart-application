@@ -1,5 +1,5 @@
 const fonts = {
-  primaryFont: 'TitanOne-Regular',
+  primaryFont: 'TitanOne',
   secondaryFont: 'RobotoMono-Regular',
 };
 
