@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Alert} from 'react-native';
+import {View, StyleSheet, Alert, Dimensions} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
@@ -74,9 +74,9 @@ const LoginForm = () => {
 
 const styles = StyleSheet.create({
   formBox: {
-    flex: 1,
     alignItems: 'center',
     paddingTop: 30,
+    width: Dimensions.get('window').width,
   },
   formView: {
     height: 240,
