@@ -1,13 +1,12 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import {IconProps} from 'react-native-vector-icons/Icon';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 type Variant = 'bigIconBox' | 'mediumIconBox' | 'smallIconBox';
 
-interface Props {
+interface Props extends IconProps {
   variant: Variant;
-  iconName: string;
-  color?: string;
 }
 
 const IconSize: Record<Variant, number> = {
@@ -16,10 +15,10 @@ const IconSize: Record<Variant, number> = {
   smallIconBox: 28,
 };
 
-const CustomIcon: React.FC<Props> = ({variant, iconName, color}) => {
+const CustomIcon: React.FC<Props> = ({variant, ...iconProps}) => {
   return (
     <View style={styles.icon}>
-      <Icon name={iconName} color={color} size={IconSize[variant]} />
+      <Icon size={IconSize[variant]} {...iconProps} />
     </View>
   );
 };

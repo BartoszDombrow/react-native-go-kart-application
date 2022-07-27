@@ -25,7 +25,7 @@ const Place: React.FC<Props> = ({
         {playerName}
       </Typography>
       <Typography variant="span" style={styles.playerTime}>
-        {dayjs(playerTime).format('mm:ss:SSS')}
+        {dayjs().startOf('day').millisecond(playerTime).format('mm:ss:SSS')}
       </Typography>
       <Shadow useArt style={{height, width: 90, ...styles.placeShadowStyle}}>
         <View style={styles.placeStyle}>

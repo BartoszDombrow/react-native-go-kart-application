@@ -24,31 +24,11 @@ interface Props {
   isSelected?: boolean;
 }
 
-interface ButtonProps {
-  bigButton: {
-    buttonContainer: StyleProp<ViewStyle>;
-    buttonStyle: StyleProp<ViewStyle>;
-    textBoxStyle: StyleProp<ViewStyle>;
-    textVariant: string;
-  };
-  mediumButton: {
-    buttonContainer: StyleProp<ViewStyle>;
-    buttonStyle: StyleProp<ViewStyle>;
-    textBoxStyle: StyleProp<ViewStyle>;
-    textVariant: string;
-  };
-  smallButton: {
-    buttonContainer: StyleProp<ViewStyle>;
-    buttonStyle: StyleProp<ViewStyle>;
-    textBoxStyle: StyleProp<ViewStyle>;
-    textVariant: string;
-  };
-  tinyButton: {
-    buttonContainer: StyleProp<ViewStyle>;
-    buttonStyle: StyleProp<ViewStyle>;
-    textBoxStyle: StyleProp<ViewStyle>;
-    textVariant: string;
-  };
+interface ButtonVariantConfig {
+  buttonContainer: StyleProp<ViewStyle>;
+  buttonStyle: StyleProp<ViewStyle>;
+  textBoxStyle: StyleProp<ViewStyle>;
+  textVariant: string;
 }
 
 const CustomButton: React.FC<Props> = ({
@@ -61,18 +41,18 @@ const CustomButton: React.FC<Props> = ({
 }) => {
   return (
     <View style={[styles.button, styles[buttonVariant]]}>
-      <View style={ButtonStyles[buttonVariant].buttonContainer}>
+      <View style={variantsConfig[buttonVariant].buttonContainer}>
         <TouchableOpacity
           activeOpacity={0.75}
           style={[
             {backgroundColor: isSelected ? colors.darkBlue : colors.white},
-            ButtonStyles[buttonVariant].buttonStyle,
+            variantsConfig[buttonVariant].buttonStyle,
             styles.button,
           ]}
           onPress={onPress}>
           {iconName ? (
             <CustomIcon
-              iconName={iconName}
+              name={iconName}
               variant={
                 buttonVariant === 'bigButton'
                   ? 'bigIconBox'
@@ -95,7 +75,7 @@ const CustomButton: React.FC<Props> = ({
               }
             />
           ) : null}
-          <View style={ButtonStyles[buttonVariant].textBoxStyle}>
+          <View style={variantsConfig[buttonVariant].textBoxStyle}>
             <Typography
               variant={
                 buttonVariant === 'bigButton'
@@ -177,7 +157,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ButtonStyles: ButtonProps = {
+const variantsConfig: Record<Variant, ButtonVariantConfig> = {
   bigButton: {
     buttonContainer: styles.bigButtonContainer,
     buttonStyle: styles.bigButton,
