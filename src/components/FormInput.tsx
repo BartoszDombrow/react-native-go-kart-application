@@ -79,9 +79,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderRadius: 20,
     backgroundColor: 'transparent',
-    fontFamily: fonts.secondaryFont,
+    fontFamily: fonts.secondaryFontBold,
     fontSize: 18,
-    fontWeight: 'bold',
     color: colors.darkBlue,
   },
   errorMessage: {
