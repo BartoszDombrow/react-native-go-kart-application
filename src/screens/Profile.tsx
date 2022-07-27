@@ -20,6 +20,8 @@ interface FormValue {
 }
 
 const Profile = () => {
+  const {t, i18n} = useTranslation();
+
   const formik = useFormik<FormValue>({
     initialValues: {
       username: '',
@@ -29,11 +31,12 @@ const Profile = () => {
     validateOnBlur: false,
     validationSchema: Yup.object({
       username: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('This field is required'),
+        .min(6, i18n.t('yupValidation.minLength', {length: 6}))
+        .max(15, i18n.t('yupValidation.maxLength', {length: 15}))
+        .required(t('yupValidation.requiredField')),
       email: Yup.string()
-        .email('Invalid email address')
-        .required('This field is required'),
+        .email(t('yupValidation.invalidEmail'))
+        .required(t('yupValidation.requiredField')),
     }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
@@ -53,8 +56,6 @@ const Profile = () => {
   const changePasswordHandler = () => {
     setchangePasswordVisible(!changePasswordVisible);
   };
-
-  const {t} = useTranslation();
 
   return (
     <View style={styles.container}>

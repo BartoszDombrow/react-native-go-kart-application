@@ -10,7 +10,7 @@ import {RootStackParams} from '../../navigation/StackNav';
 import CustomButton from '../button/CustomButton';
 
 interface FormValue {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -18,20 +18,20 @@ const LoginForm = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
+  const {t} = useTranslation();
+
   const formik = useFormik<FormValue>({
     initialValues: {
-      username: '',
+      email: '',
       password: '',
     },
     validateOnChange: false,
     validateOnBlur: false,
     validationSchema: Yup.object({
-      username: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('This field is required'),
-      password: Yup.string()
-        .max(20, 'Must be 20 characters or less')
-        .required('This field is required'),
+      email: Yup.string()
+        .email(t('yupValidation.invalidEmail'))
+        .required(t('yupValidation.requiredField')),
+      password: Yup.string().required(t('yupValidation.requiredField')),
     }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
@@ -40,18 +40,16 @@ const LoginForm = () => {
     },
   });
 
-  const {t} = useTranslation();
-
   return (
     <View style={styles.formBox}>
       <View style={styles.inputContainer}>
         <FormInput
-          onChangeText={formik.handleChange('username')}
-          onBlur={formik.handleBlur('username')}
-          value={formik.values.username}
-          placeholder={t('username')}
-          formikTouched={formik.touched.username}
-          formikErrors={formik.errors.username}
+          onChangeText={formik.handleChange('email')}
+          onBlur={formik.handleBlur('email')}
+          value={formik.values.email}
+          placeholder={t('email')}
+          formikTouched={formik.touched.email}
+          formikErrors={formik.errors.email}
         />
         <FormInput
           onChangeText={formik.handleChange('password')}

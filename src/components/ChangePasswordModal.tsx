@@ -22,6 +22,8 @@ const ChangePasswordModal: React.FC<Props> = ({
   changePasswordVisible,
   changePasswordHandler,
 }) => {
+  const {t} = useTranslation();
+
   const formik = useFormik<FormValue>({
     initialValues: {
       password: '',
@@ -31,18 +33,22 @@ const ChangePasswordModal: React.FC<Props> = ({
     validateOnBlur: false,
     validationSchema: Yup.object({
       password: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('This field is required'),
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+          t('yupValidation.invalidPassword'),
+        )
+        .required(t('yupValidation.requiredField')),
       newPassword: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('This field is required'),
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+          t('yupValidation.invalidPassword'),
+        )
+        .required(t('yupValidation.requiredField')),
     }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
     },
   });
-
-  const {t} = useTranslation();
 
   return (
     <Modal

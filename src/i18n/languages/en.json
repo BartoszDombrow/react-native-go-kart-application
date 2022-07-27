@@ -38,6 +38,14 @@
     "code": "Session code",
     "minCode": "Code must be 8 characters",
     "maxCode": "Code must be 8 characters",
-    "requiredCode": "Code is required"
+    "requiredCode": "Code is required",
+    "yupValidation": {
+      "invalidEmail": "Invalid email",
+      "requiredField": "Field is required",
+      "minLength": "Min length is {{length}}",
+      "maxLength": "Max length {{length}}",
+      "acceptPrivacyPolicy": "Accept privacy policy",
+      "invalidPassword": "Password must contain 8 characters - one uppercase, one lowercase, a number and a special character"
+    }
   }
 }
