@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, Alert, Modal} from 'react-native';
+import {View, StyleSheet, Alert, Modal, Dimensions} from 'react-native';
 import {useFormik} from 'formik';
 import colors from '../../constants/Colors';
 import * as Yup from 'yup';
@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 30,
+    width: Dimensions.get('window').width,
   },
   inputWrapper: {
     flex: 0.9,
