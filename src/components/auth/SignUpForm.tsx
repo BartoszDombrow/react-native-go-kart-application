@@ -23,7 +23,7 @@ interface FormValue {
 }
 
 const SignUp = () => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
 
   const navigation =
@@ -42,14 +42,14 @@ const SignUp = () => {
     validateOnBlur: false,
     validationSchema: Yup.object({
       username: Yup.string()
-        .min(6, i18n.t('yupValidation.minLength', {length: 6}))
-        .max(15, i18n.t('yupValidation.maxLength', {length: 15}))
+        .min(6, t('yupValidation.minLength', {length: 6}))
+        .max(15, t('yupValidation.maxLength', {length: 15}))
         .required(t('yupValidation.requiredField')),
       firstname: Yup.string()
-        .min(2, i18n.t('yupValidation.minLength', {length: 2}))
+        .min(2, t('yupValidation.minLength', {length: 2}))
         .required(t('yupValidation.requiredField')),
       lastname: Yup.string()
-        .min(2, i18n.t('yupValidation.minLength', {length: 2}))
+        .min(2, t('yupValidation.minLength', {length: 2}))
         .required(t('yupValidation.requiredField')),
       password: Yup.string()
         .matches(

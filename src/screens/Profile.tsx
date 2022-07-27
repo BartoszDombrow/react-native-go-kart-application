@@ -20,7 +20,7 @@ interface FormValue {
 }
 
 const Profile = () => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
 
   const formik = useFormik<FormValue>({
     initialValues: {
@@ -31,8 +31,8 @@ const Profile = () => {
     validateOnBlur: false,
     validationSchema: Yup.object({
       username: Yup.string()
-        .min(6, i18n.t('yupValidation.minLength', {length: 6}))
-        .max(15, i18n.t('yupValidation.maxLength', {length: 15}))
+        .min(6, t('yupValidation.minLength', {length: 6}))
+        .max(15, t('yupValidation.maxLength', {length: 15}))
         .required(t('yupValidation.requiredField')),
       email: Yup.string()
         .email(t('yupValidation.invalidEmail'))
