@@ -42,25 +42,27 @@ const SignUp = () => {
     validateOnBlur: false,
     validationSchema: Yup.object({
       username: Yup.string()
-        .min(6, 'Must be 6 characters or more')
-        .max(15, 'Must be 15 characters or less')
-        .required('This field is required'),
+        .min(6, t('yupValidation.minLength', {length: 6}))
+        .max(15, t('yupValidation.maxLength', {length: 15}))
+        .required(t('yupValidation.requiredField')),
       firstname: Yup.string()
-        .min(2, 'Must be 2 characters or more')
-        .required('This field is required'),
+        .min(2, t('yupValidation.minLength', {length: 2}))
+        .required(t('yupValidation.requiredField')),
       lastname: Yup.string()
-        .min(2, 'Must be 2 characters or more')
-        .required('This field is required'),
+        .min(2, t('yupValidation.minLength', {length: 2}))
+        .required(t('yupValidation.requiredField')),
       password: Yup.string()
-        .min(8, 'Must be 8 characters or more')
-        .max(20, 'Must be 20 characters or less')
-        .required('This field is required'),
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+          t('yupValidation.invalidPassword'),
+        )
+        .required(t('yupValidation.requiredField')),
       email: Yup.string()
-        .email('Invalid email address')
-        .required('This field is required'),
+        .email(t('yupValidation.invalidEmail'))
+        .required(t('yupValidation.requiredField')),
       privacyPolicy: Yup.boolean()
-        .oneOf([true], 'The privacy policy must be accepted.')
-        .required('This field is required'),
+        .oneOf([true], t('yupValidation.acceptPrivacyPolicy'))
+        .required(t('yupValidation.requiredField')),
     }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));

@@ -38,6 +38,14 @@
     "code": "Sitzungscode",
     "minCode": "Der Code muss 8 Zeichen lang sein",
     "maxCode": "Der Code muss 8 Zeichen lang sein",
-    "requiredCode": "Code ist erforderlich"
+    "requiredCode": "Code ist erforderlich",
+    "yupValidation": {
+      "invalidEmail": "Diese E-Mail ist nicht gültig",
+      "requiredField": "Dieses Feld ist erforderlich",
+      "minLength": "Die minimale Wortlänge beträgt {{length}}",
+      "maxLength": "Die maximale Wortlänge beträgt {{length}}",
+      "acceptPrivacyPolicy": "Akzeptiere die Datenschutzerklärung",
+      "invalidPassword": "Muss 8 Zeichen enthalten, einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen"
+    }
   }
 }

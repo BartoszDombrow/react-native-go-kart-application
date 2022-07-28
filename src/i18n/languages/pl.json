@@ -38,6 +38,14 @@
     "code": "Kod sesji",
     "minCode": "Kod musi mieć 8 znaków",
     "maxCode": "Kod musi mieć 8 znaków",
-    "requiredCode": "Kod sesji jest wymagany"
+    "requiredCode": "Kod sesji jest wymagany",
+    "yupValidation": {
+      "invalidEmail": "Niepoprawny email",
+      "requiredField": "To pole jest wymagane",
+      "minLength": "Minimalna długość to {{length}}",
+      "maxLength": "Maksymalna długośc to {{length}}",
+      "acceptPrivacyPolicy": "Zaakceptuj politykę prywatności",
+      "invalidPassword": "Hasło musi zawierać 8 znaków - jedną dużą literę, jedną małą literę, liczbę oraz znak specjalny"
+    }
   }
 }
