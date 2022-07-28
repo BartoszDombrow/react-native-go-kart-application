@@ -50,6 +50,8 @@
 		D2100C542881A1B000932027 /* TitanOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2100C512881A1B000932027 /* TitanOne-Regular.ttf */; };
 		D2100C552881A1B000932027 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2100C522881A1B000932027 /* RobotoMono-Regular.ttf */; };
 		D2100C562881A1B000932027 /* RobotoMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2100C522881A1B000932027 /* RobotoMono-Regular.ttf */; };
+		D241589E28927ED800B088F1 /* RobotoMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D241589D28927ED800B088F1 /* RobotoMono-Bold.ttf */; };
+		D241589F28927ED800B088F1 /* RobotoMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D241589D28927ED800B088F1 /* RobotoMono-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,7 @@
 		D2100C302881A18900932027 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		D2100C512881A1B000932027 /* TitanOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitanOne-Regular.ttf"; sourceTree = "<group>"; };
 		D2100C522881A1B000932027 /* RobotoMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Regular.ttf"; sourceTree = "<group>"; };
+		D241589D28927ED800B088F1 /* RobotoMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -206,6 +209,7 @@
 		D2100C202881A18900932027 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				D241589D28927ED800B088F1 /* RobotoMono-Bold.ttf */,
 				D2100C522881A1B000932027 /* RobotoMono-Regular.ttf */,
 				D2100C512881A1B000932027 /* TitanOne-Regular.ttf */,
 				D2100C212881A18900932027 /* Fontisto.ttf */,
@@ -324,6 +328,7 @@
 				D2100C4C2881A18900932027 /* EvilIcons.ttf in Resources */,
 				D2100C462881A18900932027 /* FontAwesome5_Regular.ttf in Resources */,
 				D2100C4A2881A18900932027 /* Zocial.ttf in Resources */,
+				D241589F28927ED800B088F1 /* RobotoMono-Bold.ttf in Resources */,
 				D2100C382881A18900932027 /* Entypo.ttf in Resources */,
 				D2100C502881A18900932027 /* MaterialIcons.ttf in Resources */,
 				D2100C3E2881A18900932027 /* AntDesign.ttf in Resources */,
@@ -353,6 +358,7 @@
 				D2100C492881A18900932027 /* Zocial.ttf in Resources */,
 				D2100C4D2881A18900932027 /* SimpleLineIcons.ttf in Resources */,
 				D2100C552881A1B000932027 /* RobotoMono-Regular.ttf in Resources */,
+				D241589E28927ED800B088F1 /* RobotoMono-Bold.ttf in Resources */,
 				D2100C352881A18900932027 /* Feather.ttf in Resources */,
 				D2100C332881A18900932027 /* Octicons.ttf in Resources */,
 				D2100C392881A18900932027 /* FontAwesome5_Brands.ttf in Resources */,
