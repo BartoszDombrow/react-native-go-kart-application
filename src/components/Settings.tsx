@@ -54,10 +54,17 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
               buttonText={t('profile')}
               buttonVariant="mediumButton"
               onPress={() => {
-                settingsNavigation.navigate('Profile');
-                setTimeout(() => {
+                if (Platform.OS === 'ios') {
                   settingsHandler();
-                }, 250);
+                  setTimeout(() => {
+                    settingsNavigation.navigate('Profile');
+                  }, 300);
+                } else {
+                  settingsNavigation.navigate('Profile');
+                  setTimeout(() => {
+                    settingsHandler();
+                  }, 300);
+                }
               }}
               iconName={
                 Platform.OS === 'ios' ? 'ios-person-sharp' : 'md-person-sharp'
@@ -77,10 +84,17 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
               buttonText={t('language')}
               buttonVariant="mediumButton"
               onPress={() => {
-                settingsNavigation.navigate('Language');
-                setTimeout(() => {
+                if (Platform.OS === 'ios') {
                   settingsHandler();
-                }, 250);
+                  setTimeout(() => {
+                    settingsNavigation.navigate('Language');
+                  }, 300);
+                } else {
+                  settingsNavigation.navigate('Language');
+                  setTimeout(() => {
+                    settingsHandler();
+                  }, 300);
+                }
               }}
               iconName="language"
             />
