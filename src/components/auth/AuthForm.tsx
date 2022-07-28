@@ -1,87 +1,59 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {View, StyleSheet, Animated, Dimensions} from 'react-native';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import React, {useState, useRef, useEffect} from 'react';
+import {View, StyleSheet, Dimensions, FlatList} from 'react-native';
 
 import LoginForm from './LoginForm';
 import SignUp from './SignUpForm';
-import Swiper from 'react-native-swiper';
-
 import colors from '../../constants/Colors';
 
 import {useTranslation} from 'react-i18next';
-import Typography from '../../typography/Typography';
+import SwipeButton from '../SwipeButton';
+
+const DATA = [
+  {
+    component: <LoginForm />,
+  },
+  {
+    component: <SignUp />,
+  },
+];
 
 const AuthForm = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [index, setIndex] = useState(0);
+  const ref = useRef<FlatList>(null);
 
-  const slideAnimation = useRef(new Animated.Value(5)).current;
   const {t} = useTranslation();
-  const scrollRight = () => {
-    Animated.timing(slideAnimation, {
-      toValue: Dimensions.get('window').width * 0.4 - 5,
-      duration: 200,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const scrollLeft = () => {
-    Animated.timing(slideAnimation, {
-      toValue: 5,
-      duration: 200,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const scrollEvent = (e: any, state: any) => {
-    setScrollPosition(state.index);
-  };
 
   useEffect(() => {
-    if (scrollPosition) {
-      scrollRight();
-    } else {
-      scrollLeft();
-    }
-  });
+    ref.current?.scrollToIndex({
+      index,
+      animated: true,
+    });
+  }, [index]);
 
   return (
     <View style={styles.formContainer}>
-      <Shadow inner useArt style={styles.switchContainer}>
-        <Animated.View
-          style={[
-            styles.fadingContainer,
-            {
-              left: slideAnimation,
-            },
-          ]}>
-          <Shadow useArt style={styles.pickedForm} />
-        </Animated.View>
-        <View style={styles.switchBox}>
-          <Typography
-            variant="basicText"
-            style={[
-              scrollPosition ? styles.switchText : styles.selectedSwitch,
-            ]}>
-            {t('signIn')}
-          </Typography>
-        </View>
-        <View style={styles.switchBox}>
-          <Typography
-            variant="basicText"
-            style={[
-              scrollPosition ? styles.selectedSwitch : styles.switchText,
-            ]}>
-            {t('signUp')}
-          </Typography>
-        </View>
-      </Shadow>
-      <Swiper
-        loop={false}
-        showsPagination={false}
-        onMomentumScrollEnd={scrollEvent}>
-        <LoginForm />
-        <SignUp />
-      </Swiper>
+      <SwipeButton
+        width={300}
+        height={50}
+        buttonWidth={140}
+        buttonHeight={40}
+        textLeft={t('signIn')}
+        textRight={t('signUp')}
+        onEndSwipe={status => {
+          setIndex(status);
+        }}
+        color={colors.white}
+        textOnColor={colors.darkBlue}
+        textOffColor={colors.darkBlue}
+      />
+      <FlatList
+        data={DATA}
+        renderItem={({item}) => item.component}
+        horizontal
+        scrollEnabled={false}
+        ref={ref}
+        initialScrollIndex={index}
+      />
     </View>
   );
 };

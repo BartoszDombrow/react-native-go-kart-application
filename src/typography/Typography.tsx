@@ -11,6 +11,7 @@ type Variant =
   | 'mediumButtonText'
   | 'smallButtonText'
   | 'basicText'
+  | 'basicTextBold'
   | 'spanPrimaryBold'
   | 'spanBold'
   | 'span'
@@ -84,8 +85,12 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
   basicText: {
     fontSize: 18,
     textAlign: 'center',
-    fontWeight: 'bold',
     fontFamily: fonts.secondaryFont,
+  },
+  basicTextBold: {
+    fontSize: 18,
+    textAlign: 'center',
+    fontFamily: fonts.secondaryFontBold,
   },
   spanPrimaryBold: {
     fontFamily: fonts.primaryFont,
