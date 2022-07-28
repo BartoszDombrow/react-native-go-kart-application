@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     fontFamily: fonts.secondaryFontBold,
     fontSize: 18,
-    fontWeight: 'bold',
     color: colors.darkBlue,
   },
   errorMessage: {

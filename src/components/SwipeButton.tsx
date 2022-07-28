@@ -110,14 +110,14 @@ const SwipeButton: React.FC<Props> = ({
         }}>
         <View style={styles.swipeBox} pointerEvents={'none'}>
           <Typography
-            variant="basicText"
+            variant="basicTextBold"
             style={{color: status ? textOffColor : textOnColor}}>
             {textLeft}
           </Typography>
         </View>
         <View style={styles.swipeBox} pointerEvents={'none'}>
           <Typography
-            variant="basicText"
+            variant="basicTextBold"
             style={{color: status ? textOnColor : textOffColor}}>
             {textRight}
           </Typography>
