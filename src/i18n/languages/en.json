@@ -46,6 +46,12 @@
       "maxLength": "Max length {{length}}",
       "acceptPrivacyPolicy": "Accept privacy policy",
       "invalidPassword": "Password must contain 8 characters - one uppercase, one lowercase, a number and a special character"
-    }
+    },
+    "activeDrivers": "Active drivers",
+    "chooseCar": "Choose car",
+    "ready": "Ready",
+    "distance": "Distance",
+    "speed": "Speed",
+    "time": "Time"
   }
 }

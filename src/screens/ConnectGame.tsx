@@ -40,7 +40,7 @@ const ConnectGame = () => {
     }),
     onSubmit: values => {
       Alert.alert(JSON.stringify(values));
-      navigationGame.navigate('GameScreen');
+      navigationGame.navigate('GameMenuNav');
     },
   });
   return (

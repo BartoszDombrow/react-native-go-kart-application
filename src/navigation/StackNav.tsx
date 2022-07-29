@@ -15,6 +15,8 @@ function StackNav() {
     <RootStack.Navigator
       screenOptions={{
         headerShown: false,
+        navigationBarHidden: true,
+        orientation: 'portrait',
       }}
       initialRouteName="Auth">
       <RootStack.Screen name="Auth" component={Auth} />
