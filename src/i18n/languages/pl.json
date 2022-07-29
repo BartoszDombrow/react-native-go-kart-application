@@ -46,6 +46,12 @@
       "maxLength": "Maksymalna długośc to {{length}}",
       "acceptPrivacyPolicy": "Zaakceptuj politykę prywatności",
       "invalidPassword": "Hasło musi zawierać 8 znaków - jedną dużą literę, jedną małą literę, liczbę oraz znak specjalny"
-    }
+    },
+    "activeDrivers": "Aktywni kierowcy",
+    "chooseCar": "Wybierz pojazd",
+    "ready": "Gotowy",
+    "distance": "Dystans",
+    "speed": "Prędkość",
+    "time": "Czas"
   }
 }

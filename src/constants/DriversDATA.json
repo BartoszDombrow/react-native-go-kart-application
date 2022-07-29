@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1234",
+    "name": "Bartek",
+    "time": 1353000,
+    "distance": 2250,
+    "speed": 40,
+    "color": "red"
+  },
+  {
+    "id": "4321",
+    "name": "Jakub",
+    "time": 1353000,
+    "distance": 2250,
+    "speed": 40,
+    "color": "blue"
+  },
+  {
+    "id": "2134",
+    "name": "Michał",
+    "time": 1353000,
+    "distance": 2250,
+    "speed": 40,
+    "color": "green"
+  },
+  {
+    "id": "1243",
+    "name": "Dawid",
+    "time": 1353000,
+    "distance": 2250,
+    "speed": 40,
+    "color": "yellow"
+  },
+  {
+    "id": "1423",
+    "name": "Tomek",
+    "time": 1353000,
+    "distance": 2250,
+    "speed": 40,
+    "color": "purple"
+  },
+  {
+    "id": "1432",
+    "name": "Marek",
+    "time": 1353985,
+    "distance": 2250,
+    "speed": 40,
+    "color": "orange"
+  }
+]

@@ -46,6 +46,12 @@
       "maxLength": "Die maximale Wortlänge beträgt {{length}}",
       "acceptPrivacyPolicy": "Akzeptiere die Datenschutzerklärung",
       "invalidPassword": "Muss 8 Zeichen enthalten, einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen"
-    }
+    },
+    "activeDrivers": "Aktive Fahrer",
+    "chooseCar": "Auto wählen",
+    "ready": "Bereit",
+    "distance": "Distanz",
+    "speed": "Geschwindigkeit",
+    "time": "Zeit"
   }
 }

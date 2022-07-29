@@ -25,6 +25,8 @@ function MenuNav() {
     <MenuStack.Navigator
       screenOptions={{
         headerShown: false,
+        navigationBarHidden: true,
+        orientation: 'portrait',
       }}
       initialRouteName="Menu">
       <MenuStack.Screen name="Menu" component={MainView} />
