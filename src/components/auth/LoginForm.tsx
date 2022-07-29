@@ -61,11 +61,13 @@ const LoginForm = () => {
           secureTextEntry={true}
         />
       </View>
-      <CustomButton
-        buttonText={t('play').toUpperCase()}
-        buttonVariant="bigButton"
-        onPress={formik.handleSubmit}
-      />
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          buttonText={t('play').toUpperCase()}
+          buttonVariant="bigButton"
+          onPress={formik.handleSubmit}
+        />
+      </View>
     </View>
   );
 };
@@ -76,12 +78,14 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     width: Dimensions.get('window').width,
   },
-  formView: {
-    height: 240,
-  },
   inputContainer: {
-    flex: 0.9,
     alignItems: 'center',
+    justifyContent: 'flex-start',
+    flex: 0.5,
+  },
+  buttonContainer: {
+    flex: 0.3,
+    justifyContent: 'center',
   },
 });
 

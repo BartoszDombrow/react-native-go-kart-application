@@ -42,6 +42,7 @@ const SwipeButton: React.FC<Props> = ({
   color,
 }) => {
   const [status, setStatus] = useState(false);
+  const [touchSwiper, setTouchSwiper] = useState(false);
 
   const translateX = useSharedValue(0);
   const endPoint = width - buttonWidth - 10;
@@ -93,19 +94,17 @@ const SwipeButton: React.FC<Props> = ({
         inner
         useArt
         style={{width, height, ...styles.swipeContainer}}
-        onTouchEnd={event => {
-          if (event.nativeEvent.locationX <= width / 2) {
+        onTouchEnd={() => {
+          if (!touchSwiper) {
             if (status) {
               translateX.value = withTiming(0);
-            }
-            setStatus(false);
-            onEndSwipe(0);
-          } else {
-            if (!status) {
+              setStatus(false);
+              onEndSwipe(0);
+            } else {
               translateX.value = withTiming(endPoint);
+              setStatus(true);
+              onEndSwipe(1);
             }
-            setStatus(true);
-            onEndSwipe(1);
           }
         }}>
         <View style={styles.swipeBox} pointerEvents={'none'}>
@@ -133,6 +132,8 @@ const SwipeButton: React.FC<Props> = ({
               },
               rStyle,
             ]}
+            onTouchStart={() => setTouchSwiper(true)}
+            onTouchEnd={() => setTouchSwiper(false)}
           />
         </PanGestureHandler>
       </Shadow>
@@ -142,7 +143,6 @@ const SwipeButton: React.FC<Props> = ({
 
 const styles = StyleSheet.create({
   swipeContainer: {
-    marginTop: 30,
     borderRadius: 25,
     flexDirection: 'row',
     backgroundColor: colors.lightBlue,

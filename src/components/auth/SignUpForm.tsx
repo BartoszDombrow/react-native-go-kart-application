@@ -8,7 +8,6 @@ import FormInput from '../FormInput';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
-import {ScrollView} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 import Typography from '../../typography/Typography';
 import CustomButton from '../button/CustomButton';
@@ -85,54 +84,49 @@ const SignUp = () => {
     <>
       <View style={styles.formBox}>
         <View style={styles.inputWrapper}>
-          <View style={styles.scrollContainer}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={styles.formContainer}>
-                <FormInput
-                  onChangeText={formik.handleChange('username')}
-                  onBlur={formik.handleBlur('username')}
-                  value={formik.values.username}
-                  placeholder={t('username')}
-                  formikTouched={formik.touched.username}
-                  formikErrors={formik.errors.username}
-                />
-                <FormInput
-                  onChangeText={formik.handleChange('firstname')}
-                  onBlur={formik.handleBlur('firstname')}
-                  value={formik.values.firstname}
-                  placeholder={t('firstname')}
-                  formikTouched={formik.touched.firstname}
-                  formikErrors={formik.errors.firstname}
-                />
-                <FormInput
-                  onChangeText={formik.handleChange('lastname')}
-                  onBlur={formik.handleBlur('lastname')}
-                  value={formik.values.lastname}
-                  placeholder={t('lastname')}
-                  formikTouched={formik.touched.lastname}
-                  formikErrors={formik.errors.lastname}
-                />
-                <FormInput
-                  onChangeText={formik.handleChange('email')}
-                  onBlur={formik.handleBlur('email')}
-                  value={formik.values.email}
-                  placeholder={t('email')}
-                  formikTouched={formik.touched.email}
-                  formikErrors={formik.errors.email}
-                />
-                <FormInput
-                  onChangeText={formik.handleChange('password')}
-                  onBlur={formik.handleBlur('password')}
-                  value={formik.values.password}
-                  placeholder={t('password')}
-                  formikTouched={formik.touched.password}
-                  formikErrors={formik.errors.password}
-                  secureTextEntry={true}
-                />
-              </View>
-            </ScrollView>
+          <View style={styles.formContainer}>
+            <FormInput
+              onChangeText={formik.handleChange('username')}
+              onBlur={formik.handleBlur('username')}
+              value={formik.values.username}
+              placeholder={t('username')}
+              formikTouched={formik.touched.username}
+              formikErrors={formik.errors.username}
+            />
+            <FormInput
+              onChangeText={formik.handleChange('firstname')}
+              onBlur={formik.handleBlur('firstname')}
+              value={formik.values.firstname}
+              placeholder={t('firstname')}
+              formikTouched={formik.touched.firstname}
+              formikErrors={formik.errors.firstname}
+            />
+            <FormInput
+              onChangeText={formik.handleChange('lastname')}
+              onBlur={formik.handleBlur('lastname')}
+              value={formik.values.lastname}
+              placeholder={t('lastname')}
+              formikTouched={formik.touched.lastname}
+              formikErrors={formik.errors.lastname}
+            />
+            <FormInput
+              onChangeText={formik.handleChange('email')}
+              onBlur={formik.handleBlur('email')}
+              value={formik.values.email}
+              placeholder={t('email')}
+              formikTouched={formik.touched.email}
+              formikErrors={formik.errors.email}
+            />
+            <FormInput
+              onChangeText={formik.handleChange('password')}
+              onBlur={formik.handleBlur('password')}
+              value={formik.values.password}
+              placeholder={t('password')}
+              formikTouched={formik.touched.password}
+              formikErrors={formik.errors.password}
+              secureTextEntry={true}
+            />
           </View>
-
           <View style={styles.checkBoxWrapper}>
             <View>
               <CheckBox
@@ -158,11 +152,13 @@ const SignUp = () => {
             </Typography>
           </View>
         </View>
-        <CustomButton
-          buttonText={t('start').toUpperCase()}
-          buttonVariant="bigButton"
-          onPress={formik.handleSubmit}
-        />
+        <View>
+          <CustomButton
+            buttonText={t('start').toUpperCase()}
+            buttonVariant="bigButton"
+            onPress={formik.handleSubmit}
+          />
+        </View>
       </View>
       <Modal
         animationType="slide"
@@ -195,18 +191,15 @@ const SignUp = () => {
 
 const styles = StyleSheet.create({
   formBox: {
-    flex: 1,
     alignItems: 'center',
     paddingTop: 30,
     width: Dimensions.get('window').width,
+    height: 800,
   },
   inputWrapper: {
-    flex: 0.9,
     alignItems: 'center',
-  },
-  scrollContainer: {
-    flex: 0.8,
-    alignItems: 'center',
+    flex: 0.95,
+    backgroundColor: 'red',
   },
   formContainer: {
     alignItems: 'center',
@@ -215,6 +208,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'green',
   },
   modalView: {
     backgroundColor: colors.lightBlue,
