@@ -77,6 +77,11 @@ const SwipeButton: React.FC<Props> = ({
         runOnJS(setStatus)(false);
         runOnJS(onEndSwipe)(0);
       }
+      if (touchSwiper) {
+        runOnJS(setTouchSwiper)(false);
+      } else {
+        runOnJS(setTouchSwiper)(true);
+      }
     },
   });
 
@@ -94,13 +99,13 @@ const SwipeButton: React.FC<Props> = ({
         inner
         useArt
         style={{width, height, ...styles.swipeContainer}}
-        onTouchEnd={() => {
+        onTouchEnd={event => {
           if (!touchSwiper) {
-            if (status) {
+            if (status && event.nativeEvent.locationX < width / 2) {
               translateX.value = withTiming(0);
               setStatus(false);
               onEndSwipe(0);
-            } else {
+            } else if (!status && event.nativeEvent.locationX > width / 2) {
               translateX.value = withTiming(endPoint);
               setStatus(true);
               onEndSwipe(1);

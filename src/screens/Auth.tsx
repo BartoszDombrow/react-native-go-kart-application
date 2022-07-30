@@ -21,14 +21,13 @@ import LanguageSelector from '../components/language/LanguageSelector';
 const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);
   const {t} = useTranslation();
-  const [resizeScreen, setResizeScreen] = useState(false);
 
   const TIMER = 700;
 
   const slideAnim = useRef(new Animated.Value(0)).current;
   const slideUp = () => {
     Animated.timing(slideAnim, {
-      toValue: -250,
+      toValue: -Dimensions.get('window').height * 0.4,
       duration: TIMER,
       useNativeDriver: false,
     }).start();
@@ -44,11 +43,7 @@ const Auth = () => {
 
   return (
     <>
-      <SafeAreaView
-        style={{
-          height: resizeScreen ? 1000 : Dimensions.get('screen').height,
-          ...styles.screen,
-        }}>
+      <SafeAreaView style={styles.screen}>
         <Animated.View
           style={{
             transform: [{translateY: slideAnim}],
@@ -87,10 +82,8 @@ const Auth = () => {
               setIsSignUpFormVisible={async status => {
                 if (status) {
                   slideDown();
-                  setResizeScreen(false);
                 } else {
                   slideUp();
-                  setResizeScreen(true);
                 }
               }}
             />
@@ -124,6 +117,7 @@ export default Auth;
 
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
     backgroundColor: colors.mediumBlue,
   },
   animatedView: {
@@ -131,7 +125,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     width: '100%',
-    height: 250,
+    flex: 0.4,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -204,10 +198,12 @@ const styles = StyleSheet.create({
   titleText: {
     color: colors.white,
     height: 100,
+    width: 178,
     paddingHorizontal: 5,
   },
   authForm: {
-    flex: 1,
+    flex: 0.6,
+    paddingTop: 20,
   },
   modalContainer: {
     flex: 1,

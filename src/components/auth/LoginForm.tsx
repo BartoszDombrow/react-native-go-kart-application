@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Alert, Dimensions} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
@@ -74,18 +74,17 @@ const LoginForm = () => {
 
 const styles = StyleSheet.create({
   formBox: {
+    flex: 1,
     alignItems: 'center',
-    paddingTop: 30,
-    width: Dimensions.get('window').width,
+    paddingTop: 32,
   },
   inputContainer: {
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    flex: 0.5,
   },
   buttonContainer: {
-    flex: 0.3,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    flex: 1,
+    paddingBottom: 32,
   },
 });
 

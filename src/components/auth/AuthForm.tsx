@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList, Dimensions, Animated} from 'react-native';
 
 import LoginForm from './LoginForm';
 import SignUp from './SignUpForm';
@@ -11,15 +11,6 @@ import SwipeButton from '../SwipeButton';
 interface AuthFormProps {
   setIsSignUpFormVisible: (status: boolean) => void;
 }
-
-const DATA = [
-  {
-    component: <LoginForm />,
-  },
-  {
-    component: <SignUp />,
-  },
-];
 
 const AuthForm: React.FC<AuthFormProps> = ({setIsSignUpFormVisible}) => {
   const [index, setIndex] = useState(0);
@@ -39,31 +30,61 @@ const AuthForm: React.FC<AuthFormProps> = ({setIsSignUpFormVisible}) => {
     }
   }, [index, setIsSignUpFormVisible]);
 
+  const TIMER = 700;
+  const slideAnim = useRef(new Animated.Value(0)).current;
+  const slideLeft = () => {
+    Animated.timing(slideAnim, {
+      toValue: -Dimensions.get('screen').width,
+      duration: TIMER,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const slideRight = () => {
+    Animated.timing(slideAnim, {
+      toValue: 0,
+      duration: TIMER,
+      useNativeDriver: false,
+    }).start();
+  };
+
   return (
     <View style={styles.formContainer}>
-      <SwipeButton
-        width={300}
-        height={50}
-        buttonWidth={140}
-        buttonHeight={40}
-        textLeft={t('signIn')}
-        textRight={t('signUp')}
-        onEndSwipe={status => {
-          setIndex(status);
-        }}
-        color={colors.white}
-        textOnColor={colors.darkBlue}
-        textOffColor={colors.darkBlue}
-      />
-      <FlatList
-        data={DATA}
-        renderItem={({item}) => item.component}
-        horizontal
-        scrollEnabled={false}
-        ref={ref}
-        initialScrollIndex={index}
-        showsHorizontalScrollIndicator={false}
-      />
+      <View>
+        <SwipeButton
+          width={300}
+          height={50}
+          buttonWidth={140}
+          buttonHeight={40}
+          textLeft={t('signIn')}
+          textRight={t('signUp')}
+          onEndSwipe={status => {
+            setIndex(status);
+            if (status) {
+              slideLeft();
+            } else {
+              slideRight();
+            }
+          }}
+          color={colors.white}
+          textOnColor={colors.darkBlue}
+          textOffColor={colors.darkBlue}
+        />
+      </View>
+      <View style={styles.formScreen}>
+        <Animated.View
+          style={{
+            transform: [{translateX: slideAnim}],
+            ...styles.animatedView,
+          }}>
+          <View style={styles.signInBox}>
+            <LoginForm />
+          </View>
+          <View style={styles.signUpBox}>
+            <SignUp />
+          </View>
+        </Animated.View>
+      </View>
     </View>
   );
 };
@@ -72,7 +93,20 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  formScreen: {
+    flex: 1,
+  },
+  animatedView: {
+    flex: 1,
+    flexDirection: 'row',
+    width: Dimensions.get('window').width,
+  },
+  signInBox: {
+    width: Dimensions.get('window').width,
+  },
+  signUpBox: {
+    width: Dimensions.get('window').width,
   },
 });
 
