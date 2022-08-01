@@ -81,7 +81,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 10,
-    padding: 4,
+    padding: 8,
   },
   basicText: {
     fontSize: 18,

@@ -9,6 +9,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import dayjs from 'dayjs';
 import {useTranslation} from 'react-i18next';
+import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 const DriverProfile = ({route}: any) => {
   const gameNavigation =
@@ -17,21 +18,18 @@ const DriverProfile = ({route}: any) => {
 
   const {t} = useTranslation();
   return (
-    <View style={styles.container}>
+    <View style={styles.screen}>
       <View style={styles.raceContainer}>
         <View
           style={{
-            position: 'absolute',
             top: driver.top,
             left: driver.left,
             backgroundColor: driver.color,
-            height: 20,
-            width: 20,
-            borderRadius: 10,
+            ...styles.dot,
           }}
         />
       </View>
-      <View style={styles.smallContainer}>
+      {/* <View style={styles.smallContainer}>
         <Typography variant="smallButtonText">{t('distance')}</Typography>
         <View style={styles.parametersContainer}>
           <Typography variant="basicText">{driver.distance}</Typography>
@@ -58,13 +56,58 @@ const DriverProfile = ({route}: any) => {
             gameNavigation.navigate('Lobby');
           }}
         />
+      </View> */}
+      <View style={styles.statsContainer}>
+        <View>
+          <Typography variant="smallTitle">{driver.name}</Typography>
+        </View>
+        <View style={styles.parametersContainer}>
+          <View style={styles.parametersBox}>
+            <Typography variant="smallButtonText">{t('distance')}</Typography>
+            <Shadow useArt inner style={styles.innerShadow}>
+              <Typography variant="basicText" style={{color: colors.darkBlue}}>
+                {driver.distance}
+              </Typography>
+            </Shadow>
+          </View>
+
+          <View style={styles.parametersBox}>
+            <Typography variant="smallButtonText">{t('speed')}</Typography>
+            <Shadow useArt inner style={styles.innerShadow}>
+              <Typography variant="basicText" style={{color: colors.darkBlue}}>
+                {driver.speed}
+              </Typography>
+            </Shadow>
+          </View>
+
+          <View style={styles.parametersBox}>
+            <Typography variant="smallButtonText">{t('time')}</Typography>
+            <Shadow useArt inner style={styles.innerShadow}>
+              <Typography variant="basicText" style={{color: colors.darkBlue}}>
+                {dayjs()
+                  .startOf('day')
+                  .millisecond(driver.time)
+                  .format('mm:ss:SSS')}
+              </Typography>
+            </Shadow>
+          </View>
+        </View>
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            buttonText={t('exit').toUpperCase()}
+            buttonVariant="smallButton"
+            onPress={() => {
+              gameNavigation.navigate('Lobby');
+            }}
+          />
+        </View>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
     flexDirection: 'row',
     backgroundColor: colors.mediumBlue,
@@ -79,11 +122,41 @@ const styles = StyleSheet.create({
     width: '50%',
     backgroundColor: colors.darkBlue,
   },
+  dot: {
+    position: 'absolute',
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+  },
+  statsContainer: {
+    flex: 1,
+  },
   parametersContainer: {
-    backgroundColor: colors.lightBlue,
-    width: 150,
-    padding: 8,
+    flex: 1,
+    paddingVertical: 16,
+  },
+  innerShadow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowOffset: {width: 0, height: 6},
+    shadowOpacity: 0.45,
+    shadowColor: '#000000',
+    shadowRadius: 6,
     borderRadius: 20,
+    backgroundColor: colors.lightBlue,
+    width: 128,
+    height: 40,
+  },
+  parametersBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 32,
+    marginVertical: 8,
+  },
+  buttonContainer: {
+    paddingBottom: 16,
+    alignItems: 'center',
   },
 });
 export default DriverProfile;
