@@ -68,6 +68,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     padding: 8,
     borderRadius: 20,
+    shadowColor: '#000000',
+    shadowOpacity: 0.45,
+    shadowOffset: {width: 0, height: 4},
+    shadowRadius: 8,
+    elevation: 3,
   },
   circle: {
     width: 20,
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     flex: 1,
-    paddingHorizontal: 16,
+    padding: 16,
   },
 });
 
