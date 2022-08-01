@@ -12,11 +12,11 @@ import {
 } from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import AuthForm from '../components/auth/AuthForm';
-import SubmitButton from '../components/SubmitButton';
 import colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Typography from '../typography/Typography';
 import LanguageSelector from '../components/language/LanguageSelector';
+import CustomButton from '../components/button/CustomButton';
 
 const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);
@@ -102,8 +102,9 @@ const Auth = () => {
           </View>
           <LanguageSelector />
           <View style={styles.languageExit}>
-            <SubmitButton
+            <CustomButton
               buttonText={t('exit').toUpperCase()}
+              buttonVariant="bigButton"
               onPress={() => setIsLanguagesVisible(false)}
             />
           </View>

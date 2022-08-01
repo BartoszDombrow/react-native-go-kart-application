@@ -3,7 +3,6 @@ import {View, Alert, StyleSheet} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import FormInput from '../components/FormInput';
-import SubmitButton from '../components/SubmitButton';
 import colors from '../constants/Colors';
 import Typography from '../typography/Typography';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -12,6 +11,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {GameStackParams} from '../navigation/GameNav';
 import {useTranslation} from 'react-i18next';
+import CustomButton from '../components/button/CustomButton';
 
 interface FormValue {
   code: string;
@@ -62,7 +62,11 @@ const ConnectGame = () => {
         formikErrors={formik.errors.code}
         secureTextEntry={false}
       />
-      <SubmitButton buttonText={t('connect')} onPress={formik.handleSubmit} />
+      <CustomButton
+        buttonText={t('connect')}
+        buttonVariant="mediumButton"
+        onPress={formik.handleSubmit}
+      />
     </View>
   );
 };

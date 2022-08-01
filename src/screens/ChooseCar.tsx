@@ -9,8 +9,8 @@ import {useTranslation} from 'react-i18next';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import FormInput from '../components/FormInput';
-import SubmitButton from '../components/SubmitButton';
 import Typography from '../typography/Typography';
+import CustomButton from '../components/button/CustomButton';
 
 interface FormValue {
   carCode: string;
@@ -47,7 +47,11 @@ const ChooseCar = () => {
         formikTouched={formik.touched.carCode}
         formikErrors={formik.errors.carCode}
       />
-      <SubmitButton buttonText={t('confirm')} onPress={formik.handleSubmit} />
+      <CustomButton
+        buttonText={t('confirm')}
+        buttonVariant="mediumButton"
+        onPress={formik.handleSubmit}
+      />
     </View>
   );
 };
