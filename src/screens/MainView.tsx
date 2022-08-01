@@ -6,7 +6,6 @@ import {RootStackParams} from '../navigation/StackNav';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
 
 import Settings from '../components/Settings';
@@ -31,11 +30,9 @@ const MainView = () => {
       <View style={styles.wrapper}>
         <View style={styles.headerContainer}>
           <View style={styles.settingsContainer}>
-            <Shadow style={styles.shadow}>
-              <TouchableOpacity onPress={settingsHandler}>
-                <Icon name={'settings'} color={colors.darkBlue} size={50} />
-              </TouchableOpacity>
-            </Shadow>
+            <TouchableOpacity onPress={settingsHandler} style={styles.icon}>
+              <Icon name={'settings'} color={colors.darkBlue} size={50} />
+            </TouchableOpacity>
           </View>
           <View style={styles.titleContainer}>
             <Typography variant="bigTitle" style={styles.headerText}>
@@ -81,6 +78,15 @@ const styles = StyleSheet.create({
   settingsContainer: {
     paddingLeft: 30,
   },
+  icon: {
+    shadowColor: 'black',
+    shadowOpacity: 0.5,
+    shadowOffset: {width: 0, height: 3},
+    shadowRadius: 10,
+    elevation: 22,
+    borderRadius: 30,
+    width: 50,
+  },
   titleContainer: {
     alignItems: 'center',
     textAlign: 'center',
@@ -91,18 +97,6 @@ const styles = StyleSheet.create({
     paddingVertical: 50,
     alignItems: 'center',
     justifyContent: 'space-around',
-  },
-  shadow: {
-    height: 50,
-    width: 50,
-    borderRadius: 30,
-    shadowColor: '#000000',
-    shadowOpacity: 0.15,
-    shadowRadius: 5,
-    shadowOffset: {width: 0, height: 2},
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
   },
   headerText: {
     color: colors.darkBlue,

@@ -12,7 +12,6 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigation/StackNav';
 import {MenuStackParams} from '../navigation/MenuNav';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
 import CustomButton from './button/CustomButton';
@@ -39,11 +38,9 @@ const Settings: React.FC<Props> = ({isVisible, settingsHandler}) => {
       onRequestClose={settingsHandler}>
       <View style={styles.mainContainer}>
         <View style={styles.closeButtonContainer}>
-          <Shadow useArt style={styles.shadow}>
-            <TouchableOpacity onPress={settingsHandler}>
-              <Icon name="close-circle" size={60} color={colors.lightBlue} />
-            </TouchableOpacity>
-          </Shadow>
+          <TouchableOpacity onPress={settingsHandler} style={styles.icon}>
+            <Icon name="close-circle" size={60} color={colors.lightBlue} />
+          </TouchableOpacity>
         </View>
         <View style={styles.buttonsContainer}>
           <Typography variant="mediumTitle" style={styles.title}>
@@ -124,30 +121,28 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     justifyContent: 'center',
   },
-  shadow: {
-    height: 60,
-    width: 60,
+  icon: {
+    shadowColor: 'black',
+    shadowOpacity: 0.5,
+    shadowOffset: {width: 3, height: 3},
+    shadowRadius: 10,
+    elevation: 18,
     borderRadius: 30,
-    shadowColor: '#000000',
-    shadowOpacity: 0.15,
-    shadowRadius: 5,
-    shadowOffset: {width: 0, height: 2},
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
+    width: 60,
   },
   buttonsContainer: {
     alignItems: 'center',
-    flex: 0.9,
+    flex: 1,
   },
   title: {
-    paddingVertical: 40,
+    paddingVertical: 32,
   },
   buttonBox: {
-    paddingVertical: 20,
+    paddingVertical: 16,
   },
   submitButtonContainer: {
     alignItems: 'center',
+    paddingBottom: 32,
   },
 });
 
