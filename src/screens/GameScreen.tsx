@@ -8,11 +8,14 @@ import CustomButton from '../components/button/CustomButton';
 import Typography from '../typography/Typography';
 import DriversList from '../components/game/DriversList';
 import {useTranslation} from 'react-i18next';
+import {GameMenuStackParams} from '../navigation/GameMenuNav';
 
 function GameScreen() {
   const navigationGame =
     useNavigation<NativeStackNavigationProp<GameStackParams>>();
 
+  const gameNavigation =
+    useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
   const {t} = useTranslation();
   return (
     <View style={styles.container}>
@@ -27,7 +30,9 @@ function GameScreen() {
         <CustomButton
           buttonVariant="smallButton"
           buttonText={t('chooseCar')}
-          onPress={() => {}}
+          onPress={() => {
+            gameNavigation.navigate('ChooseCar');
+          }}
         />
         <CustomButton
           buttonVariant="smallButton"

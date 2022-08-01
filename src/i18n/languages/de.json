@@ -52,6 +52,7 @@
     "ready": "Bereit",
     "distance": "Distanz",
     "speed": "Geschwindigkeit",
-    "time": "Zeit"
+    "time": "Zeit",
+    "carCode": "Fahrzeugcode"
   }
 }
