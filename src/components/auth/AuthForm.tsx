@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View, StyleSheet, Dimensions, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList, Dimensions, Animated} from 'react-native';
 
 import LoginForm from './LoginForm';
 import SignUp from './SignUpForm';
@@ -8,16 +8,11 @@ import colors from '../../constants/Colors';
 import {useTranslation} from 'react-i18next';
 import SwipeButton from '../SwipeButton';
 
-const DATA = [
-  {
-    component: <LoginForm />,
-  },
-  {
-    component: <SignUp />,
-  },
-];
+interface AuthFormProps {
+  setIsSignUpFormVisible: (status: boolean) => void;
+}
 
-const AuthForm = () => {
+const AuthForm: React.FC<AuthFormProps> = ({setIsSignUpFormVisible}) => {
   const [index, setIndex] = useState(0);
   const ref = useRef<FlatList>(null);
 
@@ -28,85 +23,90 @@ const AuthForm = () => {
       index,
       animated: true,
     });
-  }, [index]);
+    if (index) {
+      setIsSignUpFormVisible(false);
+    } else {
+      setIsSignUpFormVisible(true);
+    }
+  }, [index, setIsSignUpFormVisible]);
+
+  const TIMER = 700;
+  const slideAnim = useRef(new Animated.Value(0)).current;
+  const slideLeft = () => {
+    Animated.timing(slideAnim, {
+      toValue: -Dimensions.get('screen').width,
+      duration: TIMER,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const slideRight = () => {
+    Animated.timing(slideAnim, {
+      toValue: 0,
+      duration: TIMER,
+      useNativeDriver: false,
+    }).start();
+  };
 
   return (
     <View style={styles.formContainer}>
-      <SwipeButton
-        width={300}
-        height={50}
-        buttonWidth={140}
-        buttonHeight={40}
-        textLeft={t('signIn')}
-        textRight={t('signUp')}
-        onEndSwipe={status => {
-          setIndex(status);
-        }}
-        color={colors.white}
-        textOnColor={colors.darkBlue}
-        textOffColor={colors.darkBlue}
-      />
-      <FlatList
-        data={DATA}
-        renderItem={({item}) => item.component}
-        horizontal
-        scrollEnabled={false}
-        ref={ref}
-        initialScrollIndex={index}
-      />
+      <View>
+        <SwipeButton
+          width={300}
+          height={50}
+          buttonWidth={140}
+          buttonHeight={40}
+          textLeft={t('signIn')}
+          textRight={t('signUp')}
+          onEndSwipe={status => {
+            setIndex(status);
+            if (status) {
+              slideLeft();
+            } else {
+              slideRight();
+            }
+          }}
+          color={colors.white}
+          textOnColor={colors.darkBlue}
+          textOffColor={colors.darkBlue}
+        />
+      </View>
+      <View style={styles.formScreen}>
+        <Animated.View
+          style={{
+            transform: [{translateX: slideAnim}],
+            ...styles.animatedView,
+          }}>
+          <View style={styles.signInBox}>
+            <LoginForm />
+          </View>
+          <View style={styles.signUpBox}>
+            <SignUp />
+          </View>
+        </Animated.View>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   formContainer: {
+    flex: 1,
     alignItems: 'center',
   },
-  switchContainer: {
-    width: Dimensions.get('window').width * 0.8,
-    height: 50,
-    marginTop: 30,
-    borderRadius: 25,
-    backgroundColor: colors.darkBlue,
+  formScreen: {
+    flex: 1,
+  },
+  animatedView: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    shadowOffset: {width: 0, height: 3},
-    shadowOpacity: 0.55,
-    shadowColor: '#000000',
-    shadowRadius: 5,
+    width: Dimensions.get('window').width,
   },
-  switchBox: {
-    width: '50%',
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
+  signInBox: {
+    width: Dimensions.get('window').width,
   },
-  switchText: {
-    color: colors.white,
-  },
-  selectedSwitch: {
-    color: colors.darkBlue,
-  },
-  fadingContainer: {
-    position: 'absolute',
-    width: Dimensions.get('window').width * 0.4,
-    height: 40,
-    top: 5,
-    left: 5,
-    borderRadius: 25,
-    backgroundColor: colors.white,
-    elevation: 25,
-  },
-  pickedForm: {
-    width: Dimensions.get('window').width * 0.4,
-    height: 40,
-    borderRadius: 25,
-    backgroundColor: colors.white,
-    shadowColor: '#000000',
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    shadowOffset: {width: 2, height: 4},
+  signUpBox: {
+    width: Dimensions.get('window').width,
   },
 });
 

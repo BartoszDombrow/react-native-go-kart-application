@@ -8,10 +8,10 @@ import FormInput from '../FormInput';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
-import {ScrollView} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 import Typography from '../../typography/Typography';
 import CustomButton from '../button/CustomButton';
+import {ScrollView} from 'react-native-gesture-handler';
 
 interface FormValue {
   username: string;
@@ -85,9 +85,9 @@ const SignUp = () => {
     <>
       <View style={styles.formBox}>
         <View style={styles.inputWrapper}>
-          <View style={styles.scrollContainer}>
+          <View style={styles.formContainer}>
             <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={styles.formContainer}>
+              <View style={styles.formView}>
                 <FormInput
                   onChangeText={formik.handleChange('username')}
                   onBlur={formik.handleBlur('username')}
@@ -132,37 +132,39 @@ const SignUp = () => {
               </View>
             </ScrollView>
           </View>
-
-          <View style={styles.checkBoxWrapper}>
-            <View>
-              <CheckBox
-                value={formik.values.privacyPolicy}
-                disabled={false}
-                onValueChange={value =>
-                  formik.setFieldValue('privacyPolicy', value)
-                }
-                tintColors={{true: colors.white, false: colors.white}}
-                tintColor={colors.white}
-                onCheckColor={colors.white}
-                onTintColor={colors.white}
-              />
-            </View>
-            <Typography variant="spanBold">
-              {t('privacyPolicy.accept')}
-              <Typography
-                variant="spanBold"
-                onPress={handleVisableDismiss}
-                style={styles.textSpan}>
-                {` ${t('privacyPolicy.privacyPolicy')}`}
-              </Typography>
-            </Typography>
-          </View>
         </View>
-        <CustomButton
-          buttonText={t('start').toUpperCase()}
-          buttonVariant="bigButton"
-          onPress={formik.handleSubmit}
-        />
+        <View style={styles.checkBoxWrapper}>
+          <View style={styles.checkBoxContainer}>
+            <CheckBox
+              value={formik.values.privacyPolicy}
+              disabled={false}
+              onValueChange={value =>
+                formik.setFieldValue('privacyPolicy', value)
+              }
+              tintColors={{true: colors.white, false: colors.white}}
+              tintColor={colors.white}
+              onCheckColor={colors.white}
+              onTintColor={colors.white}
+              style={styles.checkBox}
+            />
+          </View>
+          <Typography variant="spanBold">
+            {t('privacyPolicy.accept')}
+            <Typography
+              variant="spanBold"
+              onPress={handleVisableDismiss}
+              style={styles.textSpan}>
+              {` ${t('privacyPolicy.privacyPolicy')}`}
+            </Typography>
+          </Typography>
+        </View>
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            buttonText={t('start').toUpperCase()}
+            buttonVariant="bigButton"
+            onPress={formik.handleSubmit}
+          />
+        </View>
       </View>
       <Modal
         animationType="slide"
@@ -195,21 +197,38 @@ const SignUp = () => {
 
 const styles = StyleSheet.create({
   formBox: {
-    flex: 1,
     alignItems: 'center',
-    paddingTop: 30,
-    width: Dimensions.get('window').width,
+    paddingTop: 32,
+    height: Dimensions.get('window').height * 0.9,
+    justifyContent: 'flex-end',
   },
   inputWrapper: {
-    flex: 0.9,
     alignItems: 'center',
-  },
-  scrollContainer: {
-    flex: 0.8,
-    alignItems: 'center',
+    flex: 1,
   },
   formContainer: {
     alignItems: 'center',
+  },
+  formView: {
+    alignItems: 'center',
+  },
+  checkBoxWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+  },
+  checkBoxContainer: {
+    paddingRight: 10,
+  },
+  checkBox: {
+    width: 20,
+    height: 20,
+  },
+  textSpan: {
+    color: colors.lightBlue,
+  },
+  buttonContainer: {
+    paddingBottom: 32,
   },
   centeredView: {
     flex: 1,
@@ -234,16 +253,6 @@ const styles = StyleSheet.create({
   modalButton: {
     paddingVertical: 40,
     alignItems: 'center',
-  },
-  checkBoxWrapper: {
-    flex: 0.2,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textSpan: {
-    color: colors.lightBlue,
   },
 });
 

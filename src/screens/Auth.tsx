@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   View,
@@ -7,6 +7,8 @@ import {
   Image,
   Modal,
   TouchableOpacity,
+  Animated,
+  Dimensions,
 } from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import AuthForm from '../components/auth/AuthForm';
@@ -20,40 +22,73 @@ const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);
   const {t} = useTranslation();
 
+  const TIMER = 700;
+
+  const slideAnim = useRef(new Animated.Value(0)).current;
+  const slideUp = () => {
+    Animated.timing(slideAnim, {
+      toValue: -Dimensions.get('window').height * 0.4,
+      duration: TIMER,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const slideDown = () => {
+    Animated.timing(slideAnim, {
+      toValue: 0,
+      duration: TIMER,
+      useNativeDriver: false,
+    }).start();
+  };
+
   return (
     <>
       <SafeAreaView style={styles.screen}>
-        <View style={styles.headerContainer}>
-          <View style={styles.imageContainer}>
-            <Shadow useArt style={styles.dropShadow}>
-              <Shadow inner useArt style={styles.innerShadow}>
-                <Image
-                  source={require('../assets/images/racing-car.png')}
-                  style={styles.image}
-                />
-              </Shadow>
-            </Shadow>
-          </View>
-          <View style={styles.titleContainer}>
-            <View style={styles.headerLanguageContainer}>
-              <Shadow useArt style={styles.languageShadow}>
-                <TouchableOpacity
-                  style={styles.languageSettingsButton}
-                  onPress={() => setIsLanguagesVisible(true)}>
-                  <Icon name="language" size={30} color={colors.darkBlue} />
-                </TouchableOpacity>
+        <Animated.View
+          style={{
+            transform: [{translateY: slideAnim}],
+            ...styles.animatedView,
+          }}>
+          <View style={styles.headerContainer}>
+            <View style={styles.imageContainer}>
+              <Shadow useArt style={styles.dropShadow}>
+                <Shadow inner useArt style={styles.innerShadow}>
+                  <Image
+                    source={require('../assets/images/racing-car.png')}
+                    style={styles.image}
+                  />
+                </Shadow>
               </Shadow>
             </View>
-            <View style={styles.headerTitleContainer}>
-              <Typography variant="smallTitle" style={styles.titleText}>
-                Track masters
-              </Typography>
+            <View style={styles.titleContainer}>
+              <View style={styles.headerLanguageContainer}>
+                <Shadow useArt style={styles.languageShadow}>
+                  <TouchableOpacity
+                    style={styles.languageSettingsButton}
+                    onPress={() => setIsLanguagesVisible(true)}>
+                    <Icon name="language" size={30} color={colors.darkBlue} />
+                  </TouchableOpacity>
+                </Shadow>
+              </View>
+              <View style={styles.headerTitleContainer}>
+                <Typography variant="smallTitle" style={styles.titleText}>
+                  Track masters
+                </Typography>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.formContainer}>
-          <AuthForm />
-        </View>
+          <View style={styles.authForm}>
+            <AuthForm
+              setIsSignUpFormVisible={async status => {
+                if (status) {
+                  slideDown();
+                } else {
+                  slideUp();
+                }
+              }}
+            />
+          </View>
+        </Animated.View>
       </SafeAreaView>
       <Modal
         animationType="slide"
@@ -85,16 +120,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.mediumBlue,
   },
+  animatedView: {
+    flex: 1,
+  },
   headerContainer: {
     width: '100%',
     flex: 0.4,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    paddingVertical: 20,
   },
   imageContainer: {
-    flex: 0.45,
+    flex: 0.47,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -128,7 +165,7 @@ const styles = StyleSheet.create({
     transform: [{rotate: '-45deg'}],
   },
   titleContainer: {
-    flex: 0.45,
+    flex: 0.47,
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
@@ -160,11 +197,13 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: colors.white,
+    height: 100,
+    width: 178,
+    paddingHorizontal: 5,
   },
-  formContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  authForm: {
+    flex: 0.6,
+    paddingTop: 20,
   },
   modalContainer: {
     flex: 1,
@@ -179,13 +218,6 @@ const styles = StyleSheet.create({
   languageTitle: {
     color: colors.white,
     padding: 20,
-  },
-  languageScrollView: {
-    flex: 0.4,
-  },
-  languageButton: {
-    alignItems: 'center',
-    paddingVertical: 15,
   },
   languageExit: {
     flex: 0.3,

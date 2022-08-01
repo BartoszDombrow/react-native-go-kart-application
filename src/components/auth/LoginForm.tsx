@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Alert, Dimensions} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
@@ -61,27 +61,30 @@ const LoginForm = () => {
           secureTextEntry={true}
         />
       </View>
-      <CustomButton
-        buttonText={t('play').toUpperCase()}
-        buttonVariant="bigButton"
-        onPress={formik.handleSubmit}
-      />
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          buttonText={t('play').toUpperCase()}
+          buttonVariant="bigButton"
+          onPress={formik.handleSubmit}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   formBox: {
+    flex: 1,
     alignItems: 'center',
-    paddingTop: 30,
-    width: Dimensions.get('window').width,
-  },
-  formView: {
-    height: 240,
+    paddingTop: 32,
   },
   inputContainer: {
-    flex: 0.9,
     alignItems: 'center',
+  },
+  buttonContainer: {
+    justifyContent: 'flex-end',
+    flex: 1,
+    paddingBottom: 32,
   },
 });
 
