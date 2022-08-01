@@ -43,7 +43,7 @@ function GameScreen() {
             buttonVariant="smallButton"
             buttonText={t('race')}
             onPress={() => {
-              gameNavigation.navigate('Game');
+              gameNavigation.navigate('Race');
             }}
           />
         </View>
