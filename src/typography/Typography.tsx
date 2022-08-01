@@ -60,7 +60,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
     textShadowOffset: {width: 2, height: 3},
     textShadowRadius: 10,
-    padding: 4,
+    padding: 8,
   },
   mediumButtonText: {
     color: colors.white,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
     textShadowOffset: {width: 2, height: 2},
     textShadowRadius: 10,
-    padding: 4,
+    padding: 8,
   },
   smallButtonText: {
     color: colors.white,
