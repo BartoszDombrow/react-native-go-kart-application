@@ -32,7 +32,7 @@ const ChooseCar = () => {
       carCode: Yup.string().required(t('yupValidation.requiredField')),
     }),
     onSubmit: () => {
-      gameNavigation.navigate('GameScreen');
+      gameNavigation.navigate('Lobby');
     },
   });
 

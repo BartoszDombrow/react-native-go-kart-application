@@ -55,7 +55,7 @@ const DriverProfile = ({route}: any) => {
           buttonText={t('exit')}
           buttonVariant="tinyButton"
           onPress={() => {
-            gameNavigation.navigate('GameScreen');
+            gameNavigation.navigate('Lobby');
           }}
         />
       </View>

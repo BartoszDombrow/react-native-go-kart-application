@@ -33,6 +33,7 @@
     "deleteAccountText": "Möchten Sie Ihr Konto dauerhaft löschen?",
     "settings": "Einstellungen",
     "start": "Anfang",
+    "race": "Rennen",
     "connect": "Verbinden",
     "joinToSession": "Der Sitzung beitreten",
     "code": "Sitzungscode",
@@ -53,6 +54,7 @@
     "distance": "Distanz",
     "speed": "Geschwindigkeit",
     "time": "Zeit",
-    "carCode": "Fahrzeugcode"
+    "carCode": "Fahrzeugcode",
+    "noActiveDrivers": "Keine aktiven Treiber"
   }
 }

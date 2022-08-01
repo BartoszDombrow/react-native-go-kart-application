@@ -16,7 +16,7 @@ function Game() {
         <Icon
           name="close-circle-sharp"
           style={styles.icon}
-          onPress={() => gameNavigation.navigate('GameScreen')}
+          onPress={() => gameNavigation.navigate('Lobby')}
         />
       </View>
     </View>

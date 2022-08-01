@@ -51,6 +51,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: {width: 2, height: 3},
     textShadowRadius: 10,
+    padding: 8,
   },
   bigButtonText: {
     color: colors.darkBlue,
@@ -108,6 +109,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 2, height: 2},
     textShadowRadius: 5,
+    padding: 4,
   },
   span: {
     fontFamily: fonts.secondaryFont,
