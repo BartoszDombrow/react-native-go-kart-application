@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     borderRadius: 50,
     shadowColor: '#000000',
-    shadowOpacity: 0.6,
+    shadowOpacity: 0.35,
     shadowRadius: 10,
     shadowOffset: {width: 3, height: 3},
     elevation: 10,
