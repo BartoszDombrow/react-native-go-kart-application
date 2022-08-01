@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.darkBlue,
-    opacity: 0.9,
+    opacity: 0.98,
   },
   modal: {
     justifyContent: 'center',
@@ -69,35 +69,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     padding: 20,
-  },
-  button: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-  },
-  buttonShadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-    backgroundColor: colors.lightBlue,
-    height: 55,
-    width: 150,
-    shadowColor: '#000000',
-    shadowOpacity: 0.6,
-    shadowRadius: 10,
-    shadowOffset: {width: 3, height: 3},
-  },
-  buttonContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  buttonText: {
-    color: colors.darkBlue,
-    padding: 12,
   },
 });
 
