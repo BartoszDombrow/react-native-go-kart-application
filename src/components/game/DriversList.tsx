@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     flex: 1,
-    minWidth: 300,
     paddingHorizontal: 16,
   },
 });

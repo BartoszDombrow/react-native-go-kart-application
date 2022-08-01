@@ -1,23 +1,33 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
+import Typography from '../typography/Typography';
 
 function Game() {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
   return (
     <View style={styles.container}>
-      <View style={styles.game} />
+      <View style={styles.map} />
       <View style={styles.players}>
-        <Icon
-          name="close-circle-sharp"
-          style={styles.icon}
-          onPress={() => gameNavigation.navigate('Lobby')}
-        />
+        <View style={styles.closeButtonContainer}>
+          <TouchableOpacity
+            onPress={() => gameNavigation.navigate('Lobby')}
+            style={styles.closeButton}>
+            <Icon
+              name="close-circle-sharp"
+              size={60}
+              color={colors.lightBlue}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.driversContainer}>
+          <Typography variant="spanBold">Race stats here!</Typography>
+        </View>
       </View>
     </View>
   );
@@ -29,18 +39,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: colors.mediumBlue,
   },
-  game: {
+  map: {
     width: '60%',
     backgroundColor: colors.darkBlue,
   },
   players: {
     width: '40%',
   },
-  icon: {
-    position: 'absolute',
-    top: 10,
-    right: 30,
-    fontSize: 64,
+  closeButtonContainer: {
+    alignItems: 'flex-end',
+    padding: 8,
+  },
+  closeButton: {
+    width: 60,
+  },
+  driversContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

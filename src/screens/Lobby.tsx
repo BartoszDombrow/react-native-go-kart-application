@@ -28,7 +28,9 @@ function GameScreen() {
           {t('activeDrivers')}
           {driversAmount}
         </Typography>
-        <DriversList />
+        <View style={styles.driversList}>
+          <DriversList />
+        </View>
       </View>
       <View style={styles.buttonsContainer}>
         <View style={styles.raceButtons}>
@@ -69,6 +71,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  driversList: {
+    flex: 1,
+    width: 300,
   },
   title: {
     paddingVertical: 20,
