@@ -5,7 +5,10 @@
     "time": 1353000,
     "distance": 2250,
     "speed": 40,
-    "color": "red"
+    "color": "red",
+    "top": 60,
+    "left": 20,
+    "posiition": 1
   },
   {
     "id": "4321",
@@ -13,7 +16,10 @@
     "time": 1353000,
     "distance": 2250,
     "speed": 40,
-    "color": "blue"
+    "color": "blue",
+    "top": 10,
+    "left": 190,
+    "posiition": 2
   },
   {
     "id": "2134",
@@ -21,7 +27,10 @@
     "time": 1353000,
     "distance": 2250,
     "speed": 40,
-    "color": "green"
+    "color": "green",
+    "top": 30,
+    "left": 40,
+    "posiition": 3
   },
   {
     "id": "1243",
@@ -29,7 +38,10 @@
     "time": 1353000,
     "distance": 2250,
     "speed": 40,
-    "color": "yellow"
+    "color": "yellow",
+    "top": 80,
+    "left": 10,
+    "posiition": 4
   },
   {
     "id": "1423",
@@ -37,7 +49,10 @@
     "time": 1353000,
     "distance": 2250,
     "speed": 40,
-    "color": "purple"
+    "color": "purple",
+    "top": 10,
+    "left": 80,
+    "posiition": 5
   },
   {
     "id": "1432",
@@ -45,6 +60,9 @@
     "time": 1353985,
     "distance": 2250,
     "speed": 40,
-    "color": "orange"
+    "color": "orange",
+    "top": 120,
+    "left": 60,
+    "posiition": 6
   }
 ]

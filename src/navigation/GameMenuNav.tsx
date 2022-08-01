@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import GameScreen from '../screens/GameScreen';
 import DriverProfile from '../screens/DriverProfile';
+import Game from '../screens/Game';
 import ChooseCar from '../screens/ChooseCar';
 
 export type GameMenuStackParams = {
@@ -10,6 +11,7 @@ export type GameMenuStackParams = {
   DriverProfile: {
     driver: object;
   };
+  Game: undefined;
   ChooseCar: undefined;
 };
 
@@ -26,6 +28,7 @@ function GameMenuNav() {
       initialRouteName="GameScreen">
       <GameMenuStack.Screen name="GameScreen" component={GameScreen} />
       <GameMenuStack.Screen name="DriverProfile" component={DriverProfile} />
+      <GameMenuStack.Screen name="Game" component={Game} />
       <GameMenuStack.Screen name="ChooseCar" component={ChooseCar} />
     </GameMenuStack.Navigator>
   );

@@ -42,7 +42,9 @@ function GameScreen() {
         <CustomButton
           buttonVariant="smallButton"
           buttonText={t('start')}
-          onPress={() => {}}
+          onPress={() => {
+            gameNavigation.navigate('Game');
+          }}
         />
         <CustomButton
           buttonVariant="tinyButton"

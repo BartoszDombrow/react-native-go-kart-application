@@ -18,6 +18,19 @@ const DriverProfile = ({route}: any) => {
   const {t} = useTranslation();
   return (
     <View style={styles.container}>
+      <View style={styles.raceContainer}>
+        <View
+          style={{
+            position: 'absolute',
+            top: driver.top,
+            left: driver.left,
+            backgroundColor: driver.color,
+            height: 20,
+            width: 20,
+            borderRadius: 10,
+          }}
+        />
+      </View>
       <View style={styles.smallContainer}>
         <Typography variant="smallButtonText">{t('distance')}</Typography>
         <View style={styles.parametersContainer}>
@@ -40,13 +53,12 @@ const DriverProfile = ({route}: any) => {
         <Typography variant="smallTitle">{driver.name}</Typography>
         <CustomButton
           buttonText={t('exit')}
-          buttonVariant="smallButton"
+          buttonVariant="tinyButton"
           onPress={() => {
             gameNavigation.navigate('GameScreen');
           }}
         />
       </View>
-      <View style={styles.raceContainer} />
     </View>
   );
 };
