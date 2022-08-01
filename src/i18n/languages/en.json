@@ -34,7 +34,7 @@
     "settings": "Settings",
     "start": "Start",
     "connect": "Connect",
-    "connectToYourGame": "Connect to Your game",
+    "joinToSession": "Join to session",
     "code": "Session code",
     "minCode": "Code must be 8 characters",
     "maxCode": "Code must be 8 characters",

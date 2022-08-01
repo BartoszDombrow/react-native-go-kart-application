@@ -34,7 +34,7 @@
     "settings": "Ustawienia",
     "start": "Start",
     "connect": "Połącz",
-    "connectToYourGame": "Połącz się z Swoją grą",
+    "joinToSession": "Dołącz do sesji",
     "code": "Kod sesji",
     "minCode": "Kod musi mieć 8 znaków",
     "maxCode": "Kod musi mieć 8 znaków",

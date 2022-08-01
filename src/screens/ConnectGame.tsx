@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Alert, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, Alert, StyleSheet} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import FormInput from '../components/FormInput';
@@ -45,28 +45,40 @@ const ConnectGame = () => {
   });
   return (
     <View style={styles.container}>
-      <Icon
-        name="arrow-undo-circle-sharp"
-        style={styles.icon}
-        onPress={() => navigationMenu.navigate('Menu')}
-      />
-      <Typography variant="bigTitle" style={styles.text}>
-        {t('connectToYourGame')}
-      </Typography>
-      <FormInput
-        onChangeText={formik.handleChange('code')}
-        onBlur={formik.handleBlur('code')}
-        value={formik.values.code}
-        placeholder={t('code')}
-        formikTouched={formik.touched.code}
-        formikErrors={formik.errors.code}
-        secureTextEntry={false}
-      />
-      <CustomButton
-        buttonText={t('connect')}
-        buttonVariant="mediumButton"
-        onPress={formik.handleSubmit}
-      />
+      <View>
+        <TouchableOpacity
+          onPress={() => navigationMenu.navigate('Menu')}
+          style={styles.icon}>
+          <Icon
+            name="arrow-undo-circle-sharp"
+            size={60}
+            color={colors.lightBlue}
+          />
+        </TouchableOpacity>
+        <View style={styles.titleContainer}>
+          <Typography variant="mediumTitle" style={styles.text}>
+            {t('joinToSession')}
+          </Typography>
+        </View>
+      </View>
+      <View style={styles.formContainer}>
+        <FormInput
+          onChangeText={formik.handleChange('code')}
+          onBlur={formik.handleBlur('code')}
+          value={formik.values.code}
+          placeholder={t('code')}
+          formikTouched={formik.touched.code}
+          formikErrors={formik.errors.code}
+          secureTextEntry={false}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          buttonText={t('connect').toUpperCase()}
+          buttonVariant="bigButton"
+          onPress={formik.handleSubmit}
+        />
+      </View>
     </View>
   );
 };
@@ -74,18 +86,38 @@ const ConnectGame = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: colors.mediumBlue,
   },
-  text: {
-    marginTop: 50,
-    marginBottom: 140,
-  },
   icon: {
-    alignSelf: 'flex-start',
+    marginLeft: 20,
     marginTop: 20,
-    marginLeft: 40,
-    fontSize: 64,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowOffset: {width: 0, height: 3},
+    shadowRadius: 10,
+    elevation: 22,
+    borderRadius: 30,
+    width: 60,
+  },
+  titleContainer: {
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+  text: {
+    textAlign: 'center',
+    width: '80%',
+    paddingVertical: 10,
+  },
+  formContainer: {
+    flex: 1,
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    paddingBottom: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
