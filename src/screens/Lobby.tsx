@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
   driversList: {
     flex: 1,
     width: 300,
+    paddingBottom: 16,
   },
   title: {
     paddingVertical: 20,

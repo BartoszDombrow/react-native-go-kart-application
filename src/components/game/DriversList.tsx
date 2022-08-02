@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   flatlist: {
     flex: 1,
-    padding: 16,
+    paddingHorizontal: 16,
   },
 });
 
