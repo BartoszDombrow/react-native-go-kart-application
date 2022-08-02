@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {GameStackParams} from '../navigation/GameNav';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -9,6 +9,7 @@ import Typography from '../typography/Typography';
 import DriversList from '../components/game/DriversList';
 import {useTranslation} from 'react-i18next';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
+import drivers from '../constants/DriversDATA.json';
 
 function GameScreen() {
   const navigationGame =
@@ -17,37 +18,39 @@ function GameScreen() {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
   const {t} = useTranslation();
+
+  const driversAmount = drivers.length === 0 ? '' : ` (${drivers.length})`;
+
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Typography variant="smallTitle">{t('activeDrivers')}</Typography>
-        <DriversList />
+    <View style={styles.screen}>
+      <View style={styles.driversContainer}>
+        <Typography variant="smallTitle" style={styles.title}>
+          {t('activeDrivers')}
+          {driversAmount}
+        </Typography>
+        <View style={styles.driversList}>
+          <DriversList />
+        </View>
       </View>
-      <View style={styles.content}>
-        <Text>Something</Text>
-      </View>
-      <View style={styles.content}>
+      <View style={styles.buttonsContainer}>
+        <View style={styles.raceButtons}>
+          <CustomButton
+            buttonVariant="smallButton"
+            buttonText={t('chooseCar')}
+            onPress={() => {
+              gameNavigation.navigate('ChooseCar');
+            }}
+          />
+          <CustomButton
+            buttonVariant="smallButton"
+            buttonText={t('race')}
+            onPress={() => {
+              gameNavigation.navigate('Race');
+            }}
+          />
+        </View>
         <CustomButton
           buttonVariant="smallButton"
-          buttonText={t('chooseCar')}
-          onPress={() => {
-            gameNavigation.navigate('ChooseCar');
-          }}
-        />
-        <CustomButton
-          buttonVariant="smallButton"
-          buttonText={t('ready')}
-          onPress={() => {}}
-        />
-        <CustomButton
-          buttonVariant="smallButton"
-          buttonText={t('start')}
-          onPress={() => {
-            gameNavigation.navigate('Game');
-          }}
-        />
-        <CustomButton
-          buttonVariant="tinyButton"
           buttonText={t('exit')}
           onPress={() => {
             navigationGame.navigate('ConnectGame');
@@ -59,29 +62,29 @@ function GameScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
     flexDirection: 'row',
     backgroundColor: colors.mediumBlue,
-    justifyContent: 'center',
   },
-  content: {
-    flex: 0.33,
+  driversContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 2,
-    margin: 2,
   },
-  driversListWrapper: {
-    alignItems: 'center',
-    marginTop: 8,
-    padding: 8,
-    borderRadius: 20,
-    width: '90%',
-    height: '70%',
-    backgroundColor: colors.lightBlue,
+  driversList: {
+    flex: 1,
+    width: 300,
   },
-  driversList: {},
+  title: {
+    paddingVertical: 20,
+  },
+  buttonsContainer: {
+    padding: 16,
+  },
+  raceButtons: {
+    flex: 1,
+  },
 });
 
 export default GameScreen;

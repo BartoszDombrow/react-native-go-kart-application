@@ -51,6 +51,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: {width: 2, height: 3},
     textShadowRadius: 10,
+    padding: 8,
   },
   bigButtonText: {
     color: colors.darkBlue,
@@ -60,7 +61,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
     textShadowOffset: {width: 2, height: 3},
     textShadowRadius: 10,
-    padding: 4,
+    padding: 8,
   },
   mediumButtonText: {
     color: colors.white,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
     textShadowOffset: {width: 2, height: 2},
     textShadowRadius: 10,
-    padding: 4,
+    padding: 8,
   },
   smallButtonText: {
     color: colors.white,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.35)',
     textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 10,
-    padding: 4,
+    padding: 8,
   },
   basicText: {
     fontSize: 18,
@@ -108,6 +109,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 2, height: 2},
     textShadowRadius: 5,
+    padding: 4,
   },
   span: {
     fontFamily: fonts.secondaryFont,

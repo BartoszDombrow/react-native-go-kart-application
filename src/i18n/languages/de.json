@@ -33,8 +33,9 @@
     "deleteAccountText": "Möchten Sie Ihr Konto dauerhaft löschen?",
     "settings": "Einstellungen",
     "start": "Anfang",
+    "race": "Rennen",
     "connect": "Verbinden",
-    "connectToYourGame": "Verbinden Sie sich mit Ihrem Spiel",
+    "joinToSession": "Der Sitzung beitreten",
     "code": "Sitzungscode",
     "minCode": "Der Code muss 8 Zeichen lang sein",
     "maxCode": "Der Code muss 8 Zeichen lang sein",
@@ -53,6 +54,7 @@
     "distance": "Distanz",
     "speed": "Geschwindigkeit",
     "time": "Zeit",
-    "carCode": "Fahrzeugcode"
+    "carCode": "Fahrzeugcode",
+    "noActiveDrivers": "Keine aktiven Treiber"
   }
 }

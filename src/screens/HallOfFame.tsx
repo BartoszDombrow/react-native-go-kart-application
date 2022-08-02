@@ -11,6 +11,7 @@ import {useTranslation} from 'react-i18next';
 import RankingBox from '../components/halloffame/RankingBox';
 import Typography from '../typography/Typography';
 import CustomButton from '../components/button/CustomButton';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 function Halloffame() {
   const navigation =
@@ -37,7 +38,7 @@ function Halloffame() {
   const {t} = useTranslation();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.rankingHeader}>
         <View style={styles.imageContainer}>
           <Shadow useArt style={styles.dropShadow}>
@@ -49,13 +50,12 @@ function Halloffame() {
             </Shadow>
           </Shadow>
         </View>
-
         <Typography style={styles.title} variant="smallTitle">
           {t('hallOfFame')}
         </Typography>
       </View>
-      <View style={styles.ranking}>
-        <View style={styles.rankignContainer}>
+      <View style={styles.rankignContainer}>
+        <View style={styles.rankings}>
           <RankingBox
             height={110}
             playerPosition="3"
@@ -75,19 +75,17 @@ function Halloffame() {
             playerTime={FameDataArray[1].time}
           />
         </View>
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <CustomButton
-              buttonText={t('exit').toUpperCase()}
-              onPress={() => {
-                navigation.navigate('Menu');
-              }}
-              buttonVariant="bigButton"
-            />
-          </View>
-        </View>
       </View>
-    </View>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          buttonText={t('exit').toUpperCase()}
+          onPress={() => {
+            navigation.navigate('Menu');
+          }}
+          buttonVariant="bigButton"
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -97,9 +95,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mediumBlue,
   },
   rankingHeader: {
-    flex: 0.6,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 24,
   },
   imageContainer: {
     width: 150,
@@ -138,26 +136,26 @@ const styles = StyleSheet.create({
   title: {
     color: colors.white,
     fontFamily: fonts.primaryFont,
-    paddingTop: 40,
+    paddingTop: 24,
     fontSize: 36,
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 2, height: 4},
     textShadowRadius: 5,
   },
-  ranking: {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   rankignContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 32,
+    flex: 1,
+  },
+  rankings: {
     flexDirection: 'row',
-    flex: 0.6,
     justifyContent: 'space-evenly',
   },
   buttonContainer: {
-    flex: 0.4,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingBottom: 32,
   },
   button: {
     width: 300,

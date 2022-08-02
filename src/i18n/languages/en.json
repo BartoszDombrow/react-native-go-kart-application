@@ -33,8 +33,9 @@
     "deleteAccountText": "Do you want to delete your account permamently?",
     "settings": "Settings",
     "start": "Start",
+    "race": "Race",
     "connect": "Connect",
-    "connectToYourGame": "Connect to Your game",
+    "joinToSession": "Join to session",
     "code": "Session code",
     "minCode": "Code must be 8 characters",
     "maxCode": "Code must be 8 characters",
@@ -53,6 +54,7 @@
     "distance": "Distance",
     "speed": "Speed",
     "time": "Time",
-    "carCode": "Vehicle code"
+    "carCode": "Vehicle code",
+    "noActiveDrivers": "No active drivers"
   }
 }

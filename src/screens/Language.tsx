@@ -2,13 +2,13 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import SubmitButton from '../components/SubmitButton';
 import colors from '../constants/Colors';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
 import Typography from '../typography/Typography';
 import LanguageSelector from '../components/language/LanguageSelector';
+import CustomButton from '../components/button/CustomButton';
 
 const Language = () => {
   const navigation =
@@ -27,11 +27,10 @@ const Language = () => {
         <LanguageSelector />
       </View>
       <View style={styles.bottomContainer}>
-        <SubmitButton
+        <CustomButton
           buttonText={t('return').toUpperCase()}
-          onPress={() => {
-            navigation.navigate('Menu');
-          }}
+          buttonVariant="bigButton"
+          onPress={() => navigation.navigate('Menu')}
         />
       </View>
     </View>

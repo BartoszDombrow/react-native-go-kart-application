@@ -33,8 +33,9 @@
     "deleteAccountText": "Czy chcesz usunąć swoje konto na stałe?",
     "settings": "Ustawienia",
     "start": "Start",
+    "race": "Wyścig",
     "connect": "Połącz",
-    "connectToYourGame": "Połącz się z Swoją grą",
+    "joinToSession": "Dołącz do sesji",
     "code": "Kod sesji",
     "minCode": "Kod musi mieć 8 znaków",
     "maxCode": "Kod musi mieć 8 znaków",
@@ -53,6 +54,7 @@
     "distance": "Dystans",
     "speed": "Prędkość",
     "time": "Czas",
-    "carCode": "Kod pojazdu"
+    "carCode": "Kod pojazdu",
+    "noActiveDrivers": "Brak aktywnych kierowców"
   }
 }
