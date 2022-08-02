@@ -29,34 +29,7 @@ const DriverProfile = ({route}: any) => {
           }}
         />
       </View>
-      {/* <View style={styles.smallContainer}>
-        <Typography variant="smallButtonText">{t('distance')}</Typography>
-        <View style={styles.parametersContainer}>
-          <Typography variant="basicText">{driver.distance}</Typography>
-        </View>
-        <Typography variant="smallButtonText">{t('speed')}</Typography>
 
-        <View style={styles.parametersContainer}>
-          <Typography variant="basicText">{driver.speed}</Typography>
-        </View>
-        <Typography variant="smallButtonText">{t('time')}</Typography>
-
-        <View style={styles.parametersContainer}>
-          <Typography variant="basicText">
-            {dayjs(driver.time).format('mm:ss:SSS')}
-          </Typography>
-        </View>
-      </View>
-      <View style={styles.smallContainer}>
-        <Typography variant="smallTitle">{driver.name}</Typography>
-        <CustomButton
-          buttonText={t('exit')}
-          buttonVariant="tinyButton"
-          onPress={() => {
-            gameNavigation.navigate('Lobby');
-          }}
-        />
-      </View> */}
       <View style={styles.statsContainer}>
         <View>
           <Typography variant="smallTitle">{driver.name}</Typography>
@@ -97,7 +70,7 @@ const DriverProfile = ({route}: any) => {
             buttonText={t('exit').toUpperCase()}
             buttonVariant="smallButton"
             onPress={() => {
-              gameNavigation.navigate('Lobby');
+              gameNavigation.goBack();
             }}
           />
         </View>

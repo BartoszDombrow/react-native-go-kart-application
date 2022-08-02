@@ -4,13 +4,17 @@ import {ArrayElement} from 'Types';
 import colors from '../../constants/Colors';
 import drivers from '../../constants/DriversDATA.json';
 import {useNavigation} from '@react-navigation/native';
-
+import dayjs from 'dayjs';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../../navigation/GameMenuNav';
 import Typography from '../../typography/Typography';
 import {useTranslation} from 'react-i18next';
 
-const DriversList = () => {
+interface Prop {
+  screenType: 'Race' | 'Lobby';
+}
+
+const DriversList: React.FC<Prop> = ({screenType}) => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
 
@@ -36,15 +40,37 @@ const DriversList = () => {
           }}
         />
         <View style={styles.driverName}>
-          <Typography variant="smallButtonText">{driver.name}</Typography>
+          <Typography variant="smallButtonText">
+            {screenType === 'Race'
+              ? `${driver.position}. ${driver.distance}m ${
+                  driver.speed
+                }m/s ${dayjs()
+                  .startOf('day')
+                  .millisecond(driver.time)
+                  .format('mm:ss:SSS')} `
+              : driver.name}
+          </Typography>
         </View>
       </TouchableOpacity>
     );
+    const compare = (a: any, b: any) => {
+      const fameA = a.position;
+      const fameB = b.position;
+
+      let comparison = 0;
+
+      if (fameA > fameB) {
+        comparison = 1;
+      } else if (fameA < fameB) {
+        comparison = -1;
+      }
+      return comparison;
+    };
 
     return (
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={drivers}
+        data={drivers.sort(compare)}
         renderItem={renderItem}
         keyExtractor={driver => driver.id}
         style={styles.flatlist}

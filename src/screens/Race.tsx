@@ -5,14 +5,31 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
-import Typography from '../typography/Typography';
+import driversData from '../constants/DriversDATA.json';
+import DriversList from '../components/game/DriversList';
 
 function Game() {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
   return (
     <View style={styles.container}>
-      <View style={styles.map} />
+      <View style={styles.map}>
+        {driversData.map(driverData => {
+          return (
+            <View
+              style={{
+                position: 'absolute',
+                top: driverData.top,
+                left: driverData.left,
+                height: 20,
+                width: 20,
+                borderRadius: 10,
+                backgroundColor: driverData.color,
+              }}
+            />
+          );
+        })}
+      </View>
       <View style={styles.players}>
         <View style={styles.closeButtonContainer}>
           <TouchableOpacity
@@ -25,9 +42,7 @@ function Game() {
             />
           </TouchableOpacity>
         </View>
-        <View style={styles.driversContainer}>
-          <Typography variant="spanBold">Race stats here!</Typography>
-        </View>
+        <DriversList screenType="Race" />
       </View>
     </View>
   );
@@ -57,6 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
 });
 
