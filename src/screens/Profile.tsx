@@ -111,7 +111,7 @@ const Profile = () => {
         <CustomButton
           buttonText={t('return').toUpperCase()}
           buttonVariant="bigButton"
-          onPress={() => navigation.navigate('Menu')}
+          onPress={() => navigation.navigate('Settings')}
         />
       </View>
       <ChangePasswordModal

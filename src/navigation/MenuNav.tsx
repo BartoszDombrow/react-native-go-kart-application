@@ -2,6 +2,7 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import MainView from '../screens/MainView';
+import Settings from '../screens/Settings';
 import HallOfFame from '../screens/HallOfFame';
 import Profile from '../screens/Profile';
 import Language from '../screens/Language';
@@ -9,6 +10,7 @@ import GameNav from './GameNav';
 
 export type MenuStackParams = {
   Menu: undefined;
+  Settings: undefined;
   Start: undefined;
   HallOfFame: undefined;
   // Statistics
@@ -30,6 +32,7 @@ function MenuNav() {
       }}
       initialRouteName="Menu">
       <MenuStack.Screen name="Menu" component={MainView} />
+      <MenuStack.Screen name="Settings" component={Settings} />
       <MenuStack.Screen name="Start" component={GameNav} />
       <MenuStack.Screen name="HallOfFame" component={HallOfFame} />
       <MenuStack.Screen name="Profile" component={Profile} />
