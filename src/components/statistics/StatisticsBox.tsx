@@ -65,7 +65,7 @@ const StatisticsBox: React.FC<StatisticsBoxProp> = ({
 const styles = StyleSheet.create({
   statisticsBox: {
     width: '50%',
-    paddingTop: 32,
+    paddingTop: 16,
     justifyContent: 'center',
     alignItems: 'center',
   },

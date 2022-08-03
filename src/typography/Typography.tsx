@@ -33,6 +33,7 @@ const styles = StyleSheet.create<Record<Variant, TextStyle>>({
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 2, height: 3},
     textShadowRadius: 5,
+    height: 64,
   },
   mediumTitle: {
     fontSize: 44,

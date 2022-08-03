@@ -11,6 +11,7 @@ import {MenuStackParams} from '../navigation/MenuNav';
 import {StatisticsStackParams} from '../navigation/StatisticsNav';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 type StatisticsNavigationProp = CompositeNavigationProp<
   StackNavigationProp<MenuStackParams>,
@@ -54,13 +55,21 @@ const Statistics = () => {
           <Shadow useArt inner style={styles.shadow}>
             <TouchableOpacity>
               <Shadow useArt style={styles.raceRecord}>
-                <Typography variant="span">19.07.2022 16:45</Typography>
-                <Typography variant="span">Le Mans Wrocław</Typography>
-                <Typography
-                  variant="span"
-                  style={{textDecorationLine: 'underline'}}>
-                  Show
-                </Typography>
+                <View>
+                  <MaterialIcons
+                    name="touch-app"
+                    color={colors.white}
+                    size={32}
+                  />
+                </View>
+                <View>
+                  <Typography variant="span" style={styles.raceText}>
+                    19.07.2022 16:45
+                  </Typography>
+                  <Typography variant="span" style={styles.raceText}>
+                    Le Mans Wrocław
+                  </Typography>
+                </View>
               </Shadow>
             </TouchableOpacity>
           </Shadow>
@@ -94,6 +103,7 @@ const styles = StyleSheet.create({
   statisticsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    paddingTop: 8,
   },
   racingContainer: {
     paddingTop: 16,
@@ -114,21 +124,25 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     borderRadius: 20,
     backgroundColor: colors.lightBlue,
-    width: 240,
-    height: 100,
+    width: 280,
+    height: 60,
     marginVertical: 10,
   },
   raceRecord: {
-    width: 220,
-    height: 80,
+    width: 260,
+    height: 50,
     backgroundColor: colors.darkBlue,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     borderRadius: 20,
     shadowColor: '#000000',
     shadowOpacity: 0.5,
     shadowRadius: 10,
     shadowOffset: {width: 0, height: 5},
+    flexDirection: 'row',
+  },
+  raceText: {
+    fontSize: 12,
   },
   buttonContainer: {
     paddingBottom: 32,
