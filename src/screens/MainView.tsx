@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import colors from '../constants/Colors';
-import {useNavigation, CompositeNavigationProp} from '@react-navigation/native';
-import {RootStackParams} from '../navigation/StackNav';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from 'react-i18next';
@@ -17,20 +17,18 @@ type MenuNavigationProp = CompositeNavigationProp<
 >;
 
 const MainView = () => {
-  const navigation = useNavigation<MenuNavigationProp>();
+  const menuNavigation =
+    useNavigation<NativeStackNavigationProp<MenuStackParams>>();
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  const settingsHandler = () => {
-    setIsVisible(!isVisible);
-  };
   const {t} = useTranslation();
 
   return (
     <View style={styles.wrapper}>
       <View style={styles.headerContainer}>
         <View style={styles.settingsContainer}>
-          <TouchableOpacity onPress={settingsHandler} style={styles.icon}>
+          <TouchableOpacity
+            onPress={() => menuNavigation.navigate('Settings')}
+            style={styles.icon}>
             <Icon name={'settings'} color={colors.darkBlue} size={50} />
           </TouchableOpacity>
         </View>
@@ -43,19 +41,19 @@ const MainView = () => {
       <View style={styles.contentContainer}>
         <CustomButton
           buttonText={t('start')}
-          onPress={() => navigation.navigate('Start')}
+          onPress={() => menuNavigation.navigate('Start')}
           buttonVariant="mediumButton"
           iconName="play"
         />
         <CustomButton
           buttonText={t('hallOfFame')}
-          onPress={() => navigation.navigate('HallOfFame')}
+          onPress={() => menuNavigation.navigate('HallOfFame')}
           buttonVariant="mediumButton"
           iconName="trophy"
         />
         <CustomButton
           buttonText={t('statistics')}
-          onPress={() => navigation.navigate('Statistics')}
+          onPress={() => menuNavigation.push('Menu')}
           buttonVariant="mediumButton"
           iconName="stats-chart"
         />

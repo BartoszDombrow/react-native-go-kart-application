@@ -30,7 +30,7 @@ const Language = () => {
         <CustomButton
           buttonText={t('return').toUpperCase()}
           buttonVariant="bigButton"
-          onPress={() => navigation.navigate('Menu')}
+          onPress={() => navigation.navigate('Settings')}
         />
       </View>
     </View>
