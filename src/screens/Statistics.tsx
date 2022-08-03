@@ -51,28 +51,26 @@ const Statistics = () => {
       </View>
       <View style={styles.racingContainer}>
         <Typography variant="mediumButtonText">{t('lastRacing')}</Typography>
-        <View style={styles.lastRacingBox}>
-          <Shadow useArt inner style={styles.shadow}>
-            <TouchableOpacity>
-              <Shadow useArt style={styles.raceRecord}>
-                <View>
-                  <MaterialIcons
-                    name="touch-app"
-                    color={colors.white}
-                    size={32}
-                  />
-                </View>
-                <View>
-                  <Typography variant="span" style={styles.raceText}>
-                    19.07.2022 16:45
-                  </Typography>
-                  <Typography variant="span" style={styles.raceText}>
-                    Le Mans Wrocław
-                  </Typography>
-                </View>
-              </Shadow>
-            </TouchableOpacity>
-          </Shadow>
+        <View style={styles.lastRaceBox}>
+          <TouchableOpacity style={styles.lastRace}>
+            <Shadow useArt style={styles.raceRecord}>
+              <View>
+                <MaterialIcons
+                  name="touch-app"
+                  color={colors.white}
+                  size={32}
+                />
+              </View>
+              <View>
+                <Typography variant="span" style={styles.raceText}>
+                  19.07.2022 16:45
+                </Typography>
+                <Typography variant="span" style={styles.raceText}>
+                  Le Mans Wrocław
+                </Typography>
+              </View>
+            </Shadow>
+          </TouchableOpacity>
           <CustomButton
             buttonText={t('showMore')}
             buttonVariant={'smallButton'}
@@ -110,22 +108,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  lastRacingBox: {
+  lastRaceBox: {
     flex: 1,
     paddingBottom: 16,
     alignItems: 'center',
   },
-  shadow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOffset: {width: 0, height: 8},
-    shadowOpacity: 0.35,
-    shadowColor: '#000000',
-    shadowRadius: 10,
-    borderRadius: 20,
-    backgroundColor: colors.lightBlue,
-    width: 280,
-    height: 60,
+  lastRace: {
     marginVertical: 10,
   },
   raceRecord: {
