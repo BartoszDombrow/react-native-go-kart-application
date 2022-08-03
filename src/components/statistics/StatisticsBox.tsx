@@ -14,6 +14,34 @@ interface StatisticsBoxProp {
   statisticsValue: string;
 }
 
+// No idea how to do it better :(
+const icons = [
+  {
+    name: 'trophy',
+    icon: (
+      <MaterialCommunityIcons
+        name="trophy-variant"
+        size={32}
+        color={colors.white}
+      />
+    ),
+  },
+  {
+    name: 'race',
+    icon: <FontAwesome5 name="flag-checkered" size={32} color={colors.white} />,
+  },
+  {
+    name: 'distance',
+    icon: (
+      <MaterialCommunityIcons name="steering" size={32} color={colors.white} />
+    ),
+  },
+  {
+    name: 'time',
+    icon: <Ionicons name="hourglass-outline" size={32} color={colors.white} />,
+  },
+];
+
 const StatisticsBox: React.FC<StatisticsBoxProp> = ({
   iconName,
   description,
@@ -21,43 +49,13 @@ const StatisticsBox: React.FC<StatisticsBoxProp> = ({
 }) => {
   const {t} = useTranslation();
 
-  // No idea how to do it better :(
-  const icons = [
-    {
-      name: 'trophy',
-      icon: <Ionicons name="trophy-outline" size={32} color={colors.white} />,
-    },
-    {
-      name: 'race',
-      icon: (
-        <FontAwesome5 name="flag-checkered" size={32} color={colors.white} />
-      ),
-    },
-    {
-      name: 'distance',
-      icon: (
-        <MaterialCommunityIcons
-          name="steering"
-          size={32}
-          color={colors.white}
-        />
-      ),
-    },
-    {
-      name: 'time',
-      icon: (
-        <Ionicons name="hourglass-outline" size={32} color={colors.white} />
-      ),
-    },
-  ];
-
   return (
     <View style={styles.statisticsBox}>
       <View style={styles.statisticsTile}>
         {icons.find(icon => icon.name === iconName)?.icon}
         <Typography variant="spanBold">{t(description)}</Typography>
       </View>
-      <Typography variant="basicTextBold" style={{color: colors.white}}>
+      <Typography variant="span" style={styles.textStyle}>
         {statisticsValue}
       </Typography>
     </View>
@@ -65,8 +63,21 @@ const StatisticsBox: React.FC<StatisticsBoxProp> = ({
 };
 
 const styles = StyleSheet.create({
-  statisticsBox: {},
-  statisticsTile: {},
+  statisticsBox: {
+    width: '50%',
+    paddingTop: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  statisticsTile: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textStyle: {
+    paddingTop: 8,
+    color: colors.white,
+    fontSize: 20,
+  },
 });
 
 export default StatisticsBox;
