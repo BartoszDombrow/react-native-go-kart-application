@@ -50,7 +50,7 @@ const Statistics = () => {
         />
       </View>
       <View style={styles.racingContainer}>
-        <Typography variant="mediumButtonText">{t('lastRacing')}</Typography>
+        <Typography variant="mediumButtonText">{t('lastRace')}</Typography>
         <View style={styles.lastRaceBox}>
           <TouchableOpacity style={styles.lastRace}>
             <Shadow useArt style={styles.raceRecord}>

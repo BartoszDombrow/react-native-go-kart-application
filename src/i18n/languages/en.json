@@ -57,11 +57,12 @@
     "carCode": "Vehicle code",
     "noActiveDrivers": "No active drivers",
     "racing": "Racing",
-    "lastRacing": "Last racing",
+    "lastRace": "Last race",
     "wins": "Wins",
     "totalDistance": "Total distance",
     "totalTime": "Total time",
     "showMore": "Show more",
-    "racingHistory": "Racing history"
+    "racingHistory": "Racing history",
+    "numberOfEvents": "Number of events"
   }
 }

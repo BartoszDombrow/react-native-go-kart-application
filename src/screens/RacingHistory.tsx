@@ -22,6 +22,7 @@ const RacingHistory = () => {
         {t('racingHistory')}
       </Typography>
       <View style={styles.historyContainer}>
+        <Typography variant="spanBold">{t('numberOfEvents')}: 3</Typography>
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* map user's racing history here (maybe in FlatList),
               only added example records in ScrollView
@@ -33,6 +34,18 @@ const RacingHistory = () => {
             />
             <RaceRecord
               raceDate="18.07.2022 13:24"
+              trackName="Le Mans Wrocław"
+            />
+            <RaceRecord
+              raceDate="7.07.2022 11:11"
+              trackName="Le Mans Wrocław"
+            />
+            <RaceRecord
+              raceDate="7.07.2022 11:11"
+              trackName="Le Mans Wrocław"
+            />
+            <RaceRecord
+              raceDate="7.07.2022 11:11"
               trackName="Le Mans Wrocław"
             />
             <RaceRecord
@@ -64,9 +77,11 @@ const styles = StyleSheet.create({
   },
   historyContainer: {
     flex: 1,
+    alignItems: 'center',
   },
   buttonContainer: {
     paddingBottom: 32,
+    paddingTop: 8,
     alignItems: 'center',
   },
 });

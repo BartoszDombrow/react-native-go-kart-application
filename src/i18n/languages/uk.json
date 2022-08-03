@@ -57,11 +57,12 @@
     "carCode": "Код транспортного засобу",
     "noActiveDrivers": "Немає активних драйверів",
     "racing": "Перегони",
-    "lastRacing": "Остання гонка",
+    "lastRace": "Остання гонка",
     "wins": "Перемоги",
     "totalDistance": "Загальна відстань",
     "totalTime": "Загальний час",
     "showMore": "Показати більше",
-    "racingHistory": "Історія гонок"
+    "racingHistory": "Історія гонок",
+    "numberOfEvents": "Кількість подій"
   }
 }

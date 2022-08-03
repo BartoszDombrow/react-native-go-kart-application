@@ -57,11 +57,12 @@
     "carCode": "Fahrzeugcode",
     "noActiveDrivers": "Keine aktiven Treiber",
     "racing": "Rennen",
-    "lastRacing": "Letztes Rennen",
+    "lastRace": "Letztes Rennen",
     "wins": "Siege",
     "totalDistance": "Gesamtentfernung",
     "totalTime": "Gesamtzeit",
     "showMore": "Zeig mehr",
-    "racingHistory": "Renngeschichte"
+    "racingHistory": "Renngeschichte",
+    "numberOfEvents": "Anzahl der Ereignisse"
   }
 }

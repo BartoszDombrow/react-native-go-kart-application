@@ -57,11 +57,12 @@
     "carCode": "Kod pojazdu",
     "noActiveDrivers": "Brak aktywnych kierowców",
     "racing": "Wyścigi",
-    "lastRacing": "Ostatnie wyścigi",
+    "lastRace": "Ostatni wyścig",
     "wins": "Wygrane",
     "totalDistance": "Całkowity dystans",
     "totalTime": "Całkowity czas",
     "showMore": "Pokaż więcej",
-    "racingHistory": "Historia wyścigów"
+    "racingHistory": "Historia wyścigów",
+    "numberOfEvents": "Liczba wydarzeń"
   }
 }
