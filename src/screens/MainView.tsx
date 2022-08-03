@@ -1,22 +1,23 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import colors from '../constants/Colors';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, CompositeNavigationProp} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from 'react-i18next';
 
-import Settings from '../components/Settings';
 import Typography from '../typography/Typography';
 import CustomButton from '../components/button/CustomButton';
+import {StackNavigationProp} from '@react-navigation/stack';
+
+type MenuNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParams>,
+  StackNavigationProp<MenuStackParams>
+>;
 
 const MainView = () => {
-  const navigationAuth =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
-  const navigationMenu =
-    useNavigation<NativeStackNavigationProp<MenuStackParams>>();
+  const navigation = useNavigation<MenuNavigationProp>();
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -26,43 +27,40 @@ const MainView = () => {
   const {t} = useTranslation();
 
   return (
-    <>
-      <View style={styles.wrapper}>
-        <View style={styles.headerContainer}>
-          <View style={styles.settingsContainer}>
-            <TouchableOpacity onPress={settingsHandler} style={styles.icon}>
-              <Icon name={'settings'} color={colors.darkBlue} size={50} />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.titleContainer}>
-            <Typography variant="bigTitle" style={styles.headerText}>
-              {t('menu')}
-            </Typography>
-          </View>
+    <View style={styles.wrapper}>
+      <View style={styles.headerContainer}>
+        <View style={styles.settingsContainer}>
+          <TouchableOpacity onPress={settingsHandler} style={styles.icon}>
+            <Icon name={'settings'} color={colors.darkBlue} size={50} />
+          </TouchableOpacity>
         </View>
-        <View style={styles.contentContainer}>
-          <CustomButton
-            buttonText={t('start')}
-            onPress={() => navigationMenu.navigate('Start')}
-            buttonVariant="mediumButton"
-            iconName="play"
-          />
-          <CustomButton
-            buttonText={t('hallOfFame')}
-            onPress={() => navigationMenu.navigate('HallOfFame')}
-            buttonVariant="mediumButton"
-            iconName="trophy"
-          />
-          <CustomButton
-            buttonText={t('statistics')}
-            onPress={() => navigationAuth.push('MainView')}
-            buttonVariant="mediumButton"
-            iconName="stats-chart"
-          />
+        <View style={styles.titleContainer}>
+          <Typography variant="bigTitle" style={styles.headerText}>
+            {t('menu')}
+          </Typography>
         </View>
       </View>
-      <Settings isVisible={isVisible} settingsHandler={settingsHandler} />
-    </>
+      <View style={styles.contentContainer}>
+        <CustomButton
+          buttonText={t('start')}
+          onPress={() => navigation.navigate('Start')}
+          buttonVariant="mediumButton"
+          iconName="play"
+        />
+        <CustomButton
+          buttonText={t('hallOfFame')}
+          onPress={() => navigation.navigate('HallOfFame')}
+          buttonVariant="mediumButton"
+          iconName="trophy"
+        />
+        <CustomButton
+          buttonText={t('statistics')}
+          onPress={() => navigation.navigate('Statistics')}
+          buttonVariant="mediumButton"
+          iconName="stats-chart"
+        />
+      </View>
+    </View>
   );
 };
 
