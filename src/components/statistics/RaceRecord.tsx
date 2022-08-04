@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import {Dimensions, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
@@ -19,7 +20,7 @@ const RaceRecord: React.FC<RaceRecordProp> = ({raceDate, trackName}) => {
         </View>
         <View>
           <Typography variant="span" style={styles.raceText}>
-            {raceDate}
+            {dayjs(raceDate).format('DD.MM.YYYY HH:mm')}
           </Typography>
           <Typography variant="span" style={styles.raceText}>
             {trackName}

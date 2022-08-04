@@ -67,7 +67,7 @@ const DriverProfile = ({route}: any) => {
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton
-            buttonText={t('exit').toUpperCase()}
+            buttonText={t('exit')}
             buttonVariant="smallButton"
             onPress={() => {
               gameNavigation.goBack();

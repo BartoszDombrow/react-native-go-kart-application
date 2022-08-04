@@ -28,7 +28,7 @@ const Language = () => {
       </View>
       <View style={styles.bottomContainer}>
         <CustomButton
-          buttonText={t('return').toUpperCase()}
+          buttonText={t('return')}
           buttonVariant="bigButton"
           onPress={() => navigation.navigate('Settings')}
         />

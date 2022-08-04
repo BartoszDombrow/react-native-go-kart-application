@@ -29,7 +29,7 @@ function GameScreen() {
           {driversAmount}
         </Typography>
         <View style={styles.driversList}>
-          <DriversList />
+          <DriversList screenType="Lobby" />
         </View>
       </View>
       <View style={styles.buttonsContainer}>

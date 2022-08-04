@@ -109,7 +109,7 @@ const Profile = () => {
       </View>
       <View style={styles.returnButton}>
         <CustomButton
-          buttonText={t('return').toUpperCase()}
+          buttonText={t('return')}
           buttonVariant="bigButton"
           onPress={() => navigation.navigate('Settings')}
         />

@@ -63,7 +63,7 @@ const ChooseCar = () => {
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
-          buttonText={t('confirm').toUpperCase()}
+          buttonText={t('confirm')}
           buttonVariant="mediumButton"
           onPress={formik.handleSubmit}
         />

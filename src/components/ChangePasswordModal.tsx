@@ -100,7 +100,7 @@ const ChangePasswordModal: React.FC<Props> = ({
         </View>
         <View style={styles.buttonWrapper}>
           <CustomButton
-            buttonText={t('exit').toUpperCase()}
+            buttonText={t('exit')}
             buttonVariant="bigButton"
             onPress={changePasswordHandler}
           />

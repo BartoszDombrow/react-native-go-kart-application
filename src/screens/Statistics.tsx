@@ -11,7 +11,11 @@ import {MenuStackParams} from '../navigation/MenuNav';
 import {StatisticsStackParams} from '../navigation/StatisticsNav';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import dayjs from 'dayjs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type StatisticsNavigationProp = CompositeNavigationProp<
   StackNavigationProp<MenuStackParams>,
@@ -29,24 +33,49 @@ const Statistics = () => {
       </View>
       <View style={styles.statisticsContainer}>
         <StatisticsBox
-          iconName="trophy"
+          icon={
+            <MaterialCommunityIcons
+              name="trophy-variant"
+              size={32}
+              color={colors.white}
+            />
+          }
           description="wins"
           statisticsValue="4"
         />
         <StatisticsBox
-          iconName="race"
+          icon={
+            <FontAwesome5
+              name="flag-checkered"
+              size={32}
+              color={colors.white}
+            />
+          }
           description="racing"
           statisticsValue="10"
         />
+      </View>
+      <View style={styles.statisticsContainer}>
         <StatisticsBox
-          iconName="distance"
+          icon={
+            <MaterialCommunityIcons
+              name="steering"
+              size={32}
+              color={colors.white}
+            />
+          }
           description="totalDistance"
           statisticsValue="4,947 km"
         />
         <StatisticsBox
-          iconName="time"
+          icon={
+            <Ionicons name="hourglass-outline" size={32} color={colors.white} />
+          }
           description="totalTime"
-          statisticsValue="01:02:31:47"
+          statisticsValue={dayjs()
+            .startOf('day')
+            .millisecond(123450)
+            .format('HH:mm:ss:SSS')}
         />
       </View>
       <View style={styles.racingContainer}>
@@ -63,7 +92,7 @@ const Statistics = () => {
               </View>
               <View>
                 <Typography variant="span" style={styles.raceText}>
-                  19.07.2022 16:45
+                  {dayjs('2022-08-10T08:09:00.000Z').format('DD.MM.YYYY HH:mm')}
                 </Typography>
                 <Typography variant="span" style={styles.raceText}>
                   Le Mans Wrocław
@@ -80,7 +109,7 @@ const Statistics = () => {
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
-          buttonText={t('exit').toUpperCase()}
+          buttonText={t('exit')}
           buttonVariant="bigButton"
           onPress={() => navigation.navigate('Menu')}
         />
@@ -101,6 +130,7 @@ const styles = StyleSheet.create({
   statisticsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
     paddingTop: 8,
   },
   racingContainer: {

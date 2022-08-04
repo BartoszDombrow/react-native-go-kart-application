@@ -160,7 +160,7 @@ const SignUp = () => {
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton
-            buttonText={t('start').toUpperCase()}
+            buttonText={t('start')}
             buttonVariant="bigButton"
             onPress={formik.handleSubmit}
           />

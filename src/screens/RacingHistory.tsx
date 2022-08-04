@@ -3,12 +3,12 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {StyleSheet, View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
 import CustomButton from '../components/button/CustomButton';
-import RaceRecord from '../components/statistics/RaceRecord';
 import colors from '../constants/Colors';
 import {StatisticsStackParams} from '../navigation/StatisticsNav';
 import Typography from '../typography/Typography';
+import RacingHistoryList from '../components/statistics/RacingHistoryList';
+import racingHistoryData from '../constants/RacingHistoryData.json';
 
 const RacingHistory = () => {
   const {t} = useTranslation();
@@ -22,42 +22,14 @@ const RacingHistory = () => {
         {t('racingHistory')}
       </Typography>
       <View style={styles.historyContainer}>
-        <Typography variant="spanBold">{t('numberOfEvents')}: 3</Typography>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {/* map user's racing history here (maybe in FlatList),
-              only added example records in ScrollView
-          */}
-          <View style={{alignItems: 'center'}}>
-            <RaceRecord
-              raceDate="19.07.2022 16:45"
-              trackName="Le Mans Wrocław"
-            />
-            <RaceRecord
-              raceDate="18.07.2022 13:24"
-              trackName="Le Mans Wrocław"
-            />
-            <RaceRecord
-              raceDate="7.07.2022 11:11"
-              trackName="Le Mans Wrocław"
-            />
-            <RaceRecord
-              raceDate="7.07.2022 11:11"
-              trackName="Le Mans Wrocław"
-            />
-            <RaceRecord
-              raceDate="7.07.2022 11:11"
-              trackName="Le Mans Wrocław"
-            />
-            <RaceRecord
-              raceDate="7.07.2022 11:11"
-              trackName="Le Mans Wrocław"
-            />
-          </View>
-        </ScrollView>
+        <Typography variant="spanBold">
+          {t('numberOfEvents', {number: racingHistoryData.length})}
+        </Typography>
+        <RacingHistoryList />
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
-          buttonText={t('exit').toUpperCase()}
+          buttonText={t('exit')}
           buttonVariant="bigButton"
           onPress={() => navigation.navigate('Stats')}
         />
