@@ -63,7 +63,7 @@ const LoginForm = () => {
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
-          buttonText={t('play').toUpperCase()}
+          buttonText={t('play')}
           buttonVariant="bigButton"
           onPress={formik.handleSubmit}
         />

@@ -55,6 +55,14 @@
     "speed": "Prędkość",
     "time": "Czas",
     "carCode": "Kod pojazdu",
-    "noActiveDrivers": "Brak aktywnych kierowców"
+    "noActiveDrivers": "Brak aktywnych kierowców",
+    "racing": "Wyścigi",
+    "lastRace": "Ostatni wyścig",
+    "wins": "Wygrane",
+    "totalDistance": "Całkowity dystans",
+    "totalTime": "Całkowity czas",
+    "showMore": "Pokaż więcej",
+    "racingHistory": "Historia wyścigów",
+    "numberOfEvents": "Liczba wydarzeń: {{number}}"
   }
 }

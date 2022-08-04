@@ -7,13 +7,14 @@ import HallOfFame from '../screens/HallOfFame';
 import Profile from '../screens/Profile';
 import Language from '../screens/Language';
 import GameNav from './GameNav';
+import StatisticsNav from './StatisticsNav';
 
 export type MenuStackParams = {
   Menu: undefined;
   Settings: undefined;
   Start: undefined;
   HallOfFame: undefined;
-  // Statistics
+  Statistics: undefined;
   // Your team
   Profile: undefined;
   // Sounds
@@ -35,6 +36,7 @@ function MenuNav() {
       <MenuStack.Screen name="Settings" component={Settings} />
       <MenuStack.Screen name="Start" component={GameNav} />
       <MenuStack.Screen name="HallOfFame" component={HallOfFame} />
+      <MenuStack.Screen name="Statistics" component={StatisticsNav} />
       <MenuStack.Screen name="Profile" component={Profile} />
       <MenuStack.Screen name="Language" component={Language} />
     </MenuStack.Navigator>

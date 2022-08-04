@@ -78,7 +78,7 @@ function Halloffame() {
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
-          buttonText={t('exit').toUpperCase()}
+          buttonText={t('exit')}
           onPress={() => {
             navigation.navigate('Menu');
           }}

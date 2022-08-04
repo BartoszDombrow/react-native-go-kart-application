@@ -85,7 +85,9 @@ const CustomButton: React.FC<Props> = ({
                   : 'smallButtonText'
               }
               style={{color: isSelected ? colors.white : colors.darkBlue}}>
-              {buttonText}
+              {buttonVariant === 'bigButton'
+                ? buttonText.toUpperCase()
+                : buttonText}
             </Typography>
           </View>
         </TouchableOpacity>

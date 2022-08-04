@@ -103,7 +103,7 @@ const Auth = () => {
           <LanguageSelector />
           <View style={styles.languageExit}>
             <CustomButton
-              buttonText={t('exit').toUpperCase()}
+              buttonText={t('exit')}
               buttonVariant="bigButton"
               onPress={() => setIsLanguagesVisible(false)}
             />

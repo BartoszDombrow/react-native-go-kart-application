@@ -74,7 +74,7 @@ const ConnectGame = () => {
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
-          buttonText={t('connect').toUpperCase()}
+          buttonText={t('connect')}
           buttonVariant="bigButton"
           onPress={formik.handleSubmit}
         />

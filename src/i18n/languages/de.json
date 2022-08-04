@@ -55,6 +55,14 @@
     "speed": "Geschwindigkeit",
     "time": "Zeit",
     "carCode": "Fahrzeugcode",
-    "noActiveDrivers": "Keine aktiven Treiber"
+    "noActiveDrivers": "Keine aktiven Treiber",
+    "racing": "Rennen",
+    "lastRace": "Letztes Rennen",
+    "wins": "Siege",
+    "totalDistance": "Gesamtentfernung",
+    "totalTime": "Gesamtzeit",
+    "showMore": "Zeig mehr",
+    "racingHistory": "Renngeschichte",
+    "numberOfEvents": "Anzahl der Ereignisse: {{number}}"
   }
 }

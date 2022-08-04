@@ -47,7 +47,7 @@ const MainView = () => {
         />
         <CustomButton
           buttonText={t('statistics')}
-          onPress={() => menuNavigation.push('Menu')}
+          onPress={() => menuNavigation.navigate('Statistics')}
           buttonVariant="mediumButton"
           iconName="stats-chart"
         />

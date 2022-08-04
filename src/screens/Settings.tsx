@@ -66,7 +66,7 @@ const Settings = () => {
       </View>
       <View style={styles.submitButtonContainer}>
         <CustomButton
-          buttonText={t('logout').toUpperCase()}
+          buttonText={t('logout')}
           buttonVariant="bigButton"
           onPress={() => {
             navigation.navigate('Auth');

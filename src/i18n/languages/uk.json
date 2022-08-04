@@ -55,6 +55,14 @@
     "speed": "швидкість",
     "time": "час",
     "carCode": "Код транспортного засобу",
-    "noActiveDrivers": "Немає активних драйверів"
+    "noActiveDrivers": "Немає активних драйверів",
+    "racing": "Перегони",
+    "lastRace": "Остання гонка",
+    "wins": "Перемоги",
+    "totalDistance": "Загальна відстань",
+    "totalTime": "Загальний час",
+    "showMore": "Показати більше",
+    "racingHistory": "Історія гонок",
+    "numberOfEvents": "Кількість подій: {{number}}"
   }
 }
