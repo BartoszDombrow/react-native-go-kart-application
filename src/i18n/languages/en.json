@@ -63,6 +63,8 @@
     "totalTime": "Total time",
     "showMore": "Show more",
     "racingHistory": "Racing history",
-    "numberOfEvents": "Number of events: {{number}}"
+    "numberOfEvents": "Number of events: {{number}}",
+    "leaveSession": "Leave session",
+    "leaveSessionDescription": "Are you sure you want to leave the session?"
   }
 }
