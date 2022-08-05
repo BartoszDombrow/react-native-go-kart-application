@@ -65,6 +65,8 @@
     "racingHistory": "Історія гонок",
     "numberOfEvents": "Кількість подій: {{number}}",
     "leaveSession": "Залишити сеанс",
-    "leaveSessionDescription": "Ви впевнені, що бажаєте залишити сеанс?"
+    "leaveSessionDescription": "Ви впевнені, що бажаєте залишити сеанс?",
+    "position": "Позиція: {{position}}",
+    "lap": "Коло: {{lap}}"
   }
 }

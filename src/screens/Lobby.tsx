@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Modal} from 'react-native';
 import {GameStackParams} from '../navigation/GameNav';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import colors from '../constants/Colors';
 import CustomButton from '../components/button/CustomButton';
 import Typography from '../typography/Typography';
@@ -10,13 +9,15 @@ import DriversList from '../components/game/DriversList';
 import {useTranslation} from 'react-i18next';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import drivers from '../constants/DriversDATA.json';
+import {StackNavigationProp} from '@react-navigation/stack';
+
+type GameScreenNav = CompositeNavigationProp<
+  StackNavigationProp<GameStackParams>,
+  StackNavigationProp<GameMenuStackParams>
+>;
 
 function GameScreen() {
-  const navigationGame =
-    useNavigation<NativeStackNavigationProp<GameStackParams>>();
-
-  const gameNavigation =
-    useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
+  const navigation = useNavigation<GameScreenNav>();
   const {t} = useTranslation();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -44,14 +45,14 @@ function GameScreen() {
               buttonVariant="smallButton"
               buttonText={t('chooseCar')}
               onPress={() => {
-                gameNavigation.navigate('ChooseCar');
+                navigation.navigate('ChooseCar');
               }}
             />
             <CustomButton
               buttonVariant="smallButton"
               buttonText={t('race')}
               onPress={() => {
-                gameNavigation.navigate('Race');
+                navigation.navigate('Race');
               }}
             />
             <CustomButton
@@ -61,10 +62,17 @@ function GameScreen() {
             />
           </View>
           <CustomButton
+            buttonVariant="tinyButton"
+            buttonText={''}
+            onPress={() => {
+              navigation.navigate('DriverScreen');
+            }}
+          />
+          <CustomButton
             buttonVariant="smallButton"
             buttonText={t('exit')}
             onPress={() => {
-              navigationGame.navigate('ConnectGame');
+              navigation.navigate('ConnectGame');
             }}
           />
         </View>
@@ -87,7 +95,7 @@ function GameScreen() {
                 buttonVariant="tinyButton"
                 onPress={() => {
                   leaveSessionHandler();
-                  navigationGame.navigate('ConnectGame');
+                  navigation.navigate('ConnectGame');
                 }}
               />
               <CustomButton

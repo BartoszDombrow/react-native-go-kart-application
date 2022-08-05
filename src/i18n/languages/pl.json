@@ -65,6 +65,8 @@
     "racingHistory": "Historia wyścigów",
     "numberOfEvents": "Liczba wydarzeń: {{number}}",
     "leaveSession": "Opuść sesję",
-    "leaveSessionDescription": "Czy na pewno chcesz opuścić sesję?"
+    "leaveSessionDescription": "Czy na pewno chcesz opuścić sesję?",
+    "position": "Pozycja: {{position}}",
+    "lap": "Okrążenie: {{lap}}"
   }
 }

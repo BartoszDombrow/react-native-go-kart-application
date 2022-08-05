@@ -61,8 +61,8 @@
     "distance": 2250,
     "speed": 40,
     "color": "orange",
-    "top": 320,
-    "left": 400,
+    "top": 120,
+    "left": 200,
     "position": 3
   }
 ]
