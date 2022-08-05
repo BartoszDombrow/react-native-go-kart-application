@@ -18,17 +18,17 @@ import Typography from '../typography/Typography';
 import LanguageSelector from '../components/language/LanguageSelector';
 import CustomButton from '../components/button/CustomButton';
 
+const SLIDE_ANIMATION_DURATION = 700;
+
 const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);
   const {t} = useTranslation();
-
-  const TIMER = 700;
 
   const slideAnim = useRef(new Animated.Value(0)).current;
   const slideUp = () => {
     Animated.timing(slideAnim, {
       toValue: -Dimensions.get('window').height * 0.4,
-      duration: TIMER,
+      duration: SLIDE_ANIMATION_DURATION,
       useNativeDriver: false,
     }).start();
   };
@@ -36,7 +36,7 @@ const Auth = () => {
   const slideDown = () => {
     Animated.timing(slideAnim, {
       toValue: 0,
-      duration: TIMER,
+      duration: SLIDE_ANIMATION_DURATION,
       useNativeDriver: false,
     }).start();
   };
@@ -79,7 +79,7 @@ const Auth = () => {
           </View>
           <View style={styles.authForm}>
             <AuthForm
-              setIsSignUpFormVisible={async status => {
+              setIsSignUpFormVisible={status => {
                 if (status) {
                   slideDown();
                 } else {
