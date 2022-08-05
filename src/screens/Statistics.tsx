@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     alignItems: 'center',
-    paddingTop: 64,
+    paddingTop: 32,
   },
   statisticsContainer: {
     flexDirection: 'row',
