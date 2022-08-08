@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, View, StyleSheet} from 'react-native';
 
-import CustomButton from '../button/CustomButton';
+import CustomButton from '../atoms/CustomButton';
 import {useTranslation} from 'react-i18next';
 
 const LanguageSelector = () => {

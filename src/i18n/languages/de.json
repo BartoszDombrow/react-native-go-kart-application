@@ -67,6 +67,7 @@
     "leaveSession": "Sitzung verlassen",
     "leaveSessionDescription": "Möchten Sie die Sitzung wirklich verlassen?",
     "position": "Position: {{position}}",
-    "lap": "Runde: {{lap}}"
+    "lap": "Runde: {{lap}}",
+    "laps": "Runden"
   }
 }

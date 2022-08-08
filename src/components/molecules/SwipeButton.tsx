@@ -1,8 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import colors from '../constants/Colors';
+import colors from '../../constants/Colors';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
-import Typography from '../typography/Typography';
+import Typography from '../atoms/Typography';
 import Animated, {
   runOnJS,
   useAnimatedGestureHandler,
@@ -51,19 +51,13 @@ const SwipeButton: React.FC<Props> = ({
     onActive: event => {
       if (!status) {
         if (event.translationX > 0) {
-          if (translateX.value < endPoint) {
-            translateX.value = event.translationX;
-          } else {
-            translateX.value = endPoint;
-          }
+          translateX.value =
+            translateX.value < endPoint ? event.translationX : endPoint;
         }
       } else {
         if (event.translationX < 0) {
-          if (translateX.value > 0) {
-            translateX.value = endPoint + event.translationX;
-          } else {
-            translateX.value = 0;
-          }
+          translateX.value =
+            translateX.value > 0 ? endPoint + event.translationX : 0;
         }
       }
     },

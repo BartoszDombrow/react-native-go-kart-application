@@ -6,8 +6,8 @@ import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParams} from '../navigation/StackNav';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
-import Typography from '../typography/Typography';
-import CustomButton from '../components/button/CustomButton';
+import Typography from '../components/atoms/Typography';
+import CustomButton from '../components/atoms/CustomButton';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 type SettingsNavigationProp = CompositeNavigationProp<

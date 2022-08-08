@@ -63,10 +63,6 @@
     "totalTime": "Całkowity czas",
     "showMore": "Pokaż więcej",
     "racingHistory": "Historia wyścigów",
-    "numberOfEvents": "Liczba wydarzeń: {{number}}",
-    "leaveSession": "Opuść sesję",
-    "leaveSessionDescription": "Czy na pewno chcesz opuścić sesję?",
-    "position": "Pozycja: {{position}}",
-    "lap": "Okrążenie: {{lap}}"
+    "numberOfEvents": "Liczba wydarzeń: {{number}}"
   }
 }

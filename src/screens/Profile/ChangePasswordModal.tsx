@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Modal, StyleSheet, Alert} from 'react-native';
-import colors from '../constants/Colors';
+import colors from '../../constants/Colors';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import FormInput from './FormInput';
+import FormInput from '../../components/atoms/FormInput';
 import {useTranslation} from 'react-i18next';
-import Typography from '../typography/Typography';
-import CustomButton from './button/CustomButton';
+import Typography from '../../components/atoms/Typography';
+import CustomButton from '../../components/atoms/CustomButton';
 
 interface Props {
   changePasswordVisible: boolean;

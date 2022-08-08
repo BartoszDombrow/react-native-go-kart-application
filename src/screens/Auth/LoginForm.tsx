@@ -3,11 +3,11 @@ import {View, StyleSheet, Alert} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useTranslation} from 'react-i18next';
-import FormInput from '../FormInput';
+import FormInput from '../../components/atoms/FormInput';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
-import CustomButton from '../button/CustomButton';
+import CustomButton from '../../components/atoms/CustomButton';
 
 interface FormValue {
   email: string;

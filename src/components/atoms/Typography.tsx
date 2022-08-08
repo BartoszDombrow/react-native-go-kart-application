@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, TextStyle, TextProps} from 'react-native';
-import colors from '../constants/Colors';
-import fonts from '../constants/Fonts';
+import colors from '../../constants/Colors';
+import fonts from '../../constants/Fonts';
 
 type Variant =
   | 'bigTitle'

@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
-import FormInput from '../components/FormInput';
-import colors from '../constants/Colors';
-import fonts from '../constants/Fonts';
+import FormInput from '../../components/atoms/FormInput';
+import colors from '../../constants/Colors';
+import fonts from '../../constants/Fonts';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {MenuStackParams} from '../navigation/MenuNav';
+import {MenuStackParams} from '../../navigation/MenuNav';
 import {useNavigation} from '@react-navigation/native';
-import ChangePasswordModal from '../components/ChangePasswordModal';
-import DeleteAccountModal from '../components/DeleteAccountModal';
+import ChangePasswordModal from './ChangePasswordModal';
+import DeleteAccountModal from './DeleteAccountModal';
 import {useTranslation} from 'react-i18next';
-import Typography from '../typography/Typography';
-import CustomButton from '../components/button/CustomButton';
+import Typography from '../../components/atoms/Typography';
+import CustomButton from '../../components/atoms/CustomButton';
 
 interface FormValue {
   username: string;

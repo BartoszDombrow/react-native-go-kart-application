@@ -67,6 +67,7 @@
     "leaveSession": "Leave session",
     "leaveSessionDescription": "Are you sure you want to leave the session?",
     "position": "Position: {{position}}",
-    "lap": "Lap: {{lap}}"
+    "lap": "Lap: {{lap}}",
+    "laps": "Laps"
   }
 }

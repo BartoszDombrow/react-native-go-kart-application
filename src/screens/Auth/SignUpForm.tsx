@@ -4,13 +4,13 @@ import {useFormik} from 'formik';
 import colors from '../../constants/Colors';
 import * as Yup from 'yup';
 import CheckBox from '@react-native-community/checkbox';
-import FormInput from '../FormInput';
+import FormInput from '../../components/atoms/FormInput';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/StackNav';
 import {useTranslation} from 'react-i18next';
-import Typography from '../../typography/Typography';
-import CustomButton from '../button/CustomButton';
+import Typography from '../../components/atoms/Typography';
+import CustomButton from '../../components/atoms/CustomButton';
 import {ScrollView} from 'react-native-gesture-handler';
 
 interface FormValue {
