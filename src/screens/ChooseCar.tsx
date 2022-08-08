@@ -8,9 +8,9 @@ import {useTranslation} from 'react-i18next';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
-import FormInput from '../components/FormInput';
-import Typography from '../typography/Typography';
-import CustomButton from '../components/button/CustomButton';
+import FormInput from '../components/atoms/FormInput';
+import Typography from '../components/atoms/Typography';
+import CustomButton from '../components/atoms/CustomButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface FormValue {

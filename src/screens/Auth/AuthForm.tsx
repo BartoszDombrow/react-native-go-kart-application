@@ -6,7 +6,7 @@ import SignUp from './SignUpForm';
 import colors from '../../constants/Colors';
 
 import {useTranslation} from 'react-i18next';
-import SwipeButton from '../SwipeButton';
+import SwipeButton from '../../components/molecules/SwipeButton';
 
 interface AuthFormProps {
   setIsSignUpFormVisible: (status: boolean) => void;

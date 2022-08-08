@@ -7,8 +7,8 @@ import {MenuStackParams} from '../navigation/MenuNav';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from 'react-i18next';
 
-import Typography from '../typography/Typography';
-import CustomButton from '../components/button/CustomButton';
+import Typography from '../components/atoms/Typography';
+import CustomButton from '../components/atoms/CustomButton';
 
 const MainView = () => {
   const menuNavigation =

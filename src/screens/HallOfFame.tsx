@@ -8,9 +8,9 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
-import RankingBox from '../components/halloffame/RankingBox';
-import Typography from '../typography/Typography';
-import CustomButton from '../components/button/CustomButton';
+import RankingBox from '../components/atoms/RankingBox';
+import Typography from '../components/atoms/Typography';
+import CustomButton from '../components/atoms/CustomButton';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 function Halloffame() {

@@ -2,16 +2,16 @@ import React from 'react';
 import {View, TouchableOpacity, Alert, StyleSheet} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import FormInput from '../components/FormInput';
+import FormInput from '../components/atoms/FormInput';
 import colors from '../constants/Colors';
-import Typography from '../typography/Typography';
+import Typography from '../components/atoms/Typography';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {GameStackParams} from '../navigation/GameNav';
 import {useTranslation} from 'react-i18next';
-import CustomButton from '../components/button/CustomButton';
+import CustomButton from '../components/atoms/CustomButton';
 
 interface FormValue {
   code: string;

@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import dayjs from 'dayjs';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../../navigation/GameMenuNav';
-import Typography from '../../typography/Typography';
+import Typography from '../atoms/Typography';
 import {useTranslation} from 'react-i18next';
 
 interface Prop {
@@ -53,19 +53,10 @@ const DriversList: React.FC<Prop> = ({screenType}) => {
         </View>
       </TouchableOpacity>
     );
-    const compare = (a: any, b: any) => {
-      const fameA = a.position;
-      const fameB = b.position;
+    type Driver = ArrayElement<typeof drivers>;
 
-      let comparison = 0;
-
-      if (fameA > fameB) {
-        comparison = 1;
-      } else if (fameA < fameB) {
-        comparison = -1;
-      }
-      return comparison;
-    };
+    const compare = (driverA: Driver, driverB: Driver) =>
+      driverA.position - driverB.position;
 
     return (
       <FlatList

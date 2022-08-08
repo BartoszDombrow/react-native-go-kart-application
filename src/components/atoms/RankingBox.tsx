@@ -4,7 +4,7 @@ import {View, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
 import colors from '../../constants/Colors';
-import Typography from '../../typography/Typography';
+import Typography from './Typography';
 
 interface Props {
   playerName: string;

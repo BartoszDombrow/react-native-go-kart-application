@@ -11,12 +11,12 @@ import {
   Dimensions,
 } from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
-import AuthForm from '../components/auth/AuthForm';
-import colors from '../constants/Colors';
+import AuthForm from './AuthForm';
+import colors from '../../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Typography from '../typography/Typography';
-import LanguageSelector from '../components/language/LanguageSelector';
-import CustomButton from '../components/button/CustomButton';
+import Typography from '../../components/atoms/Typography';
+import LanguageSelector from '../../components/molecules/LanguageSelector';
+import CustomButton from '../../components/atoms/CustomButton';
 
 const Auth = () => {
   const [isLanguagesVisible, setIsLanguagesVisible] = useState(false);

@@ -6,9 +6,9 @@ import colors from '../constants/Colors';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {useTranslation} from 'react-i18next';
-import Typography from '../typography/Typography';
-import LanguageSelector from '../components/language/LanguageSelector';
-import CustomButton from '../components/button/CustomButton';
+import Typography from '../components/atoms/Typography';
+import LanguageSelector from '../components/molecules/LanguageSelector';
+import CustomButton from '../components/atoms/CustomButton';
 
 const Language = () => {
   const navigation =

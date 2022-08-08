@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import CustomButton from '../components/button/CustomButton';
+import CustomButton from '../components/atoms/CustomButton';
 import colors from '../constants/Colors';
-import Typography from '../typography/Typography';
+import Typography from '../components/atoms/Typography';
 import {useNavigation} from '@react-navigation/native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';

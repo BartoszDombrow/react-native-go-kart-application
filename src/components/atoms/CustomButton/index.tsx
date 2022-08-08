@@ -7,11 +7,11 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
-import Typography from '../../typography/Typography';
+import Typography from '../Typography';
 
 import CustomIcon from './CustomIcon';
 import CustomImage from './CustomImage';
-import colors from '../../constants/Colors';
+import colors from '../../../constants/Colors';
 
 type Variant = 'bigButton' | 'mediumButton' | 'smallButton' | 'tinyButton';
 

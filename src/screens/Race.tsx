@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import driversData from '../constants/DriversDATA.json';
-import DriversList from '../components/game/DriversList';
+import DriversList from '../components/organisms/DriversList';
 
 function Game() {
   const gameNavigation =

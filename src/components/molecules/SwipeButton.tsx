@@ -1,8 +1,8 @@
 import {StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
-import colors from '../constants/Colors';
+import colors from '../../constants/Colors';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
-import Typography from '../typography/Typography';
+import Typography from '../atoms/Typography';
 import Animated, {
   runOnJS,
   useAnimatedGestureHandler,
