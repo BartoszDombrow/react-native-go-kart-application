@@ -54,7 +54,7 @@ const Auth = () => {
               <Shadow useArt style={styles.dropShadow}>
                 <Shadow inner useArt style={styles.innerShadow}>
                   <Image
-                    source={require('../assets/images/racing-car.png')}
+                    source={require('../../assets/images/racing-car.png')}
                     style={styles.image}
                   />
                 </Shadow>

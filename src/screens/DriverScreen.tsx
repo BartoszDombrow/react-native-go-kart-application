@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import colors from '../constants/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Typography from '../typography/Typography';
+import Typography from '../components/atoms/Typography';
 import dayjs from 'dayjs';
 import {useTranslation} from 'react-i18next';
 import driversData from '../constants/DriversDATA.json';
