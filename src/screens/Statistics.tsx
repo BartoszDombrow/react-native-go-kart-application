@@ -81,7 +81,9 @@ const Statistics = () => {
       <View style={styles.racingContainer}>
         <Typography variant="mediumButtonText">{t('lastRace')}</Typography>
         <View style={styles.lastRaceBox}>
-          <TouchableOpacity style={styles.lastRace}>
+          <TouchableOpacity
+            style={styles.lastRace}
+            onPress={() => navigation.navigate('UserStatistics')}>
             <Shadow useArt style={styles.raceRecord}>
               <View>
                 <MaterialIcons

@@ -63,6 +63,7 @@
     "totalTime": "Całkowity czas",
     "showMore": "Pokaż więcej",
     "racingHistory": "Historia wyścigów",
-    "numberOfEvents": "Liczba wydarzeń: {{number}}"
+    "numberOfEvents": "Liczba wydarzeń: {{number}}",
+    "laps": "Okrążenia"
   }
 }
