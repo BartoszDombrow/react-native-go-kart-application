@@ -5,15 +5,25 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../constants/Colors';
 import Typography from '../../typography/Typography';
+import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
+import {MenuStackParams} from '../../navigation/MenuNav';
+import {StatisticsStackParams} from '../../navigation/StatisticsNav';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 interface RaceRecordProp {
   raceDate: string;
   trackName: string;
 }
 
+type StatisticsNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<MenuStackParams>,
+  StackNavigationProp<StatisticsStackParams>
+>;
+
 const RaceRecord: React.FC<RaceRecordProp> = ({raceDate, trackName}) => {
+  const navigation = useNavigation<StatisticsNavigationProp>();
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('UserStatistics')}>
       <Shadow useArt style={styles.raceRecord}>
         <View>
           <MaterialIcons name="touch-app" color={colors.white} size={32} />

@@ -63,6 +63,7 @@
     "totalTime": "Total time",
     "showMore": "Show more",
     "racingHistory": "Racing history",
-    "numberOfEvents": "Number of events: {{number}}"
+    "numberOfEvents": "Number of events: {{number}}",
+    "laps": "Laps"
   }
 }

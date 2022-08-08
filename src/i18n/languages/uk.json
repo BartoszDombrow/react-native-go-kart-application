@@ -63,6 +63,7 @@
     "totalTime": "Загальний час",
     "showMore": "Показати більше",
     "racingHistory": "Історія гонок",
-    "numberOfEvents": "Кількість подій: {{number}}"
+    "numberOfEvents": "Кількість подій: {{number}}",
+    "laps": "колах"
   }
 }
