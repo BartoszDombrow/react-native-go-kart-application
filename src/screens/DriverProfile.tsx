@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import CustomButton from '../components/atoms/CustomButton';
 import colors from '../constants/Colors';
@@ -11,10 +11,71 @@ import dayjs from 'dayjs';
 import {useTranslation} from 'react-i18next';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
+const MAP_SCALE_PLURAL = 20;
+
 const DriverProfile = ({route}: any) => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
   const {driver} = route.params;
+
+  const [posX, setPosX] = useState(115);
+  const [posY, setPosY] = useState(115);
+
+  const socket = new WebSocket('ws://192.168.101.216:80');
+
+  socket.onopen = () => {
+    socket.send(
+      '{"headers":{"X-ApiKey":"171555a8fe71148a165392904"},"method":"subscribe", "resource":"/feeds/7"}',
+    );
+  };
+
+  socket.onmessage = event => {
+    const data = JSON.parse(event.data);
+    if (
+      data.body.datastreams.find((tag: any) => tag.id === 'posX') &&
+      data.body.datastreams.find((tag: any) => tag.id === 'posY')
+    ) {
+      console.log(data.body.datastreams.find((tag: any) => tag.id === 'posX'));
+      setPosX(
+        parseInt(
+          (
+            parseFloat(
+              data.body.datastreams.find((tag: any) => tag.id === 'posX')
+                .current_value,
+            ) * MAP_SCALE_PLURAL
+          ).toString(),
+          10,
+        ),
+      );
+      setPosY(
+        parseInt(
+          (
+            parseFloat(
+              data.body.datastreams.find((tag: any) => tag.id === 'posY')
+                .current_value,
+            ) * MAP_SCALE_PLURAL
+          ).toString(),
+          10,
+        ),
+      );
+    }
+    // if (
+    //   data.body.datastreams.find(tag => tag.id === 'posX').current_value !==
+    //   undefined
+    // ) {
+    //   setPosX(
+    //     data.body.datastreams.find(tag => tag.id === 'posX').current_value,
+    //   );
+    // }
+    // if (
+    //   data.body.datastreams.find(tag => tag.id === 'posY').current_value !==
+    //   undefined
+    // ) {
+    //   setPosY(
+    //     data.body.datastreams.find(tag => tag.id === 'posY').current_value,
+    //   );
+    // }
+  };
 
   const {t} = useTranslation();
   return (
@@ -22,8 +83,8 @@ const DriverProfile = ({route}: any) => {
       <View style={styles.raceContainer}>
         <View
           style={{
-            top: driver.top,
-            left: driver.left,
+            top: posY, //driver.top,
+            left: posX, //driver.left,
             backgroundColor: driver.color,
             ...styles.dot,
           }}
@@ -83,6 +144,8 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: colors.mediumBlue,
   },
   smallContainer: {
@@ -92,7 +155,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   raceContainer: {
-    width: '50%',
+    width: 250,
+    height: 250,
     backgroundColor: colors.darkBlue,
   },
   dot: {
