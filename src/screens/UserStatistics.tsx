@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import dayjs from 'dayjs';
-import CustomButton from '../components/button/CustomButton';
+import CustomButton from '../components/atoms/CustomButton';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {StatisticsStackParams} from '../navigation/StatisticsNav';
 import {StackNavigationProp} from '@react-navigation/stack';
 import colors from '../constants/Colors';
-import Typography from '../typography/Typography';
+import Typography from '../components/atoms/Typography';
 import {useTranslation} from 'react-i18next';
 
 type StatisticsNavigationProp = CompositeNavigationProp<

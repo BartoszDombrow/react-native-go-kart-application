@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import colors from '../../constants/Colors';
-import Typography from '../../typography/Typography';
+import Typography from '../../components/atoms/Typography';
 
 interface StatisticsBoxProp {
   icon: JSX.Element;
