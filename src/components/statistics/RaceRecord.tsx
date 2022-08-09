@@ -4,7 +4,7 @@ import {Dimensions, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../constants/Colors';
-import Typography from '../../typography/Typography';
+import Typography from '../atoms/Typography';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {MenuStackParams} from '../../navigation/MenuNav';
 import {StatisticsStackParams} from '../../navigation/StatisticsNav';

@@ -3,10 +3,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {StyleSheet, View} from 'react-native';
-import CustomButton from '../components/button/CustomButton';
+import CustomButton from '../components/atoms/CustomButton';
 import colors from '../constants/Colors';
 import {StatisticsStackParams} from '../navigation/StatisticsNav';
-import Typography from '../typography/Typography';
+import Typography from '../components/atoms/Typography';
 import RacingHistoryList from '../components/statistics/RacingHistoryList';
 import racingHistoryData from '../constants/RacingHistoryData.json';
 

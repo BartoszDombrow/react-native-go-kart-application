@@ -2,10 +2,10 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
-import Typography from '../typography/Typography';
+import Typography from '../components/atoms/Typography';
 import colors from '../constants/Colors';
 import StatisticsBox from '../components/statistics/StatisticsBox';
-import CustomButton from '../components/button/CustomButton';
+import CustomButton from '../components/atoms/CustomButton';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {StatisticsStackParams} from '../navigation/StatisticsNav';
