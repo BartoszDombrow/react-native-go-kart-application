@@ -36,7 +36,7 @@ const StatisticsBox: React.FC<StatisticsBoxProp> = ({
 const styles = StyleSheet.create({
   statisticsBox: {
     flex: 0.5,
-    paddingTop: 16,
+    paddingTop: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textStyle: {
-    paddingTop: 8,
+    paddingTop: 4,
     color: colors.white,
     fontSize: 20,
   },

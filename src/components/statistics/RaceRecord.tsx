@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import i18next from 'i18next';
 import React from 'react';
 import {Dimensions, StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
@@ -14,6 +15,12 @@ interface RaceRecordProp {
   raceDate: string;
   trackName: string;
 }
+var localizedFormat = require('dayjs/plugin/localizedFormat');
+require('dayjs/locale/de');
+require('dayjs/locale/pl');
+require('dayjs/locale/uk');
+dayjs.locale(i18next.language);
+dayjs.extend(localizedFormat);
 
 type StatisticsNavigationProp = CompositeNavigationProp<
   StackNavigationProp<MenuStackParams>,
@@ -30,7 +37,7 @@ const RaceRecord: React.FC<RaceRecordProp> = ({raceDate, trackName}) => {
         </View>
         <View>
           <Typography variant="span" style={styles.raceText}>
-            {dayjs(raceDate).format('DD.MM.YYYY HH:mm')}
+            {dayjs(raceDate).format('L LT')}
           </Typography>
           <Typography variant="span" style={styles.raceText}>
             {trackName}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 import Typography from '../components/atoms/Typography';
@@ -10,12 +10,12 @@ import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {MenuStackParams} from '../navigation/MenuNav';
 import {StatisticsStackParams} from '../navigation/StatisticsNav';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import dayjs from 'dayjs';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import RaceRecord from '../components/statistics/RaceRecord';
+import racingHistoryData from '../constants/RacingHistoryData.json';
 
 type StatisticsNavigationProp = CompositeNavigationProp<
   StackNavigationProp<MenuStackParams>,
@@ -81,27 +81,10 @@ const Statistics = () => {
       <View style={styles.racingContainer}>
         <Typography variant="mediumButtonText">{t('lastRace')}</Typography>
         <View style={styles.lastRaceBox}>
-          <TouchableOpacity
-            style={styles.lastRace}
-            onPress={() => navigation.navigate('UserStatistics')}>
-            <Shadow useArt style={styles.raceRecord}>
-              <View>
-                <MaterialIcons
-                  name="touch-app"
-                  color={colors.white}
-                  size={32}
-                />
-              </View>
-              <View>
-                <Typography variant="span" style={styles.raceText}>
-                  {dayjs('2022-08-10T08:09:00.000Z').format('DD.MM.YYYY HH:mm')}
-                </Typography>
-                <Typography variant="span" style={styles.raceText}>
-                  Le Mans Wrocław
-                </Typography>
-              </View>
-            </Shadow>
-          </TouchableOpacity>
+          <RaceRecord
+            raceDate={racingHistoryData[0].date}
+            trackName={racingHistoryData[0].trackName}
+          />
           <CustomButton
             buttonText={t('showMore')}
             buttonVariant={'smallButton'}
@@ -127,7 +110,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     alignItems: 'center',
-    paddingTop: 64,
+    paddingTop: 32,
   },
   statisticsContainer: {
     flexDirection: 'row',

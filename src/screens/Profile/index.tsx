@@ -145,8 +145,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   formContainer: {
-    paddingTop: 20,
-    paddingBottom: 10,
+    paddingBottom: 8,
     alignItems: 'center',
   },
   wrapper: {
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   button: {
-    paddingVertical: 10,
+    paddingVertical: 8,
   },
   buttonShadow: {
     alignItems: 'center',

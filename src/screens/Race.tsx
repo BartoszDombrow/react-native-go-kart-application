@@ -17,14 +17,12 @@ function Game() {
         {driversData.map(driverData => {
           return (
             <View
+              key={driverData.id}
               style={{
-                position: 'absolute',
                 top: driverData.top,
                 left: driverData.left,
-                height: 20,
-                width: 20,
-                borderRadius: 10,
                 backgroundColor: driverData.color,
+                ...styles.driver,
               }}
             />
           );
@@ -57,6 +55,12 @@ const styles = StyleSheet.create({
   map: {
     width: '60%',
     backgroundColor: colors.darkBlue,
+  },
+  driver: {
+    position: 'absolute',
+    height: 20,
+    width: 20,
+    borderRadius: 10,
   },
   players: {
     width: '40%',
