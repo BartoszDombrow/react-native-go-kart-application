@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     width: '80%',
+    height: 128,
     paddingVertical: 10,
   },
   formContainer: {

@@ -40,7 +40,7 @@ const DriversList: React.FC<Prop> = ({screenType}) => {
           }}
         />
         <View style={styles.driverName}>
-          <Typography variant="smallButtonText">
+          {/* <Typography variant="smallButtonText">
             {screenType === 'Race'
               ? `${driver.position}. ${driver.distance}m ${
                   driver.speed
@@ -49,7 +49,23 @@ const DriversList: React.FC<Prop> = ({screenType}) => {
                   .millisecond(driver.time)
                   .format('mm:ss:SSS')} `
               : driver.name}
-          </Typography>
+          </Typography> */}
+          {screenType === 'Race' ? (
+            <View style={styles.raceStats}>
+              <Typography variant="smallButtonText">
+                {`${driver.position}.`}
+              </Typography>
+              <Typography variant="smallButtonText">{driver.name}</Typography>
+              <Typography variant="smallButtonText">
+                {dayjs()
+                  .startOf('day')
+                  .millisecond(driver.time)
+                  .format('mm:ss:SSS')}
+              </Typography>
+            </View>
+          ) : (
+            <Typography variant="smallButtonText">{driver.name}</Typography>
+          )}
         </View>
       </TouchableOpacity>
     );
@@ -99,8 +115,12 @@ const styles = StyleSheet.create({
   },
   driverName: {
     flex: 1,
+  },
+  raceStats: {
+    flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   noDataContainer: {
     flex: 1,
@@ -110,6 +130,7 @@ const styles = StyleSheet.create({
   flatlist: {
     flex: 1,
     paddingHorizontal: 16,
+    marginBottom: 32,
   },
 });
 

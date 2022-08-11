@@ -50,10 +50,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
     backgroundColor: colors.mediumBlue,
   },
   map: {
-    width: '60%',
+    width: 250,
+    height: 250,
+    margin: 32,
     backgroundColor: colors.darkBlue,
   },
   driver: {
@@ -63,7 +67,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   players: {
-    width: '40%',
+    flex: 1,
+    marginHorizontal: 32,
   },
   closeButtonContainer: {
     alignItems: 'flex-end',

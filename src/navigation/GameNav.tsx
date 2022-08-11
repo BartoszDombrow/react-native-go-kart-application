@@ -1,11 +1,11 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import ConnectGame from '../screens/ConnectGame';
+import ConnectLobby from '../screens/ConnectLobby';
 import GameMenuNav from './GameMenuNav';
 
 export type GameStackParams = {
-  ConnectGame: undefined;
+  ConnectLobby: undefined;
   GameMenuNav: undefined;
 };
 
@@ -19,8 +19,8 @@ function GameNav() {
         navigationBarHidden: true,
         orientation: 'portrait',
       }}
-      initialRouteName="ConnectGame">
-      <GameStack.Screen name="ConnectGame" component={ConnectGame} />
+      initialRouteName="ConnectLobby">
+      <GameStack.Screen name="ConnectLobby" component={ConnectLobby} />
       <GameStack.Screen
         name="GameMenuNav"
         component={GameMenuNav}

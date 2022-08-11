@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     height: 42,
     marginVertical: 10,
     flexDirection: 'row',
-    paddingHorizontal: 55,
+    paddingHorizontal: 48,
   },
   textInput: {
     width: '100%',
