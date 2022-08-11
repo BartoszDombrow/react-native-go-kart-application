@@ -8,6 +8,8 @@ import colors from '../../constants/Colors';
 import {useTranslation} from 'react-i18next';
 import SwipeButton from '../../components/molecules/SwipeButton';
 
+const SLIDE_ANIMATION_DURATION = 700;
+
 interface AuthFormProps {
   setIsSignUpFormVisible: (status: boolean) => void;
 }
@@ -30,12 +32,11 @@ const AuthForm: React.FC<AuthFormProps> = ({setIsSignUpFormVisible}) => {
     }
   }, [index, setIsSignUpFormVisible]);
 
-  const TIMER = 700;
   const slideAnim = useRef(new Animated.Value(0)).current;
   const slideLeft = () => {
     Animated.timing(slideAnim, {
       toValue: -Dimensions.get('screen').width,
-      duration: TIMER,
+      duration: SLIDE_ANIMATION_DURATION,
       useNativeDriver: false,
     }).start();
   };
@@ -43,7 +44,7 @@ const AuthForm: React.FC<AuthFormProps> = ({setIsSignUpFormVisible}) => {
   const slideRight = () => {
     Animated.timing(slideAnim, {
       toValue: 0,
-      duration: TIMER,
+      duration: SLIDE_ANIMATION_DURATION,
       useNativeDriver: false,
     }).start();
   };
