@@ -20,32 +20,38 @@ function UserStatistics() {
   const {t} = useTranslation();
   return (
     <View style={styles.container}>
-      <Typography variant="mediumTitle">{t('racingHistory')}</Typography>
+      <Typography variant="mediumTitle" style={styles.title}>
+        {t('racingHistory')}
+      </Typography>
       <View style={styles.wrappers}>
-        <Typography variant="mediumButtonText">{t('laps')}:</Typography>
-        <View>
-          <Typography variant="basicTextBold">
-            {dayjs().millisecond(13567000).format('mm:ss:SSS')}
+        <Typography variant="mediumButtonText" style={styles.timeText}>
+          {t('laps')}:
+        </Typography>
+        <View style={styles.timeContainer}>
+          <Typography variant="basicTextBold" style={styles.text}>
+            {dayjs().startOf('day').add(13567000).format('mm:ss:SSS')}
           </Typography>
-          <Typography variant="basicTextBold">
-            {dayjs().millisecond(13567000).format('mm:ss:SSS')}
+          <Typography variant="basicTextBold" style={styles.text}>
+            {dayjs().startOf('day').add(13567000).format('mm:ss:SSS')}
           </Typography>
-          <Typography variant="basicTextBold">
-            {dayjs().millisecond(13567000).format('mm:ss:SSS')}
+          <Typography variant="basicTextBold" style={styles.text}>
+            {dayjs().startOf('day').add(13567000).format('mm:ss:SSS')}
           </Typography>
-          <Typography variant="basicTextBold">
-            {dayjs().millisecond(13567000).format('mm:ss:SSS')}
+          <Typography variant="basicTextBold" style={styles.text}>
+            {dayjs().startOf('day').add(13567000).format('mm:ss:SSS')}
           </Typography>
         </View>
       </View>
       <View style={styles.wrappers}>
-        <Typography variant="mediumButtonText">{t('totalTime')}: </Typography>
-        <Typography variant="basicTextBold">
-          {dayjs().millisecond(54268000).format('mm:ss:SSS')}
+        <Typography variant="mediumButtonText" style={styles.timeText}>
+          {`${t('totalTime')}: `}
+        </Typography>
+        <Typography variant="basicTextBold" style={styles.timeContainer}>
+          {dayjs().startOf('day').add(54268000).format('mm:ss:SSS')}
         </Typography>
       </View>
       <CustomButton
-        buttonText={t('showMore')}
+        buttonText={t('showRaceVideoHere')}
         buttonVariant="smallButton"
         onPress={() => navigation.navigate('Stats')}
       />
@@ -65,11 +71,30 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
+  title: {
+    width: '80%',
+    height: 110,
+  },
   wrappers: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
     alignItems: 'center',
     width: '100%',
+  },
+  timeText: {
+    flex: 0.5,
+  },
+  timeContainer: {
+    flex: 0.5,
+    color: colors.white,
+    textShadowColor: 'rgba(0, 0, 0, 0.35)',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 10,
+  },
+  text: {
+    color: colors.white,
+    textShadowColor: 'rgba(0, 0, 0, 0.35)',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 10,
   },
 });
 

@@ -36,7 +36,7 @@ function GameScreen() {
             {driversAmount}
           </Typography>
           <View style={styles.driversList}>
-            <DriversList screenType="Lobby" />
+            <DriversList displayDriverStatus={false} />
           </View>
         </View>
         <View style={styles.buttonsContainer}>
@@ -72,7 +72,7 @@ function GameScreen() {
             buttonVariant="smallButton"
             buttonText={t('exit')}
             onPress={() => {
-              navigation.navigate('ConnectGame');
+              navigation.navigate('ConnectLobby');
             }}
           />
         </View>
@@ -95,7 +95,7 @@ function GameScreen() {
                 buttonVariant="tinyButton"
                 onPress={() => {
                   leaveSessionHandler();
-                  navigation.navigate('ConnectGame');
+                  navigation.navigate('ConnectLobby');
                 }}
               />
               <CustomButton

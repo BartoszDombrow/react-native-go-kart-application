@@ -90,14 +90,15 @@ const DriverProfile = ({route}: any) => {
           }}
         />
       </View>
-
       <View style={styles.statsContainer}>
         <View>
           <Typography variant="smallTitle">{driver.name}</Typography>
         </View>
         <View style={styles.parametersContainer}>
           <View style={styles.parametersBox}>
-            <Typography variant="smallButtonText">{t('distance')}</Typography>
+            <Typography variant="smallButtonText" style={styles.parameterName}>
+              {t('distance')}
+            </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
                 {driver.distance}
@@ -106,7 +107,9 @@ const DriverProfile = ({route}: any) => {
           </View>
 
           <View style={styles.parametersBox}>
-            <Typography variant="smallButtonText">{t('speed')}</Typography>
+            <Typography variant="smallButtonText" style={styles.parameterName}>
+              {t('speed')}
+            </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
                 {driver.speed}
@@ -115,7 +118,9 @@ const DriverProfile = ({route}: any) => {
           </View>
 
           <View style={styles.parametersBox}>
-            <Typography variant="smallButtonText">{t('time')}</Typography>
+            <Typography variant="smallButtonText" style={styles.parameterName}>
+              {t('time')}
+            </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
                 {dayjs()
@@ -157,6 +162,7 @@ const styles = StyleSheet.create({
   raceContainer: {
     width: 250,
     height: 250,
+    margin: 32,
     backgroundColor: colors.darkBlue,
   },
   dot: {
@@ -187,9 +193,12 @@ const styles = StyleSheet.create({
   parametersBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     paddingHorizontal: 32,
     marginVertical: 8,
+  },
+  parameterName: {
+    flex: 0.5,
   },
   buttonContainer: {
     paddingBottom: 16,

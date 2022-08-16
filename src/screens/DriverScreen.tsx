@@ -33,10 +33,10 @@ const DriverScreen = () => {
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.stats}>
-          <Typography variant="mediumTitle" style={styles.topStats}>
+          <Typography variant="smallTitle" style={styles.topStats}>
             {t('position', {position: 3}).toUpperCase()}
           </Typography>
-          <Typography variant="mediumTitle" style={styles.topStats}>
+          <Typography variant="smallTitle" style={styles.topStats}>
             {t('lap', {lap: 1}).toUpperCase()}
           </Typography>
           <View style={styles.iconStats}>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   topStats: {
-    height: 54,
+    height: 64,
   },
   iconStats: {
     marginVertical: 8,

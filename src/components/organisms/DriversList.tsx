@@ -11,10 +11,10 @@ import Typography from '../atoms/Typography';
 import {useTranslation} from 'react-i18next';
 
 interface Prop {
-  screenType: 'Race' | 'Lobby';
+  displayDriverStatus?: boolean;
 }
 
-const DriversList: React.FC<Prop> = ({screenType}) => {
+const DriversList: React.FC<Prop> = ({displayDriverStatus}) => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
 
@@ -29,7 +29,7 @@ const DriversList: React.FC<Prop> = ({screenType}) => {
       <TouchableOpacity
         onPress={() => {
           gameNavigation.navigate('DriverProfile', {
-            driver: driver,
+            driver,
           });
         }}
         style={styles.container}>
@@ -40,16 +40,22 @@ const DriversList: React.FC<Prop> = ({screenType}) => {
           }}
         />
         <View style={styles.driverName}>
-          <Typography variant="smallButtonText">
-            {screenType === 'Race'
-              ? `${driver.position}. ${driver.distance}m ${
-                  driver.speed
-                }m/s ${dayjs()
+          {displayDriverStatus ? (
+            <View style={styles.raceStats}>
+              <Typography variant="smallButtonText">
+                {`${driver.position}.`}
+              </Typography>
+              <Typography variant="smallButtonText">{driver.name}</Typography>
+              <Typography variant="smallButtonText">
+                {dayjs()
                   .startOf('day')
                   .millisecond(driver.time)
-                  .format('mm:ss:SSS')} `
-              : driver.name}
-          </Typography>
+                  .format('mm:ss:SSS')}
+              </Typography>
+            </View>
+          ) : (
+            <Typography variant="smallButtonText">{driver.name}</Typography>
+          )}
         </View>
       </TouchableOpacity>
     );
@@ -99,8 +105,12 @@ const styles = StyleSheet.create({
   },
   driverName: {
     flex: 1,
+  },
+  raceStats: {
+    flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   noDataContainer: {
     flex: 1,
@@ -110,6 +120,7 @@ const styles = StyleSheet.create({
   flatlist: {
     flex: 1,
     paddingHorizontal: 16,
+    marginBottom: 32,
   },
 });
 
