@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mediumBlue,
   },
   headerContainer: {
-    flex: 0.3,
+    flex: 0.2,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   languageContainer: {
-    flex: 0.5,
+    flex: 0.6,
   },
   scrollView: {
     flex: 1,
