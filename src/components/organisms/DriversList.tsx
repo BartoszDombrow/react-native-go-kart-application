@@ -11,10 +11,10 @@ import Typography from '../atoms/Typography';
 import {useTranslation} from 'react-i18next';
 
 interface Prop {
-  screenType: 'Race' | 'Lobby';
+  displayDriverStatus?: boolean;
 }
 
-const DriversList: React.FC<Prop> = ({screenType}) => {
+const DriversList: React.FC<Prop> = ({displayDriverStatus}) => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
 
@@ -29,7 +29,7 @@ const DriversList: React.FC<Prop> = ({screenType}) => {
       <TouchableOpacity
         onPress={() => {
           gameNavigation.navigate('DriverProfile', {
-            driver: driver,
+            driver,
           });
         }}
         style={styles.container}>
@@ -40,17 +40,7 @@ const DriversList: React.FC<Prop> = ({screenType}) => {
           }}
         />
         <View style={styles.driverName}>
-          {/* <Typography variant="smallButtonText">
-            {screenType === 'Race'
-              ? `${driver.position}. ${driver.distance}m ${
-                  driver.speed
-                }m/s ${dayjs()
-                  .startOf('day')
-                  .millisecond(driver.time)
-                  .format('mm:ss:SSS')} `
-              : driver.name}
-          </Typography> */}
-          {screenType === 'Race' ? (
+          {displayDriverStatus ? (
             <View style={styles.raceStats}>
               <Typography variant="smallButtonText">
                 {`${driver.position}.`}

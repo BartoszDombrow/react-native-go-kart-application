@@ -40,7 +40,7 @@ function Game() {
             />
           </TouchableOpacity>
         </View>
-        <DriversList screenType="Race" />
+        <DriversList displayDriverStatus={true} />
       </View>
     </View>
   );

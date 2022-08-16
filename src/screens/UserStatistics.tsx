@@ -44,7 +44,7 @@ function UserStatistics() {
       </View>
       <View style={styles.wrappers}>
         <Typography variant="mediumButtonText" style={styles.timeText}>
-          {t('totalTime')}:{' '}
+          {`${t('totalTime')}: `}
         </Typography>
         <Typography variant="basicTextBold" style={styles.timeContainer}>
           {dayjs().startOf('day').add(54268000).format('mm:ss:SSS')}
