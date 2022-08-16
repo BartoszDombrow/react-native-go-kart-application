@@ -11,7 +11,8 @@ import dayjs from 'dayjs';
 import {useTranslation} from 'react-i18next';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 
-const MAP_SCALE_PLURAL = 20;
+const MAP_X_SCALE_PLURAL = 20;
+const MAP_Y_SCALE_PLURAL = 60;
 
 const DriverProfile = ({route}: any) => {
   const gameNavigation =
@@ -42,7 +43,7 @@ const DriverProfile = ({route}: any) => {
             parseFloat(
               data.body.datastreams.find((tag: any) => tag.id === 'posX')
                 .current_value,
-            ) * MAP_SCALE_PLURAL
+            ) * MAP_X_SCALE_PLURAL
           ).toString(),
           10,
         ),
@@ -53,28 +54,12 @@ const DriverProfile = ({route}: any) => {
             parseFloat(
               data.body.datastreams.find((tag: any) => tag.id === 'posY')
                 .current_value,
-            ) * MAP_SCALE_PLURAL
+            ) * MAP_Y_SCALE_PLURAL
           ).toString(),
           10,
         ),
       );
     }
-    // if (
-    //   data.body.datastreams.find(tag => tag.id === 'posX').current_value !==
-    //   undefined
-    // ) {
-    //   setPosX(
-    //     data.body.datastreams.find(tag => tag.id === 'posX').current_value,
-    //   );
-    // }
-    // if (
-    //   data.body.datastreams.find(tag => tag.id === 'posY').current_value !==
-    //   undefined
-    // ) {
-    //   setPosY(
-    //     data.body.datastreams.find(tag => tag.id === 'posY').current_value,
-    //   );
-    // }
   };
 
   const {t} = useTranslation();
