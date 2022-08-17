@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TouchableOpacity, Alert, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import FormInput from '../components/atoms/FormInput';
@@ -38,8 +38,7 @@ const ConnectGame = () => {
         .max(8, t('maxCode'))
         .required(t('requiredCode')),
     }),
-    onSubmit: values => {
-      Alert.alert(JSON.stringify(values));
+    onSubmit: () => {
       navigationGame.navigate('GameMenuNav');
     },
   });
