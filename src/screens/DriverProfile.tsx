@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import CustomButton from '../components/atoms/CustomButton';
 import colors from '../constants/Colors';
@@ -7,15 +7,13 @@ import {useNavigation} from '@react-navigation/native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
-import dayjs from 'dayjs';
 import {useTranslation} from 'react-i18next';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import Sewio from '../websockets/Sewio';
+import Timer from '../components/atoms/Timer';
 
 const MAP_X_SCALE_PLURAL = 2.8;
 const MAP_Y_SCALE_PLURAL = 8;
-
-const sewio = new Sewio('8');
 
 const DriverProfile = ({route}: any) => {
   const gameNavigation =
@@ -23,32 +21,52 @@ const DriverProfile = ({route}: any) => {
   const {driver} = route.params;
 
   const [posX, setPosX] = useState(115);
-  const [posY, setPosY] = useState(115);
+  const [posY, setPosY] = useState(140);
+  const [sewioTag, setSewioTag] = useState<Sewio>();
+  const [startLapTime, setStartLapTime] = useState(Date.now());
+  const [running, setRunning] = useState(false);
+
   const {t} = useTranslation();
 
-  const getTagPosition = (event: WebSocketMessageEvent) => {
-    sewio.getPosition(event);
-    setPosX(
-      parseInt(
-        (parseFloat(sewio.positionX) * 10 * MAP_X_SCALE_PLURAL).toString(),
-        10,
-      ),
-    );
-    setPosY(
-      parseInt(
-        (parseFloat(sewio.positionY) * 10 * MAP_Y_SCALE_PLURAL).toString(),
-        10,
-      ),
-    );
-  };
+  useEffect(() => {
+    setSewioTag(new Sewio('8'));
+  }, []);
 
-  // getLapTime
+  const getTagPosition = (event: WebSocketMessageEvent) => {
+    const tagPosition = sewioTag?.getPosition(event);
+    if (sewioTag) {
+      setPosX(
+        parseInt(
+          (parseFloat(sewioTag.positionX) * 10 * MAP_X_SCALE_PLURAL).toString(),
+          10,
+        ),
+      );
+      setPosY(
+        parseInt(
+          (parseFloat(sewioTag.positionY) * 10 * MAP_Y_SCALE_PLURAL).toString(),
+          10,
+        ),
+      );
+    }
+
+    if (tagPosition?.hasLeftStartArea && tagPosition?.hasStartedRace) {
+      if (!running) {
+        setRunning(true);
+        setStartLapTime(Date.now());
+      }
+    } else {
+      setRunning(false);
+    }
+  };
   // getAcceleration
   // getDistance
 
-  sewio.socket.onmessage = event => {
-    getTagPosition(event);
-  };
+  if (sewioTag) {
+    sewioTag.socket.onmessage = event => {
+      getTagPosition(event);
+    };
+  }
+
   return (
     <View style={styles.screen}>
       <View style={styles.raceContainer}>
@@ -93,12 +111,7 @@ const DriverProfile = ({route}: any) => {
               {t('time')}
             </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
-              <Typography variant="basicText" style={{color: colors.darkBlue}}>
-                {dayjs()
-                  .startOf('day')
-                  .millisecond(driver.time)
-                  .format('mm:ss:SSS')}
-              </Typography>
+              <Timer startLapTime={startLapTime} isRunning={running} />
             </Shadow>
           </View>
         </View>
@@ -107,7 +120,7 @@ const DriverProfile = ({route}: any) => {
             buttonText={t('exit')}
             buttonVariant="smallButton"
             onPress={() => {
-              sewio.socket.close();
+              sewioTag?.socket.close();
               gameNavigation.goBack();
             }}
           />
@@ -166,7 +179,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    paddingHorizontal: 32,
+    paddingHorizontal: 16,
     marginVertical: 8,
   },
   parameterName: {

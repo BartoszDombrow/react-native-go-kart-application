@@ -5,18 +5,22 @@ class Sewio {
   positionY: string;
   distance: string;
   speed: string;
-  lapTime: string;
-  raceTime: string;
+  lapTime: number;
+  raceTime: number;
+  hasStartedRace: boolean;
+  hasLeftStartArea: boolean;
 
   constructor(tagId: string) {
     this.socket = new WebSocket('ws://192.168.101.216:80');
     this.tagId = tagId;
-    this.positionX = '';
-    this.positionY = '';
-    this.distance = '';
-    this.speed = '';
-    this.lapTime = '';
-    this.raceTime = '';
+    this.positionX = '115';
+    this.positionY = '140';
+    this.distance = '0';
+    this.speed = '0';
+    this.lapTime = 0;
+    this.raceTime = 0;
+    this.hasStartedRace = false;
+    this.hasLeftStartArea = false;
     this.open();
   }
 
@@ -54,9 +58,29 @@ class Sewio {
       this.positionY = data.body.datastreams.find(
         (tag: any) => tag.id === 'posY',
       ).current_value;
-    } else {
-      return;
     }
+
+    if (
+      data.body.zones &&
+      data.body.zones.find((zone: any) => zone.name === 'Start')
+    ) {
+      this.hasStartedRace = true;
+      this.hasLeftStartArea = false;
+    }
+    if (
+      this.hasStartedRace &&
+      !this.hasLeftStartArea &&
+      (!data.body.zones ||
+        (data.body.zones &&
+          data.body.zones.find((zone: any) => zone.name !== 'Start')))
+    ) {
+      this.hasLeftStartArea = true;
+    }
+
+    return {
+      hasStartedRace: this.hasStartedRace,
+      hasLeftStartArea: this.hasLeftStartArea,
+    };
   }
 }
 
