@@ -37,8 +37,11 @@
     "connect": "Verbinden",
     "joinToSession": "Der Sitzung beitreten",
     "code": "Sitzungscode",
-    "minCode": "Der Code muss 8 Zeichen lang sein",
-    "maxCode": "Der Code muss 8 Zeichen lang sein",
+    "sessionValidation": {
+      "minCode": "Mindestmaß {{length}} Zeichen sind erforderlich",
+      "maxCode": "Maximal {{length}} Zeichen sind erforderlich",
+      "badSession": "Ungültiger Sitzungscode!"
+    },
     "requiredCode": "Code ist erforderlich",
     "yupValidation": {
       "invalidEmail": "Diese E-Mail ist nicht gültig",
@@ -46,7 +49,8 @@
       "minLength": "Die minimale Wortlänge beträgt {{length}}",
       "maxLength": "Die maximale Wortlänge beträgt {{length}}",
       "acceptPrivacyPolicy": "Akzeptiere die Datenschutzerklärung",
-      "invalidPassword": "Muss 8 Zeichen enthalten, einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen"
+      "invalidPassword": "Muss 8 Zeichen enthalten, einen Großbuchstaben, einen Kleinbuchstaben, eine Zahl und ein Sonderzeichen",
+      "mismatchPassword": "Passwörter müssen gleich sein"
     },
     "activeDrivers": "Aktive Fahrer",
     "chooseCar": "Auto wählen",
@@ -64,10 +68,36 @@
     "showMore": "Zeig mehr",
     "racingHistory": "Renngeschichte",
     "numberOfEvents": "Anzahl der Ereignisse: {{number}}",
-    "leaveSession": "Sitzung verlassen",
-    "leaveSessionDescription": "Möchten Sie die Sitzung wirklich verlassen?",
+    "error": "Fehler",
+    "authError": {
+      "invalidEmailOrPassword": "Ungültige E-Mail oder Passwort!",
+      "emailExists": "Angegebene E-Mail ist bereits vergeben!",
+      "usernameExists": "Angegebene Benutzername ist bereits vergeben!"
+    },
+    "hide": "Ausblenden",
+    "disconnectKart": "Fahrzeug trennen",
+    "disconnectKartDescription": "öchten Sie das Fahrzeug wirklich trennen?",
     "position": "Position: {{position}}",
     "lap": "Runde: {{lap}}",
-    "laps": "Runden"
+    "laps": "Runden",
+    "confirmPassword": "Passwort bestätigen",
+    "confirmNewPassword": "Bestätige neues Passwort",
+    "success": "Erfolg",
+    "signUpSuccess": "Die Registrierung war erfolgreich. Sie können sich jetzt anmelden",
+    "serverError": {
+      "noServerResponse": "Keine Serverantwort!",
+      "badRequest": "Ungültige Anforderung!",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten!"
+    },
+    "patchUserDataValidation": {
+      "correct": "Richtig gespeichert",
+      "emailExists": "Angegebene E-Mail ist bereits vergeben!",
+      "usernameExists": "Angegebene Benutzername ist bereits vergeben!",
+      "noChanges": "Es wurden keine neuen Änderungen vorgenommen"
+    },
+    "passwordValidation": {
+      "correct": "Passwort geändert",
+      "incorrectPassword": "Ungültiges aktuelles Passwort!"
+    }
   }
 }

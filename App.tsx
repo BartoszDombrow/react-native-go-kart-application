@@ -2,12 +2,15 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNav from './src/navigation/StackNav';
 import {StatusBar} from 'react-native';
+import {UserProvider} from './src/context/UserProvider';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <StatusBar hidden />
-      <StackNav />
+      <UserProvider>
+        <StatusBar hidden />
+        <StackNav />
+      </UserProvider>
     </NavigationContainer>
   );
 };

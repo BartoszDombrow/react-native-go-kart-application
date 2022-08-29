@@ -2,19 +2,31 @@ import React from 'react';
 import {View, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import {ArrayElement} from 'Types';
 import colors from '../../constants/Colors';
-import drivers from '../../constants/DriversDATA.json';
 import {useNavigation} from '@react-navigation/native';
 import dayjs from 'dayjs';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../../navigation/GameMenuNav';
 import Typography from '../atoms/Typography';
 import {useTranslation} from 'react-i18next';
+import {Participants} from '../../context/ParticipantsProvider';
 
 interface Prop {
+  drivers: Participants[];
   displayDriverStatus?: boolean;
 }
 
-const DriversList: React.FC<Prop> = ({displayDriverStatus}) => {
+const COLORS = [
+  'red',
+  'blue',
+  'green',
+  'yellow',
+  'pink',
+  'purple',
+  'white',
+  'black',
+];
+
+const DriversList: React.FC<Prop> = ({displayDriverStatus, drivers}) => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
 
@@ -29,13 +41,13 @@ const DriversList: React.FC<Prop> = ({displayDriverStatus}) => {
       <TouchableOpacity
         onPress={() => {
           gameNavigation.navigate('DriverProfile', {
-            driver,
+            driver: driver,
           });
         }}
         style={styles.container}>
         <View
           style={{
-            backgroundColor: driver.color,
+            backgroundColor: COLORS[0],
             ...styles.circle,
           }}
         />
@@ -43,31 +55,37 @@ const DriversList: React.FC<Prop> = ({displayDriverStatus}) => {
           {displayDriverStatus ? (
             <View style={styles.raceStats}>
               <Typography variant="smallButtonText">
-                {`${driver.position}.`}
+                {/* driver position */}
               </Typography>
-              <Typography variant="smallButtonText">{driver.name}</Typography>
+              <Typography variant="smallButtonText">
+                {driver.username}
+              </Typography>
               <Typography variant="smallButtonText">
                 {dayjs()
                   .startOf('day')
-                  .millisecond(driver.time)
+                  .millisecond(0 /* driver's lap time here */)
                   .format('mm:ss:SSS')}
               </Typography>
             </View>
           ) : (
-            <Typography variant="smallButtonText">{driver.name}</Typography>
+            <Typography variant="smallButtonText">{driver.username}</Typography>
           )}
         </View>
       </TouchableOpacity>
     );
-    type Driver = ArrayElement<typeof drivers>;
 
-    const compare = (driverA: Driver, driverB: Driver) =>
+    /*
+      TODO
+      If sewio connection is ready compare positions
+      type Driver = ArrayElement<typeof drivers>;
+      const compare = (driverA: Driver, driverB: Driver) =>
       driverA.position - driverB.position;
+    */
 
     return (
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={drivers.sort(compare)}
+        data={drivers /* .sort(compare) */}
         renderItem={renderItem}
         keyExtractor={driver => driver.id}
         style={styles.flatlist}

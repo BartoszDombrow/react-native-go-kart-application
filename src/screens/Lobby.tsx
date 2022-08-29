@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, StyleSheet, Modal} from 'react-native';
 import {GameStackParams} from '../navigation/GameNav';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
@@ -8,8 +8,14 @@ import Typography from '../components/atoms/Typography';
 import DriversList from '../components/organisms/DriversList';
 import {useTranslation} from 'react-i18next';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
-import drivers from '../constants/DriversDATA.json';
 import {StackNavigationProp} from '@react-navigation/stack';
+import ParticipantsContext, {
+  Participants,
+} from '../context/ParticipantsProvider';
+import InfoModal from '../components/molecules/InfoModal';
+import UserContext from '../context/UserProvider';
+import {accessToken, client} from '../api/client';
+import axios from 'axios';
 
 type GameScreenNav = CompositeNavigationProp<
   StackNavigationProp<GameStackParams>,
@@ -21,11 +27,76 @@ function GameScreen() {
   const {t} = useTranslation();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const leaveSessionHandler = () => {
+  const disconnectKartHandler = () => {
     setIsModalVisible(visible => !visible);
   };
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
 
-  const driversAmount = drivers.length === 0 ? '' : ` (${drivers.length})`;
+  const errorModalHandler = () => {
+    setIsErrorModalVisible(visible => !visible);
+  };
+
+  const {participants, setParticipants} = useContext(ParticipantsContext);
+  const {user} = useContext(UserContext);
+
+  const driversAmount =
+    participants.filter(driver => driver.isActive === true).length === 0
+      ? ''
+      : ` (${participants.filter(driver => driver.isActive === true).length})`;
+
+  const disconnectKart = async () => {
+    const participantId = participants.find(
+      ({userId}) => userId === user.id,
+    )?.id;
+    try {
+      await client.patch(
+        `/participants/${participantId}`,
+        {
+          carNumber: null,
+          tagId: null,
+          carCode: null,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+          withCredentials: true,
+        },
+      );
+
+      const participantsResponse = await client.get<Participants[]>(
+        '/participants',
+        {
+          params: {
+            sessionId: participants.filter(
+              session => session.id === participants[0].id,
+            )[0].sessionId,
+          },
+          headers: {'Content-Type': 'application/json'},
+          withCredentials: true,
+        },
+      );
+
+      setParticipants(participantsResponse.data);
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        if (!err?.response) {
+          setErrorMessage(t('serverError.noServerResponse'));
+        } else if (err.response?.status === 400) {
+          setErrorMessage(t('serverError.badRequest'));
+        } else if (err.response?.status === 404) {
+          setErrorMessage(t('sessionValidation.badSession'));
+        } else {
+          setErrorMessage(t('serverError.unexpectedError'));
+        }
+      } else {
+        setErrorMessage(t('serverError.unexpectedError'));
+      }
+      errorModalHandler();
+    }
+  };
 
   return (
     <>
@@ -36,7 +107,10 @@ function GameScreen() {
             {driversAmount}
           </Typography>
           <View style={styles.driversList}>
-            <DriversList displayDriverStatus={false} />
+            <DriversList
+              displayDriverStatus={false}
+              drivers={participants.filter(driver => driver.isActive === true)}
+            />
           </View>
         </View>
         <View style={styles.buttonsContainer}>
@@ -52,20 +126,28 @@ function GameScreen() {
               buttonVariant="smallButton"
               buttonText={t('race')}
               onPress={() => {
-                navigation.navigate('Race');
+                navigation.navigate('Race', {
+                  drivers: participants.filter(
+                    driver => driver.isActive === true,
+                  ),
+                });
               }}
             />
             <CustomButton
               buttonVariant="smallButton"
-              buttonText={t('leaveSession')}
-              onPress={leaveSessionHandler}
+              buttonText={t('disconnectKart')}
+              onPress={disconnectKartHandler}
             />
           </View>
           <CustomButton
             buttonVariant="tinyButton"
             buttonText={''}
             onPress={() => {
-              navigation.navigate('DriverScreen');
+              navigation.navigate('DriverScreen', {
+                driver: participants.filter(
+                  driver => driver.userId === user.id,
+                )[0],
+              });
             }}
           />
           <CustomButton
@@ -80,33 +162,42 @@ function GameScreen() {
       <Modal
         animationType="fade"
         transparent={true}
-        onRequestClose={leaveSessionHandler}
+        onRequestClose={disconnectKartHandler}
         visible={isModalVisible}
         supportedOrientations={['landscape']}
         statusBarTranslucent>
         <View style={styles.modalContainer}>
           <View style={styles.modal}>
             <Typography variant="modalText" style={styles.text}>
-              {t('leaveSessionDescription')}
+              {t('disconnectKartDescription')}
             </Typography>
             <View style={styles.buttonWrapper}>
               <CustomButton
                 buttonText={t('yes')}
                 buttonVariant="tinyButton"
                 onPress={() => {
-                  leaveSessionHandler();
-                  navigation.navigate('ConnectLobby');
+                  disconnectKart();
+                  disconnectKartHandler();
+                  //navigation.navigate('ConnectLobby');
                 }}
               />
               <CustomButton
                 buttonText={t('no')}
                 buttonVariant="tinyButton"
-                onPress={leaveSessionHandler}
+                onPress={disconnectKartHandler}
               />
             </View>
           </View>
         </View>
       </Modal>
+      <InfoModal
+        message={errorMessage}
+        modalTitle={t('error')}
+        isVisible={isErrorModalVisible}
+        onDismiss={() => {
+          errorModalHandler();
+        }}
+      />
     </>
   );
 }

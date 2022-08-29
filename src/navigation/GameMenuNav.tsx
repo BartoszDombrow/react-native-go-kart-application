@@ -6,15 +6,20 @@ import DriverProfile from '../screens/DriverProfile';
 import Race from '../screens/Race';
 import ChooseCar from '../screens/ChooseCar';
 import DriverScreen from '../screens/DriverScreen';
+import {Participants} from '../context/ParticipantsProvider';
 
 export type GameMenuStackParams = {
   Lobby: undefined;
   DriverProfile: {
-    driver: object;
+    driver: Participants;
   };
-  Race: undefined;
+  Race: {
+    drivers: Participants[];
+  };
   ChooseCar: undefined;
-  DriverScreen: undefined;
+  DriverScreen: {
+    driver: Participants;
+  };
 };
 
 const GameMenuStack = createNativeStackNavigator<GameMenuStackParams>();

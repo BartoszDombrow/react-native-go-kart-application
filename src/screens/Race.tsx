@@ -1,44 +1,41 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  ImageBackground,
-} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import driversData from '../constants/DriversDATA.json';
 import DriversList from '../components/organisms/DriversList';
+import {Participants} from '../context/ParticipantsProvider';
+
+type ParamsList = {
+  Race: {
+    drivers: Participants[];
+  };
+};
 
 function Game() {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
-
+  const route = useRoute<RouteProp<ParamsList, 'Race'>>();
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/images/map.png')}
-        resizeMode="cover"
-        style={styles.image}>
-        <View style={styles.map}>
-          {driversData.map(driverData => {
-            return (
-              <View
-                key={driverData.id}
-                style={{
-                  top: driverData.top,
-                  left: driverData.left,
-                  backgroundColor: driverData.color,
-                  ...styles.driver,
-                }}
-              />
-            );
-          })}
-        </View>
-      </ImageBackground>
+      <View style={styles.map}>
+        {driversData.map(driverData => {
+          return (
+            <View
+              key={driverData.id}
+              style={{
+                top: driverData.top,
+                left: driverData.left,
+                backgroundColor: driverData.color,
+                ...styles.driver,
+              }}
+            />
+          );
+        })}
+      </View>
       <View style={styles.players}>
         <View style={styles.closeButtonContainer}>
           <TouchableOpacity
@@ -51,7 +48,10 @@ function Game() {
             />
           </TouchableOpacity>
         </View>
-        <DriversList displayDriverStatus={true} />
+        <DriversList
+          displayDriverStatus={true}
+          drivers={route.params.drivers}
+        />
       </View>
     </View>
   );
@@ -66,14 +66,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mediumBlue,
   },
   map: {
-    width: 200,
+    width: 250,
     height: 250,
     margin: 32,
-  },
-  image: {
-    width: 250,
-    height: 350,
-    justifyContent: 'center',
+    backgroundColor: colors.darkBlue,
   },
   driver: {
     position: 'absolute',

@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     height: 42,
     marginVertical: 10,
     flexDirection: 'row',
-    paddingHorizontal: 48,
+    paddingHorizontal: 44,
   },
   textInput: {
     width: '100%',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     position: 'absolute',
-    right: 20,
+    right: 12,
   },
 });
 
