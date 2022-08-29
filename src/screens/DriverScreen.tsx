@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import colors from '../constants/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -15,21 +15,26 @@ const DriverScreen = () => {
   return (
     <View style={styles.screen}>
       <View style={styles.leftContainer}>
-        <View style={styles.mapContainer}>
-          {driversData.map(driverData => {
-            return (
-              <View
-                key={driverData.id}
-                style={{
-                  top: driverData.top,
-                  left: driverData.left,
-                  backgroundColor: driverData.color,
-                  ...styles.driver,
-                }}
-              />
-            );
-          })}
-        </View>
+        <ImageBackground
+          source={require('../assets/images/map.png')}
+          resizeMode="cover"
+          style={styles.image}>
+          <View style={styles.mapContainer}>
+            {driversData.map(driverData => {
+              return (
+                <View
+                  key={driverData.id}
+                  style={{
+                    top: driverData.top,
+                    left: driverData.left,
+                    backgroundColor: driverData.color,
+                    ...styles.driver,
+                  }}
+                />
+              );
+            })}
+          </View>
+        </ImageBackground>
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.stats}>
@@ -77,6 +82,11 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: 250,
+    height: 350,
+    justifyContent: 'center',
   },
   mapContainer: {
     width: 250,

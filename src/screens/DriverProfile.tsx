@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ImageBackground} from 'react-native';
 import CustomButton from '../components/atoms/CustomButton';
 import colors from '../constants/Colors';
 import Typography from '../components/atoms/Typography';
@@ -69,16 +69,21 @@ const DriverProfile = ({route}: any) => {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.raceContainer}>
-        <View
-          style={{
-            top: posY,
-            left: posX,
-            backgroundColor: driver.color,
-            ...styles.dot,
-          }}
-        />
-      </View>
+      <ImageBackground
+        source={require('../assets/images/map.png')}
+        resizeMode="cover"
+        style={styles.image}>
+        <View style={styles.raceContainer}>
+          <View
+            style={{
+              top: posY,
+              left: posX,
+              backgroundColor: driver.color,
+              ...styles.dot,
+            }}
+          />
+        </View>
+      </ImageBackground>
       <View style={styles.statsContainer}>
         <View>
           <Typography variant="smallTitle">{driver.name}</Typography>
@@ -145,10 +150,14 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   raceContainer: {
-    width: 250,
-    height: 300,
+    width: 200,
+    height: 250,
     margin: 32,
-    backgroundColor: colors.darkBlue,
+  },
+  image: {
+    width: 250,
+    height: 350,
+    justifyContent: 'center',
   },
   dot: {
     position: 'absolute',

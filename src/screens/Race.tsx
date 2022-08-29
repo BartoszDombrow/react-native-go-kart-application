@@ -1,5 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
@@ -11,23 +16,29 @@ import DriversList from '../components/organisms/DriversList';
 function Game() {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
+
   return (
     <View style={styles.container}>
-      <View style={styles.map}>
-        {driversData.map(driverData => {
-          return (
-            <View
-              key={driverData.id}
-              style={{
-                top: driverData.top,
-                left: driverData.left,
-                backgroundColor: driverData.color,
-                ...styles.driver,
-              }}
-            />
-          );
-        })}
-      </View>
+      <ImageBackground
+        source={require('../assets/images/map.png')}
+        resizeMode="cover"
+        style={styles.image}>
+        <View style={styles.map}>
+          {driversData.map(driverData => {
+            return (
+              <View
+                key={driverData.id}
+                style={{
+                  top: driverData.top,
+                  left: driverData.left,
+                  backgroundColor: driverData.color,
+                  ...styles.driver,
+                }}
+              />
+            );
+          })}
+        </View>
+      </ImageBackground>
       <View style={styles.players}>
         <View style={styles.closeButtonContainer}>
           <TouchableOpacity
@@ -55,10 +66,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mediumBlue,
   },
   map: {
-    width: 250,
+    width: 200,
     height: 250,
     margin: 32,
-    backgroundColor: colors.darkBlue,
+  },
+  image: {
+    width: 250,
+    height: 350,
+    justifyContent: 'center',
   },
   driver: {
     position: 'absolute',
