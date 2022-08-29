@@ -37,8 +37,13 @@
     "connect": "Підключитися",
     "joinToSession": "Приєднуйтесь до сесії",
     "code": "Код сеансу",
-    "minCode": "Код має складатися з 8 символів",
-    "maxCode": "Код має складатися з 8 символів",
+    "sessionValidation": {
+      "minCode": "Потрібно мінімум {{length}} символів",
+      "maxCode": "Необхідно максимум {{length}} символів",
+      "badSession": "Недійсний код сеансу!",
+      "noServerResponse": "Немає відповіді сервера!",
+      "badRequest": "Поганий запит!"
+    },
     "requiredCode": "Необхідний код",
     "yupValidation": {
       "invalidEmail": "Недійсна електронна адреса",
@@ -46,7 +51,8 @@
       "minLength": "Мінімальна довжина {{length}}",
       "maxLength": "Максимальна довжина {{length}}",
       "acceptPrivacyPolicy": "Прийміть політику конфіденційності",
-      "invalidPassword": "Пароль має містити 8 символів - одну велику літеру, одну малу літеру, цифру та спеціальний символ"
+      "invalidPassword": "Пароль має містити 8 символів - одну велику літеру, одну малу літеру, цифру та спеціальний символ",
+      "mismatchPassword": "Паролі мають бути однаковими"
     },
     "activeDrivers": "Активні водії",
     "chooseCar": "Виберіть автомобіль",
@@ -64,10 +70,36 @@
     "showMore": "Показати більше",
     "racingHistory": "Історія гонок",
     "numberOfEvents": "Кількість подій: {{number}}",
-    "leaveSession": "Залишити сеанс",
-    "leaveSessionDescription": "Ви впевнені, що бажаєте залишити сеанс?",
+    "error": "Помилка",
+    "authError": {
+      "invalidEmailOrPassword": "Невірна адреса електронної пошти або пароль!",
+      "emailExists": "Даний email вже зайнятий!!",
+      "usernameExists": "Дане ім'я користувача вже зайнято!"
+    },
+    "hide": "Сховати",
+    "disconnectKart": "Від'єднайте карт",
+    "disconnectKartDescription": "Ви впевнені, що бажаєте відключити карт?",
     "position": "Позиція: {{position}}",
     "lap": "Коло: {{lap}}",
-    "laps": "колах"
+    "laps": "колах",
+    "confirmPassword": "Підтвердити пароль",
+    "confirmNewPassword": "Підтвердити новий пароль",
+    "success": "Успіх",
+    "signUpSuccess": "Реєстрація пройшла успішно. Ви можете увійти зараз.",
+    "serverError": {
+      "noServerResponse": "Немає відповіді сервера!",
+      "badRequest": "Поганий запит!",
+      "unexpectedError": "Сталася неочікувана помилка!"
+    },
+    "patchUserDataValidation": {
+      "correct": "Збережено правильно",
+      "emailExists": "Даний email вже зайнятий!!",
+      "usernameExists": "Дане ім'я користувача вже зайнято!",
+      "noChanges": "Нових змін не внесено"
+    },
+    "passwordValidation": {
+      "correct": "Пароль змінено",
+      "incorrectPassword": "Недійсний поточний пароль!"
+    }
   }
 }

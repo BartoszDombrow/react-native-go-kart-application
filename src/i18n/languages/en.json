@@ -4,7 +4,7 @@
     "return": "Return",
     "exit": "Exit",
     "username": "Username",
-    "firstname": "Fistname",
+    "firstname": "Firstname",
     "lastname": "Lastname",
     "email": "Email",
     "password": "Password",
@@ -37,8 +37,11 @@
     "connect": "Connect",
     "joinToSession": "Join to session",
     "code": "Session code",
-    "minCode": "Code must be 8 characters",
-    "maxCode": "Code must be 8 characters",
+    "sessionValidation": {
+      "minCode": "Min {{length}} characters are required",
+      "maxCode": "Max {{length}} characters are required",
+      "badSession": "Invalid session code!"
+    },
     "requiredCode": "Code is required",
     "yupValidation": {
       "invalidEmail": "Invalid email",
@@ -46,7 +49,8 @@
       "minLength": "Min length is {{length}}",
       "maxLength": "Max length {{length}}",
       "acceptPrivacyPolicy": "Accept privacy policy",
-      "invalidPassword": "Password must contain 8 characters - one uppercase, one lowercase, a number and a special character"
+      "invalidPassword": "Password must contain 8 characters - one uppercase, one lowercase, a number and a special character",
+      "mismatchPassword": "Passwords must be the same"
     },
     "activeDrivers": "Active drivers",
     "chooseCar": "Choose car",
@@ -64,10 +68,36 @@
     "showMore": "Show more",
     "racingHistory": "Racing history",
     "numberOfEvents": "Number of events: {{number}}",
-    "leaveSession": "Leave session",
-    "leaveSessionDescription": "Are you sure you want to leave the session?",
+    "error": "Error",
+    "authError": {
+      "invalidEmailOrPassword": "Invalid email or password!",
+      "emailExists": "The given email is already taken!",
+      "usernameExists": "The given username is already taken!"
+    },
+    "hide": "Hide",
+    "disconnectKart": "Disconnect kart",
+    "disconnectKartDescription": "Are you sure you want to disconnect the kart?",
     "position": "Position: {{position}}",
     "lap": "Lap: {{lap}}",
-    "laps": "Laps"
+    "laps": "Laps",
+    "confirmPassword": "Confirm password",
+    "confirmNewPassword": "Confirm new password",
+    "success": "Success",
+    "signUpSuccess": "Registration was successful. You can login now.",
+    "serverError": {
+      "noServerResponse": "No server response!",
+      "badRequest": "Bad request!",
+      "unexpectedError": "Unexpected error occurred!"
+    },
+    "patchUserDataValidation": {
+      "correct": "Saved correctly",
+      "emailExists": "The given email is already taken!",
+      "usernameExists": "The given username is already taken!",
+      "noChanges": "No new changes have been made"
+    },
+    "passwordValidation": {
+      "correct": "Password changed",
+      "incorrectPassword": "Invalid current password!"
+    }
   }
 }
