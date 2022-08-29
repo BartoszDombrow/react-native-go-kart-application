@@ -100,7 +100,6 @@ const ConnectGame = () => {
 
         navigation.navigate('GameMenuNav');
       } catch (err) {
-        console.log(err);
         if (axios.isAxiosError(err)) {
           if (!err?.response) {
             setErrorMessage(t('serverError.noServerResponse'));
