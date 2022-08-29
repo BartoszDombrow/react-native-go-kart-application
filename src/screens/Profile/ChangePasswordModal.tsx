@@ -11,6 +11,7 @@ import UserCotext from '../../context/UserProvider';
 import InfoModal from '../../components/molecules/InfoModal';
 import {client, setAccessToken} from '../../api/client';
 import axios from 'axios';
+import {ScrollView} from 'react-native-gesture-handler';
 
 interface Props {
   changePasswordVisible: boolean;
@@ -140,35 +141,44 @@ const ChangePasswordModal: React.FC<Props> = ({
               {t('changePassword')}
             </Typography>
           </View>
-          <View style={styles.formWrapper}>
-            <FormInput
-              onChangeText={formik.handleChange('password')}
-              onBlur={formik.handleBlur('password')}
-              value={formik.values.password}
-              placeholder={t('password')}
-              formikTouched={formik.touched.password}
-              formikErrors={formik.errors.password}
-              secureTextEntry={true}
-            />
-            <FormInput
-              onChangeText={formik.handleChange('newPassword')}
-              onBlur={formik.handleBlur('newPassword')}
-              value={formik.values.newPassword}
-              placeholder={t('newPassword')}
-              formikTouched={formik.touched.newPassword}
-              formikErrors={formik.errors.newPassword}
-              secureTextEntry={true}
-            />
-            <FormInput
-              onChangeText={formik.handleChange('confirmNewPassword')}
-              onBlur={formik.handleBlur('confirmNewPassword')}
-              value={formik.values.confirmNewPassword}
-              placeholder={t('confirmPassword')}
-              formikTouched={formik.touched.confirmNewPassword}
-              formikErrors={formik.errors.confirmNewPassword}
-              secureTextEntry={true}
-            />
+          <View style={styles.scrollViewContainer}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={styles.formWrapper}>
+                <FormInput
+                  onChangeText={formik.handleChange('password')}
+                  onBlur={formik.handleBlur('password')}
+                  value={formik.values.password}
+                  placeholder={t('password')}
+                  formikTouched={formik.touched.password}
+                  formikErrors={formik.errors.password}
+                  secureTextEntry={true}
+                />
+                <FormInput
+                  onChangeText={formik.handleChange('newPassword')}
+                  onBlur={formik.handleBlur('newPassword')}
+                  value={formik.values.newPassword}
+                  placeholder={t('newPassword')}
+                  formikTouched={formik.touched.newPassword}
+                  formikErrors={formik.errors.newPassword}
+                  secureTextEntry={true}
+                />
+                <FormInput
+                  onChangeText={formik.handleChange('confirmNewPassword')}
+                  onBlur={formik.handleBlur('confirmNewPassword')}
+                  value={formik.values.confirmNewPassword}
+                  placeholder={t('confirmPassword')}
+                  formikTouched={formik.touched.confirmNewPassword}
+                  formikErrors={formik.errors.confirmNewPassword}
+                  secureTextEntry={true}
+                />
+              </View>
+            </ScrollView>
           </View>
+          {showIndicator && (
+            <View style={styles.indicator}>
+              <ActivityIndicator size="large" color={colors.lightBlue} />
+            </View>
+          )}
           <View style={styles.saveButton}>
             <CustomButton
               buttonText={t('saveChanges')}
@@ -176,11 +186,6 @@ const ChangePasswordModal: React.FC<Props> = ({
               onPress={formik.handleSubmit}
             />
           </View>
-          {showIndicator && (
-            <View style={styles.indicator}>
-              <ActivityIndicator size="large" color={colors.lightBlue} />
-            </View>
-          )}
           <View style={styles.buttonWrapper}>
             <CustomButton
               buttonText={t('exit')}
@@ -210,7 +215,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    flex: 0.25,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -218,16 +222,19 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   formWrapper: {
-    flex: 0.4,
-    paddingTop: 70,
+    flex: 1,
+    paddingTop: 64,
     alignItems: 'center',
   },
+  scrollViewContainer: {
+    flex: 1,
+  },
   saveButton: {
-    flex: 0.15,
-    paddingTop: 10,
+    paddingBottom: 32,
   },
   buttonWrapper: {
     flex: 0.2,
+    paddingBottom: 32,
     alignItems: 'center',
     justifyContent: 'center',
   },

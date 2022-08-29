@@ -101,11 +101,10 @@ const Profile = () => {
             t('patchUserDataValidation.correct'),
           );
           submitHandler(true, false);
-          // formik.initialValues.firstName = values.firstName;
-          // formik.initialValues.lastName = values.lastName;
-          // formik.initialValues.username = values.username;
-          // formik.initialValues.email = values.email;
-          formik.resetForm();
+          formik.initialValues.firstName = values.firstName;
+          formik.initialValues.lastName = values.lastName;
+          formik.initialValues.username = values.username;
+          formik.initialValues.email = values.email;
           changeUserDataHandler();
         } else {
           submitHandler(false, false);
