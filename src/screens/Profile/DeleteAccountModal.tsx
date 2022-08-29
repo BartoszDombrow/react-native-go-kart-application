@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Modal, StyleSheet} from 'react-native';
 import colors from '../../constants/Colors';
 import {useTranslation} from 'react-i18next';
 import Typography from '../../components/atoms/Typography';
 import CustomButton from '../../components/atoms/CustomButton';
+import {accessToken, client} from '../../api/client';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParams} from '../../navigation/StackNav';
+import InfoModal from '../../components/molecules/InfoModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Props {
   deleteAccountVisible: boolean;
@@ -15,33 +21,66 @@ const DeleteAccountModal: React.FC<Props> = ({
   deleteAccountHandler,
 }) => {
   const {t} = useTranslation();
+  const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
+  const errorModalHandler = () => {
+    isErrorModalVisible
+      ? setIsErrorModalVisible(false)
+      : setIsErrorModalVisible(true);
+  };
 
   return (
-    <Modal
-      animationType="fade"
-      transparent={true}
-      onRequestClose={deleteAccountHandler}
-      visible={deleteAccountVisible}>
-      <View style={styles.container}>
-        <View style={styles.modal}>
-          <Typography variant="modalText" style={styles.text}>
-            {t('deleteAccountText')}
-          </Typography>
-          <View style={styles.buttonWrapper}>
-            <CustomButton
-              buttonText={t('yes')}
-              buttonVariant="tinyButton"
-              onPress={deleteAccountHandler}
-            />
-            <CustomButton
-              buttonText={t('no')}
-              buttonVariant="tinyButton"
-              onPress={deleteAccountHandler}
-            />
+    <>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        onRequestClose={deleteAccountHandler}
+        visible={deleteAccountVisible}>
+        <View style={styles.container}>
+          <View style={styles.modal}>
+            <Typography variant="modalText" style={styles.text}>
+              {t('deleteAccountText')}
+            </Typography>
+            <View style={styles.buttonWrapper}>
+              <CustomButton
+                buttonText={t('yes')}
+                buttonVariant="tinyButton"
+                onPress={async () => {
+                  try {
+                    await client.delete('/users', {
+                      headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${accessToken}`,
+                      },
+                      withCredentials: true,
+                    });
+                    AsyncStorage.removeItem('accessToken');
+                    deleteAccountHandler();
+                    navigation.navigate('Auth');
+                  } catch {
+                    deleteAccountHandler();
+                    setIsErrorModalVisible(true);
+                  }
+                }}
+              />
+              <CustomButton
+                buttonText={t('no')}
+                buttonVariant="tinyButton"
+                onPress={deleteAccountHandler}
+              />
+            </View>
           </View>
         </View>
-      </View>
-    </Modal>
+      </Modal>
+      <InfoModal
+        modalTitle={t('error')}
+        isVisible={isErrorModalVisible}
+        message={t('serverError.unexpectedError')}
+        onDismiss={errorModalHandler}
+      />
+    </>
   );
 };
 
@@ -50,8 +89,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.darkBlue,
-    opacity: 0.98,
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modal: {
     justifyContent: 'center',

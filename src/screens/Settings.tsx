@@ -9,6 +9,7 @@ import {useTranslation} from 'react-i18next';
 import Typography from '../components/atoms/Typography';
 import CustomButton from '../components/atoms/CustomButton';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {removeAccessToken} from '../api/client';
 
 type SettingsNavigationProp = CompositeNavigationProp<
   StackNavigationProp<MenuStackParams>,
@@ -69,6 +70,7 @@ const Settings = () => {
           buttonText={t('logout')}
           buttonVariant="bigButton"
           onPress={() => {
+            removeAccessToken();
             navigation.navigate('Auth');
           }}
         />

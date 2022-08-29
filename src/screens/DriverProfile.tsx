@@ -3,18 +3,25 @@ import {View, StyleSheet} from 'react-native';
 import CustomButton from '../components/atoms/CustomButton';
 import colors from '../constants/Colors';
 import Typography from '../components/atoms/Typography';
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import dayjs from 'dayjs';
 import {useTranslation} from 'react-i18next';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
+import {Participants} from '../context/ParticipantsProvider';
 
-const DriverProfile = ({route}: any) => {
+type ParamsList = {
+  DriverProfile: {
+    driver: Participants;
+  };
+};
+
+const DriverProfile = () => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
-  const {driver} = route.params;
+  const route = useRoute<RouteProp<ParamsList, 'DriverProfile'>>();
 
   const {t} = useTranslation();
   return (
@@ -22,16 +29,18 @@ const DriverProfile = ({route}: any) => {
       <View style={styles.raceContainer}>
         <View
           style={{
-            top: driver.top,
-            left: driver.left,
-            backgroundColor: driver.color,
+            top: 115 /* driver.top */,
+            left: 115 /* driver.left */,
+            backgroundColor: 'red',
             ...styles.dot,
           }}
         />
       </View>
       <View style={styles.statsContainer}>
         <View>
-          <Typography variant="smallTitle">{driver.name}</Typography>
+          <Typography variant="smallTitle">
+            {route.params.driver.username}
+          </Typography>
         </View>
         <View style={styles.parametersContainer}>
           <View style={styles.parametersBox}>
@@ -40,7 +49,7 @@ const DriverProfile = ({route}: any) => {
             </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
-                {driver.distance}
+                {/*driver.distance}*/ `0 m`}
               </Typography>
             </Shadow>
           </View>
@@ -51,7 +60,7 @@ const DriverProfile = ({route}: any) => {
             </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
-                {driver.speed}
+                {/*driver.speed}*/ `0 km/h`}
               </Typography>
             </Shadow>
           </View>
@@ -64,7 +73,7 @@ const DriverProfile = ({route}: any) => {
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
                 {dayjs()
                   .startOf('day')
-                  .millisecond(driver.time)
+                  .millisecond(0 /* driver.time */)
                   .format('mm:ss:SSS')}
               </Typography>
             </Shadow>

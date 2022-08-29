@@ -37,8 +37,13 @@
     "connect": "Połącz",
     "joinToSession": "Dołącz do sesji",
     "code": "Kod sesji",
-    "minCode": "Kod musi mieć 8 znaków",
-    "maxCode": "Kod musi mieć 8 znaków",
+    "sessionValidation": {
+      "minCode": "Kod musi mieć minimalnie {{length}} znaków",
+      "maxCode": "Kod musi mieć maksymalnie {{length}} znaków",
+      "badSession": "Niepoprawny kod sesji!",
+      "noServerResponse": "Serwer nie odpowiada!",
+      "badRequest": "Błąd zapytania!"
+    },
     "requiredCode": "Kod sesji jest wymagany",
     "yupValidation": {
       "invalidEmail": "Niepoprawny email",
@@ -46,7 +51,8 @@
       "minLength": "Minimalna długość to {{length}}",
       "maxLength": "Maksymalna długośc to {{length}}",
       "acceptPrivacyPolicy": "Zaakceptuj politykę prywatności",
-      "invalidPassword": "Hasło musi zawierać 8 znaków - jedną dużą literę, jedną małą literę, liczbę oraz znak specjalny"
+      "invalidPassword": "Hasło musi zawierać 8 znaków - jedną dużą literę, jedną małą literę, liczbę oraz znak specjalny",
+      "mismatchPassword": "Hasła muszą być identyczne"
     },
     "activeDrivers": "Aktywni kierowcy",
     "chooseCar": "Wybierz pojazd",
@@ -64,10 +70,36 @@
     "showMore": "Pokaż więcej",
     "racingHistory": "Historia wyścigów",
     "numberOfEvents": "Liczba wydarzeń: {{number}}",
-    "leaveSession": "Opuść sesję",
-    "leaveSessionDescription": "Czy na pewno chcesz opuścić sesję?",
+    "error": "Błąd",
+    "authError": {
+      "invalidEmailOrPassword": "Nieprawidłowy email lub hasło!",
+      "emailExists": "Podany email jest już zajęty!",
+      "usernameExists": "Podana nazwa użytkownika jest już zajęta!"
+    },
+    "hide": "Ukryj",
+    "disconnectKart": "Odłącz gokart",
+    "disconnectKartDescription": "Czy na pewno chcesz odłączyć gokart?",
     "position": "Pozycja: {{position}}",
     "lap": "Okrążenie: {{lap}}",
-    "laps": "Okrążenia"
+    "laps": "Okrążenia",
+    "confirmPassword": "Potwierdź hasło",
+    "confirmNewPassword": "Potwierdź nowe hasło",
+    "success": "Sukces",
+    "signUpSuccess": "Rejestracja przebiegła pomyślnie. Możesz się teraz zalogować.",
+    "serverError": {
+      "noServerResponse": "Serwer nie odpowiada!",
+      "badRequest": "Błąd zapytania!",
+      "unexpectedError": "Wystąpił niespodziewany błąd!"
+    },
+    "patchUserDataValidation": {
+      "correct": "Zapisano poprawnie",
+      "emailExists": "Podany email jest już zajęty!",
+      "usernameExists": "Podana nazwa użytkownika jest już zajęta!",
+      "noChanges": "Nie wprowadzono nowych zmian"
+    },
+    "passwordValidation": {
+      "correct": "Hasło zmienione",
+      "incorrectPassword": "Nieprawidłowe aktualne hasło!"
+    }
   }
 }

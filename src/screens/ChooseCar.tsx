@@ -1,27 +1,41 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import colors from '../constants/Colors';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
-
+import axios from 'axios';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import FormInput from '../components/atoms/FormInput';
 import Typography from '../components/atoms/Typography';
 import CustomButton from '../components/atoms/CustomButton';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {accessToken, client} from '../api/client';
+import InfoModal from '../components/molecules/InfoModal';
+import ParticipantsContext, {
+  Participants,
+} from '../context/ParticipantsProvider';
+import UserContext from '../context/UserProvider';
 
 interface FormValue {
   carCode: string;
 }
 
 const ChooseCar = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
   const {t} = useTranslation();
 
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
+
+  const {participants, setParticipants} = useContext(ParticipantsContext);
+
+  const {user} = useContext(UserContext);
+
+  const participantId = participants.find(({userId}) => userId === user.id)?.id;
 
   const formik = useFormik<FormValue>({
     initialValues: {
@@ -32,11 +46,63 @@ const ChooseCar = () => {
     validationSchema: Yup.object({
       carCode: Yup.string().required(t('yupValidation.requiredField')),
     }),
-    onSubmit: () => {
-      gameNavigation.navigate('Lobby');
+    onSubmit: async values => {
+      try {
+        await client.patch(
+          `/participants/${participantId}`,
+          {
+            carCode: values.carCode,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+            withCredentials: true,
+          },
+        );
+
+        const participantsResponse = await client.get<Participants[]>(
+          '/participants',
+          {
+            params: {
+              sessionId: participants.filter(
+                session => session.id === participants[0].id,
+              )[0].sessionId,
+            },
+            headers: {'Content-Type': 'application/json'},
+            withCredentials: true,
+          },
+        );
+
+        setParticipants(participantsResponse.data);
+        gameNavigation.navigate('Lobby');
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          console.log(err.response);
+          if (!err?.response) {
+            setErrorMessage(t('serverError.noServerResponse'));
+            errorModalHandler();
+          } else if (err.response?.status === 400) {
+            console.log(err.response);
+            setErrorMessage(t('serverError.badRequest'));
+            errorModalHandler();
+          } else {
+            console.log(err);
+            setErrorMessage(t('serverError.unexpectedError'));
+            errorModalHandler();
+          }
+        } else {
+          setErrorMessage(t('serverError.unexpectedError'));
+          errorModalHandler();
+        }
+      }
     },
   });
 
+  const errorModalHandler = () => {
+    setIsErrorModalVisible(visible => !visible);
+  };
   return (
     <View style={styles.screen}>
       <View>
@@ -68,6 +134,14 @@ const ChooseCar = () => {
           onPress={formik.handleSubmit}
         />
       </View>
+      <InfoModal
+        message={errorMessage}
+        modalTitle={t('error')}
+        isVisible={isErrorModalVisible}
+        onDismiss={() => {
+          errorModalHandler();
+        }}
+      />
     </View>
   );
 };

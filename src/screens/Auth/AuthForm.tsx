@@ -82,7 +82,11 @@ const AuthForm: React.FC<AuthFormProps> = ({setIsSignUpFormVisible}) => {
             <LoginForm />
           </View>
           <View style={styles.signUpBox}>
-            <SignUp />
+            <SignUp
+              signUpSuccessHandler={() => {
+                setIndex(0);
+              }}
+            />
           </View>
         </Animated.View>
       </View>
