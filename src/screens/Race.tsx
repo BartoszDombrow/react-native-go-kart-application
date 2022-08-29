@@ -7,16 +7,23 @@ import {
 } from 'react-native';
 import colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
 import driversData from '../constants/DriversDATA.json';
 import DriversList from '../components/organisms/DriversList';
+import {Participants} from '../context/ParticipantsProvider';
+
+type ParamsList = {
+  Race: {
+    drivers: Participants[];
+  };
+};
 
 function Game() {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
-
+  const route = useRoute<RouteProp<ParamsList, 'Race'>>();
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -51,7 +58,10 @@ function Game() {
             />
           </TouchableOpacity>
         </View>
-        <DriversList displayDriverStatus={true} />
+        <DriversList
+          displayDriverStatus={true}
+          drivers={route.params.drivers}
+        />
       </View>
     </View>
   );

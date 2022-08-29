@@ -3,7 +3,7 @@ import {View, StyleSheet, ImageBackground} from 'react-native';
 import CustomButton from '../components/atoms/CustomButton';
 import colors from '../constants/Colors';
 import Typography from '../components/atoms/Typography';
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
@@ -11,14 +11,21 @@ import {useTranslation} from 'react-i18next';
 import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import Sewio from '../websockets/Sewio';
 import Timer from '../components/atoms/Timer';
+import {Participants} from '../context/ParticipantsProvider';
 
 const MAP_X_SCALE_PLURAL = 2.8;
 const MAP_Y_SCALE_PLURAL = 8;
 
-const DriverProfile = ({route}: any) => {
+type ParamsList = {
+  DriverProfile: {
+    driver: Participants;
+  };
+};
+
+const DriverProfile = () => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
-  const {driver} = route.params;
+  const route = useRoute<RouteProp<ParamsList, 'DriverProfile'>>();
 
   const [posX, setPosX] = useState(115);
   const [posY, setPosY] = useState(140);
@@ -78,7 +85,7 @@ const DriverProfile = ({route}: any) => {
             style={{
               top: posY,
               left: posX,
-              backgroundColor: driver.color,
+              backgroundColor: 'red',
               ...styles.dot,
             }}
           />
@@ -86,7 +93,9 @@ const DriverProfile = ({route}: any) => {
       </ImageBackground>
       <View style={styles.statsContainer}>
         <View>
-          <Typography variant="smallTitle">{driver.name}</Typography>
+          <Typography variant="smallTitle">
+            {route.params.driver.username}
+          </Typography>
         </View>
         <View style={styles.parametersContainer}>
           <View style={styles.parametersBox}>
@@ -95,7 +104,7 @@ const DriverProfile = ({route}: any) => {
             </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
-                {driver.distance}
+                {/*driver.distance}*/ `0 m`}
               </Typography>
             </Shadow>
           </View>
@@ -106,7 +115,7 @@ const DriverProfile = ({route}: any) => {
             </Typography>
             <Shadow useArt inner style={styles.innerShadow}>
               <Typography variant="basicText" style={{color: colors.darkBlue}}>
-                {driver.speed}
+                {/*driver.speed}*/ `0 km/h`}
               </Typography>
             </Shadow>
           </View>

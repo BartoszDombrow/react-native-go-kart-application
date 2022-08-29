@@ -1,17 +1,24 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, Alert, Modal, Dimensions} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Alert,
+  Modal,
+  Dimensions,
+  ActivityIndicator,
+} from 'react-native';
 import {useFormik} from 'formik';
 import colors from '../../constants/Colors';
 import * as Yup from 'yup';
 import CheckBox from '@react-native-community/checkbox';
 import FormInput from '../../components/atoms/FormInput';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParams} from '../../navigation/StackNav';
 import {useTranslation} from 'react-i18next';
 import Typography from '../../components/atoms/Typography';
 import CustomButton from '../../components/atoms/CustomButton';
 import {ScrollView} from 'react-native-gesture-handler';
+import {client} from '../../api/client';
+import InfoModal from '../../components/molecules/InfoModal';
+import axios from 'axios';
 
 interface FormValue {
   username: string;
@@ -19,15 +26,22 @@ interface FormValue {
   lastname: string;
   email: string;
   password: string;
+  confirmPassword: string;
   privacyPolicy: boolean;
 }
 
-const SignUp = () => {
+interface SignUpProps {
+  signUpSuccessHandler: () => void;
+}
+
+const SignUp: React.FC<SignUpProps> = () => {
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
-
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const [isSignUpSuccessModalVisible, setIsSignUpSuccessModalVisible] =
+    useState(false);
+  const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
+  const [showIndicator, setShowIndicator] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const formik = useFormik<FormValue>({
     initialValues: {
@@ -36,6 +50,7 @@ const SignUp = () => {
       lastname: '',
       email: '',
       password: '',
+      confirmPassword: '',
       privacyPolicy: false,
     },
     validateOnChange: false,
@@ -57,17 +72,70 @@ const SignUp = () => {
           t('yupValidation.invalidPassword'),
         )
         .required(t('yupValidation.requiredField')),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], t('yupValidation.mismatchPassword'))
+        .required(t('yupValidation.requiredField')),
       email: Yup.string()
         .email(t('yupValidation.invalidEmail'))
         .required(t('yupValidation.requiredField')),
-      privacyPolicy: Yup.boolean()
+      /*
+        TODO
+        Privacy policy button doesn't work on Android bundler.
+        Remove the comment in the future!
+
+        privacyPolicy: Yup.boolean()
         .oneOf([true], t('yupValidation.acceptPrivacyPolicy'))
         .required(t('yupValidation.requiredField')),
+      */
     }),
-    onSubmit: values => {
-      Alert.alert(JSON.stringify(values));
+    onSubmit: async values => {
+      try {
+        setShowIndicator(true);
+        await client.post(
+          'users/register',
+          {
+            username: values.username,
+            firstName: values.firstname,
+            lastName: values.lastname,
+            email: values.email,
+            password: values.password,
+          },
+          {
+            headers: {'Content-Type': 'application/json'},
+            withCredentials: true,
+          },
+        );
+        setShowIndicator(false);
+        setIsSignUpSuccessModalVisible(true);
+      } catch (err) {
+        setShowIndicator(false);
+        if (axios.isAxiosError(err)) {
+          if (!err.response) {
+            setErrorMessage(t('serverError.noServerResponse'));
+            errorModalHandler();
+          } else if (err.response.status === 400) {
+            setErrorMessage(t('serverError.badRequest'));
+            errorModalHandler();
+          } else if (err.response.status === 401) {
+            setErrorMessage(t('authError.invalidEmailOrPassword'));
+            errorModalHandler();
+          } else if (err.response.status === 409) {
+            if (err.response?.data.message.includes('username')) {
+              setErrorMessage(t('authError.usernameExists'));
+            } else if (err.response?.data.message.includes('email')) {
+              setErrorMessage(t('authError.emailExists'));
+            }
+            errorModalHandler();
+          } else {
+            setErrorMessage(t('serverError.unexpectedError'));
+            errorModalHandler();
+          }
+        } else {
+          setErrorMessage(t('serverError.unexpectedError'));
+          errorModalHandler();
+        }
+      }
       formik.resetForm();
-      navigation.navigate('MainView');
     },
   });
 
@@ -78,7 +146,19 @@ const SignUp = () => {
   }, [formik.errors.privacyPolicy]);
 
   const handleVisableDismiss = () => {
-    setModalVisible(visible => !visible);
+    modalVisible ? setModalVisible(true) : setModalVisible(false);
+  };
+
+  const errorModalHandler = () => {
+    isErrorModalVisible
+      ? setIsErrorModalVisible(false)
+      : setIsErrorModalVisible(true);
+  };
+
+  const signUpSuccessModalHandler = () => {
+    isSignUpSuccessModalVisible
+      ? setIsSignUpSuccessModalVisible(false)
+      : setIsSignUpSuccessModalVisible(true);
   };
 
   return (
@@ -129,8 +209,22 @@ const SignUp = () => {
                   formikErrors={formik.errors.password}
                   secureTextEntry={true}
                 />
+                <FormInput
+                  onChangeText={formik.handleChange('confirmPassword')}
+                  onBlur={formik.handleBlur('confirmPassword')}
+                  value={formik.values.confirmPassword}
+                  placeholder={t('confirmPassword')}
+                  formikTouched={formik.touched.confirmPassword}
+                  formikErrors={formik.errors.confirmPassword}
+                  secureTextEntry={true}
+                />
               </View>
             </ScrollView>
+            {showIndicator ? (
+              <View style={styles.indicator}>
+                <ActivityIndicator size="large" color={colors.lightBlue} />
+              </View>
+            ) : null}
           </View>
         </View>
         <View style={styles.checkBoxWrapper}>
@@ -191,6 +285,18 @@ const SignUp = () => {
           </View>
         </View>
       </Modal>
+      <InfoModal
+        message={errorMessage}
+        modalTitle={t('error')}
+        isVisible={isErrorModalVisible}
+        onDismiss={errorModalHandler}
+      />
+      <InfoModal
+        message={t('signUpSuccess')}
+        modalTitle={t('success')}
+        isVisible={isSignUpSuccessModalVisible}
+        onDismiss={signUpSuccessModalHandler}
+      />
     </>
   );
 };
@@ -211,6 +317,9 @@ const styles = StyleSheet.create({
   },
   formView: {
     alignItems: 'center',
+  },
+  indicator: {
+    padding: 8,
   },
   checkBoxWrapper: {
     flexDirection: 'row',
