@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   raceContainer: {
-    width: 200,
+    width: 150,
     height: 250,
     margin: 32,
   },
