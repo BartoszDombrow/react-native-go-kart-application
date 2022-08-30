@@ -96,8 +96,8 @@ const DriverProfile = () => {
         <View style={styles.raceContainer}>
           <View
             style={{
-              top: posY,
-              left: posX,
+              top: posX,
+              left: posY,
               backgroundColor: route.params.driver.tagId
                 ? COLORS[parseInt(route.params.driver.tagId, 10) - 1]
                 : COLORS[0],
