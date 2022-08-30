@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   mapContainer: {
-    width: 250,
+    width: 150,
     height: 250,
   },
   driver: {

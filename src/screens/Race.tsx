@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mediumBlue,
   },
   map: {
-    width: 200,
+    width: 150,
     height: 250,
     margin: 32,
   },
