@@ -9,22 +9,12 @@ import {GameMenuStackParams} from '../../navigation/GameMenuNav';
 import Typography from '../atoms/Typography';
 import {useTranslation} from 'react-i18next';
 import {Participants} from '../../context/ParticipantsProvider';
+import driversColors from '../../constants/DriversColors';
 
 interface Prop {
   drivers: Participants[];
   displayDriverStatus?: boolean;
 }
-
-const COLORS = [
-  'red',
-  'brown',
-  'green',
-  'yellow',
-  'pink',
-  'purple',
-  'blue',
-  'black',
-];
 
 const DriversList: React.FC<Prop> = ({displayDriverStatus, drivers}) => {
   const gameNavigation =
@@ -48,8 +38,8 @@ const DriversList: React.FC<Prop> = ({displayDriverStatus, drivers}) => {
         <View
           style={{
             backgroundColor: driver.tagId
-              ? COLORS[parseInt(driver.tagId, 10) - 1]
-              : COLORS[0],
+              ? driversColors[parseInt(driver.tagId, 10) - 1]
+              : driversColors[0],
             ...styles.circle,
           }}
         />

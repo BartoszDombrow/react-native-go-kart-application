@@ -18,7 +18,7 @@ export type GameMenuStackParams = {
   };
   ChooseCar: undefined;
   DriverScreen: {
-    driver: Participants;
+    drivers: Participants[];
   };
 };
 

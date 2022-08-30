@@ -144,9 +144,9 @@ function GameScreen() {
             buttonText={''}
             onPress={() => {
               navigation.navigate('DriverScreen', {
-                driver: participants.filter(
-                  driver => driver.userId === user.id,
-                )[0],
+                drivers: participants.filter(
+                  driver => driver.isActive === true,
+                ),
               });
             }}
           />

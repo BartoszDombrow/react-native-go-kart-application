@@ -1,8 +1,8 @@
 class Sewio {
   socket: WebSocket;
   tagId: string;
-  positionX: string;
-  positionY: string;
+  positionX: '115';
+  positionY: '140';
   distance: string;
   speed: string;
   lapTime: number;
