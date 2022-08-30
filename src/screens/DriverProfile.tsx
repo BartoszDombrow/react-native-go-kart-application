@@ -12,6 +12,7 @@ import {Shadow} from 'react-native-neomorph-shadows-fixes';
 import Sewio from '../websockets/Sewio';
 import Timer from '../components/atoms/Timer';
 import {Participants} from '../context/ParticipantsProvider';
+import driverColors from '../constants/DriversColors';
 
 const MAP_X_SCALE_PLURAL = 2.8;
 const MAP_Y_SCALE_PLURAL = 8;
@@ -21,17 +22,6 @@ type ParamsList = {
     driver: Participants;
   };
 };
-
-const COLORS = [
-  'red',
-  'brown',
-  'green',
-  'yellow',
-  'pink',
-  'purple',
-  'blue',
-  'black',
-];
 
 const DriverProfile = () => {
   const gameNavigation =
@@ -99,8 +89,8 @@ const DriverProfile = () => {
               top: posY,
               left: posX,
               backgroundColor: route.params.driver.tagId
-                ? COLORS[parseInt(route.params.driver.tagId, 10) - 1]
-                : COLORS[0],
+                ? driverColors[parseInt(route.params.driver.tagId, 10) - 1]
+                : driverColors[0],
               ...styles.dot,
             }}
           />

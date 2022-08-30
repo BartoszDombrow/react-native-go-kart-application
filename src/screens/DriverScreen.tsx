@@ -1,16 +1,98 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {ImageBackground, StyleSheet, View} from 'react-native';
 import colors from '../constants/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Typography from '../components/atoms/Typography';
-import dayjs from 'dayjs';
 import {useTranslation} from 'react-i18next';
-import driversData from '../constants/DriversDATA.json';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {Participants} from '../context/ParticipantsProvider';
+import {RouteProp, useRoute} from '@react-navigation/native';
+import driverColors from '../constants/DriversColors';
+import Sewio from '../websockets/Sewio';
+import UserContext from '../context/UserProvider';
+import Timer from '../components/atoms/Timer';
+
+const MAP_X_SCALE_PLURAL = 2.8;
+const MAP_Y_SCALE_PLURAL = 8;
+type ParamsList = {
+  DriverProfile: {
+    drivers: Participants[];
+  };
+};
 
 const DriverScreen = () => {
   const {t} = useTranslation();
+  const {user} = useContext(UserContext);
+  const route = useRoute<RouteProp<ParamsList, 'DriverProfile'>>();
+
+  const [posX, setPosX] = useState<number>(115);
+  const [posY, setPosY] = useState<number>(140);
+  const [startLapTime, setStartLapTime] = useState(Date.now());
+  const [running, setRunning] = useState(false);
+
+  const [sewioTags, setSewioTags] = useState<Sewio[]>([]);
+  useEffect(() => {
+    for (let driver of route.params.drivers) {
+      let sewioTagsArray = sewioTags;
+      if (driver.tagId) {
+        sewioTagsArray.push(new Sewio(driver.tagId));
+        setSewioTags(sewioTagsArray);
+      }
+    }
+  }, []);
+
+  const getTagPosition = (event: WebSocketMessageEvent) => {
+    const driverTag = sewioTags.find(
+      tag =>
+        tag.tagId ===
+        route.params.drivers.find(driver => driver.userId === user.id)?.tagId,
+    );
+
+    const tagPosition = driverTag?.getPosition(event);
+
+    if (driverTag) {
+      setPosX(
+        parseInt(
+          (
+            parseFloat(driverTag.positionX) *
+            10 *
+            MAP_X_SCALE_PLURAL
+          ).toString(),
+          10,
+        ),
+      );
+      setPosY(
+        parseInt(
+          (
+            parseFloat(driverTag.positionY) *
+            10 *
+            MAP_Y_SCALE_PLURAL
+          ).toString(),
+          10,
+        ),
+      );
+    }
+
+    if (tagPosition?.hasLeftStartArea && tagPosition?.hasStartedRace) {
+      if (!running) {
+        setRunning(true);
+        setStartLapTime(Date.now());
+      }
+    } else {
+      setRunning(false);
+    }
+  };
+  // getAcceleration
+  // getDistance
+
+  if (sewioTags) {
+    for (let tag of sewioTags) {
+      tag.socket.onmessage = event => {
+        getTagPosition(event);
+      };
+    }
+  }
 
   return (
     <View style={styles.screen}>
@@ -20,14 +102,16 @@ const DriverScreen = () => {
           resizeMode="cover"
           style={styles.image}>
           <View style={styles.mapContainer}>
-            {driversData.map(driverData => {
+            {route.params.drivers.map(driverData => {
               return (
                 <View
                   key={driverData.id}
                   style={{
-                    top: driverData.top,
-                    left: driverData.left,
-                    backgroundColor: driverData.color,
+                    top: posX,
+                    left: posY,
+                    backgroundColor: driverData.tagId
+                      ? driverColors[parseInt(driverData.tagId, 10) - 1]
+                      : driverColors[0],
                     ...styles.driver,
                   }}
                 />
@@ -57,7 +141,7 @@ const DriverScreen = () => {
           <View style={styles.iconStats}>
             <MaterialIcons name="timer" size={48} color={colors.white} />
             <Typography variant="basicText" style={styles.statsText}>
-              {dayjs().startOf('day').millisecond(123456).format('mm:ss:SSS')}
+              <Timer startLapTime={startLapTime} isRunning={running} />
             </Typography>
           </View>
           <View style={styles.iconStats}>
