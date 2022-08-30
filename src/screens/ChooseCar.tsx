@@ -79,16 +79,19 @@ const ChooseCar = () => {
         gameNavigation.navigate('Lobby');
       } catch (err) {
         if (axios.isAxiosError(err)) {
-          console.log(err.response);
           if (!err?.response) {
             setErrorMessage(t('serverError.noServerResponse'));
             errorModalHandler();
           } else if (err.response?.status === 400) {
-            console.log(err.response);
             setErrorMessage(t('serverError.badRequest'));
             errorModalHandler();
+          } else if (err.response?.status === 404) {
+            setErrorMessage(t('carConnectionError.noCarCode'));
+            errorModalHandler();
+          } else if (err.response?.status === 409) {
+            setErrorMessage(t('carConnectionError.occupiedCar'));
+            errorModalHandler();
           } else {
-            console.log(err);
             setErrorMessage(t('serverError.unexpectedError'));
             errorModalHandler();
           }

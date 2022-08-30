@@ -98,6 +98,10 @@
     "passwordValidation": {
       "correct": "Passwort geändert",
       "incorrectPassword": "Ungültiges aktuelles Passwort!"
+    },
+    "carConnectionError": {
+      "noCarCode": "Angegebene Nummer Das Kart existiert nicht!",
+      "occupiedCar": "Dieses Kart ist mit einem anderen Fahrer besetzt"
     }
   }
 }

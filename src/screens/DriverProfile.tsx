@@ -22,13 +22,24 @@ type ParamsList = {
   };
 };
 
+const COLORS = [
+  'red',
+  'brown',
+  'green',
+  'yellow',
+  'pink',
+  'purple',
+  'blue',
+  'black',
+];
+
 const DriverProfile = () => {
   const gameNavigation =
     useNavigation<NativeStackNavigationProp<GameMenuStackParams>>();
   const route = useRoute<RouteProp<ParamsList, 'DriverProfile'>>();
 
   const [posX, setPosX] = useState(115);
-  const [posY, setPosY] = useState(140);
+  const [posY, setPosY] = useState(115);
   const [sewioTag, setSewioTag] = useState<Sewio>();
   const [startLapTime, setStartLapTime] = useState(Date.now());
   const [running, setRunning] = useState(false);
@@ -36,7 +47,9 @@ const DriverProfile = () => {
   const {t} = useTranslation();
 
   useEffect(() => {
-    setSewioTag(new Sewio('8'));
+    if (route.params.driver.tagId) {
+      setSewioTag(new Sewio(route.params.driver.tagId));
+    }
   }, []);
 
   const getTagPosition = (event: WebSocketMessageEvent) => {
@@ -85,7 +98,9 @@ const DriverProfile = () => {
             style={{
               top: posY,
               left: posX,
-              backgroundColor: 'red',
+              backgroundColor: route.params.driver.tagId
+                ? COLORS[parseInt(route.params.driver.tagId, 10) - 1]
+                : COLORS[0],
               ...styles.dot,
             }}
           />

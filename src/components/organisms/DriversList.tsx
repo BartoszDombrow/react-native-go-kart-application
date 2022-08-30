@@ -17,12 +17,12 @@ interface Prop {
 
 const COLORS = [
   'red',
-  'blue',
+  'brown',
   'green',
   'yellow',
   'pink',
   'purple',
-  'white',
+  'blue',
   'black',
 ];
 
@@ -47,7 +47,9 @@ const DriversList: React.FC<Prop> = ({displayDriverStatus, drivers}) => {
         style={styles.container}>
         <View
           style={{
-            backgroundColor: COLORS[0],
+            backgroundColor: driver.tagId
+              ? COLORS[parseInt(driver.tagId, 10) - 1]
+              : COLORS[0],
             ...styles.circle,
           }}
         />

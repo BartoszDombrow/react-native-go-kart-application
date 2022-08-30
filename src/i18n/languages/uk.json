@@ -100,6 +100,10 @@
     "passwordValidation": {
       "correct": "Пароль змінено",
       "incorrectPassword": "Недійсний поточний пароль!"
+    },
+    "carConnectionError": {
+      "noCarCode": "Зазначений номер карти не існує!",
+      "occupiedCar": "Цей карт зайнятий іншим водієм"
     }
   }
 }

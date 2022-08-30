@@ -10,7 +10,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {GameMenuStackParams} from '../navigation/GameMenuNav';
-import driversData from '../constants/DriversDATA.json';
 import DriversList from '../components/organisms/DriversList';
 import {Participants} from '../context/ParticipantsProvider';
 
@@ -19,6 +18,17 @@ type ParamsList = {
     drivers: Participants[];
   };
 };
+
+const COLORS = [
+  'red',
+  'brown',
+  'green',
+  'yellow',
+  'pink',
+  'purple',
+  'blue',
+  'black',
+];
 
 function Game() {
   const gameNavigation =
@@ -31,14 +41,16 @@ function Game() {
         resizeMode="cover"
         style={styles.image}>
         <View style={styles.map}>
-          {driversData.map(driverData => {
+          {route.params.drivers.map(driverData => {
             return (
               <View
                 key={driverData.id}
                 style={{
-                  top: driverData.top,
-                  left: driverData.left,
-                  backgroundColor: driverData.color,
+                  top: 115,
+                  left: 115,
+                  backgroundColor: driverData.tagId
+                    ? COLORS[parseInt(driverData.tagId) - 1]
+                    : COLORS[0],
                   ...styles.driver,
                 }}
               />
